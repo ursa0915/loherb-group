@@ -1,0 +1,1561 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>日光物業 LOHERB Estate — 永續建築開發</title>
+<meta name="description" content="日光物業以生態友善、永續發展為核心理念，專注於生態永續的不動產開發。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="image" href="https://villa.loherb.com.tw/images/home_banner_2024.jpg">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ========================================
+   RESET & BASE
+   ======================================== */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --navy: #0a2e64;
+  --navy-90: rgba(10, 46, 100, 0.9);
+  --accent-blue: #005b8f;
+  --gold: #E6A401;
+  --gold-light: rgba(230, 164, 1, 0.12);
+  --charcoal: #505350;
+  --warm-white: #FAF2F0;
+  --cream: #F8F4EF;
+  --white: #ffffff;
+  --font-en: 'Bodoni 72', 'Bodoni Moda', Georgia, 'Times New Roman', serif;
+  --font-zh: 'Noto Serif TC', 'Songti TC', serif;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-zh);
+  color: var(--charcoal);
+  background: var(--white);
+  line-height: 1.8;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* ========================================
+   TYPOGRAPHY
+   ======================================== */
+.heading-en {
+  font-family: var(--font-en);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.heading-zh {
+  font-family: var(--font-zh);
+  font-weight: 400;
+  letter-spacing: 0.12em;
+}
+
+.label-gold {
+  color: var(--gold);
+  font-family: var(--font-en);
+  font-size: 0.7rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+/* ========================================
+   SCROLL ANIMATIONS
+   ======================================== */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.15s; }
+.reveal-delay-2 { transition-delay: 0.3s; }
+.reveal-delay-3 { transition-delay: 0.45s; }
+
+.reveal-line {
+  width: 0;
+  transition: width 1.2s var(--ease-in-out);
+}
+
+.reveal-line.visible {
+  width: 48px;
+}
+
+/* ========================================
+   NAVBAR
+   ======================================== */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 0 2rem;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: background 0.5s ease, box-shadow 0.5s ease, padding 0.5s ease;
+}
+
+.navbar.scrolled {
+  background: rgba(255, 255, 255, 0.78);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  backdrop-filter: blur(24px) saturate(180%);
+  box-shadow: 0 1px 0 rgba(10, 46, 100, 0.06);
+}
+
+.navbar.scrolled .nav-logo-text {
+  color: var(--navy);
+}
+
+.navbar.scrolled .nav-link {
+  color: var(--charcoal);
+}
+
+.navbar.scrolled .nav-link:hover {
+  color: var(--navy);
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.nav-logo-mark {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1;
+  gap: 1px;
+}
+
+.nav-logo-mark .char {
+  font-family: var(--font-zh);
+  font-weight: 500;
+  font-size: 0.85rem;
+  color: var(--gold);
+}
+
+.nav-logo-mark .en {
+  font-family: var(--font-en);
+  font-weight: 400;
+  font-size: 0.42rem;
+  letter-spacing: 0.35em;
+  padding-left: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.nav-logo-text {
+  font-family: var(--font-en);
+  font-weight: 400;
+  font-size: 0.75rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.85);
+  transition: color 0.5s ease;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  list-style: none;
+}
+
+.nav-link {
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-family: var(--font-en);
+  color: rgba(255, 255, 255, 0.7);
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--gold);
+  transition: width 0.4s var(--ease-out);
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.nav-link:hover {
+  color: var(--white);
+}
+
+/* Mobile menu */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 22px;
+  height: 1.5px;
+  background: var(--white);
+  transition: all 0.3s ease;
+}
+
+.navbar.scrolled .nav-toggle span {
+  background: var(--navy);
+}
+
+/* ========================================
+   HERO
+   ======================================== */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: var(--navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero-bg-image {
+  position: absolute;
+  inset: 0;
+  background: url('https://villa.loherb.com.tw/images/home_banner_2024.jpg') center/cover no-repeat;
+  opacity: 1;
+  filter: saturate(1.05) brightness(1);
+  transition: opacity 1.5s ease;
+}
+
+.hero-bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: none;
+  z-index: 1;
+}
+
+.hero-bg-pattern {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  opacity: 0.04;
+  background-image:
+    linear-gradient(rgba(230, 164, 1, 0.3) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(230, 164, 1, 0.3) 1px, transparent 1px);
+  background-size: 80px 80px;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 2rem 3rem;
+  background: rgba(10, 46, 100, 0.08);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-radius: 0;
+  -webkit-mask-image: radial-gradient(ellipse 60% 95% at center,rgba(0,0,0,0.9) 0%,rgba(0,0,0,0.82) 18%,rgba(0,0,0,0.66) 34%,rgba(0,0,0,0.46) 50%,rgba(0,0,0,0.26) 66%,rgba(0,0,0,0.12) 80%,rgba(0,0,0,0.04) 90%,rgba(0,0,0,0.01) 97%,rgba(0,0,0,0) 100%);
+  mask-image: radial-gradient(ellipse 60% 95% at center,rgba(0,0,0,0.9) 0%,rgba(0,0,0,0.82) 18%,rgba(0,0,0,0.66) 34%,rgba(0,0,0,0.46) 50%,rgba(0,0,0,0.26) 66%,rgba(0,0,0,0.12) 80%,rgba(0,0,0,0.04) 90%,rgba(0,0,0,0.01) 97%,rgba(0,0,0,0) 100%);
+}
+
+.hero-logo {
+  margin: 0 auto 3rem;
+  opacity: 0;
+  transform: scale(0.92);
+  animation: heroLogoIn 1.4s var(--ease-out) 0.3s forwards;
+}
+
+.hero-logo svg {
+  width: 140px;
+  height: auto;
+}
+
+@keyframes heroLogoIn {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.hero-title-zh {
+  font-family: var(--font-zh);
+  font-weight: 300;
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: rgba(255, 255, 255, 0.85);
+  letter-spacing: 0.5em;
+  margin-bottom: 0.75rem;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.5), 0 1px 6px rgba(0,0,0,0.3);
+  opacity: 0;
+  animation: heroTextIn 1s var(--ease-out) 0.9s forwards;
+}
+
+.hero-subtitle {
+  font-family: var(--font-en);
+  font-weight: 400;
+  font-size: clamp(0.6rem, 1vw, 0.72rem);
+  color: rgba(230, 164, 1, 0.8);
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.5), 0 1px 6px rgba(0,0,0,0.3);
+  opacity: 0;
+  animation: heroTextIn 1s var(--ease-out) 1.2s forwards;
+}
+
+@keyframes heroTextIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-scroll {
+  position: absolute;
+  bottom: 3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  opacity: 0;
+  animation: heroTextIn 1s var(--ease-out) 1.8s forwards;
+}
+
+.hero-scroll-text {
+  font-family: var(--font-en);
+  font-size: 0.55rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.hero-scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, rgba(230, 164, 1, 0.5), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.3; transform: scaleY(0.6); }
+  50% { opacity: 1; transform: scaleY(1); }
+}
+
+/* ========================================
+   SECTIONS — SHARED
+   ======================================== */
+.section {
+  padding: clamp(5rem, 12vw, 10rem) clamp(1.5rem, 6vw, 4rem);
+}
+
+.section-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.section-label {
+  display: block;
+  margin-bottom: 2rem;
+}
+
+.section-divider {
+  display: block;
+  width: 48px;
+  height: 1px;
+  background: var(--gold);
+  margin: 0 auto 2.5rem;
+}
+
+.section-title-zh {
+  font-family: var(--font-zh);
+  font-weight: 400;
+  font-size: clamp(1.4rem, 3vw, 1.85rem);
+  color: var(--navy);
+  letter-spacing: 0.15em;
+  line-height: 1.6;
+  margin-bottom: 0.6rem;
+}
+
+.section-title-en {
+  font-family: var(--font-en);
+  font-weight: 400;
+  font-size: clamp(0.65rem, 1.2vw, 0.78rem);
+  color: var(--gold);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin-bottom: 2.5rem;
+}
+
+.section-body {
+  font-family: var(--font-zh);
+  font-weight: 300;
+  font-size: clamp(0.9rem, 1.5vw, 1rem);
+  color: var(--charcoal);
+  line-height: 2.2;
+  letter-spacing: 0.04em;
+}
+
+/* ========================================
+   SECTION 1 — ECO INTRO
+   ======================================== */
+.section-eco {
+  background: var(--white);
+}
+
+.eco-image-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  max-width: 880px;
+  margin: 3.5rem auto 0;
+}
+
+.eco-image-card {
+  position: relative;
+  border-radius: 2px;
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+}
+
+.eco-image-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s var(--ease-out), filter 0.8s ease;
+  filter: saturate(1.05);
+}
+
+.eco-image-card:hover img {
+  transform: scale(1.04);
+  filter: saturate(1.15);
+}
+
+.eco-image-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 50%, rgba(10, 46, 100, 0.18) 100%);
+  pointer-events: none;
+}
+
+.eco-image-caption {
+  position: absolute;
+  bottom: 1rem;
+  left: 1.25rem;
+  z-index: 2;
+  font-family: var(--font-en);
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.75);
+  text-shadow: 0 2px 20px rgba(0,0,0,0.5), 0 1px 6px rgba(0,0,0,0.3);
+}
+
+@media (max-width: 768px) {
+  .eco-image-row {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+/* ========================================
+   SECTION 2 — BUILDING FACADE IMAGE
+   ======================================== */
+.section-facade {
+  position: relative;
+  width: 100%;
+  height: 70vh;
+  min-height: 400px;
+  overflow: hidden;
+  background: var(--navy);
+}
+
+.facade-image-wrapper {
+  position: absolute;
+  inset: 0;
+}
+
+.facade-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(1.05) brightness(1);
+  transform: scale(1.05);
+  will-change: transform;
+}
+
+.facade-gradient-overlay {
+  position: absolute;
+  inset: 0;
+  background: none;
+  pointer-events: none;
+}
+
+.facade-overlay-text {
+  position: absolute;
+  bottom: 4rem;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 2;
+  background: rgba(10, 46, 100, 0.08);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-radius: 0;
+  padding: 2rem 3rem;
+  -webkit-mask-image: radial-gradient(ellipse 60% 95% at center,rgba(0,0,0,0.9) 0%,rgba(0,0,0,0.82) 18%,rgba(0,0,0,0.66) 34%,rgba(0,0,0,0.46) 50%,rgba(0,0,0,0.26) 66%,rgba(0,0,0,0.12) 80%,rgba(0,0,0,0.04) 90%,rgba(0,0,0,0.01) 97%,rgba(0,0,0,0) 100%);
+  mask-image: radial-gradient(ellipse 60% 95% at center,rgba(0,0,0,0.9) 0%,rgba(0,0,0,0.82) 18%,rgba(0,0,0,0.66) 34%,rgba(0,0,0,0.46) 50%,rgba(0,0,0,0.26) 66%,rgba(0,0,0,0.12) 80%,rgba(0,0,0,0.04) 90%,rgba(0,0,0,0.01) 97%,rgba(0,0,0,0) 100%);
+}
+
+.facade-overlay-text .en {
+  font-family: var(--font-en);
+  font-size: clamp(0.6rem, 1vw, 0.72rem);
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.65);
+  text-shadow: 0 2px 20px rgba(0,0,0,0.5), 0 1px 6px rgba(0,0,0,0.3);
+}
+
+.facade-overlay-text .zh {
+  display: block;
+  font-family: var(--font-zh);
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 300;
+  letter-spacing: 0.25em;
+  color: var(--white);
+  margin-bottom: 0.5rem;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.5), 0 1px 6px rgba(0,0,0,0.3);
+}
+
+/* ========================================
+   SECTION 3 — ESTATE MANAGEMENT
+   ======================================== */
+.section-management {
+  background: var(--cream);
+  position: relative;
+}
+
+.management-showcase {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  max-width: 960px;
+  margin: 3.5rem auto 0;
+  overflow: hidden;
+  border: 1px solid rgba(10, 46, 100, 0.06);
+}
+
+.management-image {
+  position: relative;
+  overflow: hidden;
+  min-height: 320px;
+}
+
+.management-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s var(--ease-out);
+  filter: saturate(1.05);
+}
+
+.management-image:hover img {
+  transform: scale(1.04);
+}
+
+.management-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(10, 46, 100, 0.08), rgba(10, 46, 100, 0.02));
+  pointer-events: none;
+}
+
+.management-details {
+  padding: clamp(2rem, 4vw, 3rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: var(--white);
+}
+
+.management-details-label {
+  font-family: var(--font-en);
+  font-size: 0.6rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.25rem;
+}
+
+.management-details-title {
+  font-family: var(--font-zh);
+  font-weight: 400;
+  font-size: clamp(1.1rem, 2vw, 1.3rem);
+  color: var(--navy);
+  letter-spacing: 0.12em;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.property-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  list-style: none;
+}
+
+.property-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.85rem;
+  color: var(--navy);
+  letter-spacing: 0.06em;
+}
+
+.property-item::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border: 1px solid var(--gold);
+  transform: rotate(45deg);
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .management-showcase {
+    grid-template-columns: 1fr;
+  }
+  .management-image {
+    min-height: 240px;
+  }
+}
+
+/* ========================================
+   SECTION 4 — VILLA CROSS-PROMO
+   ======================================== */
+.section-villa {
+  background: var(--white);
+  position: relative;
+}
+
+.villa-card {
+  max-width: 800px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border: 1px solid rgba(10, 46, 100, 0.08);
+  overflow: hidden;
+}
+
+.villa-card-image {
+  aspect-ratio: 4 / 3;
+  position: relative;
+  overflow: hidden;
+}
+
+.villa-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s var(--ease-out);
+}
+
+.villa-card-image:hover img {
+  transform: scale(1.05);
+}
+
+.villa-card-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(10, 46, 100, 0.1), transparent);
+  pointer-events: none;
+}
+
+.villa-card-content {
+  padding: clamp(2rem, 4vw, 3rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: var(--warm-white);
+}
+
+.villa-card-label {
+  font-family: var(--font-en);
+  font-size: 0.6rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.25rem;
+}
+
+.villa-card-title {
+  font-family: var(--font-zh);
+  font-weight: 400;
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  color: var(--navy);
+  letter-spacing: 0.12em;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.villa-card-desc {
+  font-family: var(--font-zh);
+  font-weight: 300;
+  font-size: 0.85rem;
+  color: var(--charcoal);
+  line-height: 2;
+  margin-bottom: 2rem;
+  letter-spacing: 0.03em;
+}
+
+.villa-card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-en);
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--navy);
+  transition: gap 0.4s var(--ease-out);
+}
+
+.villa-card-link:hover {
+  gap: 1.25rem;
+}
+
+.villa-card-link-arrow {
+  width: 24px;
+  height: 1px;
+  background: var(--gold);
+  position: relative;
+}
+
+.villa-card-link-arrow::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: -3px;
+  width: 7px;
+  height: 7px;
+  border-right: 1px solid var(--gold);
+  border-top: 1px solid var(--gold);
+  transform: rotate(45deg);
+}
+
+/* Villa room banner */
+.villa-room-banner {
+  position: relative;
+  width: 100%;
+  margin-top: 1.5rem;
+  overflow: hidden;
+  aspect-ratio: 21 / 9;
+  border: 1px solid rgba(10, 46, 100, 0.08);
+}
+
+.villa-room-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s var(--ease-out);
+  filter: saturate(1.05);
+}
+
+.villa-room-banner:hover img {
+  transform: scale(1.04);
+}
+
+.villa-room-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 2rem 1.5rem 1.25rem;
+  background: linear-gradient(0deg, rgba(10, 46, 100, 0.35) 0%, transparent 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.villa-room-label {
+  font-family: var(--font-en);
+  font-size: 0.55rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-shadow: 0 2px 20px rgba(0,0,0,0.5), 0 1px 6px rgba(0,0,0,0.3);
+}
+
+.villa-room-title {
+  font-family: var(--font-zh);
+  font-weight: 400;
+  font-size: 1rem;
+  letter-spacing: 0.15em;
+  color: var(--white);
+  text-shadow: 0 2px 20px rgba(0,0,0,0.5), 0 1px 6px rgba(0,0,0,0.3);
+}
+
+/* ========================================
+   SECTION 5 — PHILOSOPHY
+   ======================================== */
+.section-philosophy {
+  background: var(--navy);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.philosophy-bg-image {
+  position: absolute;
+  inset: 0;
+  background: url('https://villa.loherb.com.tw/images/page-banners/about_page.jpg') center/cover no-repeat;
+  opacity: 0.8;
+  filter: saturate(1.05) brightness(1);
+}
+
+.section-philosophy::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: none;
+  z-index: 1;
+}
+
+.section-philosophy .section-inner {
+  position: relative;
+  z-index: 3;
+  background: rgba(10, 46, 100, 0.08);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-radius: 0;
+  padding: 2rem 3rem;
+  -webkit-mask-image: radial-gradient(ellipse 60% 95% at center,rgba(0,0,0,0.9) 0%,rgba(0,0,0,0.82) 18%,rgba(0,0,0,0.66) 34%,rgba(0,0,0,0.46) 50%,rgba(0,0,0,0.26) 66%,rgba(0,0,0,0.12) 80%,rgba(0,0,0,0.04) 90%,rgba(0,0,0,0.01) 97%,rgba(0,0,0,0) 100%);
+  mask-image: radial-gradient(ellipse 60% 95% at center,rgba(0,0,0,0.9) 0%,rgba(0,0,0,0.82) 18%,rgba(0,0,0,0.66) 34%,rgba(0,0,0,0.46) 50%,rgba(0,0,0,0.26) 66%,rgba(0,0,0,0.12) 80%,rgba(0,0,0,0.04) 90%,rgba(0,0,0,0.01) 97%,rgba(0,0,0,0) 100%);
+}
+
+.philosophy-quote-zh {
+  font-family: var(--font-zh);
+  font-weight: 300;
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  color: var(--white);
+  letter-spacing: 0.2em;
+  line-height: 1.8;
+  margin-bottom: 0.75rem;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.5), 0 1px 6px rgba(0,0,0,0.3);
+}
+
+.philosophy-quote-en {
+  font-family: var(--font-en);
+  font-weight: 400;
+  font-size: clamp(0.7rem, 1.2vw, 0.85rem);
+  color: rgba(230, 164, 1, 0.5);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin-bottom: 3rem;
+}
+
+.philosophy-divider {
+  width: 48px;
+  height: 1px;
+  background: rgba(230, 164, 1, 0.3);
+  margin: 0 auto 3rem;
+}
+
+.philosophy-body {
+  font-family: var(--font-zh);
+  font-weight: 300;
+  font-size: clamp(0.88rem, 1.4vw, 0.95rem);
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 2.4;
+  letter-spacing: 0.06em;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+/* ========================================
+   FOOTER
+   ======================================== */
+.footer {
+  background: #06193a;
+  padding: clamp(4rem, 8vw, 6rem) clamp(1.5rem, 6vw, 4rem) 2rem;
+}
+
+.footer-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 3rem;
+}
+
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  margin-bottom: 1.5rem;
+}
+
+.footer-logo .char {
+  font-family: var(--font-zh);
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: var(--gold);
+}
+
+.footer-logo .en {
+  font-family: var(--font-en);
+  font-size: 0.4rem;
+  letter-spacing: 0.35em;
+  padding-left: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.footer-desc {
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.3);
+  line-height: 1.8;
+  font-weight: 300;
+}
+
+.footer-heading {
+  font-family: var(--font-en);
+  font-size: 0.6rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.5rem;
+}
+
+.footer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.footer-links a {
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.4);
+  transition: color 0.3s ease;
+  font-weight: 300;
+  letter-spacing: 0.04em;
+}
+
+.footer-links a:hover {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.footer-contact-item {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.4);
+  font-weight: 300;
+  margin-bottom: 0.6rem;
+  letter-spacing: 0.03em;
+}
+
+.footer-contact-item a {
+  transition: color 0.3s ease;
+}
+
+.footer-contact-item a:hover {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.footer-social {
+  display: flex;
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+.footer-social a {
+  width: 32px;
+  height: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.3s ease;
+}
+
+.footer-social a:hover {
+  border-color: var(--gold);
+}
+
+.footer-social svg {
+  width: 14px;
+  height: 14px;
+  fill: rgba(255, 255, 255, 0.4);
+  transition: fill 0.3s ease;
+}
+
+.footer-social a:hover svg {
+  fill: var(--gold);
+}
+
+.footer-bottom {
+  max-width: 1100px;
+  margin: 4rem auto 0;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-copy {
+  font-family: var(--font-en);
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.footer-legal {
+  display: flex;
+  gap: 2rem;
+}
+
+.footer-legal a {
+  font-size: 0.65rem;
+  color: rgba(255, 255, 255, 0.2);
+  letter-spacing: 0.08em;
+  transition: color 0.3s ease;
+}
+
+.footer-legal a:hover {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+@media (max-width: 768px) {
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 280px;
+    height: 100vh;
+    height: 100dvh;
+    background: var(--navy);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    transition: right 0.5s var(--ease-out);
+  }
+
+  .nav-links.open {
+    right: 0;
+  }
+
+  .nav-links.open .nav-link {
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .nav-toggle {
+    display: flex;
+    z-index: 1001;
+  }
+
+  .nav-toggle.open span:nth-child(1) {
+    transform: rotate(45deg) translate(4px, 4px);
+  }
+
+  .nav-toggle.open span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .nav-toggle.open span:nth-child(3) {
+    transform: rotate(-45deg) translate(4px, -4px);
+  }
+
+  .hero-logo svg {
+    width: 110px;
+  }
+
+  .villa-card {
+    grid-template-columns: 1fr;
+  }
+
+  .villa-card-image {
+    aspect-ratio: 16 / 9;
+  }
+
+  .footer-inner {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .footer-legal {
+    gap: 1.5rem;
+  }
+
+  .section-facade {
+    height: 50vh;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 0 1.25rem;
+  }
+
+  .section {
+    padding: clamp(3.5rem, 10vw, 5rem) 1.25rem;
+  }
+
+  .hero-logo svg {
+    width: 90px;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- ====== NAVBAR ====== -->
+<nav class="navbar" id="navbar">
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-mark">
+      <span class="char">日</span>
+      <span class="en">LOHERB</span>
+      <span class="char">光</span>
+    </div>
+    <span class="nav-logo-text">Estate</span>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#eco" class="nav-link">About</a></li>
+    <li><a href="#management" class="nav-link">Properties</a></li>
+    <li><a href="#villa" class="nav-link">Villa</a></li>
+    <li><a href="#philosophy" class="nav-link">Philosophy</a></li>
+    <li><a href="#contact" class="nav-link">Contact</a></li>
+  </ul>
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</nav>
+
+<!-- ====== HERO ====== -->
+<section class="hero">
+  <div class="hero-bg-image"></div>
+  <div class="hero-bg-overlay"></div>
+  <div class="hero-bg-pattern"></div>
+  <div class="hero-content">
+    <div class="hero-logo">
+      <!-- Logo SVG: 日 / LOHERB / 光 vertical stack -->
+      <svg viewBox="0 0 140 220" xmlns="http://www.w3.org/2000/svg">
+        <!-- Top character: 日 -->
+        <text x="70" y="52" text-anchor="middle"
+              font-family="'Noto Serif TC', serif" font-weight="500"
+              font-size="52" fill="#E6A401">日</text>
+        <!-- Decorative lines -->
+        <line x1="40" y1="72" x2="100" y2="72" stroke="rgba(230,164,1,0.2)" stroke-width="0.5"/>
+        <!-- LOHERB text -->
+        <text x="70" y="110" text-anchor="middle"
+              font-family="'Bodoni 72', Georgia, serif" font-weight="400"
+              font-size="18" fill="#E6A401" letter-spacing="8">LOHERB</text>
+        <!-- Small ESTATE below -->
+        <text x="70" y="130" text-anchor="middle"
+              font-family="'Bodoni 72', Georgia, serif" font-weight="400"
+              font-size="8" fill="rgba(230,164,1,0.5)" letter-spacing="6">ESTATE</text>
+        <!-- Decorative line -->
+        <line x1="40" y1="144" x2="100" y2="144" stroke="rgba(230,164,1,0.2)" stroke-width="0.5"/>
+        <!-- Bottom character: 光 -->
+        <text x="70" y="186" text-anchor="middle"
+              font-family="'Noto Serif TC', serif" font-weight="500"
+              font-size="52" fill="#E6A401">光</text>
+      </svg>
+    </div>
+    <p class="hero-title-zh">永 續 建 築 開 發</p>
+    <p class="hero-subtitle">Sustainable Architecture Development</p>
+  </div>
+  <div class="hero-scroll">
+    <span class="hero-scroll-text">Scroll</span>
+    <div class="hero-scroll-line"></div>
+  </div>
+</section>
+
+<!-- ====== ECO-FRIENDLY SECTION ====== -->
+<section class="section section-eco" id="eco">
+  <div class="section-inner">
+    <span class="label-gold section-label reveal">Sustainability</span>
+    <div class="section-divider reveal-line"></div>
+    <h2 class="section-title-zh reveal reveal-delay-1">生態友善 & 永續發展</h2>
+    <p class="section-title-en reveal reveal-delay-1">Eco-friendly & Sustainable</p>
+    <p class="section-body reveal reveal-delay-2">日光物業專注於生態永續的不動產開發，致力於提升生活品質的同時，對環境零衝擊。我們相信建築不僅是居住空間，更是人與自然和諧共存的橋樑。</p>
+    <div class="eco-image-row reveal reveal-delay-3">
+      <div class="eco-image-card">
+        <img src="https://villa.loherb.com.tw/images/room-types/06_Duplex_Double/1.webp?v=2"
+             alt="生態永續綠建築"
+             loading="lazy">
+        <span class="eco-image-caption">Eco Architecture</span>
+      </div>
+      <div class="eco-image-card">
+        <img src="https://villa.loherb.com.tw/images/page-banners/about_page.jpg"
+             alt="宜蘭自然景觀"
+             loading="lazy">
+        <span class="eco-image-caption">Yilan Landscape</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== BUILDING FACADE ====== -->
+<section class="section-facade">
+  <div class="facade-image-wrapper">
+    <img src="https://villa.loherb.com.tw/images/room-types/11_Island_Quad/1.webp?v=2"
+         alt="現代建築外觀"
+         class="facade-photo"
+         loading="lazy">
+    <div class="facade-gradient-overlay"></div>
+    <div class="facade-overlay-text reveal">
+      <span class="zh">建 築 美 學</span>
+      <span class="en">Architecture & Sustainability</span>
+    </div>
+  </div>
+</section>
+
+<!-- ====== ESTATE MANAGEMENT ====== -->
+<section class="section section-management" id="management">
+  <div class="section-inner">
+    <span class="label-gold section-label reveal">Portfolio</span>
+    <div class="section-divider reveal-line"></div>
+    <h2 class="section-title-zh reveal reveal-delay-1">物業管理與開發</h2>
+    <p class="section-title-en reveal reveal-delay-1">Estate Management & Development</p>
+    <p class="section-body reveal reveal-delay-2">核心業務涵蓋不動產管理與開發，包括台北民豐大樓、新明路大樓，以及新北中央路大樓之營運管理。同時於宜蘭開發日光森林與生態綠建築日光綠築。</p>
+  </div>
+  <div class="management-showcase reveal reveal-delay-3">
+    <div class="management-image">
+      <img src="https://villa.loherb.com.tw/images/room-types/01_Economy_Double/1.webp?v=2"
+           alt="現代辦公大樓管理"
+           loading="lazy">
+    </div>
+    <div class="management-details">
+      <span class="management-details-label">Property Portfolio</span>
+      <h3 class="management-details-title">核心物業項目</h3>
+      <ul class="property-list">
+        <li class="property-item">台北民豐大樓</li>
+        <li class="property-item">新明路大樓</li>
+        <li class="property-item">新北中央路大樓</li>
+        <li class="property-item">日光森林 &#8212; 宜蘭火車站</li>
+        <li class="property-item">日光綠築 &#8212; 生態綠建築</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ====== VILLA CROSS-PROMO ====== -->
+<section class="section section-villa" id="villa">
+  <div class="section-inner" style="max-width: 800px;">
+    <span class="label-gold section-label reveal">Loherb Villa</span>
+    <div class="section-divider reveal-line"></div>
+    <div class="villa-card reveal reveal-delay-1">
+      <div class="villa-card-image">
+        <img src="https://villa.loherb.com.tw/images/home_banner_2024.jpg"
+             alt="日光綠築空拍全景"
+             loading="lazy">
+      </div>
+      <div class="villa-card-content">
+        <span class="villa-card-label">Loherb Green Villa</span>
+        <h3 class="villa-card-title">日光綠築</h3>
+        <p class="villa-card-desc">提供適合情侶與家庭的客房，配備私人泡湯浴池、King Size大床、家庭劇院、星空屋頂。</p>
+        <a href="https://villa.loherb.com.tw" class="villa-card-link" target="_blank" rel="noopener">
+          Explore Villa
+          <span class="villa-card-link-arrow"></span>
+        </a>
+      </div>
+    </div>
+    <!-- Room showcase -->
+    <div class="villa-room-banner reveal reveal-delay-2">
+      <img src="https://villa.loherb.com.tw/images/room-types/02_Luxury_Double/1.webp?v=2"
+           alt="豪華雙人房"
+           loading="lazy">
+      <div class="villa-room-overlay">
+        <span class="villa-room-label">Luxury Double Room</span>
+        <span class="villa-room-title">豪華雙人房</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== PHILOSOPHY ====== -->
+<section class="section section-philosophy" id="philosophy">
+  <div class="philosophy-bg-image"></div>
+  <div class="section-inner">
+    <span class="label-gold section-label reveal">Philosophy</span>
+    <div class="philosophy-divider reveal-line" style="margin-top: 0;"></div>
+    <h2 class="philosophy-quote-zh reveal reveal-delay-1">如陽光般滋養大地</h2>
+    <p class="philosophy-quote-en reveal reveal-delay-1">Nourish the Earth like Sunlight</p>
+    <div class="philosophy-divider reveal-line reveal-delay-2"></div>
+    <p class="philosophy-body reveal reveal-delay-3">日光物業以生態友善、永續發展為核心理念，如同陽光滋養萬物，我們致力於在每一個開發項目中，實現人與自然的和諧共生。從建築設計到社區營造，每一步都以對環境的尊重為出發點。</p>
+  </div>
+</section>
+
+<!-- ====== FOOTER ====== -->
+<footer class="footer" id="contact">
+  <div class="footer-inner">
+    <!-- Brand Column -->
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <span class="char">日</span>
+        <span class="en">LOHERB</span>
+        <span class="char">光</span>
+      </div>
+      <p class="footer-desc">日光物業以生態友善、永續發展為核心理念，專注於永續建築開發。</p>
+      <div class="footer-social">
+        <!-- Facebook -->
+        <a href="https://www.facebook.com/LOHERB.TW/" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+        </a>
+        <!-- Instagram -->
+        <a href="https://www.instagram.com/loherb_yilan" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.5"/></svg>
+        </a>
+        <!-- LINE -->
+        <a href="https://line.me/R/ti/p/%40xye4557v" aria-label="LINE">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 5.82 2 10.5c0 3.67 3.12 6.76 7.36 7.86.29.06.68.19.78.44.09.22.06.57.03.79l-.13.74c-.04.22-.17.86.75.47s5-2.95 6.82-5.05C19.48 13.58 22 12.18 22 10.5 22 5.82 17.52 2 12 2z"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Group Links -->
+    <div>
+      <h4 class="footer-heading">Loherb Group</h4>
+      <ul class="footer-links">
+        <li><a href="#">日光物業 Estate</a></li>
+        <li><a href="https://villa.loherb.com.tw" target="_blank" rel="noopener">日光綠築 Villa</a></li>
+        <li><a href="../cuisine/index.html">日光私廚 Cuisine</a></li>
+        <li><a href="#">日光菓室 Patisserie</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact -->
+    <div>
+      <h4 class="footer-heading">Contact</h4>
+      <p class="footer-contact-item">
+        <a href="mailto:service@loherb.com.tw">service@loherb.com.tw</a>
+      </p>
+      <p class="footer-contact-item">
+        <a href="tel:+886-3-959-5685">+886-3-959-5685</a>
+      </p>
+      <p class="footer-contact-item">
+        宜蘭縣冬山鄉寶福路372號
+      </p>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <span class="footer-copy">&copy; 2026 Loherb Estate. All rights reserved.</span>
+    <div class="footer-legal">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ========================================
+   NAVBAR SCROLL
+   ======================================== */
+(function() {
+  const navbar = document.getElementById('navbar');
+  let lastScroll = 0;
+
+  function onScroll() {
+    const y = window.scrollY;
+    if (y > 60) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+    lastScroll = y;
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+
+/* ========================================
+   MOBILE NAV TOGGLE
+   ======================================== */
+(function() {
+  const toggle = document.getElementById('navToggle');
+  const links = document.getElementById('navLinks');
+
+  toggle.addEventListener('click', function() {
+    toggle.classList.toggle('open');
+    links.classList.toggle('open');
+  });
+
+  // Close menu on link click
+  links.querySelectorAll('.nav-link').forEach(function(link) {
+    link.addEventListener('click', function() {
+      toggle.classList.remove('open');
+      links.classList.remove('open');
+    });
+  });
+})();
+
+/* ========================================
+   SCROLL REVEAL (Intersection Observer)
+   ======================================== */
+(function() {
+  const reveals = document.querySelectorAll('.reveal, .reveal-line');
+
+  if (!('IntersectionObserver' in window)) {
+    reveals.forEach(function(el) { el.classList.add('visible'); });
+    return;
+  }
+
+  const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.15,
+    rootMargin: '0px 0px -40px 0px'
+  });
+
+  reveals.forEach(function(el) {
+    observer.observe(el);
+  });
+})();
+
+/* ========================================
+   SMOOTH SCROLL FOR NAV LINKS
+   ======================================== */
+(function() {
+  document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+    anchor.addEventListener('click', function(e) {
+      var target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+})();
+
+/* ========================================
+   PARALLAX SUBTLE EFFECT ON HERO
+   ======================================== */
+(function() {
+  var hero = document.querySelector('.hero-content');
+  if (!hero) return;
+
+  var heroBg = document.querySelector('.hero-bg-image');
+  var ticking = false;
+
+  window.addEventListener('scroll', function() {
+    if (!ticking) {
+      window.requestAnimationFrame(function() {
+        var y = window.scrollY;
+        if (y < window.innerHeight) {
+          hero.style.transform = 'translateY(' + (y * 0.15) + 'px)';
+          hero.style.opacity = 1 - (y / (window.innerHeight * 0.8));
+          if (heroBg) {
+            heroBg.style.transform = 'translateY(' + (y * 0.3) + 'px) scale(1.1)';
+          }
+        }
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+})();
+
+/* ========================================
+   FACADE PARALLAX SCROLL EFFECT
+   ======================================== */
+(function() {
+  var facade = document.querySelector('.facade-photo');
+  if (!facade) return;
+
+  var ticking = false;
+  window.addEventListener('scroll', function() {
+    if (!ticking) {
+      window.requestAnimationFrame(function() {
+        var rect = facade.parentElement.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+          var progress = (window.innerHeight - rect.top) / (window.innerHeight + rect.height);
+          facade.style.transform = 'translateY(' + ((progress - 0.5) * -40) + 'px) scale(1.05)';
+        }
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+})();
+</script>
+</body>
+</html>

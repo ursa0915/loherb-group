@@ -1,0 +1,38 @@
+# macOS
+.DS_Store
+**/.DS_Store
+._*
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+.cursor/
+.claude/
+
+# Node
+node_modules/
+package-lock.json
+
+# Build outputs
+dist/
+build/
+out/
+
+# Logs
+*.log
+firebase-debug.log
+
+# Firebase (deployment artifacts)
+.firebase/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Temporary files
+*.tmp
+*.bak
+*~

@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>聯繫日光 — 日光私廚 LOHERB Cuisine</title>
+  <meta name="description" content="聯繫日光私廚，取得交通資訊、營業時間與聯絡方式。宜蘭縣冬山鄉景觀餐廳。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --deep-purple: #2D1B2E;
+      --berry-purple: #5C2A46;
+      --brand-gold: #E6A401;
+      --rose-red: #902343;
+      --lavender-grey: #EDEAEE;
+      --warm-white: #FAF2F0;
+      --charcoal: #3E3240;
+      --navy-dark: #1E1020;
+      --pure-white: #FFFFFF;
+    }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: 'Noto Serif TC', 'Georgia', serif;
+      color: var(--charcoal); background: var(--warm-white);
+      line-height: 1.8; overflow-x: hidden; -webkit-font-smoothing: antialiased;
+    }
+    ::selection { background: var(--berry-purple); color: var(--warm-white); }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    .font-en { font-family: 'Georgia','Bodoni 72','Bodoni Moda',serif; }
+
+    .reveal { opacity: 0; transform: translateY(40px); transition: opacity 1s cubic-bezier(0.23,1,0.32,1), transform 1s cubic-bezier(0.23,1,0.32,1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.15s; }
+    .reveal-delay-2 { transition-delay: 0.3s; }
+    .reveal-delay-3 { transition-delay: 0.45s; }
+
+    /* NAVBAR */
+    .navbar { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; padding: 1.25rem 2rem; display: flex; justify-content: space-between; align-items: center; transition: all 0.5s cubic-bezier(0.23,1,0.32,1); }
+    .navbar.scrolled { background: rgba(45,27,46,0.85); backdrop-filter: blur(24px) saturate(1.4); -webkit-backdrop-filter: blur(24px) saturate(1.4); padding: 0.75rem 2rem; border-bottom: 1px solid rgba(144,35,67,0.2); }
+    .nav-logo { display: flex; flex-direction: column; align-items: center; line-height: 1.1; gap: 0; }
+    .nav-logo-char { color: var(--brand-gold); font-size: 0.95rem; font-weight: 500; letter-spacing: 0.05em; }
+    .nav-logo-en { font-family: 'Bodoni 72', 'Bodoni Moda', Georgia, serif; color: var(--brand-gold); font-size: 0.55rem; letter-spacing: 0.35em; padding-left: 0.35em; text-transform: uppercase; }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a { color: var(--warm-white); font-size: 0.8rem; letter-spacing: 0.15em; position: relative; transition: color 0.3s; }
+    .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px; background: var(--brand-gold); transition: width 0.4s cubic-bezier(0.23,1,0.32,1); }
+    .nav-links a:hover { color: var(--brand-gold); }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-links a.active { color: var(--brand-gold); }
+    .nav-links a.active::after { width: 100%; }
+    .nav-toggle { display: none; flex-direction: column; gap: 5px; width: 28px; cursor: pointer; z-index: 1001; }
+    .nav-toggle span { display: block; width: 100%; height: 1px; background: var(--warm-white); transition: all 0.4s cubic-bezier(0.23,1,0.32,1); }
+    .nav-toggle.active span:nth-child(1) { transform: rotate(45deg) translateY(4.2px); }
+    .nav-toggle.active span:nth-child(2) { opacity: 0; }
+    .nav-toggle.active span:nth-child(3) { transform: rotate(-45deg) translateY(-4.2px); }
+    .mobile-menu { position: fixed; inset: 0; z-index: 999; background: rgba(45,27,46,0.97); backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2.5rem; opacity: 0; visibility: hidden; transition: all 0.5s cubic-bezier(0.23,1,0.32,1); }
+    .mobile-menu.open { opacity: 1; visibility: visible; }
+    .mobile-menu a { font-size: 1.1rem; letter-spacing: 0.3em; color: var(--warm-white); transition: color 0.3s; }
+    .mobile-menu a:hover { color: var(--brand-gold); }
+
+    /* PAGE HERO */
+    .page-hero { position: relative; height: 55vh; min-height: 400px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .page-hero-bg { position: absolute; inset: 0; background: url('https://villa.loherb.com.tw/images/page-banners/about_page.jpg') center 60% / cover no-repeat; }
+    .page-hero-content { position: relative; z-index: 2; text-align: center; color: var(--warm-white); padding: 2rem 3rem; background: rgba(45, 27, 46, 0.08); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); -webkit-mask-image: radial-gradient(ellipse 60% 95% at center,rgba(0,0,0,0.9) 0%,rgba(0,0,0,0.82) 18%,rgba(0,0,0,0.66) 34%,rgba(0,0,0,0.46) 50%,rgba(0,0,0,0.26) 66%,rgba(0,0,0,0.12) 80%,rgba(0,0,0,0.04) 90%,rgba(0,0,0,0.01) 97%,rgba(0,0,0,0) 100%); mask-image: radial-gradient(ellipse 60% 95% at center,rgba(0,0,0,0.9) 0%,rgba(0,0,0,0.82) 18%,rgba(0,0,0,0.66) 34%,rgba(0,0,0,0.46) 50%,rgba(0,0,0,0.26) 66%,rgba(0,0,0,0.12) 80%,rgba(0,0,0,0.04) 90%,rgba(0,0,0,0.01) 97%,rgba(0,0,0,0) 100%); }
+    .page-hero-label { font-family: 'Georgia',serif; font-size: 0.7rem; letter-spacing: 0.4em; text-transform: uppercase; color: rgba(250,242,240,0.6); margin-bottom: 1rem; text-shadow: 0 2px 20px rgba(0,0,0,0.6), 0 1px 6px rgba(0,0,0,0.35); }
+    .page-hero-title { font-size: 2.2rem; font-weight: 300; letter-spacing: 0.25em; line-height: 1.5; color: var(--warm-white); text-shadow: 0 2px 20px rgba(0,0,0,0.6), 0 1px 6px rgba(0,0,0,0.35); }
+    .page-hero-line { width: 40px; height: 1px; background: var(--brand-gold); margin: 1.5rem auto 0; opacity: 0.6; }
+
+    /* SECTIONS */
+    .section { padding: 8rem 2rem; }
+    .section-inner { max-width: 800px; margin: 0 auto; text-align: center; }
+    .section-wide { max-width: 1100px; margin: 0 auto; }
+    .gold-line { width: 60px; height: 1px; background: var(--rose-red); margin: 0 auto 2.5rem; }
+    .section-label { font-size: 0.7rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--berry-purple); margin-bottom: 1.5rem; }
+    .section-title-zh { font-size: 1.75rem; font-weight: 300; color: var(--deep-purple); letter-spacing: 0.2em; margin-bottom: 2.5rem; }
+
+    /* CONTACT INFO */
+    .contact-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem;
+      max-width: 1000px; margin: 0 auto;
+    }
+    .contact-card {
+      text-align: center; padding: 3rem 2rem;
+      background: var(--pure-white); border: 1px solid rgba(92,42,70,0.08);
+    }
+    .contact-card-icon { font-size: 1.3rem; margin-bottom: 1.2rem; color: var(--rose-red); opacity: 0.7; }
+    .contact-card-title { font-size: 0.9rem; font-weight: 400; color: var(--deep-purple); letter-spacing: 0.1em; margin-bottom: 1rem; }
+    .contact-card-text { font-size: 0.85rem; font-weight: 300; color: rgba(62,50,64,0.6); line-height: 2; }
+    .contact-card-text a { color: var(--rose-red); transition: color 0.3s; }
+    .contact-card-text a:hover { color: var(--brand-gold); }
+
+    /* HOURS */
+    .hours-section { background: var(--deep-purple); color: var(--warm-white); }
+    .hours-section .section-label { color: var(--brand-gold); opacity: 0.8; }
+    .hours-section .section-title-zh { color: var(--warm-white); }
+    .hours-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;
+      max-width: 700px; margin: 0 auto;
+    }
+    .hours-item { text-align: center; padding: 2rem 1.5rem; border: 1px solid rgba(144,35,67,0.2); }
+    .hours-item-title { font-size: 0.9rem; letter-spacing: 0.15em; color: var(--warm-white); margin-bottom: 0.75rem; }
+    .hours-item-time { font-family: 'Georgia',serif; font-size: 0.85rem; color: var(--brand-gold); letter-spacing: 0.1em; margin-bottom: 0.5rem; }
+    .hours-item-note { font-size: 0.75rem; color: rgba(250,242,240,0.4); font-weight: 300; }
+    .hours-note { text-align: center; margin-top: 2.5rem; font-size: 0.8rem; font-weight: 300; color: rgba(250,242,240,0.45); letter-spacing: 0.05em; }
+
+    /* CONTACT FORM */
+    .form-section { background: var(--lavender-grey); }
+    .contact-form { max-width: 640px; margin: 0 auto; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+    .form-row.full { grid-template-columns: 1fr; }
+    .form-group { display: flex; flex-direction: column; }
+    .form-group label { font-size: 0.78rem; font-weight: 400; color: var(--deep-purple); letter-spacing: 0.1em; margin-bottom: 0.6rem; }
+    .form-group input, .form-group textarea {
+      font-family: 'Noto Serif TC', 'Georgia', serif;
+      font-size: 0.85rem; font-weight: 300; color: var(--charcoal);
+      padding: 0.9rem 1rem; border: 1px solid rgba(92,42,70,0.15);
+      background: var(--pure-white); outline: none; transition: border-color 0.3s;
+    }
+    .form-group input:focus, .form-group textarea:focus { border-color: var(--rose-red); }
+    .form-group textarea { resize: vertical; min-height: 140px; }
+    .form-submit {
+      display: inline-block; font-family: 'Noto Serif TC', 'Georgia', serif;
+      font-size: 0.78rem; letter-spacing: 0.3em; color: var(--pure-white);
+      background: var(--rose-red); border: 1px solid var(--rose-red);
+      padding: 1rem 3.5rem; cursor: pointer;
+      transition: all 0.5s cubic-bezier(0.23,1,0.32,1); margin-top: 1rem;
+    }
+    .form-submit:hover { background: var(--deep-purple); border-color: var(--deep-purple); }
+
+    /* MAP */
+    .map-section { padding: 0; }
+    .map-section iframe { width: 100%; height: 450px; border: none; filter: saturate(0.8) contrast(1.05); }
+
+    /* TRANSPORT */
+    .transport-section { background: var(--warm-white); }
+    .transport-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
+      max-width: 1000px; margin: 3rem auto 0;
+    }
+    .transport-card { text-align: center; padding: 2.5rem 1.5rem; }
+    .transport-card-icon { font-size: 1.3rem; margin-bottom: 1rem; color: var(--rose-red); opacity: 0.6; }
+    .transport-card-title { font-size: 0.9rem; font-weight: 400; color: var(--deep-purple); letter-spacing: 0.1em; margin-bottom: 0.75rem; }
+    .transport-card-text { font-size: 0.8rem; font-weight: 300; color: rgba(62,50,64,0.55); line-height: 2; }
+
+    /* FOOTER */
+    .footer { background: var(--deep-purple); color: var(--warm-white); padding: 5rem 2rem 3rem; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3rem; }
+    .footer-brand { display: flex; flex-direction: column; }
+    .footer-logo { display: flex; flex-direction: column; align-items: center; line-height: 1.1; margin-bottom: 1.5rem; }
+    .footer-logo-char { color: var(--brand-gold); font-size: 1.1rem; font-weight: 500; letter-spacing: 0.05em; }
+    .footer-logo-en { font-family: 'Bodoni 72', 'Bodoni Moda', Georgia, serif; color: var(--brand-gold); font-size: 0.5rem; letter-spacing: 0.35em; padding-left: 0.35em; text-transform: uppercase; margin-top: 0.25rem; }
+    .footer-tagline { font-size: 0.75rem; font-weight: 300; color: rgba(250,242,240,0.4); line-height: 1.8; }
+    .footer-heading { font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--brand-gold); margin-bottom: 1.5rem; font-family: 'Georgia',serif; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+    .footer-links a { font-size: 0.8rem; font-weight: 300; color: rgba(250,242,240,0.55); letter-spacing: 0.1em; transition: color 0.3s; }
+    .footer-links a:hover { color: var(--brand-gold); }
+    .footer-contact-item { font-size: 0.8rem; font-weight: 300; color: rgba(250,242,240,0.55); margin-bottom: 0.75rem; letter-spacing: 0.05em; }
+    .footer-contact-item a { transition: color 0.3s; }
+    .footer-contact-item a:hover { color: var(--brand-gold); }
+    .footer-bottom { max-width: 1100px; margin: 4rem auto 0; padding-top: 2rem; border-top: 1px solid rgba(144,35,67,0.2); display: flex; justify-content: space-between; align-items: center; }
+    .footer-copyright { font-size: 0.65rem; font-weight: 300; color: rgba(250,242,240,0.3); letter-spacing: 0.15em; }
+    .footer-group-link { font-family: 'Georgia',serif; font-size: 0.65rem; letter-spacing: 0.25em; color: rgba(250,242,240,0.35); text-transform: uppercase; transition: color 0.3s; }
+    .footer-group-link:hover { color: var(--brand-gold); }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-toggle { display: flex; }
+      .section { padding: 5rem 1.5rem; }
+      .page-hero { height: 45vh; min-height: 350px; }
+      .page-hero-title { font-size: 1.6rem; }
+      .contact-grid { grid-template-columns: 1fr; max-width: 400px; }
+      .hours-grid { grid-template-columns: 1fr; max-width: 400px; }
+      .transport-grid { grid-template-columns: 1fr; max-width: 400px; }
+      .form-row { grid-template-columns: 1fr; }
+      .map-section iframe { height: 300px; }
+      .footer-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
+    }
+    @media (max-width: 480px) {
+      .navbar { padding: 1rem 1.25rem; }
+      .navbar.scrolled { padding: 0.6rem 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar" id="navbar">
+    <a href="index.html" class="nav-logo" aria-label="日光私廚 LOHERB">
+      <span class="nav-logo-char">日</span>
+      <span class="nav-logo-en">LOHERB</span>
+      <span class="nav-logo-char">光</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="about.html">關於私廚</a></li>
+      <li><a href="menu.html">菜單</a></li>
+      <li><a href="journal.html">美饌</a></li>
+      <li><a href="book.html">訂位</a></li>
+      <li><a href="contact.html" class="active">聯絡</a></li>
+    </ul>
+    <div class="nav-toggle" id="navToggle" aria-label="選單">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="about.html">關於私廚</a>
+    <a href="menu.html">菜單</a>
+    <a href="journal.html">美饌</a>
+    <a href="book.html">訂位</a>
+    <a href="contact.html">聯絡</a>
+  </div>
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="page-hero-content">
+      <p class="page-hero-label reveal">Contact</p>
+      <h1 class="page-hero-title reveal reveal-delay-1">聯 繫 日 光</h1>
+      <div class="page-hero-line reveal reveal-delay-2"></div>
+    </div>
+  </section>
+
+  <!-- Contact Info -->
+  <section class="section" style="background: var(--warm-white);">
+    <div class="section-inner" style="margin-bottom: 3rem;">
+      <p class="section-label font-en reveal">Get in Touch</p>
+      <h2 class="section-title-zh reveal reveal-delay-1">聯絡資訊</h2>
+      <div class="gold-line reveal reveal-delay-2" style="width: 0; transition: width 1.2s cubic-bezier(0.23,1,0.32,1);"></div>
+    </div>
+    <div class="contact-grid section-wide">
+      <div class="contact-card reveal">
+        <div class="contact-card-icon">&#9742;</div>
+        <div class="contact-card-title">電話</div>
+        <div class="contact-card-text">
+          <a href="tel:+886-3-959-5685">+886-3-959-5685</a><br>
+          客服時間 09:00 - 21:00
+        </div>
+      </div>
+      <div class="contact-card reveal reveal-delay-1">
+        <div class="contact-card-icon">&#9993;</div>
+        <div class="contact-card-title">電子信箱</div>
+        <div class="contact-card-text">
+          <a href="mailto:service@loherb.com.tw">service@loherb.com.tw</a><br>
+          我們將於 24 小時內回覆
+        </div>
+      </div>
+      <div class="contact-card reveal reveal-delay-2">
+        <div class="contact-card-icon">&#9962;</div>
+        <div class="contact-card-title">地址</div>
+        <div class="contact-card-text">
+          269 宜蘭縣冬山鄉<br>寶福路372號
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Operating Hours -->
+  <section class="section hours-section">
+    <div class="section-inner">
+      <p class="section-label font-en reveal">Hours</p>
+      <h2 class="section-title-zh reveal reveal-delay-1" style="color: var(--warm-white);">營業時間</h2>
+      <div class="gold-line reveal reveal-delay-2" style="background: rgba(230,164,1,0.5); width: 0; transition: width 1.2s cubic-bezier(0.23,1,0.32,1);"></div>
+    </div>
+    <div class="hours-grid section-wide">
+      <div class="hours-item reveal">
+        <div class="hours-item-title">午間套餐</div>
+        <div class="hours-item-time">11:30 - 14:00</div>
+        <div class="hours-item-note">最後點餐 13:30</div>
+      </div>
+      <div class="hours-item reveal reveal-delay-1">
+        <div class="hours-item-title">午茶時光</div>
+        <div class="hours-item-time">14:30 - 17:00</div>
+        <div class="hours-item-note">&nbsp;</div>
+      </div>
+      <div class="hours-item reveal reveal-delay-2">
+        <div class="hours-item-title">晚間套餐</div>
+        <div class="hours-item-time">17:30 - 21:00</div>
+        <div class="hours-item-note">最後點餐 20:00</div>
+      </div>
+      <div class="hours-item reveal reveal-delay-3">
+        <div class="hours-item-title">公休日</div>
+        <div class="hours-item-time">每週二</div>
+        <div class="hours-item-note">國定假日照常營業</div>
+      </div>
+    </div>
+    <p class="hours-note reveal">如遇特殊節日營業時間調整，將於官方社群提前公告</p>
+  </section>
+
+  <!-- Contact Form -->
+  <section class="section form-section">
+    <div class="section-inner" style="margin-bottom: 3rem;">
+      <p class="section-label font-en reveal">Message</p>
+      <h2 class="section-title-zh reveal reveal-delay-1">傳送訊息</h2>
+      <div class="gold-line reveal reveal-delay-2" style="width: 0; transition: width 1.2s cubic-bezier(0.23,1,0.32,1);"></div>
+    </div>
+    <form class="contact-form reveal reveal-delay-2" onsubmit="event.preventDefault(); alert('感謝您的來信，我們將盡速回覆。');">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="name">姓名 *</label>
+          <input type="text" id="name" name="name" required placeholder="您的姓名">
+        </div>
+        <div class="form-group">
+          <label for="phone">電話</label>
+          <input type="tel" id="phone" name="phone" placeholder="聯絡電話">
+        </div>
+      </div>
+      <div class="form-row full">
+        <div class="form-group">
+          <label for="email">電子信箱 *</label>
+          <input type="email" id="email" name="email" required placeholder="email@example.com">
+        </div>
+      </div>
+      <div class="form-row full">
+        <div class="form-group">
+          <label for="subject">主旨</label>
+          <input type="text" id="subject" name="subject" placeholder="訊息主旨">
+        </div>
+      </div>
+      <div class="form-row full">
+        <div class="form-group">
+          <label for="message">訊息內容 *</label>
+          <textarea id="message" name="message" required placeholder="請輸入您想告訴我們的事..."></textarea>
+        </div>
+      </div>
+      <div style="text-align: center;">
+        <button type="submit" class="form-submit">送出訊息</button>
+      </div>
+    </form>
+  </section>
+
+  <!-- Map -->
+  <section class="map-section">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3628.5!2d121.8079968!3d24.6603591!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3467e61d55a9d87b%3A0xdc93b07cb47e22a9!2z5pel5YWJIExPSEVSQg!5e0!3m2!1szh-TW!2stw!4v1"
+      allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </section>
+
+  <!-- Transportation -->
+  <section class="section transport-section">
+    <div class="section-inner">
+      <p class="section-label font-en reveal">Getting Here</p>
+      <h2 class="section-title-zh reveal reveal-delay-1">交通資訊</h2>
+      <div class="gold-line reveal reveal-delay-2" style="width: 0; transition: width 1.2s cubic-bezier(0.23,1,0.32,1);"></div>
+    </div>
+    <div class="transport-grid section-wide">
+      <div class="transport-card reveal">
+        <div class="transport-card-icon">&#9992;</div>
+        <div class="transport-card-title">自行開車</div>
+        <div class="transport-card-text">國道五號下羅東交流道<br>沿台9線往冬山方向<br>車程約 10 分鐘<br>備有免費停車場</div>
+      </div>
+      <div class="transport-card reveal reveal-delay-1">
+        <div class="transport-card-icon">&#9733;</div>
+        <div class="transport-card-title">火車</div>
+        <div class="transport-card-text">台鐵冬山車站下車<br>步行約 15 分鐘<br>或搭乘計程車約 5 分鐘<br>可提前聯繫接駁服務</div>
+      </div>
+      <div class="transport-card reveal reveal-delay-2">
+        <div class="transport-card-icon">&#9670;</div>
+        <div class="transport-card-title">客運</div>
+        <div class="transport-card-text">國光客運至羅東轉運站<br>轉乘在地公車或計程車<br>車程約 15 分鐘</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <span class="footer-logo-char">日</span>
+          <span class="footer-logo-en">LOHERB</span>
+          <span class="footer-logo-char">光</span>
+        </div>
+        <p class="footer-tagline">日光私廚<br>以詩意入菜，以時光佐味</p>
+      </div>
+      <div>
+        <div class="footer-heading">Explore</div>
+        <ul class="footer-links">
+          <li><a href="about.html">關於私廚</a></li>
+          <li><a href="menu.html">菜單</a></li>
+          <li><a href="journal.html">私廚隨筆</a></li>
+          <li><a href="book.html">訂位</a></li>
+          <li><a href="contact.html">聯繫日光</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Contact</div>
+        <div class="footer-contact-item"><a href="tel:+886-3-959-5685">+886-3-959-5685</a></div>
+        <div class="footer-contact-item"><a href="mailto:service@loherb.com.tw">service@loherb.com.tw</a></div>
+        <div class="footer-contact-item">宜蘭縣冬山鄉寶福路372號</div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copyright">&copy; 2026 LOHERB Group. All rights reserved.</span>
+      <a href="https://loherb.com.tw" target="_blank" rel="noopener" class="footer-group-link">LOHERB Group &rarr;</a>
+    </div>
+  </footer>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 80); }, { passive: true });
+    const navToggle = document.getElementById('navToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    navToggle.addEventListener('click', () => {
+      navToggle.classList.toggle('active'); mobileMenu.classList.toggle('open');
+      document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+    });
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          if (entry.target.classList.contains('gold-line')) entry.target.style.width = '60px';
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: '0px 0px -60px 0px', threshold: 0.15 });
+    revealEls.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

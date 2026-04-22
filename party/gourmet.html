@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>美食百匯 — 日光時刻 LOHERB Party</title>
+  <meta name="description" content="百匯自助餐、精緻套餐、咖啡飲品，日光私廚團隊為您的活動打造專屬美食饗宴。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --deep-teal: #304C4C; --dried-rose: #A27678; --rose-pink: #DE7E93;
+      --blush-white: #FAF1EF; --brand-gold: #E6A401; --charcoal: #505350;
+      --white: #FFFFFF;
+      --font-en: 'Bodoni 72', 'Bodoni Moda', Georgia, serif;
+      --font-zh: 'Noto Serif TC', serif;
+    }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body { font-family: var(--font-zh); color: var(--charcoal); background: var(--white); line-height: 1.8; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+
+    .navbar { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; padding: 1.2rem 2rem; display: flex; align-items: center; justify-content: space-between; transition: all 0.5s cubic-bezier(0.4,0,0.2,1); }
+    .navbar.scrolled { background: rgba(48,76,76,0.82); backdrop-filter: blur(20px) saturate(1.4); -webkit-backdrop-filter: blur(20px) saturate(1.4); padding: 0.8rem 2rem; }
+    .nav-logo { display: flex; flex-direction: column; align-items: center; line-height: 1.1; gap: 0; }
+    .nav-logo-char { font-family: var(--font-zh); font-weight: 500; font-size: 1rem; color: var(--brand-gold); letter-spacing: 0.1em; }
+    .nav-logo-en { font-family: var(--font-en); font-size: 0.55rem; letter-spacing: 0.25em; padding-left: 0.25em; color: var(--brand-gold); text-transform: uppercase; }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a { font-family: var(--font-zh); font-weight: 300; font-size: 0.85rem; color: var(--blush-white); letter-spacing: 0.12em; position: relative; transition: color 0.3s; }
+    .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px; background: var(--brand-gold); transition: width 0.3s; }
+    .nav-links a:hover { color: var(--brand-gold); }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    .nav-hamburger span { width: 24px; height: 1.5px; background: var(--blush-white); transition: all 0.3s; }
+    .nav-hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+    .nav-hamburger.active span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
+    .mobile-menu { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(48,76,76,0.96); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); z-index: 999; flex-direction: column; align-items: center; justify-content: center; gap: 2.5rem; }
+    .mobile-menu.active { display: flex; }
+    .mobile-menu a { font-family: var(--font-zh); font-weight: 300; font-size: 1.2rem; color: var(--blush-white); letter-spacing: 0.2em; transition: color 0.3s; }
+    .mobile-menu a:hover { color: var(--brand-gold); }
+
+    .page-hero { position: relative; height: 60vh; min-height: 400px; display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden; background: var(--deep-teal); }
+    .page-hero-bg { position: absolute; inset: 0; background-size: cover; background-position: center; }
+    .page-hero-content { position: relative; z-index: 2; text-align: center; padding: 2rem 3rem; background: rgba(48, 76, 76, 0.08); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); -webkit-mask-image: radial-gradient(ellipse 60% 95% at center,rgba(0,0,0,0.9) 0%,rgba(0,0,0,0.82) 18%,rgba(0,0,0,0.66) 34%,rgba(0,0,0,0.46) 50%,rgba(0,0,0,0.26) 66%,rgba(0,0,0,0.12) 80%,rgba(0,0,0,0.04) 90%,rgba(0,0,0,0.01) 97%,rgba(0,0,0,0) 100%); mask-image: radial-gradient(ellipse 60% 95% at center,rgba(0,0,0,0.9) 0%,rgba(0,0,0,0.82) 18%,rgba(0,0,0,0.66) 34%,rgba(0,0,0,0.46) 50%,rgba(0,0,0,0.26) 66%,rgba(0,0,0,0.12) 80%,rgba(0,0,0,0.04) 90%,rgba(0,0,0,0.01) 97%,rgba(0,0,0,0) 100%); }
+    .page-hero-label { font-family: var(--font-en); font-style: italic; font-size: 0.8rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--brand-gold); margin-bottom: 0.8rem; }
+    .page-hero-title { font-family: var(--font-zh); font-weight: 400; font-size: clamp(1.8rem,5vw,2.8rem); color: var(--blush-white); letter-spacing: 0.25em; text-shadow: 0 2px 20px rgba(0,0,0,0.5), 0 1px 6px rgba(0,0,0,0.3); margin-bottom: 0.8rem; }
+    .page-hero-sub { font-family: var(--font-zh); font-weight: 300; font-size: clamp(0.8rem,2vw,0.95rem); color: var(--dried-rose); letter-spacing: 0.15em; text-shadow: 0 2px 20px rgba(0,0,0,0.5), 0 1px 6px rgba(0,0,0,0.3); }
+
+    .section { padding: clamp(4rem,10vw,8rem) clamp(1.5rem,5vw,4rem); }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-title { font-family: var(--font-zh); font-weight: 400; font-size: clamp(1.5rem,4vw,2.4rem); letter-spacing: 0.15em; color: var(--deep-teal); text-align: center; margin-bottom: 1rem; }
+    .section-subtitle { font-family: var(--font-zh); font-weight: 300; font-size: clamp(0.9rem,2vw,1.05rem); color: var(--charcoal); text-align: center; max-width: 560px; margin: 0 auto; line-height: 2; letter-spacing: 0.05em; }
+    .en-label { font-family: var(--font-en); font-style: italic; font-weight: 400; font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dried-rose); text-align: center; margin-bottom: 0.5rem; }
+    .gold-line { width: 40px; height: 1px; background: var(--brand-gold); margin: 0 auto 2.5rem; opacity: 0.5; }
+
+    /* FOOD SECTION */
+    .food-block { display: flex; align-items: center; gap: 4rem; margin-top: 3rem; margin-bottom: 5rem; }
+    .food-block:nth-child(even) { flex-direction: row-reverse; }
+    .food-block-img { flex: 1; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 40px rgba(48,76,76,0.1); }
+    .food-block-img img { width: 100%; aspect-ratio: 4/3; object-fit: cover; transition: transform 0.6s cubic-bezier(0.4,0,0.2,1); }
+    .food-block:hover .food-block-img img { transform: scale(1.03); }
+    .food-block-text { flex: 1; }
+    .food-block-en { font-family: var(--font-en); font-style: italic; font-size: 0.7rem; letter-spacing: 0.2em; color: var(--dried-rose); margin-bottom: 0.5rem; }
+    .food-block-name { font-family: var(--font-zh); font-weight: 500; font-size: 1.4rem; color: var(--deep-teal); letter-spacing: 0.12em; margin-bottom: 1rem; }
+    .food-block-desc { font-family: var(--font-zh); font-weight: 300; font-size: 0.95rem; color: var(--charcoal); line-height: 2.2; letter-spacing: 0.03em; margin-bottom: 1.5rem; }
+    .food-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .food-tags span { font-family: var(--font-zh); font-size: 0.78rem; color: var(--deep-teal); padding: 0.25rem 0.8rem; border: 1px solid rgba(48,76,76,0.15); border-radius: 4px; letter-spacing: 0.05em; }
+
+    /* MENU CTA */
+    .menu-cta { background: var(--blush-white); text-align: center; }
+    .menu-cta p { font-family: var(--font-zh); font-weight: 300; font-size: 0.95rem; color: var(--charcoal); line-height: 2; letter-spacing: 0.05em; margin-bottom: 2rem; }
+    .cta-btn { display: inline-block; padding: 0.8rem 2.5rem; border: 1px solid var(--brand-gold); color: var(--brand-gold); font-family: var(--font-zh); font-size: 0.85rem; letter-spacing: 0.2em; transition: all 0.3s; background: transparent; }
+    .cta-btn:hover { background: var(--brand-gold); color: var(--deep-teal); }
+    .cta-btn-solid { display: inline-block; padding: 0.8rem 2.5rem; background: var(--brand-gold); color: var(--deep-teal); font-family: var(--font-zh); font-size: 0.85rem; letter-spacing: 0.2em; transition: all 0.3s; border: 1px solid var(--brand-gold); }
+    .cta-btn-solid:hover { background: #D08C03; border-color: #D08C03; }
+
+    .footer { background: var(--deep-teal); padding: 4rem 2rem 2.5rem; text-align: center; }
+    .footer-logo { display: flex; flex-direction: column; align-items: center; margin-bottom: 2rem; }
+    .footer-logo-char { font-family: var(--font-zh); font-weight: 500; font-size: 1.2rem; color: var(--brand-gold); letter-spacing: 0.2em; }
+    .footer-logo-en { font-family: var(--font-en); font-size: 0.6rem; letter-spacing: 0.35em; padding-left: 0.35em; color: var(--brand-gold); text-transform: uppercase; margin: 0.3rem 0; opacity: 0.7; }
+    .footer-divider { width: 30px; height: 1px; background: var(--dried-rose); margin: 1.5rem auto; opacity: 0.4; }
+    .footer-contact { margin-bottom: 0.5rem; }
+    .footer-contact a { font-family: var(--font-en); font-size: 0.8rem; color: var(--blush-white); letter-spacing: 0.15em; opacity: 0.6; transition: opacity 0.3s, color 0.3s; }
+    .footer-contact a:hover { opacity: 1; color: var(--brand-gold); }
+    .footer-copyright { font-family: var(--font-en); font-size: 0.65rem; color: var(--blush-white); opacity: 0.3; letter-spacing: 0.1em; margin-top: 2rem; }
+    .footer-group-links { display: flex; justify-content: center; gap: 2rem; margin-top: 1.5rem; flex-wrap: wrap; }
+    .footer-group-links a { font-family: var(--font-zh); font-weight: 300; font-size: 0.75rem; color: var(--blush-white); letter-spacing: 0.12em; opacity: 0.4; transition: opacity 0.3s; }
+    .footer-group-links a:hover { opacity: 0.9; }
+
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s cubic-bezier(0.4,0,0.2,1), transform 0.8s cubic-bezier(0.4,0,0.2,1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 900px) {
+      .food-block, .food-block:nth-child(even) { flex-direction: column; gap: 2rem; text-align: center; }
+    }
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      .page-hero { height: 45vh; min-height: 320px; }
+      .page-hero-content { padding: 3rem 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar" id="navbar">
+    <a href="index.html" class="nav-logo" aria-label="LOHERB Party">
+      <span class="nav-logo-char">日</span><span class="nav-logo-en">LOHERB</span><span class="nav-logo-char">光</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="events.html">活動類型</a></li>
+      <li><a href="team.html">一站式服務</a></li>
+      <li><a href="venues.html">場地空間</a></li>
+      <li><a href="gourmet.html">餐飲服務</a></li>
+      <li><a href="journal.html">活動花絮</a></li>
+      <li><a href="contact.html">聯繫我們</a></li>
+    </ul>
+    <div class="nav-hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="events.html" onclick="closeMobile()">活動類型</a>
+    <a href="team.html" onclick="closeMobile()">一站式服務</a>
+    <a href="venues.html" onclick="closeMobile()">場地空間</a>
+    <a href="gourmet.html" onclick="closeMobile()">餐飲服務</a>
+    <a href="journal.html" onclick="closeMobile()">活動花絮</a>
+    <a href="contact.html" onclick="closeMobile()">聯繫我們</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="page-hero">
+    <div class="page-hero-bg" style="background-image: url('https://party.loherb.com.tw/images/home/cuisine_dinner.png');"></div>
+    <div class="page-hero-content">
+      <p class="page-hero-label">Catering & Cuisine</p>
+      <h1 class="page-hero-title">美食百匯</h1>
+      <p class="page-hero-sub">用味蕾記錄每一個珍貴時刻</p>
+    </div>
+  </section>
+
+  <!-- BUFFET -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="reveal">
+        <p class="en-label">Grand Buffet</p>
+        <h2 class="section-title">百匯自助餐</h2>
+        <div class="gold-line"></div>
+      </div>
+      <div class="food-block reveal">
+        <div class="food-block-img">
+          <img src="https://party.loherb.com.tw/images/home/cuisine_buffet.png" alt="百匯自助餐" loading="lazy">
+        </div>
+        <div class="food-block-text">
+          <p class="food-block-en">Buffet Feast</p>
+          <h3 class="food-block-name">豐盛百匯，盡情享用</h3>
+          <p class="food-block-desc">日光私廚團隊嚴選在地食材，精心打造多元豐富的自助百匯。從冷盤沙拉、熱食主菜到甜點飲品，超過四十道料理滿足每一位賓客的味蕾。適合大型活動與派對的理想餐飲選擇。</p>
+          <div class="food-tags">
+            <span>在地食材</span>
+            <span>四十道料理</span>
+            <span>冷盤沙拉</span>
+            <span>熱食主菜</span>
+            <span>精緻甜點</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SET MENU -->
+  <section class="section" style="background: var(--blush-white);">
+    <div class="section-inner">
+      <div class="reveal">
+        <p class="en-label">Set Menu</p>
+        <h2 class="section-title">精緻套餐</h2>
+        <div class="gold-line"></div>
+      </div>
+      <div class="food-block reveal">
+        <div class="food-block-img">
+          <img src="https://party.loherb.com.tw/images/home/cuisine_dinner.png" alt="精緻套餐" loading="lazy">
+        </div>
+        <div class="food-block-text">
+          <p class="food-block-en">Fine Dining</p>
+          <h3 class="food-block-name">法式經典，匠心呈現</h3>
+          <p class="food-block-desc">融合法式料理技法與宜蘭在地風味，日光私廚為您精心設計的多道式套餐。從前菜、湯品、主菜到甜點，每一道都是主廚的用心之作。適合私密晚宴與精緻慶祝場合。</p>
+          <div class="food-tags">
+            <span>法式料理</span>
+            <span>多道式</span>
+            <span>季節限定</span>
+            <span>主廚特製</span>
+            <span>Wine Pairing</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COFFEE & DRINKS -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="reveal">
+        <p class="en-label">Coffee & Drinks</p>
+        <h2 class="section-title">咖啡飲品</h2>
+        <div class="gold-line"></div>
+      </div>
+      <div class="food-block reveal">
+        <div class="food-block-img">
+          <img src="https://party.loherb.com.tw/images/home/cuisine_coffee.avif" alt="咖啡飲品" loading="lazy">
+        </div>
+        <div class="food-block-text">
+          <p class="food-block-en">Artisan Coffee</p>
+          <h3 class="food-block-name">職人手沖，佐以微光</h3>
+          <p class="food-block-desc">與在地職人咖啡師合作，嚴選精品咖啡豆，提供手沖咖啡、義式咖啡與特調飲品。茶會時段更搭配手工糕點，讓您的活動賓客在悠閒午後享受一段溫潤的時光。</p>
+          <div class="food-tags">
+            <span>精品咖啡</span>
+            <span>手沖</span>
+            <span>特調飲品</span>
+            <span>手工糕點</span>
+            <span>輕食茶會</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU DOWNLOAD CTA -->
+  <section class="section menu-cta">
+    <div class="section-inner">
+      <div class="reveal">
+        <p class="en-label">Menu Download</p>
+        <h2 class="section-title">下載完整菜單</h2>
+        <div class="gold-line"></div>
+        <p>瀏覽完整的餐飲選項與價格<br>為您的活動選擇最適合的餐飲方案</p>
+        <a href="contact.html" class="cta-btn-solid">聯繫我們索取菜單</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-logo"><span class="footer-logo-char">日</span><span class="footer-logo-en">LOHERB</span><span class="footer-logo-char">光</span></div>
+    <div class="footer-divider"></div>
+    <div class="footer-contact"><a href="mailto:service@loherb.com.tw">service@loherb.com.tw</a></div>
+    <div class="footer-contact"><a href="tel:+886-3-959-5685">+886-3-959-5685</a></div>
+    <div class="footer-group-links">
+      <a href="https://www.loherb.com.tw" target="_blank" rel="noopener">日光物業</a>
+      <a href="https://villa.loherb.com.tw" target="_blank" rel="noopener">日光綠築</a>
+      <a href="https://cuisine.loherb.com.tw" target="_blank" rel="noopener">日光私廚</a>
+      <a href="https://party.loherb.com.tw" target="_blank" rel="noopener">日光時刻</a>
+      <a href="https://design.loherb.com.tw" target="_blank" rel="noopener">日光文創</a>
+    </div>
+    <p class="footer-copyright">&copy; 2026 LOHERB Group. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 60); }, { passive: true });
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => { hamburger.classList.toggle('active'); mobileMenu.classList.toggle('active'); document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : ''; });
+    function closeMobile() { hamburger.classList.remove('active'); mobileMenu.classList.remove('active'); document.body.style.overflow = ''; }
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); }); }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

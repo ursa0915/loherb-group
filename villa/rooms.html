@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>綠築房型 — 日光綠築 LOHERB Villa</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #E6A401;
+      --gold-dark: #D08C03;
+      --charcoal: #505350;
+      --warm-white: #FAF2F0;
+      --forest: #084136;
+      --mint: #DDEAE5;
+      --berry: #5C2A46;
+      --lavender: #EDEAEE;
+      --olive: #42452F;
+      --fog-gold: #BFAF6E;
+      --teal: #304C4C;
+      --rose: #A27678;
+      --blush: #FAF1EF;
+      --cream: #F8F4EF;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Noto Serif TC', 'Source Han Serif TC', Georgia, serif;
+      color: var(--charcoal); background: var(--warm-white); overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.2rem 4rem; background: transparent;
+      transition: background 0.4s, box-shadow 0.4s;
+    }
+    nav.scrolled {
+      background: rgba(250,242,240,0.95); backdrop-filter: blur(12px);
+      box-shadow: 0 1px 0 rgba(80,83,80,0.06);
+    }
+    .nav-logo { display: flex; flex-direction: column; align-items: center; text-decoration: none; line-height: 1; gap: 0.05rem; }
+    .nav-logo .zh { font-size: 1rem; font-weight: 500; color: var(--warm-white); letter-spacing: 0.3em; transition: color 0.4s; }
+    .nav-logo .en { font-family: 'Bodoni 72', 'Bodoni Moda', Georgia, serif; font-size: 0.5rem; letter-spacing: 0.35em; padding-left: 0.35em; color: var(--gold); text-transform: uppercase; }
+    nav.scrolled .nav-logo .zh { color: var(--charcoal); }
+    .nav-links { display: flex; gap: 2.2rem; align-items: center; }
+    .nav-links a { text-decoration: none; font-size: 0.8rem; letter-spacing: 0.12em; color: rgba(250,242,240,0.85); transition: color 0.3s; }
+    nav.scrolled .nav-links a { color: var(--charcoal); }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-links .cta-book {
+      padding: 0.5rem 1.5rem; border: 1px solid var(--gold);
+      color: var(--gold) !important; font-size: 0.75rem; letter-spacing: 0.2em; transition: all 0.3s;
+    }
+    .nav-links .cta-book:hover { background: var(--gold); color: var(--charcoal) !important; }
+
+    /* SHARED */
+    .section-label { font-family: Georgia, serif; font-size: 0.6rem; letter-spacing: 0.5em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.8rem; }
+    .section-title { font-size: 1.8rem; font-weight: 700; line-height: 1.6; margin-bottom: 1.2rem; }
+    .section-desc { font-size: 0.92rem; line-height: 2.2; font-weight: 300; max-width: 520px; }
+    .btn-gold { display: inline-block; padding: 0.8rem 2.5rem; border: 1px solid var(--gold); color: var(--gold); text-decoration: none; font-size: 0.78rem; letter-spacing: 0.3em; transition: all 0.3s; }
+    .btn-gold:hover { background: var(--gold); color: var(--charcoal); }
+
+    /* PAGE BANNER */
+    .page-banner {
+      height: 50vh; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; text-align: center;
+      background: var(--charcoal); color: var(--warm-white); position: relative;
+    }
+    .page-banner::after {
+      content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+      width: 1px; height: 50px; background: linear-gradient(to bottom, var(--gold), transparent);
+    }
+    .page-banner .section-label { color: var(--gold); margin-bottom: 1.2rem; }
+    .page-banner h1 {
+      font-size: 2.8rem; font-weight: 700; letter-spacing: 0.25em;
+      line-height: 1.4; margin-bottom: 1.2rem;
+    }
+    .page-banner h1 span {
+      display: block; font-family: Georgia, serif; font-size: 0.85rem;
+      letter-spacing: 0.5em; color: var(--gold); font-weight: 400; margin-top: 0.3rem;
+    }
+    .page-banner p {
+      font-size: 0.88rem; font-weight: 300; letter-spacing: 0.15em;
+      color: rgba(250,242,240,0.5); max-width: 500px; line-height: 2;
+    }
+
+    /* ROOM SPLIT */
+    .room-split {
+      display: grid; grid-template-columns: 1fr 1fr; min-height: 80vh;
+    }
+    .room-split-img {
+      position: relative; overflow: hidden;
+    }
+    .room-split-img img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 6s ease;
+    }
+    .room-split-img:hover img { transform: scale(1.03); }
+    .room-split-text {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 4.5rem 5rem;
+    }
+    .room-split-text .room-en-label {
+      font-family: Georgia, serif; font-size: 0.6rem; letter-spacing: 0.5em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 0.6rem;
+    }
+    .room-split-text .room-zh-name {
+      font-size: 1.8rem; font-weight: 700; line-height: 1.4; margin-bottom: 1.5rem;
+    }
+    .room-meta-chips {
+      display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.8rem;
+    }
+    .room-meta-chips .chip {
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      padding: 0.35rem 0.85rem;
+      font-size: 0.68rem; letter-spacing: 0.05em; font-weight: 300;
+      border: 1px solid rgba(80,83,80,0.12); border-radius: 2px;
+      color: rgba(80,83,80,0.7);
+    }
+    .room-meta-chips .chip.price {
+      border-color: var(--gold); color: var(--gold); font-weight: 600;
+      font-family: Georgia, serif; letter-spacing: 0.08em;
+    }
+    .room-split-text .room-desc {
+      font-size: 0.88rem; line-height: 2.4; font-weight: 300;
+      color: rgba(80,83,80,0.6); max-width: 440px;
+    }
+    .room-split-text .room-cta {
+      margin-top: 2rem;
+    }
+    .room-split-text .room-cta a {
+      display: inline-block; padding: 0.6rem 2rem;
+      border: 1px solid var(--charcoal); color: var(--charcoal);
+      text-decoration: none; font-size: 0.72rem; letter-spacing: 0.25em;
+      transition: all 0.3s;
+    }
+    .room-split-text .room-cta a:hover {
+      background: var(--charcoal); color: var(--warm-white);
+    }
+
+    /* Dark background room text adjustments */
+    .room-split-text.dark-bg .room-zh-name { color: var(--warm-white); }
+    .room-split-text.dark-bg .room-desc { color: rgba(250,242,240,0.5); }
+    .room-split-text.dark-bg .chip { border-color: rgba(250,242,240,0.15); color: rgba(250,242,240,0.6); }
+    .room-split-text.dark-bg .chip.price { border-color: var(--gold); color: var(--gold); }
+    .room-split-text.dark-bg .room-cta a { border-color: var(--gold); color: var(--gold); }
+    .room-split-text.dark-bg .room-cta a:hover { background: var(--gold); color: var(--charcoal); }
+
+    /* PET BADGE */
+    .pet-badge {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      padding: 0.3rem 0.8rem; background: var(--forest); color: var(--mint);
+      font-size: 0.6rem; letter-spacing: 0.15em; border-radius: 2px;
+      margin-bottom: 0.8rem;
+    }
+
+    /* ROOM DIVIDER */
+    .room-divider {
+      text-align: center; padding: 3.5rem 2rem; background: var(--charcoal);
+    }
+    .room-divider .divider-line {
+      width: 40px; height: 1px; background: var(--gold); margin: 0 auto 1rem;
+    }
+    .room-divider p {
+      font-family: Georgia, serif; font-size: 0.6rem; letter-spacing: 0.5em;
+      text-transform: uppercase; color: var(--fog-gold);
+    }
+
+    /* CTA BANNER */
+    .cta-banner { background: var(--gold); text-align: center; padding: 4rem 2rem; }
+    .cta-banner .section-title { color: var(--charcoal); font-size: 1.5rem; margin-bottom: 1.5rem; }
+    .cta-banner a { display: inline-block; padding: 0.8rem 3rem; border: 1px solid var(--charcoal); color: var(--charcoal); text-decoration: none; font-size: 0.8rem; letter-spacing: 0.3em; transition: all 0.3s; }
+    .cta-banner a:hover { background: var(--charcoal); color: var(--gold); }
+
+    /* FOOTER */
+    .footer-main { background: var(--charcoal); color: var(--warm-white); display: grid; grid-template-columns: 1fr 1fr 1fr; padding: 5rem 4rem; gap: 3rem; }
+    .footer-logo { display: flex; flex-direction: column; align-items: center; }
+    .footer-logo .zh { font-size: 2rem; font-weight: 500; line-height: 1.2; }
+    .footer-logo .en { font-family: 'Bodoni 72', 'Bodoni Moda', Georgia, serif; font-size: 0.6rem; letter-spacing: 0.35em; padding-left: 0.35em; color: var(--gold); margin-top: 0.3rem; display: block; text-transform: uppercase; }
+    .footer-tagline { font-size: 0.78rem; color: rgba(250,242,240,0.4); margin-top: 1.5rem; line-height: 1.8; font-weight: 300; }
+    .footer-col h5 { font-family: Georgia, serif; font-size: 0.6rem; letter-spacing: 0.4em; color: var(--gold); text-transform: uppercase; margin-bottom: 1.5rem; }
+    .footer-col p, .footer-col a { font-size: 0.8rem; color: rgba(250,242,240,0.5); line-height: 2.2; text-decoration: none; font-weight: 300; display: block; }
+    .footer-col a:hover { color: var(--gold); }
+    .footer-bottom { background: var(--charcoal); border-top: 1px solid rgba(250,242,240,0.06); text-align: center; padding: 1.5rem; font-size: 0.65rem; color: rgba(250,242,240,0.2); letter-spacing: 0.1em; }
+
+    /* ANIMATIONS */
+    .fade-in { opacity: 0; transform: translateY(25px); transition: opacity 0.9s ease, transform 0.9s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { gap: 1rem; }
+      .nav-links a { font-size: 0.7rem; }
+      .page-banner h1 { font-size: 2rem; letter-spacing: 0.15em; }
+      .room-split { grid-template-columns: 1fr; }
+      .room-split-img { min-height: 50vh; }
+      .room-split-text { padding: 3rem 2rem; }
+      .room-split-text .room-zh-name { font-size: 1.4rem; }
+      .room-divider { padding: 2.5rem 2rem; }
+      .footer-main { grid-template-columns: 1fr; padding: 3rem 2rem; }
+      .section-title { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <a href="index.html" class="nav-logo"><span class="zh">日</span><span class="en">LOHERB</span><span class="zh">光</span></a>
+    <div class="nav-links">
+      <a href="about.html">關於日光</a>
+      <a href="rooms.html">綠築房型</a>
+      <a href="journal.html">日光札記</a>
+      <a href="contact.html">聯絡日光</a>
+      <a href="contact.html" class="cta-book">即刻預定</a>
+    </div>
+  </nav>
+
+  <!-- PAGE BANNER -->
+  <section class="page-banner fade-in">
+    <p class="section-label">Rooms</p>
+    <h1>綠築房型<span>Rooms</span></h1>
+    <p>每間客房皆以獨特風格打造，讓您的住宿體驗獨一無二</p>
+  </section>
+
+  <!-- SECTION DIVIDER: DOUBLE ROOMS -->
+  <div class="room-divider">
+    <div class="divider-line"></div>
+    <p>Double Rooms</p>
+  </div>
+
+  <!-- ROOM 01: 精緻雙人 -->
+  <section class="room-split fade-in">
+    <div class="room-split-img">
+      <img src="https://villa.loherb.com.tw/images/room-types/01_Economy_Double/1.webp" alt="精緻雙人" loading="lazy">
+    </div>
+    <div class="room-split-text" style="background: var(--cream);">
+      <p class="room-en-label">Economy Double</p>
+      <h2 class="room-zh-name">精緻雙人</h2>
+      <div class="room-meta-chips">
+        <span class="chip price">NT$3,800起</span>
+        <span class="chip">23m²</span>
+        <span class="chip">2F+</span>
+        <span class="chip">King Size</span>
+        <span class="chip">花園景</span>
+      </div>
+      <p class="room-desc">精緻客房有舒適空間及良好採光，並提供King Size雙人床、澎枕頭及扁枕頭、免治馬桶衛浴、還有大尺寸投影家庭劇院設備</p>
+      <div class="room-cta"><a href="https://villa.loherb.com.tw/zh/rooms" target="_blank">查看詳情</a></div>
+    </div>
+  </section>
+
+  <!-- ROOM 02: 豪華雙人 -->
+  <section class="room-split fade-in">
+    <div class="room-split-text" style="background: var(--mint);">
+      <p class="room-en-label">Luxury Double</p>
+      <h2 class="room-zh-name">豪華雙人</h2>
+      <div class="room-meta-chips">
+        <span class="chip price">NT$4,600起</span>
+        <span class="chip">31m²</span>
+        <span class="chip">2F+</span>
+        <span class="chip">King Size</span>
+        <span class="chip">花園景</span>
+      </div>
+      <p class="room-desc">豪華客房空間寬敞，擁有落地觀景牆展現宜人景緻。配備King Size雙人床、舒適澎枕與扁枕、大螢幕投影家庭劇院、免治馬桶</p>
+      <div class="room-cta"><a href="https://villa.loherb.com.tw/zh/rooms" target="_blank">查看詳情</a></div>
+    </div>
+    <div class="room-split-img">
+      <img src="https://villa.loherb.com.tw/images/room-types/02_Luxury_Double/1.webp" alt="豪華雙人" loading="lazy">
+    </div>
+  </section>
+
+  <!-- ROOM 03: 尊爵雙人 -->
+  <section class="room-split fade-in">
+    <div class="room-split-img">
+      <img src="https://villa.loherb.com.tw/images/room-types/03_Premium_Double/1.webp" alt="尊爵雙人" loading="lazy">
+    </div>
+    <div class="room-split-text" style="background: var(--warm-white);">
+      <p class="room-en-label">Premium Double</p>
+      <h2 class="room-zh-name">尊爵雙人</h2>
+      <div class="room-meta-chips">
+        <span class="chip price">NT$5,200起</span>
+        <span class="chip">43m²</span>
+        <span class="chip">2F+</span>
+        <span class="chip">King Size</span>
+        <span class="chip">花園景</span>
+      </div>
+      <p class="room-desc">尊爵客房有寬敞室內空間與舒適沙發陽台，大面積觀景牆展現美景。房內配有King Size雙人床、免治馬桶、柔軟澎枕扁枕，及投影家庭劇院</p>
+      <div class="room-cta"><a href="https://villa.loherb.com.tw/zh/rooms" target="_blank">查看詳情</a></div>
+    </div>
+  </section>
+
+  <!-- ROOM 04: 庭園雙人 -->
+  <section class="room-split fade-in">
+    <div class="room-split-text" style="background: var(--lavender);">
+      <p class="room-en-label">Casual Double</p>
+      <h2 class="room-zh-name">庭園雙人</h2>
+      <div class="room-meta-chips">
+        <span class="chip price">NT$4,200起</span>
+        <span class="chip">25m²</span>
+        <span class="chip">1F</span>
+        <span class="chip">King Size</span>
+        <span class="chip">花園景</span>
+      </div>
+      <p class="room-desc">庭園雅房位於1F，擁有戶外空間和觀景牆。房內配有King Size雙人床、澎潤與扁平枕頭、免治馬桶，以及大尺寸家庭劇院投影設施</p>
+      <div class="room-cta"><a href="https://villa.loherb.com.tw/zh/rooms" target="_blank">查看詳情</a></div>
+    </div>
+    <div class="room-split-img">
+      <img src="https://villa.loherb.com.tw/images/room-types/04_Casual_Double/1.webp" alt="庭園雙人" loading="lazy">
+    </div>
+  </section>
+
+  <!-- ROOM 05: 花園雙人 -->
+  <section class="room-split fade-in">
+    <div class="room-split-img">
+      <img src="https://villa.loherb.com.tw/images/room-types/05_Garden_Double/1.webp" alt="花園雙人" loading="lazy">
+    </div>
+    <div class="room-split-text" style="background: var(--cream);">
+      <p class="room-en-label">Garden Double</p>
+      <h2 class="room-zh-name">花園雙人</h2>
+      <div class="room-meta-chips">
+        <span class="chip price">NT$5,200起</span>
+        <span class="chip">43m²</span>
+        <span class="chip">1F</span>
+        <span class="chip">King Size</span>
+        <span class="chip">花園景</span>
+      </div>
+      <p class="room-desc">花園客房位於1F，環繞美景以寬廣落地觀景牆呈現。房內有家庭劇院投影設備、柔軟澎枕扁枕、免治馬桶、以及King Size雙人床</p>
+      <div class="room-cta"><a href="https://villa.loherb.com.tw/zh/rooms" target="_blank">查看詳情</a></div>
+    </div>
+  </section>
+
+  <!-- ROOM 06: 閣樓雙人 -->
+  <section class="room-split fade-in">
+    <div class="room-split-text" style="background: var(--mint);">
+      <p class="room-en-label">Duplex Double</p>
+      <h2 class="room-zh-name">閣樓雙人</h2>
+      <div class="room-meta-chips">
+        <span class="chip price">NT$4,600起</span>
+        <span class="chip">33m²</span>
+        <span class="chip">3F+</span>
+        <span class="chip">King Size</span>
+        <span class="chip">花園景</span>
+      </div>
+      <p class="room-desc">閣樓客房有多層次室內空間。是獨特的樓中樓房型。樓下為小客廳，樓上是起居室。房內有一張King Size大床、免治馬桶、多種軟硬適中枕頭及家庭劇院</p>
+      <div class="room-cta"><a href="https://villa.loherb.com.tw/zh/rooms" target="_blank">查看詳情</a></div>
+    </div>
+    <div class="room-split-img">
+      <img src="https://villa.loherb.com.tw/images/room-types/06_Duplex_Double/1.webp" alt="閣樓雙人" loading="lazy">
+    </div>
+  </section>
+
+  <!-- ROOM 07: 觀日雙人 -->
+  <section class="room-split fade-in">
+    <div class="room-split-img">
+      <img src="https://villa.loherb.com.tw/images/room-types/07_Sungazing_Double/1.webp" alt="觀日雙人" loading="lazy">
+    </div>
+    <div class="room-split-text" style="background: var(--warm-white);">
+      <p class="room-en-label">Sungazing Double</p>
+      <h2 class="room-zh-name">觀日雙人</h2>
+      <div class="room-meta-chips">
+        <span class="chip price">NT$6,200起</span>
+        <span class="chip">47m²</span>
+        <span class="chip">2F+</span>
+        <span class="chip">King Size</span>
+        <span class="chip">花園景</span>
+      </div>
+      <p class="room-desc">觀日客房配備多面落地觀景窗，兩個露台。還有雙衛浴及聚會小客廳。房內配備有家庭劇院、King Size雙人床、舒適的澎枕與扁枕以及免治馬桶</p>
+      <div class="room-cta"><a href="https://villa.loherb.com.tw/zh/rooms" target="_blank">查看詳情</a></div>
+    </div>
+  </section>
+
+  <!-- ROOM 08: 觀星雙人 -->
+  <section class="room-split fade-in">
+    <div class="room-split-text" style="background: var(--lavender);">
+      <p class="room-en-label">Stargazing Double</p>
+      <h2 class="room-zh-name">觀星雙人</h2>
+      <div class="room-meta-chips">
+        <span class="chip price">NT$6,200起</span>
+        <span class="chip">47m²</span>
+        <span class="chip">3F+</span>
+        <span class="chip">King Size</span>
+        <span class="chip">花園景</span>
+      </div>
+      <p class="room-desc">觀星房設有專屬玻璃觀星室，以及可以同時沐浴觀星的泡澡區。另外還有特別加大的露台。房內配備家庭劇院、King Size雙人床、免治馬桶與多種舒適的澎枕扁枕</p>
+      <div class="room-cta"><a href="https://villa.loherb.com.tw/zh/rooms" target="_blank">查看詳情</a></div>
+    </div>
+    <div class="room-split-img">
+      <img src="https://villa.loherb.com.tw/images/room-types/08_Stargazing_Double/1.webp" alt="觀星雙人" loading="lazy">
+    </div>
+  </section>
+
+  <!-- SECTION DIVIDER: QUAD ROOMS -->
+  <div class="room-divider">
+    <div class="divider-line"></div>
+    <p>Quad Rooms</p>
+  </div>
+
+  <!-- ROOM 09: 豪華四人 -->
+  <section class="room-split fade-in">
+    <div class="room-split-img">
+      <img src="https://villa.loherb.com.tw/images/room-types/09_Luxury_Quad/1.webp" alt="豪華四人" loading="lazy">
+    </div>
+    <div class="room-split-text" style="background: var(--cream);">
+      <p class="room-en-label">Luxury Quad</p>
+      <h2 class="room-zh-name">豪華四人</h2>
+      <div class="room-meta-chips">
+        <span class="chip price">NT$6,800起</span>
+        <span class="chip">45m²</span>
+        <span class="chip">2F+</span>
+        <span class="chip">2x King Size</span>
+        <span class="chip">花園景</span>
+      </div>
+      <p class="room-desc">豪華客房設計寬敞，可以透過觀景落地帷幕欣賞自然景觀。房內裝備有兩張King Size雙人床、多款柔軟澎枕與扁枕、家庭劇院投影設備及免治馬桶</p>
+      <div class="room-cta"><a href="https://villa.loherb.com.tw/zh/rooms" target="_blank">查看詳情</a></div>
+    </div>
+  </section>
+
+  <!-- ROOM 10: 花園四人 -->
+  <section class="room-split fade-in">
+    <div class="room-split-text" style="background: var(--mint);">
+      <p class="room-en-label">Garden Quad</p>
+      <h2 class="room-zh-name">花園四人</h2>
+      <div class="room-meta-chips">
+        <span class="chip price">NT$6,800起</span>
+        <span class="chip">45m²</span>
+        <span class="chip">1F</span>
+        <span class="chip">2x King Size</span>
+        <span class="chip">花園景</span>
+      </div>
+      <p class="room-desc">花園客房位於1F，環繞美景以寬廣落地觀景牆呈現。房內有家庭劇院投影設備、柔軟澎枕扁枕、免治馬桶、以及King Size雙人床</p>
+      <div class="room-cta"><a href="https://villa.loherb.com.tw/zh/rooms" target="_blank">查看詳情</a></div>
+    </div>
+    <div class="room-split-img">
+      <img src="https://villa.loherb.com.tw/images/room-types/10_Garden_Quad/1.webp" alt="花園四人" loading="lazy">
+    </div>
+  </section>
+
+  <!-- ROOM 11: 小島四人 (PET-FRIENDLY) -->
+  <section class="room-split fade-in">
+    <div class="room-split-img">
+      <img src="https://villa.loherb.com.tw/images/room-types/11_Island_Quad/1.webp" alt="小島四人" loading="lazy">
+    </div>
+    <div class="room-split-text" style="background: var(--forest);">
+      <p class="room-en-label" style="color: var(--mint);">Island Quad</p>
+      <span class="pet-badge">PET-FRIENDLY</span>
+      <h2 class="room-zh-name" style="color: var(--warm-white);">小島四人</h2>
+      <div class="room-meta-chips">
+        <span class="chip price">NT$6,800起</span>
+        <span class="chip" style="border-color: rgba(250,242,240,0.15); color: rgba(250,242,240,0.6);">45m²</span>
+        <span class="chip" style="border-color: rgba(250,242,240,0.15); color: rgba(250,242,240,0.6);">1F 獨立別墅A館</span>
+        <span class="chip" style="border-color: rgba(250,242,240,0.15); color: rgba(250,242,240,0.6);">2x King Size</span>
+        <span class="chip" style="border-color: rgba(250,242,240,0.15); color: rgba(250,242,240,0.6);">花園景</span>
+      </div>
+      <p class="room-desc" style="color: rgba(221,234,229,0.6);">小島獨立別墅位於1F，是唯一可以攜伴寵物入住的房型。全房獨立不受打擾。有兩張King Size雙人床、軟澎枕與扁枕、家庭劇院投影設備及免治馬桶</p>
+      <div class="room-cta"><a href="https://villa.loherb.com.tw/zh/rooms" target="_blank" style="border-color: var(--gold); color: var(--gold);">查看詳情</a></div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <div class="cta-banner">
+    <h3 class="section-title">即刻預定，開啟日光旅程</h3>
+    <a href="contact.html">即刻預定</a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-main">
+      <div class="footer-logo">
+        <span class="zh">日</span><span class="en">LOHERB</span><span class="zh">光</span>
+        <p class="footer-tagline">為人與自然搭起橋樑。<br>一群懷抱理想初衷的人，<br>打造隨四季變化，有生命的綠建築。</p>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <p>+886-3-959-5685</p>
+        <a href="mailto:service@loherb.com.tw">service@loherb.com.tw</a>
+        <p>客服時間 08:00 ~ 20:00</p>
+        <p style="margin-top:0.8rem;">(269) 宜蘭縣冬山鄉寶福路386號</p>
+      </div>
+      <div class="footer-col">
+        <h5>Group</h5>
+        <a href="https://villa.loherb.com.tw">日光綠築 Villa</a>
+        <a href="https://cuisine.loherb.com.tw">日光私廚 Cuisine</a>
+        <a href="https://party.loherb.com.tw">日光時刻 Party</a>
+        <a href="https://dearbb.design">日光文創 Dear BB</a>
+        <a href="https://estate.loherb.com.tw">日光物業 Estate</a>
+      </div>
+    </div>
+    <div class="footer-bottom">&copy; 2026 日光 LOHERB. All rights reserved. 宜蘭民宿 No.2019 & No.2723</div>
+  </footer>
+
+  <script>
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 80); });
+  </script>
+</body>
+</html>

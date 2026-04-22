@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>日光綠築 LOHERB Villa — 宜蘭自然民宿</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #E6A401;
+      --gold-dark: #D08C03;
+      --charcoal: #505350;
+      --warm-white: #FAF2F0;
+      --forest: #084136;
+      --mint: #DDEAE5;
+      --berry: #5C2A46;
+      --lavender: #EDEAEE;
+      --olive: #42452F;
+      --fog-gold: #BFAF6E;
+      --teal: #304C4C;
+      --rose: #A27678;
+      --blush: #FAF1EF;
+      --cream: #F8F4EF;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Noto Serif TC', 'Source Han Serif TC', Georgia, serif;
+      color: var(--charcoal); background: var(--warm-white); overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.2rem 4rem; background: transparent;
+      transition: background 0.4s, box-shadow 0.4s;
+    }
+    nav.scrolled {
+      background: rgba(250,242,240,0.95); backdrop-filter: blur(12px);
+      box-shadow: 0 1px 0 rgba(80,83,80,0.06);
+    }
+    .nav-logo { display: flex; flex-direction: column; align-items: center; text-decoration: none; line-height: 1; gap: 0.05rem; }
+    .nav-logo .zh { font-size: 1rem; font-weight: 500; color: var(--warm-white); letter-spacing: 0.3em; transition: color 0.4s; }
+    .nav-logo .en { font-family: 'Bodoni 72', 'Bodoni Moda', Georgia, serif; font-size: 0.5rem; letter-spacing: 0.35em; padding-left: 0.35em; color: var(--gold); text-transform: uppercase; }
+    nav.scrolled .nav-logo .zh { color: var(--charcoal); }
+    .nav-links { display: flex; gap: 2.2rem; align-items: center; }
+    .nav-links a { text-decoration: none; font-size: 0.8rem; letter-spacing: 0.12em; color: rgba(250,242,240,0.85); transition: color 0.3s; }
+    nav.scrolled .nav-links a { color: var(--charcoal); }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-links .cta-book {
+      padding: 0.5rem 1.5rem; border: 1px solid var(--gold);
+      color: var(--gold) !important; font-size: 0.75rem; letter-spacing: 0.2em; transition: all 0.3s;
+    }
+    .nav-links .cta-book:hover { background: var(--gold); color: var(--charcoal) !important; }
+
+    /* HERO */
+    .hero { height: 100vh; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+    .hero-bg { position: absolute; inset: 0; background: url('https://villa.loherb.com.tw/images/home_banner_2024.jpg') center/cover no-repeat; }
+    .hero::after { content: ''; position: absolute; inset: 0; background: none; }
+    .hero-content { position: relative; z-index: 1; text-align: center; color: var(--warm-white); background: rgba(0, 0, 0, 0.08); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); border-radius: 0; padding: 2rem 3rem; -webkit-mask-image: radial-gradient(ellipse 60% 95% at center,rgba(0,0,0,0.9) 0%,rgba(0,0,0,0.82) 18%,rgba(0,0,0,0.66) 34%,rgba(0,0,0,0.46) 50%,rgba(0,0,0,0.26) 66%,rgba(0,0,0,0.12) 80%,rgba(0,0,0,0.04) 90%,rgba(0,0,0,0.01) 97%,rgba(0,0,0,0) 100%); mask-image: radial-gradient(ellipse 60% 95% at center,rgba(0,0,0,0.9) 0%,rgba(0,0,0,0.82) 18%,rgba(0,0,0,0.66) 34%,rgba(0,0,0,0.46) 50%,rgba(0,0,0,0.26) 66%,rgba(0,0,0,0.12) 80%,rgba(0,0,0,0.04) 90%,rgba(0,0,0,0.01) 97%,rgba(0,0,0,0) 100%); }
+    .hero-logo { display: flex; flex-direction: column; align-items: center; gap: 0.2rem; margin-bottom: 2rem; }
+    .hero-logo .zh { font-size: 4.5rem; font-weight: 500; letter-spacing: 0.5em; line-height: 1.15; text-shadow: 0 2px 20px rgba(0,0,0,0.5), 0 1px 6px rgba(0,0,0,0.3); }
+    .hero-logo .en { font-family: 'Bodoni 72', 'Bodoni Moda', Georgia, serif; font-size: 0.85rem; letter-spacing: 0.6em; padding-left: 0.6em; color: var(--gold); text-transform: uppercase; }
+    .hero-sub { font-size: 0.85rem; letter-spacing: 0.5em; color: rgba(250,242,240,0.5); margin-bottom: 0.8rem; text-shadow: 0 2px 20px rgba(0,0,0,0.5), 0 1px 6px rgba(0,0,0,0.3); }
+    .hero-tagline { font-size: 1rem; letter-spacing: 0.25em; color: rgba(250,242,240,0.7); margin-bottom: 2.5rem; font-weight: 300; text-shadow: 0 2px 20px rgba(0,0,0,0.5), 0 1px 6px rgba(0,0,0,0.3); }
+    .hero-desc { max-width: 480px; margin: 0 auto 2.5rem; font-size: 0.85rem; line-height: 2.2; color: rgba(250,242,240,0.6); font-weight: 300; text-shadow: 0 2px 20px rgba(0,0,0,0.5), 0 1px 6px rgba(0,0,0,0.3); }
+    .btn-gold { display: inline-block; padding: 0.8rem 2.5rem; border: 1px solid var(--gold); color: var(--gold); text-decoration: none; font-size: 0.78rem; letter-spacing: 0.3em; transition: all 0.3s; }
+    .btn-gold:hover { background: var(--gold); color: var(--charcoal); }
+    .scroll-arrow { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); z-index: 1; color: rgba(250,242,240,0.35); font-size: 0.65rem; letter-spacing: 0.3em; animation: float 2.5s ease-in-out infinite; }
+    @keyframes float { 0%,100%{ transform:translateX(-50%) translateY(0); opacity:.35; } 50%{ transform:translateX(-50%) translateY(8px); opacity:.7; } }
+
+    /* SHARED */
+    .section-label { font-family: Georgia, serif; font-size: 0.6rem; letter-spacing: 0.5em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.8rem; }
+    .section-title { font-size: 1.8rem; font-weight: 700; line-height: 1.6; margin-bottom: 1.2rem; }
+    .section-desc { font-size: 0.92rem; line-height: 2.2; font-weight: 300; max-width: 520px; }
+    .poetic { font-size: 0.85rem; font-weight: 300; letter-spacing: 0.15em; color: var(--fog-gold); margin-top: 2rem; font-style: italic; text-shadow: 0 2px 16px rgba(0,0,0,0.5), 0 1px 4px rgba(0,0,0,0.3); }
+
+    /* REVIEW BANNER */
+    .review-banner { background: var(--forest); color: var(--mint); text-align: center; padding: 4.5rem 2rem; }
+    .review-stars { color: var(--gold); font-size: 0.9rem; letter-spacing: 0.3em; margin-bottom: 1.2rem; }
+    .review-quote { font-size: 1.05rem; font-weight: 300; line-height: 2.2; max-width: 600px; margin: 0 auto 1rem; }
+    .review-author { font-size: 0.75rem; color: rgba(221,234,229,0.5); letter-spacing: 0.2em; }
+
+    /* SPLIT */
+    .split { display: grid; grid-template-columns: 1fr 1fr; min-height: 85vh; }
+    .split-img { position: relative; overflow: hidden; }
+    .split-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 6s ease; }
+    .split-img:hover img { transform: scale(1.03); }
+    .split-text { display: flex; flex-direction: column; justify-content: center; padding: 5rem 6rem; }
+    .split-text .section-desc { color: rgba(80,83,80,0.6); }
+
+    /* FULL IMAGE */
+    .full-image { height: 70vh; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+    .full-image img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .full-image::after { content: ''; position: absolute; inset: 0; background: none; }
+    .full-image .overlay-text { position: relative; z-index: 1; text-align: center; color: var(--warm-white); text-shadow: 0 2px 16px rgba(0,0,0,0.5), 0 1px 4px rgba(0,0,0,0.3); background: rgba(0, 0, 0, 0.08); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); border-radius: 0; padding: 2rem 3rem; display: inline-block; -webkit-mask-image: radial-gradient(ellipse 60% 95% at center,rgba(0,0,0,0.9) 0%,rgba(0,0,0,0.82) 18%,rgba(0,0,0,0.66) 34%,rgba(0,0,0,0.46) 50%,rgba(0,0,0,0.26) 66%,rgba(0,0,0,0.12) 80%,rgba(0,0,0,0.04) 90%,rgba(0,0,0,0.01) 97%,rgba(0,0,0,0) 100%); mask-image: radial-gradient(ellipse 60% 95% at center,rgba(0,0,0,0.9) 0%,rgba(0,0,0,0.82) 18%,rgba(0,0,0,0.66) 34%,rgba(0,0,0,0.46) 50%,rgba(0,0,0,0.26) 66%,rgba(0,0,0,0.12) 80%,rgba(0,0,0,0.04) 90%,rgba(0,0,0,0.01) 97%,rgba(0,0,0,0) 100%); }
+
+    /* SERVICES STRIP */
+    .services-strip { display: grid; grid-template-columns: repeat(4, 1fr); background: var(--cream); }
+    .service-item { text-align: center; padding: 3.5rem 1.5rem; border-right: 1px solid rgba(80,83,80,0.06); }
+    .service-item:last-child { border-right: none; }
+    .service-icon { font-size: 1.6rem; margin-bottom: 1rem; }
+    .service-item h4 { font-size: 0.85rem; font-weight: 600; margin-bottom: 0.5rem; letter-spacing: 0.05em; }
+    .service-item p { font-size: 0.72rem; color: rgba(80,83,80,0.5); line-height: 1.8; font-weight: 300; }
+
+    /* ROOMS */
+    .rooms-section { background: var(--charcoal); color: var(--warm-white); padding: 6rem 4rem; }
+    .rooms-header { text-align: center; margin-bottom: 4rem; }
+    .rooms-header .section-title { color: var(--warm-white); }
+    .rooms-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; max-width: 1200px; margin: 0 auto; }
+    .room-card { position: relative; overflow: hidden; aspect-ratio: 3/4; cursor: pointer; }
+    .room-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 4s ease; }
+    .room-card:hover img { transform: scale(1.05); }
+    .room-overlay { position: absolute; inset: 0; background: linear-gradient(0deg, rgba(30,30,30,0.7) 0%, transparent 50%); display: flex; flex-direction: column; justify-content: flex-end; padding: 1.5rem; }
+    .room-name { font-size: 1rem; font-weight: 600; margin-bottom: 0.3rem; }
+    .room-en { font-family: Georgia, serif; font-size: 0.6rem; letter-spacing: 0.3em; color: var(--gold); margin-bottom: 0.5rem; }
+    .room-meta { font-size: 0.7rem; color: rgba(250,242,240,0.5); }
+    .room-price { position: absolute; top: 1.2rem; right: 1.2rem; font-family: Georgia, serif; font-size: 0.7rem; color: var(--gold); letter-spacing: 0.1em; }
+
+    /* CTA BANNER */
+    .cta-banner { background: var(--gold); text-align: center; padding: 4rem 2rem; }
+    .cta-banner .section-title { color: var(--charcoal); font-size: 1.5rem; margin-bottom: 1.5rem; }
+    .cta-banner a { display: inline-block; padding: 0.8rem 3rem; border: 1px solid var(--charcoal); color: var(--charcoal); text-decoration: none; font-size: 0.8rem; letter-spacing: 0.3em; transition: all 0.3s; }
+    .cta-banner a:hover { background: var(--charcoal); color: var(--gold); }
+
+    /* JOURNAL */
+    .journal-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; max-width: 1100px; margin: 0 auto; }
+    .journal-card { text-decoration: none; color: var(--charcoal); }
+    .journal-thumb { aspect-ratio: 4/3; overflow: hidden; margin-bottom: 1rem; }
+    .journal-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 3s; }
+    .journal-card:hover .journal-thumb img { transform: scale(1.03); }
+    .journal-date { font-family: Georgia, serif; font-size: 0.6rem; color: var(--gold); letter-spacing: 0.3em; margin-bottom: 0.4rem; }
+    .journal-card h4 { font-size: 0.9rem; font-weight: 600; line-height: 1.6; }
+
+    /* IG */
+    .ig-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem; max-width: 900px; margin: 0 auto; }
+    .ig-grid div { aspect-ratio: 1; overflow: hidden; }
+    .ig-grid img { width: 100%; height: 100%; object-fit: cover; transition: transform 3s; }
+    .ig-grid div:hover img { transform: scale(1.05); }
+
+    /* FOOTER */
+    .footer-main { background: var(--charcoal); color: var(--warm-white); display: grid; grid-template-columns: 1fr 1fr 1fr; padding: 5rem 4rem; gap: 3rem; }
+    .footer-logo { display: flex; flex-direction: column; align-items: center; }
+    .footer-logo .zh { font-size: 2rem; font-weight: 500; line-height: 1.2; }
+    .footer-logo .en { font-family: 'Bodoni 72', 'Bodoni Moda', Georgia, serif; font-size: 0.6rem; letter-spacing: 0.35em; padding-left: 0.35em; color: var(--gold); margin-top: 0.3rem; display: block; text-transform: uppercase; }
+    .footer-tagline { font-size: 0.78rem; color: rgba(250,242,240,0.4); margin-top: 1.5rem; line-height: 1.8; font-weight: 300; }
+    .footer-col h5 { font-family: Georgia, serif; font-size: 0.6rem; letter-spacing: 0.4em; color: var(--gold); text-transform: uppercase; margin-bottom: 1.5rem; }
+    .footer-col p, .footer-col a { font-size: 0.8rem; color: rgba(250,242,240,0.5); line-height: 2.2; text-decoration: none; font-weight: 300; display: block; }
+    .footer-col a:hover { color: var(--gold); }
+    .footer-bottom { background: var(--charcoal); border-top: 1px solid rgba(250,242,240,0.06); text-align: center; padding: 1.5rem; font-size: 0.65rem; color: rgba(250,242,240,0.2); letter-spacing: 0.1em; }
+
+    /* ANIMATIONS */
+    .fade-in { opacity: 0; transform: translateY(25px); transition: opacity 0.9s ease, transform 0.9s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { gap: 1rem; }
+      .nav-links a { font-size: 0.7rem; }
+      .hero-logo .zh { font-size: 3rem; }
+      .split { grid-template-columns: 1fr; }
+      .split-text { padding: 3.5rem 2rem; }
+      .split-img { min-height: 50vh; }
+      .rooms-grid { grid-template-columns: 1fr; }
+      .rooms-section { padding: 4rem 2rem; }
+      .services-strip { grid-template-columns: 1fr 1fr; }
+      .journal-grid { grid-template-columns: 1fr; }
+      .ig-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-main { grid-template-columns: 1fr; padding: 3rem 2rem; }
+      .section-title { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <a href="index.html" class="nav-logo"><span class="zh">日</span><span class="en">LOHERB</span><span class="zh">光</span></a>
+    <div class="nav-links">
+      <a href="about.html">關於日光</a>
+      <a href="rooms.html">綠築房型</a>
+      <a href="journal.html">日光札記</a>
+      <a href="contact.html">聯絡日光</a>
+      <a href="contact.html" class="cta-book">即刻預定</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content fade-in">
+      <div class="hero-logo"><span class="zh">日</span><span class="en">LOHERB</span><span class="zh">光</span></div>
+      <p class="hero-sub">宜蘭渡假村</p>
+      <p class="hero-tagline">如家 &nbsp;&&nbsp; 自然</p>
+      <p class="hero-desc">日光綠築座落宜蘭中央，為稻田落羽松所圍繞，於四季彩繪出不同風景。<br>在這裏我們以體貼家人般服務，款待您與最重要的人。<br>一同悠閒享受自然假期，留下獨一無二回憶。</p>
+      <a href="#about" class="btn-gold">探索更多</a>
+    </div>
+    <span class="scroll-arrow">SCROLL</span>
+  </section>
+
+  <!-- REVIEW -->
+  <div class="review-banner fade-in">
+    <div class="review-stars">★ ★ ★ ★ ★</div>
+    <p class="review-quote">「在月色中睡去、在晨星下醒來，四周只有蛙鳴，沒有城市的紛擾；<br>借台腳踏車，幾分鐘外就是河堤，綿延到太平洋的水道，讓人心情舒暢」</p>
+    <p class="review-author">— DesperateAnzy</p>
+  </div>
+
+  <!-- NATURE LANDSCAPE -->
+  <div class="full-image" style="height:60vh;">
+    <img src="https://villa.loherb.com.tw/images/page-banners/about_page.jpg" alt="宜蘭田野自然風光" loading="lazy">
+    <div class="overlay-text fade-in">
+      <p class="poetic" style="color:rgba(250,242,240,0.85);font-size:1.1rem;">被稻田環抱，與落羽松為鄰</p>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section class="split" id="about">
+    <div class="split-img"><img src="https://villa.loherb.com.tw/images/home_villa_room.jpg" alt="Villa Room" loading="lazy"></div>
+    <div class="split-text fade-in" style="background: var(--cream);">
+      <p class="section-label">Services</p>
+      <h2 class="section-title">只要一顆期待的心<br>便能展開旅程</h2>
+      <p class="section-desc">日光綠築為您準備好旅程所需。無論軟硬枕頭、沐浴備品、冷暖氣機應有盡有。我們還有親子、銀髮、無障礙及素食友善。來日光，只要一顆期待的心，輕鬆無負擔，拎起行囊即刻成行。</p>
+      <p class="poetic">繁星似遠，遠若初吻，心不老足矣</p>
+    </div>
+  </section>
+
+  <!-- FACILITIES STRIP -->
+  <div class="services-strip fade-in">
+    <div class="service-item"><div class="service-icon">🌿</div><h4>生態綠建築</h4><p>融合生態工法<br>與四季共生</p></div>
+    <div class="service-item"><div class="service-icon">🚲</div><h4>免費單車</h4><p>漫遊冬山河畔<br>探索宜蘭秘境</p></div>
+    <div class="service-item"><div class="service-icon">🎬</div><h4>家庭劇院</h4><p>每房配備投影<br>大螢幕享受</p></div>
+    <div class="service-item"><div class="service-icon">🌊</div><h4>水榭戲水</h4><p>大人小孩同樂<br>清涼消暑</p></div>
+  </div>
+
+  <!-- NIGHT VIEW -->
+  <div class="full-image">
+    <img src="https://villa.loherb.com.tw/images/night_view_2x1.jpg" alt="Night View" loading="lazy">
+    <div class="overlay-text fade-in"><p class="poetic" style="color:rgba(250,242,240,0.8);font-size:1.1rem;">在水波中，找尋最純粹的放鬆</p></div>
+  </div>
+
+  <!-- ECO -->
+  <section class="split">
+    <div class="split-text fade-in" style="background: var(--mint);">
+      <p class="section-label">Eco-Friendly</p>
+      <h2 class="section-title">親身經歷<br>有生命的綠建築</h2>
+      <p class="section-desc" style="color:rgba(8,65,54,0.6);">日光綠築用心營造自然友善環境，融合生態工法綠建築，在田野間以透明帷幕收納四季美景，拉近起居、農場、人及自然間的距離。白晝，左眺親水公園，右望中央山脈。入夜，伴著蛙鳴鳥叫擁抱滿天星斗入睡。</p>
+    </div>
+    <div class="split-img"><img src="https://villa.loherb.com.tw/images/page-banners/about_page.jpg" alt="日光綠築生態建築" loading="lazy"></div>
+  </section>
+
+  <!-- ROOMS -->
+  <section class="rooms-section" id="rooms">
+    <div class="rooms-header fade-in"><p class="section-label">Rooms</p><h2 class="section-title">綠築房型</h2></div>
+    <div class="rooms-grid">
+      <div class="room-card fade-in">
+        <img src="https://villa.loherb.com.tw/images/room-types/03_Premium_Double/1.webp?v=2" alt="尊爵雙人" loading="lazy">
+        <span class="room-price">NT$5,200 起</span>
+        <div class="room-overlay"><div class="room-en">PREMIUM DOUBLE</div><div class="room-name">尊爵雙人</div><div class="room-meta">43m² · King Size · 花園景</div></div>
+      </div>
+      <div class="room-card fade-in">
+        <img src="https://villa.loherb.com.tw/images/room-types/07_Sungazing_Double/1.webp?v=2" alt="觀日雙人" loading="lazy">
+        <span class="room-price">NT$6,200 起</span>
+        <div class="room-overlay"><div class="room-en">SUNGAZING DOUBLE</div><div class="room-name">觀日雙人</div><div class="room-meta">47m² · 雙露台 · 雙衛浴</div></div>
+      </div>
+      <div class="room-card fade-in">
+        <img src="https://villa.loherb.com.tw/images/room-types/08_Stargazing_Double/1.webp?v=2" alt="觀星雙人" loading="lazy">
+        <span class="room-price">NT$6,200 起</span>
+        <div class="room-overlay"><div class="room-en">STARGAZING DOUBLE</div><div class="room-name">觀星雙人</div><div class="room-meta">47m² · 玻璃觀星室 · 泡澡區</div></div>
+      </div>
+      <div class="room-card fade-in">
+        <img src="https://villa.loherb.com.tw/images/room-types/06_Duplex_Double/1.webp?v=2" alt="閣樓雙人" loading="lazy">
+        <span class="room-price">NT$4,600 起</span>
+        <div class="room-overlay"><div class="room-en">DUPLEX DOUBLE</div><div class="room-name">閣樓雙人</div><div class="room-meta">33m² · 樓中樓 · 獨特設計</div></div>
+      </div>
+      <div class="room-card fade-in">
+        <img src="https://villa.loherb.com.tw/images/room-types/09_Luxury_Quad/1.webp?v=2" alt="豪華四人" loading="lazy">
+        <span class="room-price">NT$6,800 起</span>
+        <div class="room-overlay"><div class="room-en">LUXURY QUAD</div><div class="room-name">豪華四人</div><div class="room-meta">45m² · 2x King Size · 家庭首選</div></div>
+      </div>
+      <div class="room-card fade-in">
+        <img src="https://villa.loherb.com.tw/images/room-types/11_Island_Quad/1.webp?v=2" alt="小島四人" loading="lazy">
+        <span class="room-price">NT$6,800 起</span>
+        <div class="room-overlay"><div class="room-en">ISLAND QUAD · PET FRIENDLY</div><div class="room-name">小島四人</div><div class="room-meta">45m² · 獨立別墅 · 寵物友善</div></div>
+      </div>
+      <div class="room-card fade-in">
+        <img src="https://villa.loherb.com.tw/images/room-types/01_Economy_Double/1.webp?v=2" alt="經典雙人" loading="lazy">
+        <span class="room-price">NT$3,200 起</span>
+        <div class="room-overlay"><div class="room-en">ECONOMY DOUBLE</div><div class="room-name">經典雙人</div><div class="room-meta">26m² · 雙人床 · 溫馨舒適</div></div>
+      </div>
+      <div class="room-card fade-in">
+        <img src="https://villa.loherb.com.tw/images/room-types/02_Luxury_Double/1.webp?v=2" alt="豪華雙人" loading="lazy">
+        <span class="room-price">NT$4,200 起</span>
+        <div class="room-overlay"><div class="room-en">LUXURY DOUBLE</div><div class="room-name">豪華雙人</div><div class="room-meta">33m² · King Size · 景觀窗</div></div>
+      </div>
+      <div class="room-card fade-in">
+        <img src="https://villa.loherb.com.tw/images/room-types/04_Casual_Double/1.webp?v=2" alt="悠閒雙人" loading="lazy">
+        <span class="room-price">NT$3,800 起</span>
+        <div class="room-overlay"><div class="room-en">CASUAL DOUBLE</div><div class="room-name">悠閒雙人</div><div class="room-meta">30m² · 雙人床 · 自在空間</div></div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:2.5rem;">
+      <a href="rooms.html" class="btn-gold" style="border-color:var(--gold);">瀏覽全部房型</a>
+    </div>
+  </section>
+
+  <!-- BOOKING CTA -->
+  <div class="cta-banner"><h3 class="section-title">開始您的日光旅程</h3><a href="contact.html">即刻預定</a></div>
+
+  <!-- CELEBRATIONS -->
+  <section class="split" id="celebrations">
+    <div class="split-text fade-in" style="background: var(--lavender);">
+      <p class="section-label" style="color:var(--berry);">Celebrations</p>
+      <h2 class="section-title">與你的每一天<br>都是紀念日</h2>
+      <p class="section-desc">每一個節日，每一個紀念日，都是最珍貴的瞬間。在日光綠築，我們可以為您做房間佈置，搭配投影布幕影片驚喜。還能安排氣氛絕佳的私廚餐廳，一同舉杯慶祝。</p>
+      <p class="poetic" style="color:var(--berry);">在這裏成為家人</p>
+    </div>
+    <div class="split-img"><img src="https://villa.loherb.com.tw/images/home_celebration.jpg" alt="Celebration" loading="lazy"></div>
+  </section>
+
+  <!-- WEDDING -->
+  <div class="full-image" style="height:75vh;">
+    <img src="https://villa.loherb.com.tw/images/home_wedding.jpg" alt="Wedding" loading="lazy">
+    <div class="overlay-text fade-in">
+      <p class="section-label" style="color:var(--gold);">Wedding</p>
+      <h2 class="section-title" style="color:var(--warm-white);font-size:2rem;">在日光 許一世承諾</h2>
+      <a href="../wedding/index.html" class="btn-gold" style="margin-top:1rem;">婚宴觀禮</a>
+    </div>
+  </div>
+
+  <!-- PET -->
+  <section class="split">
+    <div class="split-img"><img src="https://villa.loherb.com.tw/images/home_cuisine.jpg" alt="Cuisine" loading="lazy"></div>
+    <div class="split-text fade-in" style="background:var(--olive);color:var(--warm-white);">
+      <p class="section-label" style="color:var(--fog-gold);">Cuisine</p>
+      <h2 class="section-title" style="color:var(--warm-white);">品嚐星級美食<br>來場舌尖旅行</h2>
+      <p class="section-desc" style="color:rgba(250,242,240,0.5);">日光私廚以在地食材詮釋當代料理，每一道菜都是對土地的致敬。從產地到餐桌，讓味蕾感受最純粹的滋味。</p>
+      <a href="https://cuisine.loherb.com.tw" class="btn-gold" style="margin-top:2rem;width:fit-content;">日光私廚</a>
+    </div>
+  </section>
+
+  <!-- SPA & RELAXATION -->
+  <div class="full-image" style="height:55vh;">
+    <img src="https://villa.loherb.com.tw/images/room-types/05_Garden_Double/1.webp?v=2" alt="放鬆身心" loading="lazy">
+    <div class="overlay-text fade-in">
+      <p class="poetic" style="color:rgba(250,242,240,0.85);font-size:1.1rem;">讓身心回歸最自然的頻率</p>
+    </div>
+  </div>
+
+  <!-- PET FRIENDLY -->
+  <div class="full-image" style="height:65vh;">
+    <img src="https://villa.loherb.com.tw/images/room-types/10_Garden_Quad/2.webp?v=2" alt="Pet Friendly" loading="lazy">
+    <div class="overlay-text fade-in">
+      <p class="section-label" style="color:var(--rose);">Pet-Friendly</p>
+      <h2 class="section-title" style="color:var(--blush);font-size:2rem;">毛小孩也是重要家人</h2>
+      <p style="color:rgba(250,241,239,0.65);font-size:0.88rem;max-width:500px;margin:0 auto;line-height:2.2;font-weight:300;">日光度假村寵物友善，提供獨立A館小島四人房住宿與F館大廳區用餐，寵物與一般客人分流，確保彼此不受干擾。</p>
+    </div>
+  </div>
+
+  <!-- TEA TIME -->
+  <div class="full-image" style="height:65vh;">
+    <img src="https://villa.loherb.com.tw/images/home_teatime.jpg" alt="Tea Time" loading="lazy">
+    <div class="overlay-text fade-in">
+      <p class="poetic" style="color:rgba(250,242,240,0.85);font-size:1.1rem;">享受日光時刻，偷閒慵懶午後</p>
+      <a href="../party/index.html" class="btn-gold" style="margin-top:1.5rem;">午茶派對</a>
+    </div>
+  </div>
+
+  <!-- JOURNAL -->
+  <section style="background:var(--cream);padding:5rem 4rem;" id="journal">
+    <div style="text-align:center;margin-bottom:3rem;" class="fade-in"><p class="section-label">Journal</p><h2 class="section-title">日光札記</h2></div>
+    <div class="journal-grid">
+      <a href="journal.html" class="journal-card fade-in">
+        <div class="journal-thumb"><img src="https://admin.loherb.com.tw/media/7376/conversions/蜊埤湖1-jamielinnn_-thumb.jpg" alt="" loading="lazy"></div>
+        <p class="journal-date">09 APR 2026</p><h4>宜蘭春日提案：盤點 5 個野餐首選寶藏聖地</h4>
+      </a>
+      <a href="journal.html" class="journal-card fade-in">
+        <div class="journal-thumb"><img src="https://images.unsplash.com/photo-1763202364530-b8d9ce87af18?w=600&q=80&auto=format&fit=crop" alt="宜蘭一日遊" loading="lazy"></div>
+        <p class="journal-date">08 FEB 2026</p><h4>2026 宜蘭一日遊景點懶人包</h4>
+      </a>
+      <a href="journal.html" class="journal-card fade-in">
+        <div class="journal-thumb"><img src="https://images.unsplash.com/photo-1750943082258-19073a2fe5b8?w=600&q=80&auto=format&fit=crop" alt="一泊二食" loading="lazy"></div>
+        <p class="journal-date">08 FEB 2026</p><h4>一泊二食一泊三食 宜蘭食宿雙享受</h4>
+      </a>
+    </div>
+  </section>
+
+  <!-- INSTAGRAM -->
+  <section style="background:var(--warm-white);padding:4rem;text-align:center;">
+    <div class="fade-in" style="margin-bottom:2rem;"><p class="section-label">Instagram</p><h2 class="section-title" style="font-size:1.3rem;">@loherb_yilan</h2></div>
+    <div class="ig-grid">
+      <div><img src="https://admin.loherb.com.tw/images/ig-photos/villa/20240509-1.jpg" alt="" loading="lazy"></div>
+      <div><img src="https://admin.loherb.com.tw/images/ig-photos/villa/20240509-2.jpg" alt="" loading="lazy"></div>
+      <div><img src="https://admin.loherb.com.tw/images/ig-photos/villa/20240509-3.jpg" alt="" loading="lazy"></div>
+      <div><img src="https://admin.loherb.com.tw/images/ig-photos/villa/20240509-4.jpg" alt="" loading="lazy"></div>
+      <div><img src="https://admin.loherb.com.tw/images/ig-photos/villa/20240509-5.jpg" alt="" loading="lazy"></div>
+      <div><img src="https://admin.loherb.com.tw/images/ig-photos/villa/20240509-6.jpg" alt="" loading="lazy"></div>
+      <div><img src="https://admin.loherb.com.tw/images/ig-photos/villa/20240509-7.jpg" alt="" loading="lazy"></div>
+      <div><img src="https://admin.loherb.com.tw/images/ig-photos/villa/20240509-8.jpg" alt="" loading="lazy"></div>
+    </div>
+    <a href="https://www.instagram.com/loherb_yilan" target="_blank" class="btn-gold" style="margin-top:2rem;border-color:var(--charcoal);color:var(--charcoal);">追蹤我們</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-main" id="contact">
+      <div class="footer-logo">
+        <span class="zh">日</span><span class="en">LOHERB</span><span class="zh">光</span>
+        <p class="footer-tagline">為人與自然搭起橋樑。<br>一群懷抱理想初衷的人，<br>打造隨四季變化，有生命的綠建築。</p>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <p>+886-3-959-5685</p>
+        <a href="mailto:service@loherb.com.tw">service@loherb.com.tw</a>
+        <p>客服時間 08:00 ~ 20:00</p>
+        <p style="margin-top:0.8rem;">(269) 宜蘭縣冬山鄉寶福路386號</p>
+      </div>
+      <div class="footer-col">
+        <h5>Group</h5>
+        <a href="https://villa.loherb.com.tw">日光綠築 Villa</a>
+        <a href="https://cuisine.loherb.com.tw">日光私廚 Cuisine</a>
+        <a href="https://party.loherb.com.tw">日光時刻 Party</a>
+        <a href="https://dearbb.design">日光文創 Dear BB</a>
+        <a href="https://estate.loherb.com.tw">日光物業 Estate</a>
+      </div>
+    </div>
+    <div class="footer-bottom">&copy; 2026 日光 LOHERB. All rights reserved. 宜蘭民宿 No.2019 & No.2723</div>
+  </footer>
+
+  <script>
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 80); });
+  </script>
+</body>
+</html>

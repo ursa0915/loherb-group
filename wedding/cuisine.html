@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>婚宴料理 — 日光婚禮 LOHERB Wedding</title>
+  <meta name="description" content="日光婚禮婚宴料理：西式套餐、中式桌菜、下午茶派對、甜點桌，由國際主廚以在地食材打造頂級婚宴饗宴。">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200;300;400;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --champagne: #C9A96E;
+      --champagne-light: #F5ECD7;
+      --ivory: #FFFDF5;
+      --gold: #E6A401;
+      --warm-white: #FFFDF5;
+      --charcoal: #505350;
+      --charcoal-deep: #3A3C3A;
+      --champagne-dark: #A68B4B;
+      --gold-soft: rgba(230, 164, 1, 0.15);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Noto Serif TC', 'Source Han Serif TC', Georgia, serif;
+      color: var(--charcoal);
+      background: var(--ivory);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ========================================
+       NAVIGATION
+    ======================================== */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.4rem 4rem;
+      background: transparent;
+      transition: background 0.5s, backdrop-filter 0.5s;
+    }
+    nav.scrolled {
+      background: rgba(255, 253, 245, 0.82);
+      backdrop-filter: blur(20px) saturate(1.2);
+      -webkit-backdrop-filter: blur(20px) saturate(1.2);
+      box-shadow: 0 1px 20px rgba(201, 169, 110, 0.10);
+    }
+    .nav-logo { display: flex; flex-direction: column; align-items: center; text-decoration: none; line-height: 1; gap: 0.08rem; }
+    .nav-logo .zh-top { font-size: 1.1rem; font-weight: 500; color: var(--gold); letter-spacing: 0.2em; }
+    .nav-logo .en { font-family: 'Bodoni 72', 'Bodoni Moda', Georgia, serif; font-size: 0.45rem; letter-spacing: 0.35em; padding-left: 0.35em; color: var(--gold); text-transform: uppercase; }
+    .nav-logo .zh-bottom { font-size: 1.1rem; font-weight: 500; color: var(--gold); letter-spacing: 0.2em; }
+    .nav-links { display: flex; gap: 2.2rem; align-items: center; }
+    .nav-links a { text-decoration: none; font-size: 0.78rem; letter-spacing: 0.12em; color: rgba(255, 253, 245, 0.65); transition: color 0.5s; }
+    nav.scrolled .nav-links a { color: rgba(80, 83, 80, 0.65); }
+    nav.scrolled .nav-logo .zh-top, nav.scrolled .nav-logo .zh-bottom { color: var(--gold); }
+    nav.scrolled .nav-logo .en { color: var(--gold); }
+    nav.scrolled .nav-toggle span { background: var(--charcoal); }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta { padding: 0.5rem 1.6rem !important; border: 1px solid var(--gold) !important; color: var(--gold) !important; font-size: 0.72rem !important; letter-spacing: 0.2em !important; transition: all 0.3s !important; }
+    .nav-cta:hover { background: var(--gold) !important; color: var(--ivory) !important; }
+    nav.scrolled .nav-cta { border-color: var(--gold) !important; color: var(--gold) !important; }
+    nav.scrolled .nav-cta:hover { background: var(--gold) !important; color: var(--ivory) !important; }
+    .nav-toggle { display: none; background: none; border: none; cursor: pointer; width: 28px; height: 20px; position: relative; z-index: 1001; }
+    .nav-toggle span { display: block; width: 100%; height: 1px; background: var(--ivory); position: absolute; left: 0; transition: all 0.5s; }
+    .nav-toggle span:nth-child(1) { top: 0; }
+    .nav-toggle span:nth-child(2) { top: 50%; }
+    .nav-toggle span:nth-child(3) { top: 100%; }
+    .nav-toggle.active span:nth-child(1) { top: 50%; transform: rotate(45deg); }
+    .nav-toggle.active span:nth-child(2) { opacity: 0; }
+    .nav-toggle.active span:nth-child(3) { top: 50%; transform: rotate(-45deg); }
+
+    /* ========================================
+       SHARED STYLES
+    ======================================== */
+    .section-label { font-family: Georgia, 'Bodoni 72', serif; font-size: 0.58rem; letter-spacing: 0.55em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.8rem; }
+    .section-title { font-size: 1.8rem; font-weight: 700; line-height: 1.7; margin-bottom: 1.2rem; letter-spacing: 0.05em; color: var(--champagne); }
+    .section-desc { font-size: 0.9rem; line-height: 2.3; font-weight: 300; max-width: 520px; letter-spacing: 0.02em; color: rgba(80, 83, 80, 0.55); }
+    .btn-gold { display: inline-block; padding: 0.8rem 2.8rem; border: 1px solid var(--gold); color: var(--gold); text-decoration: none; font-size: 0.75rem; letter-spacing: 0.3em; transition: all 0.4s; }
+    .btn-gold:hover { background: var(--gold); color: var(--ivory); }
+
+    /* ========================================
+       PAGE HERO
+    ======================================== */
+    .page-hero {
+      height: 70vh; min-height: 500px;
+      position: relative; overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--charcoal-deep);
+    }
+    .page-hero-bg {
+      position: absolute; inset: 0;
+      background: url('images/Gemini_Generated_Image_kkgdqkkgdqkkgdqk.png') center/cover no-repeat;
+    }
+    .page-hero-content {
+      position: relative; z-index: 1;
+      text-align: center; color: var(--ivory);
+      padding: 4rem 5rem;
+    }
+    .page-hero-content::before {
+      content: ''; position: absolute; inset: 0; z-index: -1;
+      background: rgba(0, 0, 0, 0.32);
+      backdrop-filter: blur(14px) saturate(1.1);
+      -webkit-backdrop-filter: blur(14px) saturate(1.1);
+      -webkit-mask-image: radial-gradient(ellipse 50% 70% at center,rgba(0,0,0,1) 0%,rgba(0,0,0,0.92) 12%,rgba(0,0,0,0.74) 26%,rgba(0,0,0,0.5) 42%,rgba(0,0,0,0.28) 58%,rgba(0,0,0,0.13) 72%,rgba(0,0,0,0.05) 84%,rgba(0,0,0,0.01) 94%,rgba(0,0,0,0) 100%);
+      mask-image: radial-gradient(ellipse 50% 70% at center,rgba(0,0,0,1) 0%,rgba(0,0,0,0.92) 12%,rgba(0,0,0,0.74) 26%,rgba(0,0,0,0.5) 42%,rgba(0,0,0,0.28) 58%,rgba(0,0,0,0.13) 72%,rgba(0,0,0,0.05) 84%,rgba(0,0,0,0.01) 94%,rgba(0,0,0,0) 100%);
+    }
+    .page-hero-content .section-label { color: var(--gold); text-shadow: 0 1px 8px rgba(0,0,0,0.4); }
+    .page-hero-content h1 {
+      font-size: 3rem; font-weight: 900; letter-spacing: 0.3em; line-height: 1.3;
+      color: var(--ivory); text-shadow: 0 2px 24px rgba(0,0,0,0.5), 0 1px 8px rgba(0,0,0,0.3); margin-bottom: 1rem;
+    }
+    .page-hero-content h1 span {
+      display: block; font-family: Georgia, 'Bodoni 72', serif;
+      font-size: 0.8rem; letter-spacing: 0.6em;
+      color: var(--gold); font-weight: 400; margin-top: 0.5rem;
+      text-shadow: 0 2px 16px rgba(0,0,0,0.5);
+    }
+    .page-hero-content p {
+      font-size: 0.9rem; font-weight: 300;
+      color: rgba(255, 253, 245, 0.95); letter-spacing: 0.15em;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.4);
+    }
+
+    /* ========================================
+       MENU SPLIT SECTIONS
+    ======================================== */
+    .menu-split {
+      display: grid; grid-template-columns: 1fr 1fr;
+      min-height: 80vh;
+    }
+    .menu-split-img {
+      position: relative; overflow: hidden;
+    }
+    .menu-split-img img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 8s ease;
+    }
+    .menu-split-img:hover img { transform: scale(1.04); }
+    .menu-split-text {
+      display: flex; flex-direction: column;
+      justify-content: center;
+      padding: 5rem 5.5rem;
+    }
+    .menu-split-text .menu-en {
+      font-family: Georgia, 'Bodoni 72', serif;
+      font-size: 0.6rem; letter-spacing: 0.5em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 0.6rem;
+    }
+    .menu-split-text h2 {
+      font-size: 1.8rem; font-weight: 700;
+      color: var(--champagne); line-height: 1.5;
+      margin-bottom: 0.5rem; letter-spacing: 0.08em;
+    }
+    .menu-price {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      padding: 0.35rem 1rem;
+      font-size: 0.75rem; letter-spacing: 0.1em; font-weight: 600;
+      border: 1px solid var(--gold); color: var(--gold);
+      font-family: Georgia, 'Bodoni 72', serif;
+      border-radius: 2px; margin-bottom: 1.5rem;
+      width: fit-content;
+    }
+    .menu-split-text .menu-desc {
+      font-size: 0.88rem; line-height: 2.4; font-weight: 300;
+      color: rgba(80, 83, 80, 0.6); max-width: 440px;
+      margin-bottom: 1.5rem;
+    }
+    .menu-highlights {
+      display: flex; flex-wrap: wrap; gap: 0.6rem;
+      margin-bottom: 2rem;
+    }
+    .menu-highlights .chip {
+      display: inline-flex; align-items: center; gap: 0.3rem;
+      padding: 0.3rem 0.8rem;
+      font-size: 0.65rem; letter-spacing: 0.05em; font-weight: 300;
+      border: 1px solid rgba(80,83,80,0.12); border-radius: 2px;
+      color: rgba(80,83,80,0.6);
+    }
+
+    /* Dark background */
+    .menu-split-text.dark-bg h2 { color: var(--champagne-light); }
+    .menu-split-text.dark-bg .menu-desc { color: rgba(255, 253, 245, 0.5); }
+    .menu-split-text.dark-bg .chip { border-color: rgba(255,253,245,0.15); color: rgba(255,253,245,0.5); }
+
+    /* ========================================
+       MENU DIVIDER
+    ======================================== */
+    .menu-divider {
+      text-align: center; padding: 3rem 2rem;
+      background: var(--charcoal-deep);
+    }
+    .menu-divider .divider-line {
+      width: 40px; height: 1px;
+      background: var(--gold); margin: 0 auto 1rem;
+    }
+    .menu-divider p {
+      font-family: Georgia, 'Bodoni 72', serif;
+      font-size: 0.6rem; letter-spacing: 0.5em;
+      text-transform: uppercase; color: var(--champagne);
+    }
+
+    /* ========================================
+       BEVERAGE SECTION
+    ======================================== */
+    .beverage-section {
+      background: var(--champagne-light);
+      padding: 7rem 4rem;
+    }
+    .beverage-header {
+      text-align: center; margin-bottom: 4.5rem;
+    }
+    .beverage-header .section-desc {
+      margin: 0 auto; text-align: center;
+    }
+    .beverage-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      max-width: 1000px; margin: 0 auto;
+      border-top: 1px solid rgba(201, 169, 110, 0.15);
+    }
+    .beverage-item {
+      text-align: center;
+      padding: 3rem 2rem;
+      border-right: 1px solid rgba(201, 169, 110, 0.15);
+      border-bottom: 1px solid rgba(201, 169, 110, 0.15);
+      transition: background 0.4s;
+    }
+    .beverage-item:nth-child(3n) { border-right: none; }
+    .beverage-item:hover { background: rgba(201, 169, 110, 0.1); }
+    .beverage-icon {
+      font-size: 1.4rem; margin-bottom: 1rem;
+      opacity: 0.7; color: var(--champagne);
+    }
+    .beverage-item h4 {
+      font-size: 0.88rem; font-weight: 600;
+      color: var(--charcoal); letter-spacing: 0.08em;
+      margin-bottom: 0.4rem;
+    }
+    .beverage-item .en-label {
+      font-family: Georgia, 'Bodoni 72', serif;
+      font-size: 0.55rem; letter-spacing: 0.3em;
+      color: var(--gold); text-transform: uppercase;
+      margin-bottom: 0.8rem;
+    }
+    .beverage-item p {
+      font-size: 0.72rem; color: rgba(80, 83, 80, 0.5);
+      line-height: 1.9; font-weight: 300;
+    }
+
+    /* ========================================
+       CHEF SECTION
+    ======================================== */
+    .chef-section {
+      display: grid; grid-template-columns: 1fr 1fr;
+      min-height: 60vh;
+    }
+    .chef-img {
+      position: relative; overflow: hidden;
+    }
+    .chef-img img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 8s ease;
+    }
+    .chef-img:hover img { transform: scale(1.04); }
+    .chef-text {
+      display: flex; flex-direction: column;
+      justify-content: center;
+      padding: 5rem 5.5rem;
+      background: var(--charcoal-deep);
+    }
+    .chef-text .section-title { color: var(--champagne-light); }
+    .chef-text .section-desc { color: rgba(255, 253, 245, 0.5); }
+
+    /* ========================================
+       CTA SECTION
+    ======================================== */
+    .cta-section {
+      background: var(--ivory);
+      text-align: center;
+      padding: 7rem 2rem;
+      position: relative; overflow: hidden;
+    }
+    .cta-section::before {
+      content: ''; position: absolute; inset: 0;
+      background: url('https://party.loherb.com.tw/images/home/events_party.png') center/cover no-repeat;
+      opacity: 0.3;
+    }
+    .cta-text-wrap {
+      position: relative;
+      display: inline-block;
+      background: rgba(255, 253, 245, 0.08);
+      backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+      padding: 2rem 3rem;
+      -webkit-mask-image: radial-gradient(ellipse 60% 95% at center,rgba(0,0,0,0.9) 0%,rgba(0,0,0,0.82) 18%,rgba(0,0,0,0.66) 34%,rgba(0,0,0,0.46) 50%,rgba(0,0,0,0.26) 66%,rgba(0,0,0,0.12) 80%,rgba(0,0,0,0.04) 90%,rgba(0,0,0,0.01) 97%,rgba(0,0,0,0) 100%);
+      mask-image: radial-gradient(ellipse 60% 95% at center,rgba(0,0,0,0.9) 0%,rgba(0,0,0,0.82) 18%,rgba(0,0,0,0.66) 34%,rgba(0,0,0,0.46) 50%,rgba(0,0,0,0.26) 66%,rgba(0,0,0,0.12) 80%,rgba(0,0,0,0.04) 90%,rgba(0,0,0,0.01) 97%,rgba(0,0,0,0) 100%);
+    }
+
+    /* ========================================
+       FOOTER
+    ======================================== */
+    .footer-main {
+      background: var(--charcoal-deep);
+      display: grid; grid-template-columns: 1fr 1fr 1fr;
+      padding: 5rem 4rem; gap: 3rem;
+    }
+    .footer-logo-block { display: flex; flex-direction: column; align-items: center; }
+    .footer-logo-block .zh { font-size: 2rem; font-weight: 500; color: var(--champagne-light); line-height: 1.2; }
+    .footer-logo-block .en { font-family: 'Bodoni 72', 'Bodoni Moda', Georgia, serif; font-size: 0.58rem; letter-spacing: 0.35em; padding-left: 0.35em; color: var(--gold); margin-top: 0.3rem; display: block; text-transform: uppercase; }
+    .footer-tagline { font-size: 0.78rem; color: rgba(255, 253, 245, 0.35); margin-top: 1.5rem; line-height: 2; font-weight: 300; }
+    .footer-col h5 { font-family: 'Bodoni 72', 'Bodoni Moda', Georgia, serif; font-size: 0.58rem; letter-spacing: 0.35em; color: var(--gold); text-transform: uppercase; margin-bottom: 1.5rem; }
+    .footer-col p, .footer-col a { font-size: 0.78rem; color: rgba(255, 253, 245, 0.45); line-height: 2.2; text-decoration: none; font-weight: 300; display: block; }
+    .footer-col a:hover { color: var(--gold); }
+    .footer-bottom { background: var(--charcoal-deep); border-top: 1px solid rgba(255, 253, 245, 0.06); text-align: center; padding: 1.5rem; font-size: 0.6rem; color: rgba(255, 253, 245, 0.2); letter-spacing: 0.1em; }
+
+    /* ========================================
+       ANIMATIONS
+    ======================================== */
+    .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 1s ease, transform 1s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    .fade-in-slow { opacity: 0; transform: translateY(20px); transition: opacity 1.4s ease, transform 1.4s ease; }
+    .fade-in-slow.visible { opacity: 1; transform: translateY(0); }
+    .stagger-children .fade-in:nth-child(1) { transition-delay: 0s; }
+    .stagger-children .fade-in:nth-child(2) { transition-delay: 0.15s; }
+    .stagger-children .fade-in:nth-child(3) { transition-delay: 0.3s; }
+    .stagger-children .fade-in:nth-child(4) { transition-delay: 0.45s; }
+    .stagger-children .fade-in:nth-child(5) { transition-delay: 0.6s; }
+    .stagger-children .fade-in:nth-child(6) { transition-delay: 0.75s; }
+
+    /* ========================================
+       RESPONSIVE
+    ======================================== */
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.8rem; }
+      .nav-links {
+        position: fixed; top: 0; right: -100%;
+        width: 75%; max-width: 320px; height: 100vh;
+        background: rgba(255, 253, 245, 0.97);
+        backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+        flex-direction: column; justify-content: center;
+        align-items: center; gap: 2rem; transition: right 0.4s ease;
+      }
+      .nav-links.open { right: 0; }
+      .nav-links a { font-size: 0.9rem; color: rgba(80, 83, 80, 0.7); }
+      .nav-toggle { display: block; }
+
+      .page-hero { height: 55vh; }
+      .page-hero-content { padding: 3rem 3rem; }
+      .page-hero-content h1 { font-size: 2.2rem; letter-spacing: 0.2em; }
+
+      .menu-split { grid-template-columns: 1fr; }
+      .menu-split-img { min-height: 50vh; }
+      .menu-split-text { padding: 4rem 2rem; }
+
+      .beverage-section { padding: 5rem 2rem; }
+      .beverage-grid { grid-template-columns: 1fr; }
+      .beverage-item { border-right: none !important; }
+
+      .chef-section { grid-template-columns: 1fr; }
+      .chef-img { min-height: 50vh; }
+      .chef-text { padding: 4rem 2rem; }
+
+      .section-title { font-size: 1.4rem; }
+      .footer-main { grid-template-columns: 1fr; padding: 3rem 2rem; }
+    }
+
+    @media (max-width: 480px) {
+      .page-hero-content h1 { font-size: 1.8rem; letter-spacing: 0.15em; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ====== NAVIGATION ====== -->
+  <nav id="nav">
+    <a href="index.html" class="nav-logo">
+      <span class="zh-top">日</span>
+      <span class="en">LOHERB</span>
+      <span class="zh-bottom">光</span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links" id="navLinks">
+      <a href="venues.html">婚禮場地</a>
+      <a href="experience.html">客製體驗</a>
+      <a href="cuisine.html">婚宴料理</a>
+      <a href="contact.html" class="nav-cta">預約諮詢</a>
+    </div>
+  </nav>
+
+  <!-- ====== PAGE HERO ====== -->
+  <section class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="page-hero-content fade-in">
+      <p class="section-label">Wedding Dining</p>
+      <h1>婚宴料理<span>Culinary Excellence</span></h1>
+      <p>以在地食材詮釋當代料理，每一道菜都是對土地的致敬</p>
+    </div>
+  </section>
+
+  <!-- ====== WESTERN SET MENU ====== -->
+  <section class="menu-split fade-in">
+    <div class="menu-split-img">
+      <img src="https://cuisine.loherb.com.tw/images/home/dine.avif" alt="西式套餐" loading="lazy">
+    </div>
+    <div class="menu-split-text" style="background: var(--champagne-light);">
+      <p class="menu-en">Western Course Menu</p>
+      <h2>西式套餐</h2>
+      <span class="menu-price">NT$1,800+ / 人</span>
+      <p class="menu-desc">
+        由主廚精心設計的西式婚宴套餐，
+        從開胃前菜到主菜甜點，每一道料理
+        都是以宜蘭在地食材為基底的當代法式饗宴。
+      </p>
+      <div class="menu-highlights">
+        <span class="chip">前菜沙拉</span>
+        <span class="chip">濃湯</span>
+        <span class="chip">海鮮料理</span>
+        <span class="chip">主菜肉品</span>
+        <span class="chip">手工甜點</span>
+        <span class="chip">咖啡茶飲</span>
+      </div>
+      <a href="contact.html" class="btn-gold">洽詢菜單</a>
+    </div>
+  </section>
+
+  <div class="menu-divider">
+    <div class="divider-line"></div>
+    <p>Outdoor BBQ</p>
+  </div>
+
+  <!-- ====== OUTDOOR BBQ ====== -->
+  <section class="menu-split fade-in">
+    <div class="menu-split-text" style="background: var(--ivory);">
+      <p class="menu-en">Outdoor BBQ</p>
+      <h2>戶外烤肉</h2>
+      <span class="menu-price">NT$1,200+ / 人</span>
+      <p class="menu-desc">
+        在草坪上享受最豪邁的婚禮饗宴，
+        現場炭火直烤頂級肉品與海鮮，
+        搭配主廚特製醃料與烤蔬，
+        在煙火氣中盡情歡聚。
+      </p>
+      <div class="menu-highlights">
+        <span class="chip">炭烤戰斧牛排</span>
+        <span class="chip">伊比利豬</span>
+        <span class="chip">活跳跳海鮮</span>
+        <span class="chip">主廚醃料</span>
+        <span class="chip">烤蔬與烤物</span>
+        <span class="chip">啤酒暢飲</span>
+      </div>
+      <a href="contact.html" class="btn-gold">洽詢菜單</a>
+    </div>
+    <div class="menu-split-img">
+      <img src="images/Gemini_Generated_Image_kotj6jkotj6jkotj.png" alt="戶外烤肉" loading="lazy">
+    </div>
+  </section>
+
+  <div class="menu-divider">
+    <div class="divider-line"></div>
+    <p>Cocktail Reception</p>
+  </div>
+
+  <!-- ====== COCKTAIL RECEPTION ====== -->
+  <section class="menu-split fade-in">
+    <div class="menu-split-img">
+      <img src="images/different-fresh-snacks-before-event-top-view.jpg" alt="輕食雞尾酒宴" loading="lazy">
+    </div>
+    <div class="menu-split-text" style="background: var(--champagne-light);">
+      <p class="menu-en">Cocktail Reception</p>
+      <h2>輕食雞尾酒宴</h2>
+      <span class="menu-price">NT$880+ / 人</span>
+      <p class="menu-desc">
+        以站立式酒會形式登場的浪漫派對，
+        精緻 finger food 搭配主廚現場調製的特調雞尾酒，
+        讓賓客自在交流，氣氛輕鬆而優雅。
+      </p>
+      <div class="menu-highlights">
+        <span class="chip">主廚 Canapé</span>
+        <span class="chip">生蠔吧檯</span>
+        <span class="chip">義式火腿盤</span>
+        <span class="chip">調酒師現調</span>
+        <span class="chip">香檳塔</span>
+        <span class="chip">無酒精特調</span>
+      </div>
+      <a href="contact.html" class="btn-gold">洽詢菜單</a>
+    </div>
+  </section>
+
+  <div class="menu-divider">
+    <div class="divider-line"></div>
+    <p>Dessert Table</p>
+  </div>
+
+  <!-- ====== DESSERT TABLE ====== -->
+  <section class="menu-split fade-in">
+    <div class="menu-split-text dark-bg" style="background: var(--charcoal-deep);">
+      <p class="menu-en">Dessert Table</p>
+      <h2>甜點桌</h2>
+      <p class="menu-desc" style="margin-bottom: 1.5rem;">
+        華麗的甜點桌是婚禮最甜蜜的風景，
+        主廚手工製作的馬卡龍、杯子蛋糕、
+        法式泡芙塔與巧克力噴泉，
+        為您的婚禮增添夢幻色彩。
+      </p>
+      <div class="menu-highlights">
+        <span class="chip">婚禮蛋糕</span>
+        <span class="chip">馬卡龍塔</span>
+        <span class="chip">杯子蛋糕</span>
+        <span class="chip">法式泡芙</span>
+        <span class="chip">巧克力噴泉</span>
+        <span class="chip">手工餅乾</span>
+      </div>
+      <a href="contact.html" class="btn-gold">洽詢甜點方案</a>
+    </div>
+    <div class="menu-split-img">
+      <img src="images/semi.jpg" alt="甜點桌" loading="lazy">
+    </div>
+  </section>
+
+  <!-- ====== BEVERAGE PACKAGES ====== -->
+  <section class="beverage-section">
+    <div class="beverage-header fade-in">
+      <p class="section-label">Wine & Beverage</p>
+      <h2 class="section-title">酒水飲品方案</h2>
+      <p class="section-desc">為您的婚宴搭配最適合的酒水組合。</p>
+    </div>
+    <div class="beverage-grid stagger-children">
+      <div class="beverage-item fade-in">
+        <div class="beverage-icon">&#9671;</div>
+        <h4>香檳紅白酒</h4>
+        <p class="en-label">Champagne & Wine</p>
+        <p>精選法國香檳<br>搭配紅白酒暢飲方案</p>
+      </div>
+      <div class="beverage-item fade-in">
+        <div class="beverage-icon">&#9671;</div>
+        <h4>精釀啤酒</h4>
+        <p class="en-label">Craft Beer</p>
+        <p>宜蘭在地精釀<br>及國際精選啤酒</p>
+      </div>
+      <div class="beverage-item fade-in">
+        <div class="beverage-icon">&#9671;</div>
+        <h4>無酒精飲品</h4>
+        <p class="en-label">Non-Alcoholic</p>
+        <p>手作果汁、氣泡飲<br>特調 Mocktail</p>
+      </div>
+      <div class="beverage-item fade-in">
+        <div class="beverage-icon">&#9671;</div>
+        <h4>咖啡吧台</h4>
+        <p class="en-label">Coffee Bar</p>
+        <p>現沖手沖咖啡<br>拿鐵拉花體驗</p>
+      </div>
+      <div class="beverage-item fade-in">
+        <div class="beverage-icon">&#9671;</div>
+        <h4>茶席體驗</h4>
+        <p class="en-label">Tea Ceremony</p>
+        <p>台灣高山茶<br>搭配茶食品茗</p>
+      </div>
+      <div class="beverage-item fade-in">
+        <div class="beverage-icon">&#9671;</div>
+        <h4>調酒師駐場</h4>
+        <p class="en-label">Bartender Service</p>
+        <p>專業調酒師現場調製<br>客製化婚禮特調</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== FOOTER ====== -->
+  <footer>
+    <div class="footer-main">
+      <div class="footer-logo-block">
+        <span class="zh">日</span><span class="en">LOHERB</span><span class="zh">光</span>
+        <p class="footer-tagline">
+          在稻田與落羽松之間，<br>
+          許下一生的承諾。<br>
+          日光婚禮，為愛而生。
+        </p>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <p>+886-3-959-5685</p>
+        <a href="mailto:service@loherb.com.tw">service@loherb.com.tw</a>
+        <p>客服時間 09:00 - 18:00</p>
+        <p style="margin-top:0.8rem;">(269) 宜蘭縣冬山鄉寶福路386號</p>
+      </div>
+      <div class="footer-col">
+        <h5>Group</h5>
+        <a href="https://villa.loherb.com.tw">日光綠築 Villa</a>
+        <a href="https://cuisine.loherb.com.tw">日光私廚 Cuisine</a>
+        <a href="https://party.loherb.com.tw">日光時刻 Party</a>
+        <a href="https://dearbb.design">日光文創 Dear BB</a>
+        <a href="https://estate.loherb.com.tw">日光物業 Estate</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 日光婚禮 LOHERB Wedding. All rights reserved. Part of LOHERB Group.
+    </div>
+  </footer>
+
+  <!-- ====== SCRIPTS ====== -->
+  <script>
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
+      },
+      { threshold: 0.08, rootMargin: '0px 0px -40px 0px' }
+    );
+    document.querySelectorAll('.fade-in, .fade-in-slow').forEach((el) => observer.observe(el));
+
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    navToggle.addEventListener('click', () => {
+      navToggle.classList.toggle('active');
+      navLinks.classList.toggle('open');
+    });
+    navLinks.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        navToggle.classList.remove('active');
+        navLinks.classList.remove('open');
+      });
+    });
+  </script>
+</body>
+</html>

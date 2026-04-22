@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>日光團隊 — 日光時刻 LOHERB Party</title>
+  <meta name="description" content="專業活動企劃團隊，從諮詢、企劃、佈置、執行到紀錄，一站式服務讓您只管盡興。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --deep-teal: #304C4C; --dried-rose: #A27678; --rose-pink: #DE7E93;
+      --blush-white: #FAF1EF; --brand-gold: #E6A401; --charcoal: #505350;
+      --white: #FFFFFF;
+      --font-en: 'Bodoni 72', 'Bodoni Moda', Georgia, serif;
+      --font-zh: 'Noto Serif TC', serif;
+    }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body { font-family: var(--font-zh); color: var(--charcoal); background: var(--white); line-height: 1.8; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+
+    .navbar { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; padding: 1.2rem 2rem; display: flex; align-items: center; justify-content: space-between; transition: all 0.5s cubic-bezier(0.4,0,0.2,1); }
+    .navbar.scrolled { background: rgba(48,76,76,0.82); backdrop-filter: blur(20px) saturate(1.4); -webkit-backdrop-filter: blur(20px) saturate(1.4); padding: 0.8rem 2rem; }
+    .nav-logo { display: flex; flex-direction: column; align-items: center; line-height: 1.1; gap: 0; }
+    .nav-logo-char { font-family: var(--font-zh); font-weight: 500; font-size: 1rem; color: var(--brand-gold); letter-spacing: 0.1em; }
+    .nav-logo-en { font-family: var(--font-en); font-size: 0.55rem; letter-spacing: 0.25em; padding-left: 0.25em; color: var(--brand-gold); text-transform: uppercase; }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a { font-family: var(--font-zh); font-weight: 300; font-size: 0.85rem; color: var(--blush-white); letter-spacing: 0.12em; position: relative; transition: color 0.3s; }
+    .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px; background: var(--brand-gold); transition: width 0.3s; }
+    .nav-links a:hover { color: var(--brand-gold); }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    .nav-hamburger span { width: 24px; height: 1.5px; background: var(--blush-white); transition: all 0.3s; }
+    .nav-hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+    .nav-hamburger.active span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
+    .mobile-menu { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(48,76,76,0.96); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); z-index: 999; flex-direction: column; align-items: center; justify-content: center; gap: 2.5rem; }
+    .mobile-menu.active { display: flex; }
+    .mobile-menu a { font-family: var(--font-zh); font-weight: 300; font-size: 1.2rem; color: var(--blush-white); letter-spacing: 0.2em; transition: color 0.3s; }
+    .mobile-menu a:hover { color: var(--brand-gold); }
+
+    .page-hero { position: relative; height: 60vh; min-height: 400px; display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden; background: var(--deep-teal); }
+    .page-hero-bg { position: absolute; inset: 0; background-size: cover; background-position: center; }
+    .page-hero-content { position: relative; z-index: 2; text-align: center; padding: 2rem 3rem; background: rgba(48, 76, 76, 0.08); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); -webkit-mask-image: radial-gradient(ellipse 60% 95% at center,rgba(0,0,0,0.9) 0%,rgba(0,0,0,0.82) 18%,rgba(0,0,0,0.66) 34%,rgba(0,0,0,0.46) 50%,rgba(0,0,0,0.26) 66%,rgba(0,0,0,0.12) 80%,rgba(0,0,0,0.04) 90%,rgba(0,0,0,0.01) 97%,rgba(0,0,0,0) 100%); mask-image: radial-gradient(ellipse 60% 95% at center,rgba(0,0,0,0.9) 0%,rgba(0,0,0,0.82) 18%,rgba(0,0,0,0.66) 34%,rgba(0,0,0,0.46) 50%,rgba(0,0,0,0.26) 66%,rgba(0,0,0,0.12) 80%,rgba(0,0,0,0.04) 90%,rgba(0,0,0,0.01) 97%,rgba(0,0,0,0) 100%); }
+    .page-hero-label { font-family: var(--font-en); font-style: italic; font-size: 0.8rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--brand-gold); margin-bottom: 0.8rem; }
+    .page-hero-title { font-family: var(--font-zh); font-weight: 400; font-size: clamp(1.8rem,5vw,2.8rem); color: var(--blush-white); letter-spacing: 0.25em; text-shadow: 0 2px 20px rgba(0,0,0,0.5), 0 1px 6px rgba(0,0,0,0.3); margin-bottom: 0.8rem; }
+    .page-hero-sub { font-family: var(--font-zh); font-weight: 300; font-size: clamp(0.8rem,2vw,0.95rem); color: var(--dried-rose); letter-spacing: 0.15em; text-shadow: 0 2px 20px rgba(0,0,0,0.5), 0 1px 6px rgba(0,0,0,0.3); }
+
+    .section { padding: clamp(4rem,10vw,8rem) clamp(1.5rem,5vw,4rem); }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-title { font-family: var(--font-zh); font-weight: 400; font-size: clamp(1.5rem,4vw,2.4rem); letter-spacing: 0.15em; color: var(--deep-teal); text-align: center; margin-bottom: 1rem; }
+    .section-subtitle { font-family: var(--font-zh); font-weight: 300; font-size: clamp(0.9rem,2vw,1.05rem); color: var(--charcoal); text-align: center; max-width: 560px; margin: 0 auto; line-height: 2; letter-spacing: 0.05em; }
+    .en-label { font-family: var(--font-en); font-style: italic; font-weight: 400; font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dried-rose); text-align: center; margin-bottom: 0.5rem; }
+    .gold-line { width: 40px; height: 1px; background: var(--brand-gold); margin: 0 auto 2.5rem; opacity: 0.5; }
+
+    /* TEAM INTRO */
+    .team-intro { display: flex; align-items: center; gap: 4rem; margin-top: 3rem; }
+    .team-intro-img { flex: 1; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 40px rgba(48,76,76,0.12); }
+    .team-intro-img img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 4/3; }
+    .team-intro-text { flex: 1; }
+    .team-intro-text h3 { font-family: var(--font-zh); font-weight: 500; font-size: 1.3rem; color: var(--deep-teal); letter-spacing: 0.12em; margin-bottom: 1.2rem; }
+    .team-intro-text p { font-family: var(--font-zh); font-weight: 300; font-size: 0.95rem; color: var(--charcoal); line-height: 2.2; letter-spacing: 0.05em; }
+
+    /* PROCESS */
+    .process-section { background: var(--blush-white); }
+    .process-flow { display: flex; align-items: flex-start; justify-content: center; gap: 0; margin-top: 3.5rem; flex-wrap: wrap; }
+    .process-step { text-align: center; flex: 1; min-width: 140px; max-width: 180px; position: relative; padding: 0 0.5rem; }
+    .process-step-circle { width: 80px; height: 80px; border-radius: 50%; background: var(--deep-teal); margin: 0 auto 1.2rem; display: flex; align-items: center; justify-content: center; transition: background 0.3s, transform 0.3s; }
+    .process-step:hover .process-step-circle { background: var(--dried-rose); transform: translateY(-4px); }
+    .process-step-circle svg { width: 32px; height: 32px; fill: none; stroke: var(--blush-white); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+    .process-step-name { font-family: var(--font-zh); font-weight: 500; font-size: 1rem; color: var(--deep-teal); letter-spacing: 0.15em; margin-bottom: 0.3rem; }
+    .process-step-en { font-family: var(--font-en); font-style: italic; font-size: 0.65rem; color: var(--dried-rose); letter-spacing: 0.1em; margin-bottom: 0.5rem; }
+    .process-step-desc { font-family: var(--font-zh); font-weight: 300; font-size: 0.8rem; color: var(--charcoal); line-height: 1.8; opacity: 0.7; }
+    .process-arrow { display: flex; align-items: center; padding-top: 28px; color: var(--brand-gold); font-size: 1.2rem; opacity: 0.5; }
+
+    /* WHY US */
+    .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; margin-top: 3.5rem; }
+    .why-card { text-align: center; padding: 2.5rem 1.5rem; background: var(--blush-white); border-radius: 12px; transition: transform 0.3s, box-shadow 0.3s; }
+    .why-card:hover { transform: translateY(-4px); box-shadow: 0 8px 32px rgba(48,76,76,0.1); }
+    .why-card-icon { width: 56px; height: 56px; margin: 0 auto 1.5rem; border-radius: 50%; background: var(--deep-teal); display: flex; align-items: center; justify-content: center; }
+    .why-card-icon svg { width: 24px; height: 24px; fill: none; stroke: var(--brand-gold); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+    .why-card h4 { font-family: var(--font-zh); font-weight: 500; font-size: 1.05rem; color: var(--deep-teal); letter-spacing: 0.12em; margin-bottom: 0.8rem; }
+    .why-card p { font-family: var(--font-zh); font-weight: 300; font-size: 0.85rem; color: var(--charcoal); line-height: 2; letter-spacing: 0.03em; }
+
+    /* CTA */
+    .cta-banner { position: relative; height: clamp(240px,35vw,360px); display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .cta-banner-bg { position: absolute; inset: 0; background-size: cover; background-position: center; }
+    .cta-banner-content { position: relative; z-index: 2; text-align: center; padding: 2rem 3rem; background: rgba(48, 76, 76, 0.08); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); -webkit-mask-image: radial-gradient(ellipse 60% 95% at center,rgba(0,0,0,0.9) 0%,rgba(0,0,0,0.82) 18%,rgba(0,0,0,0.66) 34%,rgba(0,0,0,0.46) 50%,rgba(0,0,0,0.26) 66%,rgba(0,0,0,0.12) 80%,rgba(0,0,0,0.04) 90%,rgba(0,0,0,0.01) 97%,rgba(0,0,0,0) 100%); mask-image: radial-gradient(ellipse 60% 95% at center,rgba(0,0,0,0.9) 0%,rgba(0,0,0,0.82) 18%,rgba(0,0,0,0.66) 34%,rgba(0,0,0,0.46) 50%,rgba(0,0,0,0.26) 66%,rgba(0,0,0,0.12) 80%,rgba(0,0,0,0.04) 90%,rgba(0,0,0,0.01) 97%,rgba(0,0,0,0) 100%); }
+    .cta-banner h2 { font-family: var(--font-zh); font-weight: 400; font-size: clamp(1.3rem,3.5vw,2rem); color: var(--blush-white); letter-spacing: 0.25em; text-shadow: 0 2px 20px rgba(0,0,0,0.5), 0 1px 6px rgba(0,0,0,0.3); margin-bottom: 1.2rem; }
+    .cta-btn { display: inline-block; padding: 0.8rem 2.5rem; border: 1px solid var(--brand-gold); color: var(--brand-gold); font-family: var(--font-zh); font-size: 0.85rem; letter-spacing: 0.2em; transition: all 0.3s; }
+    .cta-btn:hover { background: var(--brand-gold); color: var(--deep-teal); }
+
+    .footer { background: var(--deep-teal); padding: 4rem 2rem 2.5rem; text-align: center; }
+    .footer-logo { display: flex; flex-direction: column; align-items: center; margin-bottom: 2rem; }
+    .footer-logo-char { font-family: var(--font-zh); font-weight: 500; font-size: 1.2rem; color: var(--brand-gold); letter-spacing: 0.2em; }
+    .footer-logo-en { font-family: var(--font-en); font-size: 0.6rem; letter-spacing: 0.35em; padding-left: 0.35em; color: var(--brand-gold); text-transform: uppercase; margin: 0.3rem 0; opacity: 0.7; }
+    .footer-divider { width: 30px; height: 1px; background: var(--dried-rose); margin: 1.5rem auto; opacity: 0.4; }
+    .footer-contact { margin-bottom: 0.5rem; }
+    .footer-contact a { font-family: var(--font-en); font-size: 0.8rem; color: var(--blush-white); letter-spacing: 0.15em; opacity: 0.6; transition: opacity 0.3s, color 0.3s; }
+    .footer-contact a:hover { opacity: 1; color: var(--brand-gold); }
+    .footer-copyright { font-family: var(--font-en); font-size: 0.65rem; color: var(--blush-white); opacity: 0.3; letter-spacing: 0.1em; margin-top: 2rem; }
+    .footer-group-links { display: flex; justify-content: center; gap: 2rem; margin-top: 1.5rem; flex-wrap: wrap; }
+    .footer-group-links a { font-family: var(--font-zh); font-weight: 300; font-size: 0.75rem; color: var(--blush-white); letter-spacing: 0.12em; opacity: 0.4; transition: opacity 0.3s; }
+    .footer-group-links a:hover { opacity: 0.9; }
+
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s cubic-bezier(0.4,0,0.2,1), transform 0.8s cubic-bezier(0.4,0,0.2,1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .stagger-children > * { opacity: 0; transform: translateY(20px); transition: opacity 0.6s, transform 0.6s; }
+    .stagger-children.visible > *:nth-child(1) { transition-delay: 0.05s; }
+    .stagger-children.visible > *:nth-child(2) { transition-delay: 0.12s; }
+    .stagger-children.visible > *:nth-child(3) { transition-delay: 0.19s; }
+    .stagger-children.visible > *:nth-child(4) { transition-delay: 0.26s; }
+    .stagger-children.visible > *:nth-child(5) { transition-delay: 0.33s; }
+    .stagger-children.visible > * { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 900px) {
+      .team-intro { flex-direction: column; gap: 2.5rem; text-align: center; }
+      .why-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+      .process-arrow { display: none; }
+      .process-flow { gap: 1.5rem; }
+    }
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      .page-hero { height: 45vh; min-height: 320px; }
+      .page-hero-content { padding: 3rem 2rem; }
+      .process-step { min-width: 120px; }
+      .cta-banner-content { padding: 3rem 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar" id="navbar">
+    <a href="index.html" class="nav-logo" aria-label="LOHERB Party">
+      <span class="nav-logo-char">日</span><span class="nav-logo-en">LOHERB</span><span class="nav-logo-char">光</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="events.html">活動類型</a></li>
+      <li><a href="team.html">一站式服務</a></li>
+      <li><a href="venues.html">場地空間</a></li>
+      <li><a href="gourmet.html">餐飲服務</a></li>
+      <li><a href="journal.html">活動花絮</a></li>
+      <li><a href="contact.html">聯繫我們</a></li>
+    </ul>
+    <div class="nav-hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="events.html" onclick="closeMobile()">活動類型</a>
+    <a href="team.html" onclick="closeMobile()">一站式服務</a>
+    <a href="venues.html" onclick="closeMobile()">場地空間</a>
+    <a href="gourmet.html" onclick="closeMobile()">餐飲服務</a>
+    <a href="journal.html" onclick="closeMobile()">活動花絮</a>
+    <a href="contact.html" onclick="closeMobile()">聯繫我們</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="page-hero">
+    <div class="page-hero-bg" style="background-image: url('https://party.loherb.com.tw/images/home/events_gathering.png');"></div>
+    <div class="page-hero-content">
+      <p class="page-hero-label">Our Team</p>
+      <h1 class="page-hero-title">日光團隊</h1>
+      <p class="page-hero-sub">專業活動企劃團隊，為您一站式搞定</p>
+    </div>
+  </section>
+
+  <!-- TEAM INTRO -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="reveal">
+        <p class="en-label">Professional Team</p>
+        <h2 class="section-title">專業活動企劃團隊</h2>
+        <div class="gold-line"></div>
+      </div>
+      <div class="team-intro reveal">
+        <div class="team-intro-img">
+          <img src="https://party.loherb.com.tw/images/home/events_event.png" alt="日光團隊" loading="lazy">
+        </div>
+        <div class="team-intro-text">
+          <h3>精彩時刻，只管盡興</h3>
+          <p>
+            日光團隊深耕宜蘭在地多年，累積逾百場活動的豐富經驗。從企業包場、品牌發表、婚禮派對到私人慶祝，我們的專業企劃團隊能精準掌握每一個細節。<br><br>
+            集團旗下涵蓋物業、綠築、私廚、文創四大事業體，提供場地、住宿、餐飲、佈置的全方位支援，讓您的每一場活動都能完美呈現。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICE PROCESS -->
+  <section class="section process-section">
+    <div class="section-inner">
+      <div class="reveal">
+        <p class="en-label">Service Process</p>
+        <h2 class="section-title">服務流程</h2>
+        <div class="gold-line"></div>
+        <p class="section-subtitle">五大步驟，讓您的活動從構想到實現<br>全程無憂</p>
+      </div>
+      <div class="process-flow stagger-children">
+        <div class="process-step">
+          <div class="process-step-circle">
+            <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <p class="process-step-name">諮詢</p>
+          <p class="process-step-en">Consult</p>
+          <p class="process-step-desc">了解需求與期望<br>初步規劃方向</p>
+        </div>
+        <div class="process-arrow">&rarr;</div>
+        <div class="process-step">
+          <div class="process-step-circle">
+            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          </div>
+          <p class="process-step-name">企劃</p>
+          <p class="process-step-en">Plan</p>
+          <p class="process-step-desc">量身訂製活動方案<br>預算與時程規劃</p>
+        </div>
+        <div class="process-arrow">&rarr;</div>
+        <div class="process-step">
+          <div class="process-step-circle">
+            <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <p class="process-step-name">佈置</p>
+          <p class="process-step-en">Setup</p>
+          <p class="process-step-desc">專業場地佈置<br>氛圍營造與裝飾</p>
+        </div>
+        <div class="process-arrow">&rarr;</div>
+        <div class="process-step">
+          <div class="process-step-circle">
+            <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          </div>
+          <p class="process-step-name">執行</p>
+          <p class="process-step-en">Execute</p>
+          <p class="process-step-desc">活動當日統籌<br>即時應變與支援</p>
+        </div>
+        <div class="process-arrow">&rarr;</div>
+        <div class="process-step">
+          <div class="process-step-circle">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          </div>
+          <p class="process-step-name">紀錄</p>
+          <p class="process-step-en">Record</p>
+          <p class="process-step-desc">專業攝影紀錄<br>珍藏美好時刻</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY CHOOSE US -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="reveal">
+        <p class="en-label">Why Choose Us</p>
+        <h2 class="section-title">為什麼選擇日光</h2>
+        <div class="gold-line"></div>
+      </div>
+      <div class="why-grid stagger-children">
+        <div class="why-card">
+          <div class="why-card-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h4>百場經驗</h4>
+          <p>累積超過百場活動執行經驗，涵蓋企業、婚禮、私人派對等多元類型，專業可靠。</p>
+        </div>
+        <div class="why-card">
+          <div class="why-card-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <h4>集團資源</h4>
+          <p>整合物業、綠築、私廚、文創四大事業體，場地、餐飲、佈置一應俱全，無需多方協調。</p>
+        </div>
+        <div class="why-card">
+          <div class="why-card-icon">
+            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </div>
+          <h4>用心服務</h4>
+          <p>每一場活動都傾注心力，從細節中展現溫度，讓每位賓客都能感受到日光的真誠與熱忱。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-banner">
+    <div class="cta-banner-bg" style="background-image: url('https://party.loherb.com.tw/images/home/events_event.png');"></div>
+    <div class="cta-banner-content">
+      <h2>讓日光團隊為您打造完美活動</h2>
+      <a href="book.html" class="cta-btn">立即預約諮詢</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-logo"><span class="footer-logo-char">日</span><span class="footer-logo-en">LOHERB</span><span class="footer-logo-char">光</span></div>
+    <div class="footer-divider"></div>
+    <div class="footer-contact"><a href="mailto:service@loherb.com.tw">service@loherb.com.tw</a></div>
+    <div class="footer-contact"><a href="tel:+886-3-959-5685">+886-3-959-5685</a></div>
+    <div class="footer-group-links">
+      <a href="https://www.loherb.com.tw" target="_blank" rel="noopener">日光物業</a>
+      <a href="https://villa.loherb.com.tw" target="_blank" rel="noopener">日光綠築</a>
+      <a href="https://cuisine.loherb.com.tw" target="_blank" rel="noopener">日光私廚</a>
+      <a href="https://party.loherb.com.tw" target="_blank" rel="noopener">日光時刻</a>
+      <a href="https://design.loherb.com.tw" target="_blank" rel="noopener">日光文創</a>
+    </div>
+    <p class="footer-copyright">&copy; 2026 LOHERB Group. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 60); }, { passive: true });
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => { hamburger.classList.toggle('active'); mobileMenu.classList.toggle('active'); document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : ''; });
+    function closeMobile() { hamburger.classList.remove('active'); mobileMenu.classList.remove('active'); document.body.style.overflow = ''; }
+    const revealEls = document.querySelectorAll('.reveal, .stagger-children');
+    const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); }); }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

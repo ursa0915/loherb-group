@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>聯絡日光 — 日光綠築 LOHERB Villa</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #E6A401; --gold-dark: #D08C03; --charcoal: #505350;
+      --warm-white: #FAF2F0; --forest: #084136; --mint: #DDEAE5;
+      --berry: #5C2A46; --lavender: #EDEAEE; --olive: #42452F;
+      --fog-gold: #BFAF6E; --teal: #304C4C; --rose: #A27678;
+      --blush: #FAF1EF; --cream: #F8F4EF;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Noto Serif TC', Georgia, serif; color: var(--charcoal); background: var(--warm-white); overflow-x: hidden; }
+
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 4rem; background: transparent; transition: background 0.4s; }
+    nav.scrolled { background: rgba(250,242,240,0.95); backdrop-filter: blur(12px); box-shadow: 0 1px 0 rgba(80,83,80,0.06); }
+    .nav-logo { display: flex; flex-direction: column; align-items: center; text-decoration: none; line-height: 1; gap: 0.05rem; }
+    .nav-logo .zh { font-size: 1rem; font-weight: 500; color: var(--warm-white); letter-spacing: 0.3em; transition: color 0.4s; }
+    .nav-logo .en { font-family: 'Bodoni 72', 'Bodoni Moda', Georgia, serif; font-size: 0.5rem; letter-spacing: 0.35em; padding-left: 0.35em; color: var(--gold); text-transform: uppercase; }
+    nav.scrolled .nav-logo .zh { color: var(--charcoal); }
+    .nav-links { display: flex; gap: 2.2rem; align-items: center; }
+    .nav-links a { text-decoration: none; font-size: 0.8rem; letter-spacing: 0.12em; color: rgba(250,242,240,0.85); transition: color 0.3s; }
+    nav.scrolled .nav-links a { color: var(--charcoal); }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-links .cta-book { padding: 0.5rem 1.5rem; border: 1px solid var(--gold); color: var(--gold) !important; font-size: 0.75rem; letter-spacing: 0.2em; transition: all 0.3s; }
+    .nav-links .cta-book:hover { background: var(--gold); color: var(--charcoal) !important; }
+
+    /* HERO */
+    .page-hero { height: 45vh; display: flex; flex-direction: column; align-items: center; justify-content: center; background: var(--berry); color: var(--warm-white); position: relative; }
+    .page-hero .section-label { font-family: Georgia, serif; font-size: 0.6rem; letter-spacing: 0.5em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.8rem; }
+    .page-hero h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.8rem; letter-spacing: 0.15em; }
+    .page-hero p { font-size: 0.88rem; color: rgba(250,242,240,0.55); font-weight: 300; letter-spacing: 0.1em; }
+
+    /* CONTACT LAYOUT */
+    .contact-wrap { display: grid; grid-template-columns: 3fr 2fr; min-height: 70vh; }
+
+    /* FORM */
+    .contact-form { padding: 5rem 6rem; background: var(--cream); }
+    .contact-form h2 { font-size: 1.3rem; font-weight: 700; margin-bottom: 2.5rem; }
+    .form-group { margin-bottom: 2rem; }
+    .form-group label { display: block; font-size: 0.72rem; letter-spacing: 0.15em; color: rgba(80,83,80,0.5); margin-bottom: 0.5rem; font-weight: 300; }
+    .form-group input, .form-group textarea {
+      width: 100%; border: none; border-bottom: 1px solid rgba(80,83,80,0.15);
+      background: transparent; padding: 0.6rem 0; font-family: inherit;
+      font-size: 0.9rem; color: var(--charcoal); outline: none;
+      transition: border-color 0.3s;
+    }
+    .form-group input:focus, .form-group textarea:focus { border-bottom-color: var(--gold); }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .btn-submit {
+      display: inline-block; padding: 0.9rem 3rem; background: var(--gold);
+      border: none; color: var(--charcoal); font-family: inherit;
+      font-size: 0.8rem; letter-spacing: 0.3em; cursor: pointer;
+      transition: all 0.3s; margin-top: 1rem;
+    }
+    .btn-submit:hover { background: var(--gold-dark); }
+
+    /* INFO PANEL */
+    .contact-info { padding: 5rem 4rem; background: var(--charcoal); color: var(--warm-white); }
+    .contact-info h3 { font-family: Georgia, serif; font-size: 0.6rem; letter-spacing: 0.4em; color: var(--gold); text-transform: uppercase; margin-bottom: 2rem; }
+    .info-item { margin-bottom: 1.5rem; }
+    .info-label { font-size: 0.68rem; color: rgba(250,242,240,0.35); letter-spacing: 0.1em; margin-bottom: 0.3rem; font-weight: 300; }
+    .info-value { font-size: 0.88rem; color: rgba(250,242,240,0.7); font-weight: 300; line-height: 1.8; }
+    .info-value a { color: rgba(250,242,240,0.7); text-decoration: none; transition: color 0.3s; }
+    .info-value a:hover { color: var(--gold); }
+    .social-links { margin-top: 2.5rem; }
+    .social-links h3 { margin-bottom: 1.2rem; }
+    .social-links a {
+      display: block; font-size: 0.82rem; color: var(--gold);
+      text-decoration: none; line-height: 2.5; letter-spacing: 0.1em;
+      transition: opacity 0.3s;
+    }
+    .social-links a:hover { opacity: 0.7; }
+
+    /* MAP */
+    .map-section { width: 100%; height: 400px; filter: grayscale(0.3); }
+    .map-section iframe { width: 100%; height: 100%; border: none; }
+
+    /* FOOTER */
+    .footer-main { background: var(--charcoal); color: var(--warm-white); display: grid; grid-template-columns: 1fr 1fr 1fr; padding: 5rem 4rem; gap: 3rem; }
+    .footer-logo { display: flex; flex-direction: column; align-items: center; }
+    .footer-logo .zh { font-size: 2rem; font-weight: 500; line-height: 1.2; }
+    .footer-logo .en { font-family: 'Bodoni 72', 'Bodoni Moda', Georgia, serif; font-size: 0.6rem; letter-spacing: 0.35em; padding-left: 0.35em; color: var(--gold); margin-top: 0.3rem; display: block; text-transform: uppercase; }
+    .footer-tagline { font-size: 0.78rem; color: rgba(250,242,240,0.4); margin-top: 1.5rem; line-height: 1.8; font-weight: 300; }
+    .footer-col h5 { font-family: Georgia, serif; font-size: 0.6rem; letter-spacing: 0.4em; color: var(--gold); text-transform: uppercase; margin-bottom: 1.5rem; }
+    .footer-col p, .footer-col a { font-size: 0.8rem; color: rgba(250,242,240,0.5); line-height: 2.2; text-decoration: none; font-weight: 300; display: block; }
+    .footer-col a:hover { color: var(--gold); }
+    .footer-bottom { background: var(--charcoal); border-top: 1px solid rgba(250,242,240,0.06); text-align: center; padding: 1.5rem; font-size: 0.65rem; color: rgba(250,242,240,0.2); letter-spacing: 0.1em; }
+
+    /* ANIMATIONS */
+    .fade-in { opacity: 0; transform: translateY(25px); transition: opacity 0.9s ease, transform 0.9s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { gap: 1rem; }
+      .nav-links a { font-size: 0.7rem; }
+      .page-hero h1 { font-size: 1.8rem; }
+      .contact-wrap { grid-template-columns: 1fr; }
+      .contact-form { padding: 3rem 2rem; }
+      .contact-info { padding: 3rem 2rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-main { grid-template-columns: 1fr; padding: 3rem 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav id="nav">
+    <a href="index.html" class="nav-logo"><span class="zh">日</span><span class="en">LOHERB</span><span class="zh">光</span></a>
+    <div class="nav-links">
+      <a href="about.html">關於日光</a>
+      <a href="rooms.html">綠築房型</a>
+      <a href="journal.html">日光札記</a>
+      <a href="contact.html">聯絡日光</a>
+      <a href="contact.html" class="cta-book">即刻預定</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="page-hero">
+    <p class="section-label">Contact</p>
+    <h1>聯絡日光</h1>
+    <p>如有任何疑問都歡迎聯繫，我們會竭誠為您服務</p>
+  </section>
+
+  <!-- CONTACT -->
+  <div class="contact-wrap">
+    <div class="contact-form fade-in">
+      <h2>與我們聯繫</h2>
+      <form onsubmit="return false;">
+        <div class="form-row">
+          <div class="form-group">
+            <label>姓名</label>
+            <input type="text" placeholder="您的姓名">
+          </div>
+          <div class="form-group">
+            <label>電話</label>
+            <input type="tel" placeholder="您的聯絡電話">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>電子信箱</label>
+          <input type="email" placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label>主旨</label>
+          <input type="text" placeholder="訊息主旨">
+        </div>
+        <div class="form-group">
+          <label>訊息內容</label>
+          <textarea placeholder="請輸入您的訊息..."></textarea>
+        </div>
+        <button type="submit" class="btn-submit">送出訊息</button>
+      </form>
+    </div>
+
+    <div class="contact-info fade-in">
+      <h3>Contact Info</h3>
+
+      <div class="info-item">
+        <div class="info-label">電話</div>
+        <div class="info-value"><a href="tel:+886-3-959-5685">+886-3-959-5685</a></div>
+      </div>
+      <div class="info-item">
+        <div class="info-label">電子信箱</div>
+        <div class="info-value"><a href="mailto:service@loherb.com.tw">service@loherb.com.tw</a></div>
+      </div>
+      <div class="info-item">
+        <div class="info-label">傳真</div>
+        <div class="info-value">03-959-1517</div>
+      </div>
+      <div class="info-item">
+        <div class="info-label">地址</div>
+        <div class="info-value">(269) 宜蘭縣冬山鄉寶福路386號</div>
+      </div>
+      <div class="info-item">
+        <div class="info-label">客服時間</div>
+        <div class="info-value">08:00 ~ 20:00</div>
+      </div>
+      <div class="info-item">
+        <div class="info-label">民宿登記</div>
+        <div class="info-value">宜蘭民宿 No.2019 & No.2723</div>
+      </div>
+
+      <div class="social-links">
+        <h3>Follow Us</h3>
+        <a href="https://www.facebook.com/LOHERB.TW/" target="_blank">Facebook</a>
+        <a href="https://www.instagram.com/loherb_yilan" target="_blank">Instagram</a>
+        <a href="https://www.youtube.com/channel/UCACSw7tK8uMz8j-CFGa2NfQ" target="_blank">YouTube</a>
+        <a href="https://line.me/R/ti/p/%40xye4557v" target="_blank">LINE</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAP -->
+  <div class="map-section">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3626.5!2d121.756!3d24.638!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x867e66e5a52f65e3%3A0x8b5a6e8c8b3a7d2a!2z5pel5YWJ57ag56+J!5e0!3m2!1szh-TW!2stw" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-main">
+      <div class="footer-logo">
+        <span class="zh">日</span><span class="en">LOHERB</span><span class="zh">光</span>
+        <p class="footer-tagline">為人與自然搭起橋樑。<br>一群懷抱理想初衷的人，<br>打造隨四季變化，有生命的綠建築。</p>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <p>+886-3-959-5685</p>
+        <a href="mailto:service@loherb.com.tw">service@loherb.com.tw</a>
+        <p>客服時間 08:00 ~ 20:00</p>
+        <p style="margin-top:0.8rem;">(269) 宜蘭縣冬山鄉寶福路386號</p>
+      </div>
+      <div class="footer-col">
+        <h5>Group</h5>
+        <a href="https://villa.loherb.com.tw">日光綠築 Villa</a>
+        <a href="https://cuisine.loherb.com.tw">日光私廚 Cuisine</a>
+        <a href="https://party.loherb.com.tw">日光時刻 Party</a>
+        <a href="https://dearbb.design">日光文創 Dear BB</a>
+        <a href="https://estate.loherb.com.tw">日光物業 Estate</a>
+      </div>
+    </div>
+    <div class="footer-bottom">&copy; 2026 日光 LOHERB. All rights reserved. 宜蘭民宿 No.2019 & No.2723</div>
+  </footer>
+
+  <script>
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 80); });
+  </script>
+</body>
+</html>

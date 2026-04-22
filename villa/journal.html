@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>日光札記 Journal — 日光綠築 LOHERB Villa</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #E6A401;
+      --gold-dark: #D08C03;
+      --charcoal: #505350;
+      --warm-white: #FAF2F0;
+      --forest: #084136;
+      --mint: #DDEAE5;
+      --berry: #5C2A46;
+      --lavender: #EDEAEE;
+      --olive: #42452F;
+      --fog-gold: #BFAF6E;
+      --teal: #304C4C;
+      --rose: #A27678;
+      --blush: #FAF1EF;
+      --cream: #F8F4EF;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Noto Serif TC', 'Source Han Serif TC', Georgia, serif;
+      color: var(--charcoal); background: var(--warm-white); overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.2rem 4rem; background: transparent;
+      transition: background 0.4s, box-shadow 0.4s;
+    }
+    nav.scrolled {
+      background: rgba(250,242,240,0.95); backdrop-filter: blur(12px);
+      box-shadow: 0 1px 0 rgba(80,83,80,0.06);
+    }
+    .nav-logo { display: flex; flex-direction: column; align-items: center; text-decoration: none; line-height: 1; gap: 0.05rem; }
+    .nav-logo .zh { font-size: 1rem; font-weight: 500; color: var(--warm-white); letter-spacing: 0.3em; transition: color 0.4s; }
+    .nav-logo .en { font-family: 'Bodoni 72', 'Bodoni Moda', Georgia, serif; font-size: 0.5rem; letter-spacing: 0.35em; padding-left: 0.35em; color: var(--gold); text-transform: uppercase; }
+    nav.scrolled .nav-logo .zh { color: var(--charcoal); }
+    .nav-links { display: flex; gap: 2.2rem; align-items: center; }
+    .nav-links a { text-decoration: none; font-size: 0.8rem; letter-spacing: 0.12em; color: rgba(250,242,240,0.85); transition: color 0.3s; }
+    nav.scrolled .nav-links a { color: var(--charcoal); }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-links .cta-book {
+      padding: 0.5rem 1.5rem; border: 1px solid var(--gold);
+      color: var(--gold) !important; font-size: 0.75rem; letter-spacing: 0.2em; transition: all 0.3s;
+    }
+    .nav-links .cta-book:hover { background: var(--gold); color: var(--charcoal) !important; }
+
+    /* SHARED */
+    .section-label { font-family: Georgia, serif; font-size: 0.6rem; letter-spacing: 0.5em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.8rem; }
+    .section-title { font-size: 1.8rem; font-weight: 700; line-height: 1.6; margin-bottom: 1.2rem; }
+    .section-desc { font-size: 0.92rem; line-height: 2.2; font-weight: 300; max-width: 520px; }
+    .btn-gold { display: inline-block; padding: 0.8rem 2.5rem; border: 1px solid var(--gold); color: var(--gold); text-decoration: none; font-size: 0.78rem; letter-spacing: 0.3em; transition: all 0.3s; }
+    .btn-gold:hover { background: var(--gold); color: var(--charcoal); }
+
+    /* PAGE BANNER */
+    .page-banner {
+      height: 45vh; background: var(--forest);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; position: relative;
+    }
+    .page-banner .section-label { color: var(--gold); margin-bottom: 1rem; }
+    .page-banner .section-title { color: var(--warm-white); margin-bottom: 0; }
+
+    /* JOURNAL GRID */
+    .journal-section { background: var(--cream); padding: 5rem 4rem; }
+    .journal-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 2.5rem; max-width: 1200px; margin: 0 auto;
+    }
+    .journal-card {
+      text-decoration: none; color: var(--charcoal);
+      background: var(--cream); display: block;
+    }
+    .journal-thumb {
+      aspect-ratio: 4/3; overflow: hidden; margin-bottom: 1.2rem;
+      border-radius: 2px;
+    }
+    .journal-thumb img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 3s ease;
+    }
+    .journal-card:hover .journal-thumb img { transform: scale(1.03); }
+    .journal-date {
+      font-family: Georgia, serif; font-size: 0.6rem;
+      color: var(--gold); letter-spacing: 0.3em; margin-bottom: 0.5rem;
+    }
+    .journal-card h4 {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 0.95rem; font-weight: 600; line-height: 1.7;
+      color: var(--charcoal); margin-bottom: 0.5rem;
+    }
+    .journal-excerpt {
+      font-size: 0.78rem; line-height: 1.9; font-weight: 300;
+      color: rgba(80,83,80,0.55);
+    }
+
+    /* CTA BANNER */
+    .cta-banner { background: var(--gold); text-align: center; padding: 4rem 2rem; }
+    .cta-banner .section-title { color: var(--charcoal); font-size: 1.5rem; margin-bottom: 1.5rem; }
+    .cta-banner a { display: inline-block; padding: 0.8rem 3rem; border: 1px solid var(--charcoal); color: var(--charcoal); text-decoration: none; font-size: 0.8rem; letter-spacing: 0.3em; transition: all 0.3s; }
+    .cta-banner a:hover { background: var(--charcoal); color: var(--gold); }
+
+    /* FOOTER */
+    .footer-main { background: var(--charcoal); color: var(--warm-white); display: grid; grid-template-columns: 1fr 1fr 1fr; padding: 5rem 4rem; gap: 3rem; }
+    .footer-logo { display: flex; flex-direction: column; align-items: center; }
+    .footer-logo .zh { font-size: 2rem; font-weight: 500; line-height: 1.2; }
+    .footer-logo .en { font-family: 'Bodoni 72', 'Bodoni Moda', Georgia, serif; font-size: 0.6rem; letter-spacing: 0.35em; padding-left: 0.35em; color: var(--gold); margin-top: 0.3rem; display: block; text-transform: uppercase; }
+    .footer-tagline { font-size: 0.78rem; color: rgba(250,242,240,0.4); margin-top: 1.5rem; line-height: 1.8; font-weight: 300; }
+    .footer-col h5 { font-family: Georgia, serif; font-size: 0.6rem; letter-spacing: 0.4em; color: var(--gold); text-transform: uppercase; margin-bottom: 1.5rem; }
+    .footer-col p, .footer-col a { font-size: 0.8rem; color: rgba(250,242,240,0.5); line-height: 2.2; text-decoration: none; font-weight: 300; display: block; }
+    .footer-col a:hover { color: var(--gold); }
+    .footer-bottom { background: var(--charcoal); border-top: 1px solid rgba(250,242,240,0.06); text-align: center; padding: 1.5rem; font-size: 0.65rem; color: rgba(250,242,240,0.2); letter-spacing: 0.1em; }
+
+    /* ANIMATIONS */
+    .fade-in { opacity: 0; transform: translateY(25px); transition: opacity 0.9s ease, transform 0.9s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { gap: 1rem; }
+      .nav-links a { font-size: 0.7rem; }
+      .page-banner { height: 35vh; }
+      .journal-section { padding: 3rem 1.5rem; }
+      .journal-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .footer-main { grid-template-columns: 1fr; padding: 3rem 2rem; }
+      .section-title { font-size: 1.5rem; }
+    }
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .journal-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <a href="index.html" class="nav-logo"><span class="zh">日</span><span class="en">LOHERB</span><span class="zh">光</span></a>
+    <div class="nav-links">
+      <a href="about.html">關於日光</a>
+      <a href="rooms.html">綠築房型</a>
+      <a href="journal.html">日光札記</a>
+      <a href="contact.html">聯絡日光</a>
+      <a href="index.html" class="cta-book">即刻預定</a>
+    </div>
+  </nav>
+
+  <!-- PAGE BANNER -->
+  <section class="page-banner">
+    <p class="section-label fade-in">Journal</p>
+    <h1 class="section-title fade-in">日光札記</h1>
+  </section>
+
+  <!-- JOURNAL GRID -->
+  <section class="journal-section">
+    <div class="journal-grid">
+
+      <a href="#" class="journal-card fade-in">
+        <div class="journal-thumb"><img src="https://admin.loherb.com.tw/media/7376/conversions/蜊埤湖1-jamielinnn_-thumb.jpg" alt="宜蘭春日提案" loading="lazy"></div>
+        <p class="journal-date">09 APR 2026</p>
+        <h4>宜蘭春日提案：盤點 5 個野餐首選寶藏聖地</h4>
+        <p class="journal-excerpt">漫步宜蘭翠綠草坪。享受春日悠閒野餐。</p>
+      </a>
+
+      <a href="#" class="journal-card fade-in">
+        <div class="journal-thumb"><img src="https://images.unsplash.com/photo-1646818978594-880ef94bde44?w=600&q=80&auto=format&fit=crop" alt="帶著爸媽去旅行" loading="lazy"></div>
+        <p class="journal-date">12 APR 2026</p>
+        <h4>帶著爸媽去旅行：宜蘭深度導覽與懷舊美食</h4>
+        <p class="journal-excerpt">探訪宜蘭老屋美學。陪長輩重溫舊時光。</p>
+      </a>
+
+      <a href="#" class="journal-card fade-in">
+        <div class="journal-thumb"><img src="https://admin.loherb.com.tw/media/2543/conversions/羅東林業-photo-by-annie05160409-thumb.jpg" alt="螢火蟲觀賞秘境" loading="lazy"></div>
+        <p class="journal-date">31 MAR 2026</p>
+        <h4>2026全台夏夜螢火蟲觀賞秘境</h4>
+        <p class="journal-excerpt">發現台灣從北到南的螢火蟲觀賞秘境，體驗夏夜中閃爍的自然奇觀。</p>
+      </a>
+
+      <a href="#" class="journal-card fade-in">
+        <div class="journal-thumb"><img src="https://images.unsplash.com/photo-1755811248324-c70c1f10a7fd?w=600&q=80&auto=format&fit=crop" alt="企業團建提案" loading="lazy"></div>
+        <p class="journal-date">29 MAR 2026</p>
+        <h4>最熱門企業團建提案｜兩天一夜行程分享</h4>
+        <p class="journal-excerpt">宜蘭兩天一夜企業團建行程。</p>
+      </a>
+
+      <a href="#" class="journal-card fade-in">
+        <div class="journal-thumb"><img src="https://images.unsplash.com/photo-1498662718466-6988d7f473cc?w=600&q=80&auto=format&fit=crop" alt="單車輕旅行" loading="lazy"></div>
+        <p class="journal-date">24 MAR 2026</p>
+        <h4>宜蘭單車輕旅行：冬山河自行車道沿途風景與租車指南</h4>
+        <p class="journal-excerpt">漫遊冬山河畔，感受微風。</p>
+      </a>
+
+      <a href="#" class="journal-card fade-in">
+        <div class="journal-thumb"><img src="https://images.unsplash.com/photo-1755811248279-1ab13b7d4384?w=600&q=80&auto=format&fit=crop" alt="Buffet燒烤輕食盛宴" loading="lazy"></div>
+        <p class="journal-date">18 MAR 2026</p>
+        <h4>一站式奢華提案：饗。日光Buffet燒烤輕食盛宴</h4>
+        <p class="journal-excerpt">日光攜手煎烤官，提供澎湃燒與精緻輕食甜點。</p>
+      </a>
+
+      <a href="#" class="journal-card fade-in">
+        <div class="journal-thumb"><img src="https://images.unsplash.com/photo-1599458252573-56ae36120de1?w=600&q=80&auto=format&fit=crop" alt="宜蘭美食口袋名單" loading="lazy"></div>
+        <p class="journal-date">15 MAR 2026</p>
+        <h4>最懂吃懂享受的宜蘭美食口袋名單</h4>
+        <p class="journal-excerpt">宜蘭老饕道地美食口袋名單。</p>
+      </a>
+
+      <a href="#" class="journal-card fade-in">
+        <div class="journal-thumb"><img src="https://images.unsplash.com/photo-1756009481685-1513779372cf?w=600&q=80&auto=format&fit=crop" alt="宜蘭伴手禮" loading="lazy"></div>
+        <p class="journal-date">24 MAR 2026</p>
+        <h4>來自宜蘭的世界級精緻伴手禮</h4>
+        <p class="journal-excerpt">來宜蘭不可錯過的特色伴手禮。</p>
+      </a>
+
+      <a href="#" class="journal-card fade-in">
+        <div class="journal-thumb"><img src="https://images.unsplash.com/photo-1590490298252-df12f5b8c2ca?w=600&q=80&auto=format&fit=crop" alt="白色情人節回禮" loading="lazy"></div>
+        <p class="journal-date">09 MAR 2026</p>
+        <h4>白色情人節回禮：宜蘭質感甜點推薦</h4>
+        <p class="journal-excerpt">尋覓蘭陽平原的甜蜜滋味。</p>
+      </a>
+
+      <a href="#" class="journal-card fade-in">
+        <div class="journal-thumb"><img src="https://images.unsplash.com/photo-1493589976221-c2357c31ad77?w=600&q=80&auto=format&fit=crop" alt="櫻花季賞花路線" loading="lazy"></div>
+        <p class="journal-date">07 MAR 2026</p>
+        <h4>春暖花開！2026 宜蘭櫻花季賞花路線與交通懶人包</h4>
+        <p class="journal-excerpt">宜蘭春季櫻花盛開。</p>
+      </a>
+
+      <a href="#" class="journal-card fade-in">
+        <div class="journal-thumb"><img src="https://images.unsplash.com/photo-1742106856193-5cc3424ac450?w=600&q=80&auto=format&fit=crop" alt="綠色博覽會" loading="lazy"></div>
+        <p class="journal-date">08 MAR 2026</p>
+        <h4>2026宜蘭綠色博覽會精華導覽</h4>
+        <p class="journal-excerpt">綠色博覽在武荖坑風景區隆重登場。</p>
+      </a>
+
+      <a href="#" class="journal-card fade-in">
+        <div class="journal-thumb"><img src="https://images.unsplash.com/photo-1763202364530-b8d9ce87af18?w=600&q=80&auto=format&fit=crop" alt="一日遊景點" loading="lazy"></div>
+        <p class="journal-date">08 FEB 2026</p>
+        <h4>2026宜蘭一日遊景點懶人包</h4>
+        <p class="journal-excerpt">不需安排長假，也能盡情享受宜蘭之美的一日遊景點精選。</p>
+      </a>
+
+      <a href="#" class="journal-card fade-in">
+        <div class="journal-thumb"><img src="https://images.unsplash.com/photo-1750943082258-19073a2fe5b8?w=600&q=80&auto=format&fit=crop" alt="一泊二食" loading="lazy"></div>
+        <p class="journal-date">08 FEB 2026</p>
+        <h4>一泊二食一泊三食宜蘭食宿雙享受</h4>
+        <p class="journal-excerpt">日光一泊二食與一泊三食專案。</p>
+      </a>
+
+      <a href="#" class="journal-card fade-in">
+        <div class="journal-thumb"><img src="https://images.unsplash.com/photo-1666632980177-6e1f0c0ec6a0?w=600&q=80&auto=format&fit=crop" alt="必比登米其林" loading="lazy"></div>
+        <p class="journal-date">08 FEB 2026</p>
+        <h4>超優惠的宜蘭必比登米其林級餐廳集錦</h4>
+        <p class="journal-excerpt">用超優惠的價格，品嚐融合宜蘭風味的高品質美食。</p>
+      </a>
+
+      <a href="#" class="journal-card fade-in">
+        <div class="journal-thumb"><img src="https://images.unsplash.com/photo-1614130020598-093435d7f1a2?w=600&q=80&auto=format&fit=crop" alt="元宵節燈會" loading="lazy"></div>
+        <p class="journal-date">24 FEB 2026</p>
+        <h4>元宵節去哪逛？宜蘭燈會周邊景點與住宿全攻略</h4>
+        <p class="journal-excerpt">探索宜蘭元宵燈火盛會。</p>
+      </a>
+
+      <a href="#" class="journal-card fade-in">
+        <div class="journal-thumb"><img src="https://images.unsplash.com/photo-1590490298252-df12f5b8c2ca?w=600&q=80&auto=format&fit=crop" alt="情人節特輯" loading="lazy"></div>
+        <p class="journal-date">12 FEB 2026</p>
+        <h4>2026 情人節特輯：宜蘭法式料理與浪漫住宿的一站式約會</h4>
+        <p class="journal-excerpt">宜蘭法式浪漫約會。</p>
+      </a>
+
+      <a href="#" class="journal-card fade-in">
+        <div class="journal-thumb"><img src="https://images.unsplash.com/photo-1550945233-716f16384ffd?w=600&q=80&auto=format&fit=crop" alt="情人節浪漫提案" loading="lazy"></div>
+        <p class="journal-date">04 FEB 2026</p>
+        <h4>2026宜蘭情人節浪漫提案</h4>
+        <p class="journal-excerpt">可以玩一整天的浪漫行程。</p>
+      </a>
+
+      <a href="#" class="journal-card fade-in">
+        <div class="journal-thumb"><img src="https://images.unsplash.com/photo-1760479099643-b37a52e7c094?w=600&q=80&auto=format&fit=crop" alt="連假不塞車" loading="lazy"></div>
+        <p class="journal-date">11 OCT 2025</p>
+        <h4>連假不塞車玩法｜宜蘭兩天一夜行程推薦</h4>
+        <p class="journal-excerpt">連假出遊不怕塞車。</p>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- BOOKING CTA -->
+  <div class="cta-banner">
+    <h3 class="section-title">開始您的日光旅程</h3>
+    <a href="index.html">即刻預定</a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-main">
+      <div class="footer-logo">
+        <span class="zh">日</span><span class="en">LOHERB</span><span class="zh">光</span>
+        <p class="footer-tagline">為人與自然搭起橋樑。<br>一群懷抱理想初衷的人，<br>打造隨四季變化，有生命的綠建築。</p>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <p>+886-3-959-5685</p>
+        <a href="mailto:service@loherb.com.tw">service@loherb.com.tw</a>
+        <p>客服時間 08:00 ~ 20:00</p>
+        <p style="margin-top:0.8rem;">(269) 宜蘭縣冬山鄉寶福路386號</p>
+      </div>
+      <div class="footer-col">
+        <h5>Group</h5>
+        <a href="https://villa.loherb.com.tw">日光綠築 Villa</a>
+        <a href="https://cuisine.loherb.com.tw">日光私廚 Cuisine</a>
+        <a href="https://party.loherb.com.tw">日光時刻 Party</a>
+        <a href="https://dearbb.design">日光文創 Dear BB</a>
+        <a href="https://estate.loherb.com.tw">日光物業 Estate</a>
+      </div>
+    </div>
+    <div class="footer-bottom">&copy; 2026 日光 LOHERB. All rights reserved. 宜蘭民宿 No.2019 & No.2723</div>
+  </footer>
+
+  <script>
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 80); });
+  </script>
+</body>
+</html>

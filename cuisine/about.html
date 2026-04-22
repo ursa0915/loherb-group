@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>關於私廚 — 日光私廚 LOHERB Cuisine</title>
+  <meta name="description" content="日光私廚成立於宜蘭，以在地食材詮釋當代料理。從產地到餐桌，每一道菜都是對土地的敬意。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --deep-purple: #2D1B2E;
+      --berry-purple: #5C2A46;
+      --brand-gold: #E6A401;
+      --rose-red: #902343;
+      --lavender-grey: #EDEAEE;
+      --warm-white: #FAF2F0;
+      --charcoal: #3E3240;
+      --navy-dark: #1E1020;
+      --pure-white: #FFFFFF;
+    }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: 'Noto Serif TC', 'Georgia', serif;
+      color: var(--charcoal);
+      background: var(--warm-white);
+      line-height: 1.8;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection { background: var(--berry-purple); color: var(--warm-white); }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    button { border: none; background: none; cursor: pointer; font-family: inherit; }
+
+    .font-en { font-family: 'Georgia', 'Bodoni 72', 'Bodoni Moda', serif; }
+
+    /* ANIMATIONS */
+    .reveal {
+      opacity: 0; transform: translateY(40px);
+      transition: opacity 1s cubic-bezier(0.23,1,0.32,1), transform 1s cubic-bezier(0.23,1,0.32,1);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.15s; }
+    .reveal-delay-2 { transition-delay: 0.3s; }
+    .reveal-delay-3 { transition-delay: 0.45s; }
+
+    /* NAVBAR */
+    .navbar {
+      position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+      padding: 1.25rem 2rem; display: flex; justify-content: space-between; align-items: center;
+      transition: all 0.5s cubic-bezier(0.23,1,0.32,1);
+    }
+    .navbar.scrolled {
+      background: rgba(45,27,46,0.85); backdrop-filter: blur(24px) saturate(1.4);
+      -webkit-backdrop-filter: blur(24px) saturate(1.4);
+      padding: 0.75rem 2rem; border-bottom: 1px solid rgba(144,35,67,0.2);
+    }
+    .nav-logo { display: flex; flex-direction: column; align-items: center; line-height: 1.1; gap: 0; }
+    .nav-logo-char { color: var(--brand-gold); font-size: 0.95rem; font-weight: 500; letter-spacing: 0.05em; }
+    .nav-logo-en { font-family: 'Bodoni 72', 'Bodoni Moda', Georgia, serif; color: var(--brand-gold); font-size: 0.55rem; letter-spacing: 0.35em; padding-left: 0.35em; text-transform: uppercase; }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a { color: var(--warm-white); font-size: 0.8rem; letter-spacing: 0.15em; position: relative; transition: color 0.3s; }
+    .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px; background: var(--brand-gold); transition: width 0.4s cubic-bezier(0.23,1,0.32,1); }
+    .nav-links a:hover { color: var(--brand-gold); }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-links a.active { color: var(--brand-gold); }
+    .nav-links a.active::after { width: 100%; }
+
+    .nav-toggle { display: none; flex-direction: column; gap: 5px; width: 28px; cursor: pointer; z-index: 1001; }
+    .nav-toggle span { display: block; width: 100%; height: 1px; background: var(--warm-white); transition: all 0.4s cubic-bezier(0.23,1,0.32,1); }
+    .nav-toggle.active span:nth-child(1) { transform: rotate(45deg) translateY(4.2px); }
+    .nav-toggle.active span:nth-child(2) { opacity: 0; }
+    .nav-toggle.active span:nth-child(3) { transform: rotate(-45deg) translateY(-4.2px); }
+
+    .mobile-menu {
+      position: fixed; inset: 0; z-index: 999;
+      background: rgba(45,27,46,0.97); backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px);
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2.5rem;
+      opacity: 0; visibility: hidden; transition: all 0.5s cubic-bezier(0.23,1,0.32,1);
+    }
+    .mobile-menu.open { opacity: 1; visibility: visible; }
+    .mobile-menu a { font-size: 1.1rem; letter-spacing: 0.3em; color: var(--warm-white); transition: color 0.3s; }
+    .mobile-menu a:hover { color: var(--brand-gold); }
+
+    /* PAGE HERO */
+    .page-hero {
+      position: relative; height: 60vh; min-height: 450px;
+      display: flex; align-items: center; justify-content: center; overflow: hidden;
+    }
+    .page-hero-bg {
+      position: absolute; inset: 0;
+      background: url('https://party.loherb.com.tw/images/home/cuisine_dinner.png') center 40% / cover no-repeat;
+    }
+    .page-hero-content {
+      position: relative; z-index: 2; text-align: center; color: var(--warm-white);
+      padding: 2rem 3rem;
+      background: rgba(45, 27, 46, 0.08); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+      -webkit-mask-image: radial-gradient(ellipse 60% 95% at center,rgba(0,0,0,0.9) 0%,rgba(0,0,0,0.82) 18%,rgba(0,0,0,0.66) 34%,rgba(0,0,0,0.46) 50%,rgba(0,0,0,0.26) 66%,rgba(0,0,0,0.12) 80%,rgba(0,0,0,0.04) 90%,rgba(0,0,0,0.01) 97%,rgba(0,0,0,0) 100%);
+      mask-image: radial-gradient(ellipse 60% 95% at center,rgba(0,0,0,0.9) 0%,rgba(0,0,0,0.82) 18%,rgba(0,0,0,0.66) 34%,rgba(0,0,0,0.46) 50%,rgba(0,0,0,0.26) 66%,rgba(0,0,0,0.12) 80%,rgba(0,0,0,0.04) 90%,rgba(0,0,0,0.01) 97%,rgba(0,0,0,0) 100%);
+    }
+    .page-hero-label {
+      font-family: 'Georgia',serif; font-size: 0.7rem; letter-spacing: 0.4em; text-transform: uppercase;
+      color: rgba(250,242,240,0.6); margin-bottom: 1rem;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.6), 0 1px 6px rgba(0,0,0,0.35);
+    }
+    .page-hero-title {
+      font-size: 2.2rem; font-weight: 300; letter-spacing: 0.25em; line-height: 1.5;
+      color: var(--warm-white);
+      text-shadow: 0 2px 20px rgba(0,0,0,0.6), 0 1px 6px rgba(0,0,0,0.35);
+    }
+    .page-hero-line { width: 40px; height: 1px; background: var(--brand-gold); margin: 1.5rem auto 0; opacity: 0.6; }
+
+    /* SECTIONS */
+    .section { padding: 8rem 2rem; }
+    .section-inner { max-width: 800px; margin: 0 auto; text-align: center; }
+    .section-wide { max-width: 1200px; margin: 0 auto; }
+    .gold-line { width: 60px; height: 1px; background: var(--rose-red); margin: 0 auto 2.5rem; }
+    .section-label { font-size: 0.7rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--berry-purple); margin-bottom: 1.5rem; }
+    .section-title-en { font-family: 'Georgia',serif; font-size: 0.7rem; letter-spacing: 0.4em; text-transform: uppercase; color: var(--berry-purple); margin-bottom: 0.75rem; }
+    .section-title-zh { font-size: 1.75rem; font-weight: 300; color: var(--deep-purple); letter-spacing: 0.2em; margin-bottom: 2.5rem; }
+    .section-body { font-size: 0.95rem; line-height: 2.2; color: var(--charcoal); font-weight: 300; max-width: 600px; margin: 0 auto; }
+
+    /* SPLIT LAYOUT */
+    .split { display: grid; grid-template-columns: 1fr 1fr; min-height: 70vh; }
+    .split-img { position: relative; overflow: hidden; }
+    .split-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 6s ease; }
+    .split-img:hover img { transform: scale(1.03); }
+    .split-text {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 5rem 5rem;
+    }
+    .split-text .section-label { text-align: left; }
+    .split-text .split-title {
+      font-size: 1.5rem; font-weight: 300; color: var(--deep-purple);
+      letter-spacing: 0.15em; margin-bottom: 2rem; line-height: 1.6;
+    }
+    .split-text .split-body {
+      font-size: 0.92rem; line-height: 2.2; font-weight: 300;
+      color: rgba(62,50,64,0.65);
+    }
+
+    /* PHOTO BANNER */
+    .photo-banner {
+      position: relative; height: 55vh; min-height: 400px;
+      display: flex; align-items: center; justify-content: center; overflow: hidden;
+    }
+    .photo-banner-bg {
+      position: absolute; inset: 0; background-size: cover; background-position: center;
+    }
+    .photo-banner-content {
+      position: relative; z-index: 2; text-align: center; color: var(--warm-white);
+      padding: 2rem 3rem;
+      background: rgba(45, 27, 46, 0.08); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+      -webkit-mask-image: radial-gradient(ellipse 60% 95% at center,rgba(0,0,0,0.9) 0%,rgba(0,0,0,0.82) 18%,rgba(0,0,0,0.66) 34%,rgba(0,0,0,0.46) 50%,rgba(0,0,0,0.26) 66%,rgba(0,0,0,0.12) 80%,rgba(0,0,0,0.04) 90%,rgba(0,0,0,0.01) 97%,rgba(0,0,0,0) 100%);
+      mask-image: radial-gradient(ellipse 60% 95% at center,rgba(0,0,0,0.9) 0%,rgba(0,0,0,0.82) 18%,rgba(0,0,0,0.66) 34%,rgba(0,0,0,0.46) 50%,rgba(0,0,0,0.26) 66%,rgba(0,0,0,0.12) 80%,rgba(0,0,0,0.04) 90%,rgba(0,0,0,0.01) 97%,rgba(0,0,0,0) 100%);
+    }
+    .photo-banner-text {
+      font-size: 1.3rem; font-weight: 300; color: var(--warm-white);
+      letter-spacing: 0.2em; line-height: 2;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.6), 0 1px 6px rgba(0,0,0,0.35);
+    }
+    .photo-banner-sub {
+      font-family: 'Georgia',serif; font-size: 0.65rem; letter-spacing: 0.4em;
+      text-transform: uppercase; color: var(--brand-gold); margin-top: 1.5rem; opacity: 0.7;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.6), 0 1px 6px rgba(0,0,0,0.35);
+    }
+
+    /* CHEF SECTION */
+    .chef-section { background: var(--deep-purple); color: var(--warm-white); }
+    .chef-section .split-text { background: var(--deep-purple); }
+    .chef-section .split-title { color: var(--warm-white); }
+    .chef-section .split-body { color: rgba(250,242,240,0.6); }
+    .chef-section .section-label { color: var(--brand-gold); opacity: 0.8; }
+
+    /* AMBIANCE GRID */
+    .ambiance-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px;
+    }
+    .ambiance-item {
+      aspect-ratio: 4/3; overflow: hidden; position: relative; cursor: pointer;
+    }
+    .ambiance-item img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.8s cubic-bezier(0.23,1,0.32,1);
+    }
+    .ambiance-item::after {
+      content: ''; position: absolute; inset: 0;
+      background: none; transition: opacity 0.4s; opacity: 0;
+    }
+    .ambiance-item:hover::after { opacity: 0; }
+    .ambiance-item:hover img { transform: scale(1.06); }
+
+    /* CTA SECTION */
+    .cta-section {
+      background: var(--berry-purple); color: var(--warm-white);
+      padding: 7rem 2rem; position: relative; overflow: hidden;
+    }
+    .cta-section::before {
+      content: ''; position: absolute; inset: 0;
+      background: url('https://cuisine.loherb.com.tw/images/home/dine.avif') center/cover no-repeat;
+      opacity: 0.4;
+    }
+    .cta-section .section-inner { position: relative; z-index: 1; }
+    .cta-section .section-label { color: var(--brand-gold); opacity: 0.7; }
+    .cta-section .section-title-zh {
+      font-size: 1.35rem; font-weight: 300; letter-spacing: 0.2em; margin-bottom: 2rem;
+      color: var(--warm-white);
+      text-shadow: 0 2px 20px rgba(0,0,0,0.6), 0 1px 6px rgba(0,0,0,0.35);
+    }
+    .cta-button {
+      display: inline-block; font-size: 0.75rem; letter-spacing: 0.35em; text-transform: uppercase;
+      color: var(--brand-gold); border: 1px solid rgba(230,164,1,0.4); padding: 1rem 3rem;
+      transition: all 0.5s cubic-bezier(0.23,1,0.32,1);
+    }
+    .cta-button:hover { background: var(--brand-gold); color: var(--deep-purple); border-color: var(--brand-gold); }
+
+    /* FOOTER */
+    .footer { background: var(--deep-purple); color: var(--warm-white); padding: 5rem 2rem 3rem; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3rem; }
+    .footer-brand { display: flex; flex-direction: column; }
+    .footer-logo { display: flex; flex-direction: column; align-items: center; line-height: 1.1; margin-bottom: 1.5rem; }
+    .footer-logo-char { color: var(--brand-gold); font-size: 1.1rem; font-weight: 500; letter-spacing: 0.05em; }
+    .footer-logo-en { font-family: 'Bodoni 72', 'Bodoni Moda', Georgia, serif; color: var(--brand-gold); font-size: 0.5rem; letter-spacing: 0.35em; padding-left: 0.35em; text-transform: uppercase; margin-top: 0.25rem; }
+    .footer-tagline { font-size: 0.75rem; font-weight: 300; color: rgba(250,242,240,0.4); line-height: 1.8; }
+    .footer-heading { font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--brand-gold); margin-bottom: 1.5rem; font-family: 'Georgia',serif; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+    .footer-links a { font-size: 0.8rem; font-weight: 300; color: rgba(250,242,240,0.55); letter-spacing: 0.1em; transition: color 0.3s; }
+    .footer-links a:hover { color: var(--brand-gold); }
+    .footer-contact-item { font-size: 0.8rem; font-weight: 300; color: rgba(250,242,240,0.55); margin-bottom: 0.75rem; letter-spacing: 0.05em; }
+    .footer-contact-item a { transition: color 0.3s; }
+    .footer-contact-item a:hover { color: var(--brand-gold); }
+    .footer-bottom { max-width: 1100px; margin: 4rem auto 0; padding-top: 2rem; border-top: 1px solid rgba(144,35,67,0.2); display: flex; justify-content: space-between; align-items: center; }
+    .footer-copyright { font-size: 0.65rem; font-weight: 300; color: rgba(250,242,240,0.3); letter-spacing: 0.15em; }
+    .footer-group-link { font-family: 'Georgia',serif; font-size: 0.65rem; letter-spacing: 0.25em; color: rgba(250,242,240,0.35); text-transform: uppercase; transition: color 0.3s; }
+    .footer-group-link:hover { color: var(--brand-gold); }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-toggle { display: flex; }
+      .section { padding: 5rem 1.5rem; }
+      .page-hero { height: 45vh; min-height: 350px; }
+      .page-hero-title { font-size: 1.6rem; }
+      .split { grid-template-columns: 1fr; }
+      .split-text { padding: 3.5rem 2rem; }
+      .split-img { min-height: 50vh; }
+      .photo-banner { height: 40vh; min-height: 300px; }
+      .photo-banner-text { font-size: 1rem; letter-spacing: 0.15em; }
+      .ambiance-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
+      .cta-section { padding: 5rem 1.5rem; }
+    }
+
+    @media (max-width: 480px) {
+      .navbar { padding: 1rem 1.25rem; }
+      .navbar.scrolled { padding: 0.6rem 1.25rem; }
+      .ambiance-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar" id="navbar">
+    <a href="index.html" class="nav-logo" aria-label="日光私廚 LOHERB">
+      <span class="nav-logo-char">日</span>
+      <span class="nav-logo-en">LOHERB</span>
+      <span class="nav-logo-char">光</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="about.html" class="active">關於私廚</a></li>
+      <li><a href="menu.html">菜單</a></li>
+      <li><a href="journal.html">美饌</a></li>
+      <li><a href="book.html">訂位</a></li>
+      <li><a href="contact.html">聯絡</a></li>
+    </ul>
+    <div class="nav-toggle" id="navToggle" aria-label="選單">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="about.html">關於私廚</a>
+    <a href="menu.html">菜單</a>
+    <a href="journal.html">美饌</a>
+    <a href="book.html">訂位</a>
+    <a href="contact.html">聯絡</a>
+  </div>
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="page-hero-content">
+      <p class="page-hero-label reveal">About</p>
+      <h1 class="page-hero-title reveal reveal-delay-1">關 於 私 廚</h1>
+      <div class="page-hero-line reveal reveal-delay-2"></div>
+    </div>
+  </section>
+
+  <!-- Brand Story -->
+  <section class="split">
+    <div class="split-img">
+      <img src="https://cuisine.loherb.com.tw/images/home/dine.avif" alt="日光私廚品牌故事" loading="lazy">
+    </div>
+    <div class="split-text reveal" style="background: var(--lavender-grey);">
+      <p class="section-label font-en">Our Story</p>
+      <h2 class="split-title">以在地食材<br>詮釋當代料理</h2>
+      <p class="split-body">日光私廚成立於宜蘭，坐落在冬山鄉靜謐的田園之間。我們以對土地的敬意為起點，將宜蘭豐饒的在地食材轉化為當代精緻料理。每一道菜，都是主廚與這片土地的對話，也是我們獻給旅人的一封味覺情書。</p>
+    </div>
+  </section>
+
+  <!-- Philosophy Banner -->
+  <section class="photo-banner">
+    <div class="photo-banner-bg" style="background-image: url('https://party.loherb.com.tw/images/home/cuisine_coffee.avif'); background-position: center 60%;"></div>
+    <div class="photo-banner-content">
+      <p class="photo-banner-text reveal">從產地到餐桌<br>每一步都是對自然的承諾</p>
+      <p class="photo-banner-sub reveal reveal-delay-1">Farm to Table</p>
+    </div>
+  </section>
+
+  <!-- Farm-to-Table Philosophy -->
+  <section class="section" style="background: var(--warm-white);">
+    <div class="section-inner">
+      <p class="section-label font-en reveal">Philosophy</p>
+      <p class="section-title-en reveal reveal-delay-1">Farm to Table</p>
+      <h2 class="section-title-zh reveal reveal-delay-1">產地到餐桌的堅持</h2>
+      <div class="gold-line reveal reveal-delay-2" style="width: 0; transition: width 1.2s cubic-bezier(0.23,1,0.32,1);"></div>
+      <p class="section-body reveal reveal-delay-2">
+        我們相信，最好的料理始於最好的食材。日光私廚與宜蘭在地農家建立長期合作，從田間直送廚房，確保每一份食材的新鮮與純粹。營養師與主廚攜手設計菜單，以天然色彩妝點盤面，不使用人工添加物，讓食物回歸最真實的美好。
+      </p>
+    </div>
+  </section>
+
+  <!-- Chef Section -->
+  <section class="split chef-section">
+    <div class="split-text reveal">
+      <p class="section-label font-en">The Chef</p>
+      <h2 class="split-title">以手藝封存季節<br>以溫度傳遞心意</h2>
+      <p class="split-body">主廚深諳法式烹調精髓，融合台灣在地風味，以低溫慢煮、分子料理等技法，將每一道料理昇華為藝術。從擺盤到調味，每個細節都經過反覆淬鍊，只為在您面前呈現最完美的一刻。國際歷練賦予視野，在地情感則賦予靈魂。</p>
+    </div>
+    <div class="split-img">
+      <img src="https://admin.loherb.com.tw/images/ig-photos/cuisine/20240510-2.jpg" alt="主廚" loading="lazy">
+    </div>
+  </section>
+
+  <!-- Ambiance Photos -->
+  <section class="section" style="background: var(--lavender-grey); padding-bottom: 0;">
+    <div class="section-inner" style="margin-bottom: 3rem;">
+      <p class="section-label font-en reveal">Ambiance</p>
+      <h2 class="section-title-zh reveal reveal-delay-1">空間與氛圍</h2>
+      <div class="gold-line reveal reveal-delay-2" style="width: 0; transition: width 1.2s cubic-bezier(0.23,1,0.32,1);"></div>
+    </div>
+    <div class="ambiance-grid">
+      <div class="ambiance-item reveal">
+        <img src="https://admin.loherb.com.tw/images/ig-photos/cuisine/20240510-1.jpg" alt="日光私廚空間" loading="lazy">
+      </div>
+      <div class="ambiance-item reveal reveal-delay-1">
+        <img src="https://admin.loherb.com.tw/images/ig-photos/cuisine/20240510-4.jpg" alt="日光私廚氛圍" loading="lazy">
+      </div>
+      <div class="ambiance-item reveal reveal-delay-2">
+        <img src="https://admin.loherb.com.tw/images/ig-photos/cuisine/20240510-7.jpg" alt="日光私廚料理" loading="lazy">
+      </div>
+      <div class="ambiance-item reveal reveal-delay-3">
+        <img src="https://villa.loherb.com.tw/images/room-types/02_Luxury_Double/1.webp?v=2" alt="餐廳環境" loading="lazy">
+      </div>
+      <div class="ambiance-item reveal">
+        <img src="https://admin.loherb.com.tw/images/ig-photos/cuisine/20240510-5.jpg" alt="日光私廚用餐" loading="lazy">
+      </div>
+      <div class="ambiance-item reveal reveal-delay-1">
+        <img src="https://admin.loherb.com.tw/images/ig-photos/cuisine/20240510-8.jpg" alt="日光私廚餐桌" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="section-inner">
+      <p class="section-label font-en reveal">Reservation</p>
+      <h2 class="cta-section section-title-zh reveal reveal-delay-1">讓我們為彼此留住時間</h2>
+      <a href="book.html" class="cta-button reveal reveal-delay-2">預約訂位</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <span class="footer-logo-char">日</span>
+          <span class="footer-logo-en">LOHERB</span>
+          <span class="footer-logo-char">光</span>
+        </div>
+        <p class="footer-tagline">日光私廚<br>以詩意入菜，以時光佐味</p>
+      </div>
+      <div>
+        <div class="footer-heading">Explore</div>
+        <ul class="footer-links">
+          <li><a href="about.html">關於私廚</a></li>
+          <li><a href="menu.html">菜單</a></li>
+          <li><a href="journal.html">私廚隨筆</a></li>
+          <li><a href="book.html">訂位</a></li>
+          <li><a href="contact.html">聯繫日光</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Contact</div>
+        <div class="footer-contact-item"><a href="tel:+886-3-959-5685">+886-3-959-5685</a></div>
+        <div class="footer-contact-item"><a href="mailto:service@loherb.com.tw">service@loherb.com.tw</a></div>
+        <div class="footer-contact-item">宜蘭縣冬山鄉寶福路372號</div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copyright">&copy; 2026 LOHERB Group. All rights reserved.</span>
+      <a href="https://loherb.com.tw" target="_blank" rel="noopener" class="footer-group-link">LOHERB Group &rarr;</a>
+    </div>
+  </footer>
+
+  <script>
+    // Navbar scroll
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 80);
+    }, { passive: true });
+
+    // Mobile menu
+    const navToggle = document.getElementById('navToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    navToggle.addEventListener('click', () => {
+      navToggle.classList.toggle('active');
+      mobileMenu.classList.toggle('open');
+      document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+    });
+
+    // Intersection Observer
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          // Handle gold-line width animation
+          if (entry.target.classList.contains('gold-line')) {
+            entry.target.style.width = '60px';
+          }
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: '0px 0px -60px 0px', threshold: 0.15 });
+    revealEls.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
