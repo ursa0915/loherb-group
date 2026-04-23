@@ -861,9 +861,26 @@
       .hero-logo-stack .zh { font-size: 3.5rem; }
       .hero-logo-stack .en { font-size: 0.65rem; letter-spacing: 0.5em; }
 
+      /* 第一、二張 hero 圖在手機版靠右對齊，其餘保持置中 */
+      .hero-slide:nth-child(1),
+      .hero-slide:nth-child(2) {
+        background-position: right center;
+      }
+
       .promise { grid-template-columns: 1fr; }
-      .promise-img { min-height: 55vh; }
-      .promise-text { padding: 4rem 2rem; }
+      .promise-text { padding: 4rem 2rem; order: 1; }
+      .promise-img { min-height: 55vh; order: 2; }
+
+      .villa-strip { padding: 5rem 1.5rem; min-height: 60vh; }
+      .villa-strip-text-wrap { text-align: center; }
+      .villa-strip .section-title {
+        font-size: 1.4rem !important;
+        margin-bottom: 0.8rem !important;
+      }
+      .villa-strip .section-desc {
+        margin: 0 auto 2rem !important;
+        max-width: none;
+      }
 
       .venues { padding: 5rem 2rem; }
       .venues-grid { grid-template-columns: 1fr; gap: 1rem; }
