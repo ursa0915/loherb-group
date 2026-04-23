@@ -1590,8 +1590,15 @@ section {
     display: flex;
   }
 
+  /* Hero 第 1、2 張圖在手機版靠右對齊；其餘保持置中 */
+  .hero-slide:nth-child(1),
+  .hero-slide:nth-child(2) {
+    background-position: right center;
+  }
+
   .brands-grid {
     grid-template-columns: 1fr 1fr;
+    gap: 10px 2px; /* 手機版：卡片上下間距加大 */
   }
 
   .brand-card {
@@ -1621,6 +1628,7 @@ section {
 @media (max-width: 480px) {
   .brands-grid {
     grid-template-columns: 1fr;
+    gap: 12px; /* 小手機：單欄時卡片間距更寬 */
   }
 
   .brand-card {
