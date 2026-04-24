@@ -1260,13 +1260,15 @@ section {
     aspect-ratio: 5 / 4;
   }
   .film-frame iframe {
+    /* 明確覆蓋所有 inset，最後再設 left: 50% 讓 translateX 置中 */
+    top: 0;
+    right: auto;
+    bottom: auto;
+    left: 50%;
     /* 5/4 容器高度 H → 16:9 影片需 H*16/9 寬 = 容器寬 * 64/45 ≈ 1.4222 */
     width: 142.22%;
     height: 100%;
-    left: 50%;
     transform: translateX(-50%);
-    inset: auto;
-    top: 0;
   }
 }
 
