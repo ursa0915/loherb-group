@@ -1589,10 +1589,12 @@ section {
     display: flex;
   }
 
-  /* Hero 第 1、2 張圖在手機版靠右對齊；其餘保持置中 */
-  .hero-slide:nth-child(1),
-  .hero-slide:nth-child(2) {
+  /* Hero 手機版對齊：第 1 張靠右；第 2 張略左（避免人臉被切掉）；其餘置中 */
+  .hero-slide:nth-child(1) {
     background-position: right center;
+  }
+  .hero-slide:nth-child(2) {
+    background-position: 82% center;
   }
 
   .brands-grid {
