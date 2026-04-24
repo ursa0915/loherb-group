@@ -284,6 +284,10 @@
     }
     .promise-img {
       position: relative; overflow: hidden;
+      grid-column: 1; grid-row: 1;
+    }
+    .promise-text {
+      grid-column: 2; grid-row: 1;
     }
     .promise-img img {
       width: 100%; height: 100%; object-fit: cover;
@@ -787,7 +791,8 @@
     }
     .footer-brand-link:hover { color: var(--gold); }
     .footer-bottom {
-      display: flex; align-items: center; justify-content: space-between;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center;
       padding-top: clamp(24px, 3vh, 40px);
       font-size: 0.65rem; color: rgba(255,255,255,0.2);
       letter-spacing: 0.1em;
@@ -862,8 +867,8 @@
       .hero-logo-stack .en { font-size: 0.65rem; letter-spacing: 0.5em; }
 
       .promise { grid-template-columns: 1fr; }
-      .promise-text { padding: 4rem 2rem; order: 1; }
-      .promise-img { min-height: 55vh; order: 2; }
+      .promise-text { padding: 4rem 2rem; grid-column: 1; grid-row: auto; }
+      .promise-img { min-height: 55vh; grid-column: 1; grid-row: auto; }
 
       .villa-strip { padding: 5rem 1.5rem; min-height: 60vh; }
       .villa-strip-text-wrap { text-align: center; }
@@ -959,9 +964,6 @@
 
   <!-- ====== PROMISE ====== -->
   <section class="promise">
-    <div class="promise-img">
-      <img src="images/戶外婚禮意境15.jpg" alt="LOHERB Wedding — 一生一次的許諾" loading="lazy">
-    </div>
     <div class="promise-text fade-in">
       <p class="section-label">A Lifetime Promise</p>
       <h2 class="section-title">一生一次的許諾</h2>
@@ -972,6 +974,9 @@
         只為您的幸福時刻而存在。
       </p>
       <p class="promise-poetic">在這裏，時間為愛停留</p>
+    </div>
+    <div class="promise-img">
+      <img src="images/戶外婚禮意境15.jpg" alt="LOHERB Wedding — 一生一次的許諾" loading="lazy">
     </div>
   </section>
 
@@ -1227,9 +1232,7 @@
     </div>
 
     <div class="footer-bottom">
-      <span>&copy; 2026 日光 LOHERB Group. All rights reserved.</span>
-      <span>Yilan, Taiwan</span>
-    </div>
+      <span>&copy; 2026 LOHERB Group. All rights reserved. Built by Disp-Tech.</span></div>
   </footer>
 
   <!-- ====== SCRIPTS ====== -->
