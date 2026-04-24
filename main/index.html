@@ -1965,7 +1965,8 @@ section {
   </div>
   <div class="film-frame reveal reveal-delay-2">
     <iframe
-      src="https://www.youtube.com/embed/htevpfle1W0?si=ZCS6LKLC-If-Pthh&autoplay=1&mute=1&loop=1&playlist=htevpfle1W0&start=11&rel=0&modestbranding=1&playsinline=1&controls=1"
+      id="filmIframe"
+      src="https://www.youtube.com/embed/htevpfle1W0?si=ZCS6LKLC-If-Pthh&enablejsapi=1&mute=1&loop=1&playlist=htevpfle1W0&start=11&rel=0&modestbranding=1&playsinline=1&controls=1"
       title="日光 LOHERB"
       frameborder="0"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -2197,6 +2198,32 @@ section {
       document.body.style.overflow = '';
     });
   });
+
+  /* ---------- 日光映像：預先載入、滑進視窗才從頭播放 ---------- */
+  var filmIframe = document.getElementById('filmIframe');
+  if (filmIframe && 'IntersectionObserver' in window) {
+    var filmPlayed = false;
+    function sendYouTubeCmd(func, args) {
+      try {
+        filmIframe.contentWindow.postMessage(
+          JSON.stringify({ event: 'command', func: func, args: args || [] }),
+          'https://www.youtube.com'
+        );
+      } catch (e) { /* ignore */ }
+    }
+    var filmObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting && !filmPlayed) {
+          filmPlayed = true;
+          // 從 start=11 的位置從頭播放
+          sendYouTubeCmd('seekTo', [11, true]);
+          sendYouTubeCmd('playVideo');
+          filmObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.4 });
+    filmObserver.observe(filmIframe);
+  }
 
   /* ---------- IntersectionObserver for reveal animations ---------- */
   var reveals = document.querySelectorAll('.reveal');
