@@ -1933,7 +1933,7 @@ section {
       </div>
     </a>
 
-    <a href="https://villa.loherb.com.tw/zh/journal/exclusive-two-meal-one-night-loherb-offer" target="_blank" rel="noopener" class="journal-card-main reveal reveal-delay-2">
+    <a id="filmTrigger" href="https://villa.loherb.com.tw/zh/journal/exclusive-two-meal-one-night-loherb-offer" target="_blank" rel="noopener" class="journal-card-main reveal reveal-delay-2">
       <div class="journal-card-thumb">
         <img src="https://images.unsplash.com/photo-1750943082258-19073a2fe5b8?w=600&q=80&auto=format&fit=crop" alt="一泊二食一泊三食 宜蘭食宿雙享受" loading="lazy">
       </div>
@@ -2199,9 +2199,10 @@ section {
     });
   });
 
-  /* ---------- 日光映像：預先載入、滑進視窗才從頭播放 ---------- */
+  /* ---------- 日光映像：預先載入，滑到「一泊二食」札記卡片就從頭播放 ---------- */
   var filmIframe = document.getElementById('filmIframe');
-  if (filmIframe && 'IntersectionObserver' in window) {
+  var filmTrigger = document.getElementById('filmTrigger');
+  if (filmIframe && filmTrigger && 'IntersectionObserver' in window) {
     var filmPlayed = false;
     function sendYouTubeCmd(func, args) {
       try {
@@ -2215,14 +2216,14 @@ section {
       entries.forEach(function (entry) {
         if (entry.isIntersecting && !filmPlayed) {
           filmPlayed = true;
-          // 從 start=11 的位置從頭播放
+          // 從 start=11 的位置從頭播放（提前在日光映像區進入視窗前啟動）
           sendYouTubeCmd('seekTo', [11, true]);
           sendYouTubeCmd('playVideo');
           filmObserver.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.4 });
-    filmObserver.observe(filmIframe);
+    }, { threshold: 0.3 });
+    filmObserver.observe(filmTrigger);
   }
 
   /* ---------- IntersectionObserver for reveal animations ---------- */
