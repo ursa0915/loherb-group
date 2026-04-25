@@ -195,12 +195,38 @@ img { display: block; max-width: 100%; }
 }
 .hero-bg {
   position: absolute; inset: 0;
-  background: linear-gradient(180deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.6) 100%),
-    url('./image/ChatGPT%20Image%202026%E5%B9%B44%E6%9C%8825%E6%97%A5%20%E4%B8%8B%E5%8D%8807_44_44.png') center/cover no-repeat;
+  background: url('./image/ChatGPT%20Image%202026%E5%B9%B44%E6%9C%8825%E6%97%A5%20%E4%B8%8B%E5%8D%8807_44_44.png') center/cover no-repeat;
 }
+/* Frosted glass behind text only — keeps photo bright */
 .hero-content {
   position: relative; z-index: 2; text-align: center; color: var(--warm-white);
-  padding: 2rem 3rem;
+  display: flex; flex-direction: column; align-items: center;
+  padding: 2.4rem 3rem;
+  background: rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  -webkit-mask-image: radial-gradient(
+    ellipse 70% 90% at center,
+    rgba(0, 0, 0, 0.9) 0%,
+    rgba(0, 0, 0, 0.82) 22%,
+    rgba(0, 0, 0, 0.66) 40%,
+    rgba(0, 0, 0, 0.46) 56%,
+    rgba(0, 0, 0, 0.26) 70%,
+    rgba(0, 0, 0, 0.12) 82%,
+    rgba(0, 0, 0, 0.04) 92%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  mask-image: radial-gradient(
+    ellipse 70% 90% at center,
+    rgba(0, 0, 0, 0.9) 0%,
+    rgba(0, 0, 0, 0.82) 22%,
+    rgba(0, 0, 0, 0.66) 40%,
+    rgba(0, 0, 0, 0.46) 56%,
+    rgba(0, 0, 0, 0.26) 70%,
+    rgba(0, 0, 0, 0.12) 82%,
+    rgba(0, 0, 0, 0.04) 92%,
+    rgba(0, 0, 0, 0) 100%
+  );
 }
 .hero-label {
   font-family: var(--font-en); font-size: 0.7rem;
@@ -212,12 +238,11 @@ img { display: block; max-width: 100%; }
   font-weight: 500; letter-spacing: 0.28em; line-height: 1.3;
   text-transform: uppercase;
   margin-bottom: 24px;
-  text-shadow: 0 2px 20px rgba(0,0,0,0.5);
 }
 .hero-subtitle {
   font-family: var(--font-zh); font-size: clamp(1rem, 1.6vw, 1.2rem);
   font-weight: 300; letter-spacing: 0.15em; line-height: 1.8;
-  color: rgba(255, 253, 245, 0.85);
+  color: rgba(255, 253, 245, 0.92);
   max-width: 600px; margin: 0 auto 40px;
 }
 .hero-cta {
