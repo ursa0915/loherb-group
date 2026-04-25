@@ -180,11 +180,19 @@ img { display: block; max-width: 100%; }
   position: absolute; inset: 0;
   background: url('./image/ChatGPT%20Image%202026%E5%B9%B44%E6%9C%8825%E6%97%A5%20%E4%B8%8B%E5%8D%8807_44_44.png') center/cover no-repeat;
 }
-/* 文字下方毛玻璃 — 不變暗背景，只在文字欄柔和透出 */
+/* 文字下方毛玻璃 — 不變暗背景，只在文字欄柔和透出
+   毛玻璃放在 ::before，讓文字與按鈕保持完全不透明 */
 .hero-content {
   position: relative; z-index: 2; text-align: center; color: var(--warm-white);
   display: flex; flex-direction: column; align-items: center;
   padding: 2.4rem 3rem;
+  isolation: isolate;
+}
+.hero-content::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
   background: rgba(0, 0, 0, 0.08);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
