@@ -52,6 +52,19 @@ body {
 a { text-decoration: none; color: inherit; }
 img { display: block; max-width: 100%; }
 
+/* ==================== LOGO 字體鎖定（與集團頁面一致）====================
+   LOHERB / 日 / 光 永遠使用 Bodoni 72 + Noto Serif TC 的「值錢版本」 */
+.preloader-logo .logo-en,
+.nav-logo .nav-logo-en,
+.footer-logo .f-en {
+  font-family: var(--font-logo) !important;
+}
+.preloader-logo .logo-kanji,
+.nav-logo span:not(.nav-logo-en),
+.footer-logo .f-kanji {
+  font-family: var(--font-zh-logo) !important;
+}
+
 /* ==================== PRELOADER ==================== */
 .preloader {
   position: fixed; inset: 0; z-index: 10000;
@@ -195,8 +208,9 @@ img { display: block; max-width: 100%; }
   color: var(--gold); margin-bottom: 28px;
 }
 .hero-title {
-  font-family: var(--font-zh); font-size: clamp(2.5rem, 5vw, 4rem);
-  font-weight: 500; letter-spacing: 0.25em; line-height: 1.3;
+  font-family: var(--font-display); font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 500; letter-spacing: 0.28em; line-height: 1.3;
+  text-transform: uppercase;
   margin-bottom: 24px;
   text-shadow: 0 2px 20px rgba(0,0,0,0.5);
 }
@@ -224,9 +238,10 @@ img { display: block; max-width: 100%; }
   color: var(--gold); margin: 0 0 24px 0;
 }
 .section-title {
-  font-family: var(--font-zh); font-size: clamp(1.8rem, 3.4vw, 2.4rem);
+  font-family: var(--font-display); font-size: clamp(1.8rem, 3.4vw, 2.4rem);
   font-weight: 500; color: var(--charcoal);
-  letter-spacing: 0.2em; margin: 0 0 16px 0;
+  letter-spacing: 0.25em; text-transform: uppercase;
+  margin: 0 0 16px 0;
 }
 .section-subtitle {
   font-family: var(--font-zh); font-size: 0.95rem;
@@ -364,8 +379,8 @@ img { display: block; max-width: 100%; }
   padding: clamp(80px, 10vh, 140px) clamp(24px, 5vw, 80px);
 }
 .cta-headline {
-  font-family: var(--font-zh); font-size: clamp(1.6rem, 3vw, 2.2rem);
-  font-weight: 500; letter-spacing: 0.2em; line-height: 1.6;
+  font-family: var(--font-display); font-size: clamp(1.8rem, 3.2vw, 2.4rem);
+  font-weight: 400; letter-spacing: 0.06em; line-height: 1.5;
   color: var(--charcoal); margin-bottom: 36px; max-width: 720px;
   margin-left: auto; margin-right: auto;
 }
@@ -527,8 +542,7 @@ img { display: block; max-width: 100%; }
   <div class="hero-content">
     <p class="hero-label">Careers</p>
     <h1 class="hero-title">JOIN LOHERB</h1>
-    <p class="hero-subtitle">Pursue your life goals with us &mdash; live the LOHERB way.<br>
-      Working here is not just a job, but a way of life.</p>
+    <p class="hero-subtitle">Pursue your life goals with us &mdash; live the LOHERB way.</p>
     <a href="https://www.104.com.tw/company/1a2x6bjfez" target="_blank" rel="noopener" class="hero-cta">See Open Positions</a>
   </div>
 </section>
@@ -544,22 +558,22 @@ img { display: block; max-width: 100%; }
     <div class="why-card reveal">
       <p class="why-card-num">01 / NATURE</p>
       <h3 class="why-card-title">Nature-Embraced Workplace</h3>
-      <p class="why-card-desc">An open, natural workplace &mdash; each day begins with morning mist and birdsong. The best service is born of the best environment.</p>
+      <p class="why-card-desc">An open, natural workplace where each day begins with mist and birdsong. The best service comes from the best environment.</p>
     </div>
     <div class="why-card reveal reveal-delay-1">
       <p class="why-card-num">02 / CAREER</p>
       <h3 class="why-card-title">Transparent Career Path</h3>
-      <p class="why-card-desc">Clear career roadmaps, regular performance reviews, and well-defined promotion criteria with timelines. Every effort is visible; every milestone is reachable.</p>
+      <p class="why-card-desc">Clear career paths, regular reviews, defined promotion criteria. Every effort is seen; every milestone within reach.</p>
     </div>
     <div class="why-card reveal reveal-delay-2">
       <p class="why-card-num">03 / GROWTH</p>
       <h3 class="why-card-title">Cross-Brand Growth</h3>
-      <p class="why-card-desc">From hospitality and dining to events, design, and e-commerce &mdash; cross-team training across six brands turns you from a specialist into a curator of life.</p>
+      <p class="why-card-desc">From hospitality and dining to events, design, and e-commerce &mdash; cross-team training across six brands shapes you into a curator of life.</p>
     </div>
     <div class="why-card reveal reveal-delay-3">
       <p class="why-card-num">04 / WELLNESS</p>
       <h3 class="why-card-title">Complete Wellness & Growth</h3>
-      <p class="why-card-desc">Annual team trips, performance bonuses, education stipends, dining discounts, full health &amp; labor insurance &mdash; we treat colleagues as family.</p>
+      <p class="why-card-desc">Team trips, performance bonuses, study stipends, dining discounts, full health &amp; labor insurance &mdash; colleagues treated as family.</p>
     </div>
   </div>
 </section>
@@ -569,11 +583,11 @@ img { display: block; max-width: 100%; }
   <div class="section-header reveal">
     <p class="section-label">Open Positions</p>
     <h2 class="section-title">OPEN POSITIONS</h2>
-    <p class="section-subtitle">Apply via 104 Job Bank to view full job descriptions, salary ranges, and work locations.</p>
+    <p class="section-subtitle">Apply via 104 Job Bank for full descriptions, salary ranges, and work locations.</p>
   </div>
   <div class="positions-list reveal">
     <a href="https://www.104.com.tw/company/1a2x6bjfez" target="_blank" rel="noopener" class="position-row">
-      <span class="position-title">Villa Hospitality</span>
+      <span class="position-title">Villa</span>
       <span class="position-meta">Housekeeping · Front Desk · Guest Service · Operations · F&amp;B Service</span>
       <svg class="position-arrow" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
     </a>
@@ -584,22 +598,22 @@ img { display: block; max-width: 100%; }
     </a>
     <a href="https://www.104.com.tw/company/1a2x6bjfez" target="_blank" rel="noopener" class="position-row">
       <span class="position-title">Estate</span>
-      <span class="position-meta">Land Acquisition · Project Planning · Construction Management · Architecture · Interior Design</span>
+      <span class="position-meta">Land Development · Project Planning · Construction · Architecture · Interior Design</span>
       <svg class="position-arrow" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
     </a>
     <a href="https://www.104.com.tw/company/1a2x6bjfez" target="_blank" rel="noopener" class="position-row">
-      <span class="position-title">Party & Café</span>
-      <span class="position-meta">Event Planner · Event Producer · Stage Coordinator · Barista · Visual Design · Photography</span>
+      <span class="position-title">Party</span>
+      <span class="position-meta">Event Planning · Production · Stage · Barista · Visual Design · Photography</span>
       <svg class="position-arrow" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
     </a>
     <a href="https://www.104.com.tw/company/1a2x6bjfez" target="_blank" rel="noopener" class="position-row">
       <span class="position-title">Wedding</span>
-      <span class="position-meta">Wedding Consultant · Wedding Planner · Venue Styling · Floral Design · Bridal Service · Wedding Photography</span>
+      <span class="position-meta">Consultant · Planner · Venue Styling · Floral · Bridal Service · Wedding Photography</span>
       <svg class="position-arrow" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
     </a>
     <a href="https://www.104.com.tw/company/1a2x6bjfez" target="_blank" rel="noopener" class="position-row">
       <span class="position-title">Design</span>
-      <span class="position-meta">Graphic Design · Brand Design · Web / UI Design · Product Development · Copywriting · Digital Marketing · E-commerce</span>
+      <span class="position-meta">Graphic · Brand · Web / UI · Product · Copywriting · Digital Marketing · E-commerce</span>
       <svg class="position-arrow" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
     </a>
   </div>
@@ -610,48 +624,48 @@ img { display: block; max-width: 100%; }
   <div class="section-header reveal">
     <p class="section-label">Benefits</p>
     <h2 class="section-title">BENEFITS</h2>
-    <p class="section-subtitle">We treat colleagues as family. From meals to growth, from work to life, every facet looked after.</p>
+    <p class="section-subtitle">Colleagues as family &mdash; from meals to growth, every facet looked after.</p>
   </div>
   <div class="benefits-grid">
     <div class="benefit-card reveal">
       <span class="benefit-num">01</span>
       <h3 class="benefit-title">Travel & Study Stipend</h3>
-      <p class="benefit-desc">Subsidy for travel and continued education. NT$1,500 per occasion, three times a year. Step out, bring the world back.</p>
+      <p class="benefit-desc">NT$1,500 &times; 3 times a year for travel and study. Step out, bring the world back.</p>
     </div>
     <div class="benefit-card reveal reveal-delay-1">
       <span class="benefit-num">02</span>
       <h3 class="benefit-title">Team Dinners</h3>
-      <p class="benefit-desc">Spring banquets and seasonal feasts. Colleagues become family over shared tables.</p>
+      <p class="benefit-desc">Spring banquets and seasonal feasts &mdash; colleagues become family over shared tables.</p>
     </div>
     <div class="benefit-card reveal reveal-delay-2">
       <span class="benefit-num">03</span>
       <h3 class="benefit-title">Snack Bar</h3>
-      <p class="benefit-desc">Drinks &amp; snacks during busy seasons. Coffee, juice, and sweets within arm&rsquo;s reach.</p>
+      <p class="benefit-desc">Drinks and pastries within arm&rsquo;s reach &mdash; coffee, juice, and sweets to steady you through busy hours.</p>
     </div>
     <div class="benefit-card reveal reveal-delay-3">
       <span class="benefit-num">04</span>
       <h3 class="benefit-title">Staff Dormitory</h3>
-      <p class="benefit-desc">For out-of-town members: NT$3,000/month, free after one year. Make Yilan your new home.</p>
+      <p class="benefit-desc">NT$3,000/month for out-of-town members &mdash; free after one year. Make Yilan your new home.</p>
     </div>
     <div class="benefit-card reveal">
       <span class="benefit-num">05</span>
       <h3 class="benefit-title">LOHERB Uniform</h3>
-      <p class="benefit-desc">Two pieces per person at NT$300 each. Elegant, consistent &mdash; the ritual of working at LOHERB.</p>
+      <p class="benefit-desc">Two pieces &times; NT$300 each. Elegant and consistent &mdash; the ritual of working at LOHERB.</p>
     </div>
     <div class="benefit-card reveal reveal-delay-1">
       <span class="benefit-num">06</span>
       <h3 class="benefit-title">Attendance Bonus</h3>
-      <p class="benefit-desc">Flexible scheduling paired with attendance rewards &mdash; training discipline and steady focus.</p>
+      <p class="benefit-desc">Flexible scheduling with attendance rewards &mdash; training discipline and steady focus.</p>
     </div>
     <div class="benefit-card reveal reveal-delay-2">
       <span class="benefit-num">07</span>
       <h3 class="benefit-title">Transparent Promotion</h3>
-      <p class="benefit-desc">SOP-based onboarding, clear career levels, and regular performance reviews. Effort is seen; promotion is structured.</p>
+      <p class="benefit-desc">SOP onboarding, clear career levels, regular reviews. Effort is seen; promotion is structured.</p>
     </div>
     <div class="benefit-card reveal reveal-delay-3">
       <span class="benefit-num">08</span>
       <h3 class="benefit-title">Partner Discounts</h3>
-      <p class="benefit-desc">Apple, Hotai Rent-a-Car, OakBarrel Wines, Hokkaido Bakery, DunQian Hospitality, and LOHERB brands &mdash; full-spectrum partner discounts.</p>
+      <p class="benefit-desc">Apple, Hotai Rent-a-Car, OakBarrel Wines, Hokkaido Bakery, DunQian Hospitality, LOHERB brands &mdash; full-spectrum partner discounts.</p>
     </div>
   </div>
 </section>
@@ -667,22 +681,22 @@ img { display: block; max-width: 100%; }
     <div class="process-step reveal">
       <div class="process-step-num">01</div>
       <h3 class="process-step-title">Submit Resume</h3>
-      <p class="process-step-desc">Visit 104 Job Bank<br>submit your application online.</p>
+      <p class="process-step-desc">Apply via 104 Job Bank<br>submit your résumé online</p>
     </div>
     <div class="process-step reveal reveal-delay-1">
       <div class="process-step-num">02</div>
       <h3 class="process-step-title">Initial Interview</h3>
-      <p class="process-step-desc">Phone call &mdash;<br>we get to know your background, traits, and aspirations.</p>
+      <p class="process-step-desc">Phone interview<br>we learn your background and aspirations</p>
     </div>
     <div class="process-step reveal reveal-delay-2">
       <div class="process-step-num">03</div>
       <h3 class="process-step-title">On-Site Visit</h3>
-      <p class="process-step-desc">Visit our LOHERB grounds &mdash;<br>experience the workplace and meet the team.</p>
+      <p class="process-step-desc">Visit the LOHERB grounds<br>experience the workplace and meet the team</p>
     </div>
     <div class="process-step reveal reveal-delay-3">
       <div class="process-step-num">04</div>
       <h3 class="process-step-title">Offer & Onboarding</h3>
-      <p class="process-step-desc">Notification within 2 weeks.<br>Onboarding launches your LOHERB journey.</p>
+      <p class="process-step-desc">Notification within two weeks<br>onboarding launches your LOHERB journey</p>
     </div>
   </div>
 </section>
