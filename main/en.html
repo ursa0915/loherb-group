@@ -103,35 +103,67 @@ img {
 }
 
 /* ============================================
-   高質感顯示標題 — Cormorant Garamond
-   優雅 serif，搭配輕字距讓字母自然呼吸
+   英文版顯示標題 — 全部 Playfair Display
+   古典有襯線，無斜體，統一視覺層級
    ============================================ */
+
+/* 所有大型標題、品牌字、卡片標題 → Playfair Display 正體 */
 .slogan-text,
 .brands-title,
 .philosophy-headline,
-.brand-card-zh,
 .journal-title,
+.film-title,
+.ig-title,
+.ig-title a,
+.brand-card-zh,
+.brand-card-en,
 .journal-card-title,
-.film-title {
+.hero-tagline-zh {
   font-family: var(--font-display);
-  font-weight: 400;
+  font-style: normal;        /* 強制非斜體 */
   letter-spacing: 0.02em;
 }
 
-/* Slogan / Philosophy 大字 — Playfair Display 中等字重，古典莊重感 */
+/* 視覺層級：用字重大小拉開，全部維持正體不斜 */
 .slogan-text {
-  font-family: var(--font-display);
   font-weight: 500;
   letter-spacing: 0.04em;
-  font-style: italic;  /* 斜體增添古典書寫氣質 */
 }
 .philosophy-headline {
-  font-family: var(--font-display);
-  font-weight: 600;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  line-height: 1.25;
+}
+.brands-title,
+.journal-title,
+.film-title,
+.ig-title {
+  font-weight: 500;
   letter-spacing: 0.03em;
 }
+.brand-card-zh {
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+.brand-card-en {
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: none;     /* 取消大寫，讓 Villa / Cuisine 用原樣 Title Case */
+}
+.journal-card-title {
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  line-height: 1.45;
+}
+.hero-tagline-zh {
+  font-weight: 400;
+  letter-spacing: 0.06em;
+}
 
-/* 大寫 caps 小標 — Cormorant Garamond 寬字距，奢華雜誌感 */
+/* ============================================
+   大寫 caps 小標 — 同樣 Playfair Display，
+   寬字距帶出精品雜誌的優雅感
+   ============================================ */
 .section-label,
 .slogan-label,
 .philosophy-label,
@@ -140,18 +172,21 @@ img {
 .brands-label,
 .ig-label,
 .footer-col-title,
-.brand-card-en,
 .journal-card-meta,
 .journal-card-link,
 .journal-cta-btn,
 .nav-links a,
 .nav-lang {
   font-family: var(--font-en);
+  font-style: normal;
   font-weight: 500;
   letter-spacing: 0.4em;
 }
 
-/* Body / 內文 / 描述 — Manrope 清晰現代 */
+/* ============================================
+   Body / 內文 / 描述 — Manrope 清晰現代
+   與古典 Playfair 形成優雅對比
+   ============================================ */
 .philosophy-text,
 .journal-card-excerpt,
 .brand-card-desc,
@@ -159,7 +194,8 @@ img {
 .journal-subtitle,
 .footer-tagline,
 .footer-contact-item,
-.footer-bottom {
+.footer-bottom,
+.hero-tagline-en {
   font-family: var(--font-body);
   font-weight: 400;
   letter-spacing: 0.01em;
