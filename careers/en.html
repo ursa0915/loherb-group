@@ -503,16 +503,71 @@ img { display: block; max-width: 100%; }
 @media (max-width: 900px) {
   .why-grid { grid-template-columns: 1fr; }
   .benefits-grid { grid-template-columns: repeat(2, 1fr); }
-  .process-grid { grid-template-columns: repeat(2, 1fr); row-gap: 48px; }
-  .position-row { grid-template-columns: 1fr auto; gap: 8px 16px; }
-  .footer-top { grid-template-columns: 1fr; gap: 40px; }
+  .process-grid { grid-template-columns: repeat(2, 1fr); row-gap: 56px; }
+  .position-row {
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "title arrow"
+      "meta meta";
+    gap: 6px 16px;
+  }
+  .position-title { grid-area: title; }
+  .position-meta { grid-area: meta; line-height: 1.9; }
+  .position-row > svg { grid-area: arrow; }
+  .footer-top {
+    grid-template-columns: 1fr;
+    gap: 48px;
+    text-align: center;
+  }
+  .footer-top > div { display: flex; flex-direction: column; align-items: center; }
+  .footer-contact-item { justify-content: center; }
+  .footer-brands { align-items: center; }
+  .footer-social { justify-content: center; }
 }
 @media (max-width: 768px) {
   .nav-links { display: none; }
   .nav-menu-btn { display: flex; }
-  .hero { height: 60vh; }
+
+  /* HERO — tighter padding, narrower-taller frosted ellipse on mobile */
+  .hero { height: 64vh; min-height: 460px; }
+  .hero-content { padding: 1.8rem 1.6rem; }
+  .hero-content::before {
+    -webkit-mask-image: radial-gradient(
+      ellipse 92% 80% at center,
+      rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.84) 22%, rgba(0,0,0,0.66) 42%,
+      rgba(0,0,0,0.42) 60%, rgba(0,0,0,0.2) 76%, rgba(0,0,0,0.06) 90%, rgba(0,0,0,0) 100%);
+    mask-image: radial-gradient(
+      ellipse 92% 80% at center,
+      rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.84) 22%, rgba(0,0,0,0.66) 42%,
+      rgba(0,0,0,0.42) 60%, rgba(0,0,0,0.2) 76%, rgba(0,0,0,0.06) 90%, rgba(0,0,0,0) 100%);
+  }
+  .hero-label { font-size: 0.62rem; letter-spacing: 0.4em; margin-bottom: 18px; }
+  .hero-title { letter-spacing: 0.2em; line-height: 1.4; margin-bottom: 18px; }
+  .hero-subtitle { font-size: 0.92rem; letter-spacing: 0.05em; line-height: 1.85; margin-bottom: 28px; }
+  .hero-cta { padding: 12px 28px; font-size: 0.65rem; letter-spacing: 0.25em; }
+
+  /* SECTIONS — tighter rhythm */
+  .section { padding: 72px 24px; }
+  .section-header { margin-bottom: 48px; }
+  .section-title { letter-spacing: 0.18em; }
+  .section-subtitle { font-size: 0.88rem; letter-spacing: 0.03em; }
+
   .benefits-grid { grid-template-columns: 1fr; }
-  .process-grid { grid-template-columns: 1fr; }
+  .process-grid { grid-template-columns: 1fr; row-gap: 48px; }
+
+  /* CTA — looser leading on small screens */
+  .cta-headline { font-size: 1.6rem; letter-spacing: 0.04em; line-height: 1.55; }
+  .cta-section { padding: 80px 24px; }
+}
+@media (max-width: 480px) {
+  .hero { height: 60vh; min-height: 420px; }
+  .hero-content { padding: 1.6rem 1.2rem; }
+  .hero-title { font-size: 2rem; letter-spacing: 0.18em; }
+  .hero-subtitle { font-size: 0.86rem; }
+  .why-card { padding: 32px 22px; }
+  .benefit-card { padding: 26px 20px; }
+  .position-row { padding: 22px 18px; }
+  .position-meta { font-size: 0.62rem; letter-spacing: 0.18em; line-height: 1.85; }
 }
 </style>
 </head>
