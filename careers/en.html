@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Careers — Join LOHERB Group</title>
+<meta name="description" content="Join the LOHERB Group — Villa, Cuisine, Estate, Party, Wedding & Design. Build a career in Yilan&apos;s most refined hospitality family.">
+<meta name="theme-color" content="#505350">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --gold: #E6A401;
+  --deep-gold: #D08C03;
+  --charcoal: #505350;
+  --warm-white: #FAF2F0;
+  --cream: #F5ECE0;
+  --black: #1a1a1a;
+  --white: #ffffff;
+  --forest: #084136;
+
+  --font-logo: 'Bodoni 72', 'Bodoni Moda', Georgia, serif;
+  --font-zh-logo: 'Noto Serif TC', '思源宋體', serif;
+  --font-en: 'Playfair Display', 'Bodoni Moda', Georgia, 'Times New Roman', serif;
+  --font-zh: 'Manrope', -apple-system, 'Helvetica Neue', sans-serif;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'Manrope', -apple-system, sans-serif;
+
+  --nav-height: 72px;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--font-zh);
+  color: var(--charcoal);
+  background: var(--warm-white);
+  line-height: 1.8;
+  overflow-x: hidden;
+}
+
+a { text-decoration: none; color: inherit; }
+img { display: block; max-width: 100%; }
+
+/* ==================== PRELOADER ==================== */
+.preloader {
+  position: fixed; inset: 0; z-index: 10000;
+  background: var(--charcoal);
+  display: flex; align-items: center; justify-content: center; flex-direction: column;
+  transition: opacity 0.8s var(--ease-out), visibility 0.8s;
+}
+.preloader.loaded { opacity: 0; visibility: hidden; pointer-events: none; }
+.preloader-logo {
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  opacity: 0; margin-bottom: 100px;
+  animation: preloaderFadeIn 1s var(--ease-out) 0.2s forwards;
+}
+.preloader-logo span {
+  color: var(--gold); font-family: var(--font-zh); font-weight: 500;
+  letter-spacing: 0.3em; padding-left: 0.3em; line-height: 1;
+}
+.preloader-logo .logo-kanji { font-size: clamp(2.8rem, 6vw, 4.5rem); }
+.preloader-logo .logo-en {
+  font-family: var(--font-en);
+  font-size: clamp(0.65rem, 1.2vw, 0.85rem);
+  letter-spacing: clamp(0.5em, 1.2vw, 0.9em);
+  padding-left: clamp(0.5em, 1.2vw, 0.9em);
+  text-transform: uppercase; color: var(--gold);
+}
+@keyframes preloaderFadeIn { to { opacity: 1; } }
+
+/* ==================== NAVIGATION ==================== */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  height: var(--nav-height); display: flex;
+  align-items: center; justify-content: space-between;
+  padding: 0 clamp(24px, 4vw, 64px); transition: all 0.6s var(--ease-out);
+}
+.nav::before {
+  content: ''; position: absolute; inset: 0;
+  background: rgba(250, 242, 240, 0); backdrop-filter: blur(0px);
+  border-bottom: 1px solid transparent; transition: all 0.6s var(--ease-out);
+  pointer-events: none;
+}
+.nav.scrolled::before {
+  background: rgba(250, 242, 240, 0.9); backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(230, 164, 1, 0.12);
+}
+.nav-logo {
+  position: relative; z-index: 2; display: flex; flex-direction: column;
+  align-items: center; gap: 0; line-height: 1; transition: opacity 0.4s;
+}
+.nav-logo span {
+  font-family: var(--font-zh); font-weight: 500; font-size: 1rem;
+  letter-spacing: 0.2em; padding-left: 0.2em;
+  color: var(--white); transition: color 0.6s var(--ease-out);
+}
+.nav-logo .nav-logo-en {
+  font-family: var(--font-en); font-size: 0.45rem;
+  letter-spacing: 0.35em; padding-left: 0.35em;
+  text-transform: uppercase;
+}
+.nav.scrolled .nav-logo span { color: var(--charcoal); }
+
+.nav-links {
+  position: relative; z-index: 2; display: flex; align-items: center;
+  gap: clamp(14px, 2.2vw, 32px);
+}
+.nav-links a {
+  font-family: var(--font-en); font-size: 0.75rem;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.75); transition: color 0.4s;
+}
+.nav.scrolled .nav-links a { color: var(--charcoal); }
+.nav-links a:hover, .nav-links a.active { color: var(--gold); }
+
+.nav-lang {
+  position: relative; z-index: 2; display: flex;
+  align-items: center; gap: 8px;
+  margin-left: clamp(12px, 2vw, 24px);
+  padding-left: clamp(12px, 2vw, 24px);
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+  font-family: var(--font-en); font-size: 0.7rem;
+  letter-spacing: 0.18em; text-transform: uppercase;
+}
+.nav.scrolled .nav-lang { border-left-color: rgba(80, 83, 80, 0.2); }
+.nav-lang a { color: rgba(255, 255, 255, 0.55); transition: color 0.4s; }
+.nav.scrolled .nav-lang a { color: rgba(80, 83, 80, 0.6); }
+.nav-lang a.active, .nav-lang a:hover { color: var(--gold); }
+.nav-lang-sep { color: rgba(255, 255, 255, 0.3); }
+.nav.scrolled .nav-lang-sep { color: rgba(80, 83, 80, 0.3); }
+
+.nav-menu-btn {
+  display: none; position: relative; z-index: 2; width: 32px; height: 24px;
+  background: none; border: none; cursor: pointer;
+  flex-direction: column; justify-content: space-between; align-items: flex-end;
+}
+.nav-menu-btn span {
+  display: block; height: 1px; background: var(--white);
+  transition: all 0.4s var(--ease-out);
+}
+.nav-menu-btn span:nth-child(1) { width: 32px; }
+.nav-menu-btn span:nth-child(2) { width: 24px; }
+.nav-menu-btn span:nth-child(3) { width: 28px; }
+.nav.scrolled .nav-menu-btn span { background: var(--charcoal); }
+
+.mobile-menu {
+  position: fixed; inset: 0; z-index: 999; background: var(--charcoal);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 32px; opacity: 0; visibility: hidden;
+  transition: opacity 0.5s var(--ease-out), visibility 0.5s;
+}
+.mobile-menu.open { opacity: 1; visibility: visible; }
+.mobile-menu a {
+  font-family: var(--font-en); font-size: 0.9rem;
+  letter-spacing: 0.3em; text-transform: uppercase;
+  color: rgba(255,255,255,0.7); transition: color 0.4s;
+}
+.mobile-menu a:hover, .mobile-menu a.active { color: var(--gold); }
+.mobile-lang {
+  display: flex; gap: 12px; align-items: center;
+  margin-top: 16px; padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  font-size: 0.8rem;
+}
+
+/* ==================== HERO ==================== */
+.hero {
+  height: 70vh; min-height: 500px; position: relative; overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--charcoal);
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.6) 100%),
+    url('https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1920&q=80&auto=format&fit=crop') center/cover no-repeat;
+}
+.hero-content {
+  position: relative; z-index: 2; text-align: center; color: var(--warm-white);
+  padding: 2rem 3rem;
+}
+.hero-label {
+  font-family: var(--font-en); font-size: 0.7rem;
+  letter-spacing: 0.5em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 28px;
+}
+.hero-title {
+  font-family: var(--font-zh); font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 500; letter-spacing: 0.25em; line-height: 1.3;
+  margin-bottom: 24px;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+}
+.hero-subtitle {
+  font-family: var(--font-zh); font-size: clamp(1rem, 1.6vw, 1.2rem);
+  font-weight: 300; letter-spacing: 0.15em; line-height: 1.8;
+  color: rgba(255, 253, 245, 0.85);
+  max-width: 600px; margin: 0 auto 40px;
+}
+.hero-cta {
+  display: inline-block; padding: 14px 40px;
+  border: 1px solid var(--gold); color: var(--gold);
+  font-family: var(--font-en); font-size: 0.7rem;
+  letter-spacing: 0.3em; text-transform: uppercase;
+  transition: all 0.4s var(--ease-out);
+}
+.hero-cta:hover { background: var(--gold); color: var(--warm-white); }
+
+/* ==================== SECTION COMMON ==================== */
+.section { padding: clamp(80px, 10vh, 140px) clamp(24px, 5vw, 80px); }
+.section-header { text-align: center; margin-bottom: clamp(56px, 7vh, 96px); }
+.section-label {
+  font-family: var(--font-en); font-size: 0.6rem;
+  letter-spacing: 0.5em; text-transform: uppercase;
+  color: var(--gold); margin: 0 0 24px 0;
+}
+.section-title {
+  font-family: var(--font-zh); font-size: clamp(1.8rem, 3.4vw, 2.4rem);
+  font-weight: 500; color: var(--charcoal);
+  letter-spacing: 0.2em; margin: 0 0 16px 0;
+}
+.section-subtitle {
+  font-family: var(--font-zh); font-size: 0.95rem;
+  color: var(--charcoal); opacity: 0.6;
+  letter-spacing: 0.1em; margin: 0; max-width: 640px;
+  margin-left: auto; margin-right: auto; line-height: 2;
+}
+
+/* ==================== WHY LOHERB CARDS ==================== */
+.why-section { background: var(--warm-white); }
+.why-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: clamp(24px, 3vw, 40px); max-width: 1100px; margin: 0 auto;
+}
+.why-card {
+  background: var(--white); padding: clamp(36px, 4vw, 56px) clamp(28px, 3.5vw, 44px);
+  display: flex; flex-direction: column; gap: 20px;
+  border: 1px solid rgba(80, 83, 80, 0.08);
+  transition: transform 0.6s var(--ease-out), border-color 0.6s var(--ease-out);
+}
+.why-card:hover { transform: translateY(-4px); border-color: rgba(230, 164, 1, 0.4); }
+.why-card-num {
+  font-family: var(--font-en); font-size: 0.65rem;
+  letter-spacing: 0.4em; color: var(--gold);
+}
+.why-card-title {
+  font-family: var(--font-zh); font-size: clamp(1.2rem, 2vw, 1.5rem);
+  font-weight: 500; letter-spacing: 0.1em; color: var(--charcoal);
+}
+.why-card-desc {
+  font-family: var(--font-zh); font-size: 0.9rem; line-height: 2;
+  color: rgba(80, 83, 80, 0.75); letter-spacing: 0.05em;
+}
+
+/* ==================== OPEN POSITIONS ==================== */
+.positions-section {
+  background: var(--cream);
+}
+.positions-list {
+  max-width: 1000px; margin: 0 auto; display: flex; flex-direction: column;
+}
+.position-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr auto;
+  gap: 24px; align-items: center;
+  padding: clamp(24px, 3vw, 36px) clamp(20px, 3vw, 32px);
+  border-top: 1px solid rgba(80, 83, 80, 0.18);
+  transition: background 0.4s, padding-left 0.4s;
+}
+.position-row:last-child { border-bottom: 1px solid rgba(80, 83, 80, 0.18); }
+.position-row:hover {
+  background: rgba(255, 255, 255, 0.5);
+  padding-left: clamp(28px, 3.5vw, 40px);
+}
+.position-title {
+  font-family: var(--font-zh); font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+  font-weight: 500; letter-spacing: 0.08em; color: var(--charcoal);
+}
+.position-meta {
+  font-family: var(--font-en); font-size: 0.7rem;
+  letter-spacing: 0.25em; text-transform: uppercase;
+  color: rgba(80, 83, 80, 0.7);
+}
+.position-arrow {
+  width: 18px; height: 18px; stroke: var(--gold);
+  fill: none; stroke-width: 1.5;
+  opacity: 0.5; transition: all 0.4s var(--ease-out);
+}
+.position-row:hover .position-arrow { opacity: 1; transform: translateX(6px); }
+
+/* ==================== PROCESS STEPS ==================== */
+.process-section { background: var(--charcoal); color: var(--warm-white); }
+.process-section .section-title { color: var(--warm-white); }
+.process-section .section-subtitle { color: rgba(255,253,245,0.55); }
+.process-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: clamp(20px, 3vw, 40px); max-width: 1100px; margin: 0 auto;
+  position: relative;
+}
+.process-step {
+  display: flex; flex-direction: column; align-items: center;
+  text-align: center; gap: 18px; padding: 0 12px;
+}
+.process-step-num {
+  font-family: var(--font-en); font-size: 2rem; font-weight: 400;
+  color: var(--gold); letter-spacing: 0.05em; line-height: 1;
+  padding-bottom: 16px; border-bottom: 1px solid rgba(230, 164, 1, 0.4);
+  width: 60px; text-align: center;
+}
+.process-step-title {
+  font-family: var(--font-zh); font-size: 1.1rem;
+  font-weight: 500; letter-spacing: 0.15em;
+  color: var(--warm-white);
+}
+.process-step-desc {
+  font-family: var(--font-zh); font-size: 0.85rem;
+  line-height: 1.9; letter-spacing: 0.05em;
+  color: rgba(255, 253, 245, 0.55);
+}
+
+/* ==================== CTA ==================== */
+.cta-section {
+  background: var(--warm-white); text-align: center;
+  padding: clamp(80px, 10vh, 140px) clamp(24px, 5vw, 80px);
+}
+.cta-headline {
+  font-family: var(--font-zh); font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 500; letter-spacing: 0.2em; line-height: 1.6;
+  color: var(--charcoal); margin-bottom: 36px; max-width: 720px;
+  margin-left: auto; margin-right: auto;
+}
+.cta-buttons { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+.cta-btn {
+  display: inline-flex; align-items: center; gap: 14px;
+  padding: 16px 40px; font-family: var(--font-en);
+  font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase;
+  transition: all 0.5s var(--ease-out);
+}
+.cta-btn-gold {
+  background: var(--gold); color: var(--warm-white);
+  border: 1px solid var(--gold);
+}
+.cta-btn-gold:hover { background: var(--deep-gold); border-color: var(--deep-gold); }
+.cta-btn-outline {
+  background: transparent; color: var(--charcoal);
+  border: 1px solid rgba(80, 83, 80, 0.4);
+}
+.cta-btn-outline:hover { color: var(--gold); border-color: var(--gold); }
+
+/* ==================== FOOTER ==================== */
+.footer { background: var(--black); color: rgba(255,255,255,0.5); padding: clamp(60px, 8vh, 100px) clamp(24px, 5vw, 80px); }
+.footer-inner { max-width: 1200px; margin: 0 auto; }
+.footer-top { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 56px; margin-bottom: 56px; }
+.footer-logo-col { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 6px; }
+.footer-logo { display: flex; flex-direction: column; align-items: center; gap: 4px; margin-bottom: 20px; }
+.footer-logo .f-kanji {
+  font-family: var(--font-zh); font-size: 1.5rem; font-weight: 500;
+  color: var(--gold); letter-spacing: 0.2em; line-height: 1;
+}
+.footer-logo .f-en {
+  font-family: var(--font-en); font-size: 0.55rem;
+  letter-spacing: 0.5em; text-transform: uppercase;
+  color: rgba(255,255,255,0.5); line-height: 1;
+}
+.footer-tagline {
+  font-size: 0.78rem; color: rgba(255,255,255,0.35);
+  letter-spacing: 0.15em; line-height: 1.8;
+  text-align: center; margin: 0;
+}
+.footer-col-title {
+  font-family: var(--font-en); font-size: 0.55rem;
+  letter-spacing: 0.4em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 20px;
+}
+.footer-contact-item {
+  display: flex; align-items: flex-start; gap: 12px;
+  margin-bottom: 14px; font-size: 0.82rem; line-height: 1.6;
+}
+.footer-contact-item svg { width: 14px; height: 14px; stroke: var(--gold); margin-top: 3px; opacity: 0.7; flex-shrink: 0; }
+.footer-contact-item a { color: rgba(255,255,255,0.5); transition: color 0.3s; }
+.footer-contact-item a:hover { color: var(--gold); }
+.footer-brands { display: flex; flex-direction: column; gap: 10px; }
+.footer-brand-link {
+  font-size: 0.82rem; color: rgba(255,255,255,0.5);
+  transition: color 0.3s;
+}
+.footer-brand-link:hover { color: var(--gold); }
+.footer-bottom {
+  display: flex; align-items: center; justify-content: center; text-align: center;
+  padding-top: clamp(24px, 3vh, 40px);
+  font-size: 0.65rem; color: rgba(255,255,255,0.2); letter-spacing: 0.1em;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+/* ==================== REVEAL ANIMATIONS ==================== */
+.reveal { opacity: 0; transform: translateY(40px); transition: opacity 1s var(--ease-out), transform 1s var(--ease-out); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.15s; }
+.reveal-delay-2 { transition-delay: 0.3s; }
+.reveal-delay-3 { transition-delay: 0.45s; }
+.reveal-delay-4 { transition-delay: 0.6s; }
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 900px) {
+  .why-grid { grid-template-columns: 1fr; }
+  .process-grid { grid-template-columns: repeat(2, 1fr); row-gap: 48px; }
+  .position-row { grid-template-columns: 1fr auto; gap: 8px 16px; }
+  .position-row .position-meta:nth-of-type(2) { display: none; }
+  .position-row .position-meta:nth-of-type(3) { grid-column: 1; font-size: 0.65rem; }
+  .footer-top { grid-template-columns: 1fr; gap: 40px; }
+}
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .nav-menu-btn { display: flex; }
+  .hero { height: 60vh; }
+  .process-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- Preloader -->
+<div class="preloader" id="preloader">
+  <div class="preloader-logo">
+    <span class="logo-kanji">日</span>
+    <span class="logo-en">LOHERB</span>
+    <span class="logo-kanji">光</span>
+  </div>
+</div>
+
+<!-- Navigation -->
+<nav class="nav" id="nav">
+  <a href="../main/en.html" class="nav-logo">
+    <span>日</span>
+    <span class="nav-logo-en">LOHERB</span>
+    <span>光</span>
+  </a>
+  <div class="nav-links">
+    <a href="https://villa.loherb.com.tw" target="_blank" rel="noopener">Villa</a>
+    <a href="https://cuisine.loherb.com.tw" target="_blank" rel="noopener">Cuisine</a>
+    <a href="https://estate.loherb.com.tw" target="_blank" rel="noopener">Estate</a>
+    <a href="https://party.loherb.com.tw" target="_blank" rel="noopener">Party</a>
+    <a href="https://loherb-test.web.app/wedding/" target="_blank" rel="noopener">Wedding</a>
+    <a href="https://dearbb.design" target="_blank" rel="noopener">Design</a>
+    <a href="en.html" class="active">Careers</a>
+  </div>
+  <div class="nav-lang">
+    <a href="index.html">中</a>
+    <span class="nav-lang-sep">/</span>
+    <a href="en.html" class="active">EN</a>
+  </div>
+  <button class="nav-menu-btn" id="menuBtn" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="https://villa.loherb.com.tw" target="_blank" rel="noopener">Villa</a>
+  <a href="https://cuisine.loherb.com.tw" target="_blank" rel="noopener">Cuisine</a>
+  <a href="https://estate.loherb.com.tw" target="_blank" rel="noopener">Estate</a>
+  <a href="https://party.loherb.com.tw" target="_blank" rel="noopener">Party</a>
+  <a href="https://loherb-test.web.app/wedding/" target="_blank" rel="noopener">Wedding</a>
+  <a href="https://dearbb.design" target="_blank" rel="noopener">Design</a>
+  <a href="en.html" class="active">Careers</a>
+  <div class="mobile-lang">
+    <a href="index.html">中文</a>
+    <span style="color:rgba(255,255,255,0.3);">/</span>
+    <a href="en.html" class="active">EN</a>
+  </div>
+</div>
+
+<!-- ==================== HERO ==================== -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <p class="hero-label">Careers</p>
+    <h1 class="hero-title">JOIN LOHERB</h1>
+    <p class="hero-subtitle">Build a career in Yilan&rsquo;s most refined hospitality family.<br>
+      From Villa to Cuisine, from Wedding to Design,<br>
+      six brands, infinite paths.</p>
+    <a href="#positions" class="hero-cta">See Open Positions</a>
+  </div>
+</section>
+
+<!-- ==================== WHY LOHERB ==================== -->
+<section class="section why-section" id="why">
+  <div class="section-header reveal">
+    <p class="section-label">Why LOHERB</p>
+    <h2 class="section-title">WHY LOHERB</h2>
+    <p class="section-subtitle">More than a job &mdash; a way of life.</p>
+  </div>
+  <div class="why-grid">
+    <div class="why-card reveal">
+      <p class="why-card-num">01 / NATURE</p>
+      <h3 class="why-card-title">Nature-Embraced Workplace</h3>
+      <p class="why-card-desc">Surrounded by rice fields, swamp cypress, and morning mist. Each day begins with bird song and golden light. The best service is born of the best environment.</p>
+    </div>
+    <div class="why-card reveal reveal-delay-1">
+      <p class="why-card-num">02 / FAMILY</p>
+      <h3 class="why-card-title">Family-Rooted Warmth</h3>
+      <p class="why-card-desc">Founded in 2013, family-owned through and through. No cold KPI culture &mdash; just genuine human connections, between team and between team and guest.</p>
+    </div>
+    <div class="why-card reveal reveal-delay-2">
+      <p class="why-card-num">03 / GROWTH</p>
+      <h3 class="why-card-title">Cross-Brand Growth</h3>
+      <p class="why-card-desc">Villa, Cuisine, Estate, Party, Wedding, Design &mdash; rotate, train, and grow across six brands. Become more than a specialist; become a curator of life.</p>
+    </div>
+    <div class="why-card reveal reveal-delay-3">
+      <p class="why-card-num">04 / WELLNESS</p>
+      <h3 class="why-card-title">Complete Wellness & Growth</h3>
+      <p class="why-card-desc">Annual team trips, seasonal bonuses, education stipends, dining discounts, birthday & milestone gifts. Full health insurance, pension, and group coverage &mdash; we treat colleagues as family.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== OPEN POSITIONS ==================== -->
+<section class="section positions-section" id="positions">
+  <div class="section-header reveal">
+    <p class="section-label">Open Positions</p>
+    <h2 class="section-title">OPEN POSITIONS</h2>
+    <p class="section-subtitle">Click any role to apply, or send your resume directly to hr@loherb.com.tw.</p>
+  </div>
+  <div class="positions-list reveal">
+    <a href="mailto:hr@loherb.com.tw?subject=Application: Villa Manager" class="position-row">
+      <span class="position-title">Villa Manager</span>
+      <span class="position-meta">Villa</span>
+      <span class="position-meta">Yilan · Full-time</span>
+      <svg class="position-arrow" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+    <a href="mailto:hr@loherb.com.tw?subject=Application: Sous Chef" class="position-row">
+      <span class="position-title">Sous Chef</span>
+      <span class="position-meta">Cuisine</span>
+      <span class="position-meta">Yilan · Full-time</span>
+      <svg class="position-arrow" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+    <a href="mailto:hr@loherb.com.tw?subject=Application: Wedding Planner" class="position-row">
+      <span class="position-title">Wedding Planner</span>
+      <span class="position-meta">Wedding</span>
+      <span class="position-meta">Yilan · Full-time</span>
+      <svg class="position-arrow" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+    <a href="mailto:hr@loherb.com.tw?subject=Application: Barista" class="position-row">
+      <span class="position-title">Barista</span>
+      <span class="position-meta">Party</span>
+      <span class="position-meta">Yilan · Full-time</span>
+      <svg class="position-arrow" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+    <a href="mailto:hr@loherb.com.tw?subject=Application: Brand Designer" class="position-row">
+      <span class="position-title">Brand Designer</span>
+      <span class="position-meta">Design</span>
+      <span class="position-meta">Taipei · Full-time</span>
+      <svg class="position-arrow" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+    <a href="mailto:hr@loherb.com.tw?subject=Application: Marketing Specialist" class="position-row">
+      <span class="position-title">Marketing Specialist</span>
+      <span class="position-meta">Group</span>
+      <span class="position-meta">Taipei · Full-time</span>
+      <svg class="position-arrow" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- ==================== APPLICATION PROCESS ==================== -->
+<section class="section process-section">
+  <div class="section-header reveal">
+    <p class="section-label">How to Apply</p>
+    <h2 class="section-title">HOW TO APPLY</h2>
+    <p class="section-subtitle">From submission to your first day &mdash; we walk it with you.</p>
+  </div>
+  <div class="process-grid">
+    <div class="process-step reveal">
+      <div class="process-step-num">01</div>
+      <h3 class="process-step-title">Submit Resume</h3>
+      <p class="process-step-desc">Email your resume to<br>hr@loherb.com.tw<br>Include role &amp; full name in subject.</p>
+    </div>
+    <div class="process-step reveal reveal-delay-1">
+      <div class="process-step-num">02</div>
+      <h3 class="process-step-title">Initial Interview</h3>
+      <p class="process-step-desc">Phone or video call &mdash;<br>we get to know you, your story,<br>and your aspirations.</p>
+    </div>
+    <div class="process-step reveal reveal-delay-2">
+      <div class="process-step-num">03</div>
+      <h3 class="process-step-title">On-Site Visit</h3>
+      <p class="process-step-desc">Visit our LOHERB grounds &mdash;<br>experience the workplace,<br>meet the team.</p>
+    </div>
+    <div class="process-step reveal reveal-delay-3">
+      <div class="process-step-num">04</div>
+      <h3 class="process-step-title">Offer & Onboarding</h3>
+      <p class="process-step-desc">Offer within 2 weeks.<br>Comprehensive onboarding<br>kicks off your LOHERB journey.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== CTA ==================== -->
+<section class="cta-section reveal">
+  <h2 class="cta-headline">Build with us.<br>Live the LOHERB way.</h2>
+  <div class="cta-buttons">
+    <a href="mailto:hr@loherb.com.tw?subject=LOHERB Careers Inquiry" class="cta-btn cta-btn-gold">Send Resume &rarr;</a>
+    <a href="#positions" class="cta-btn cta-btn-outline">View Positions</a>
+  </div>
+</section>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-logo-col">
+        <div class="footer-logo">
+          <span class="f-kanji">日</span>
+          <span class="f-en">LOHERB</span>
+          <span class="f-kanji">光</span>
+        </div>
+        <p class="footer-tagline">Enjoy life, every day.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+          </svg>
+          <a href="mailto:hr@loherb.com.tw">hr@loherb.com.tw</a>
+        </div>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+          </svg>
+          <a href="tel:+886-3-959-5685">+886-3-959-5685</a>
+        </div>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
+          </svg>
+          <span>9F, No.335, Sec.3, Roosevelt Rd., Taipei<br>No.372&ndash;450, Baofu Rd., Dongshan, Yilan</span>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Brands</div>
+        <div class="footer-brands">
+          <a href="https://villa.loherb.com.tw" target="_blank" rel="noopener" class="footer-brand-link">LOHERB Villa</a>
+          <a href="https://cuisine.loherb.com.tw" target="_blank" rel="noopener" class="footer-brand-link">LOHERB Cuisine</a>
+          <a href="https://estate.loherb.com.tw" target="_blank" rel="noopener" class="footer-brand-link">LOHERB Estate</a>
+          <a href="https://party.loherb.com.tw" target="_blank" rel="noopener" class="footer-brand-link">LOHERB Party</a>
+          <a href="https://loherb-test.web.app/wedding/" target="_blank" rel="noopener" class="footer-brand-link">LOHERB Wedding</a>
+          <a href="https://dearbb.design" target="_blank" rel="noopener" class="footer-brand-link">LOHERB Design</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 LOHERB all rights reserved. Built by Disp-Tech.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+  // Preloader
+  var preloader = document.getElementById('preloader');
+  window.addEventListener('load', function () {
+    setTimeout(function () { preloader.classList.add('loaded'); }, 800);
+  });
+
+  // Nav scroll behavior
+  var nav = document.getElementById('nav');
+  window.addEventListener('scroll', function () {
+    if (window.scrollY > 80) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  });
+
+  // Mobile menu
+  var menuBtn = document.getElementById('menuBtn');
+  var mobileMenu = document.getElementById('mobileMenu');
+  if (menuBtn && mobileMenu) {
+    menuBtn.addEventListener('click', function () {
+      menuBtn.classList.toggle('active');
+      mobileMenu.classList.toggle('open');
+      document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+    });
+    mobileMenu.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', function () {
+        menuBtn.classList.remove('active');
+        mobileMenu.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
+  }
+
+  // Reveal on scroll
+  var reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(function (el) { observer.observe(el); });
+  } else {
+    reveals.forEach(function (el) { el.classList.add('visible'); });
+  }
+})();
+</script>
+</body>
+</html>
