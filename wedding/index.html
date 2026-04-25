@@ -349,20 +349,24 @@
       transition: transform 6s ease;
     }
     .venue-card:hover .venue-card-bg { transform: scale(1.05); }
-    .venue-card::after {
-      content: ''; position: absolute; left: 0; right: 0; bottom: 0;
-      height: 45%;
-      background: linear-gradient(0deg, rgba(0, 0, 0, 0.55) 0%, transparent 100%);
-    }
     .venue-info {
       position: absolute; bottom: 0; left: 0; right: 0;
-      z-index: 1; padding: 2rem;
+      z-index: 1; padding: 2.4rem 2rem;
+    }
+    .venue-info::before {
+      content: ''; position: absolute; inset: 0; z-index: -1;
+      background: rgba(0, 0, 0, 0.32);
+      backdrop-filter: blur(14px) saturate(1.1);
+      -webkit-backdrop-filter: blur(14px) saturate(1.1);
+      -webkit-mask-image: radial-gradient(ellipse 70% 95% at center,rgba(0,0,0,1) 0%,rgba(0,0,0,0.92) 12%,rgba(0,0,0,0.74) 26%,rgba(0,0,0,0.5) 42%,rgba(0,0,0,0.28) 58%,rgba(0,0,0,0.13) 72%,rgba(0,0,0,0.05) 84%,rgba(0,0,0,0.01) 94%,rgba(0,0,0,0) 100%);
+      mask-image: radial-gradient(ellipse 70% 95% at center,rgba(0,0,0,1) 0%,rgba(0,0,0,0.92) 12%,rgba(0,0,0,0.74) 26%,rgba(0,0,0,0.5) 42%,rgba(0,0,0,0.28) 58%,rgba(0,0,0,0.13) 72%,rgba(0,0,0,0.05) 84%,rgba(0,0,0,0.01) 94%,rgba(0,0,0,0) 100%);
     }
     .venue-info .venue-en {
       font-family: Georgia, 'Bodoni 72', serif;
       font-size: 0.55rem; letter-spacing: 0.4em;
       color: var(--gold); text-transform: uppercase;
       margin-bottom: 0.5rem;
+      text-shadow: 0 1px 6px rgba(0,0,0,0.4);
     }
     .venue-info h3 {
       font-size: 1.15rem; font-weight: 600;
@@ -371,7 +375,7 @@
       text-shadow: 0 2px 12px rgba(0,0,0,0.5), 0 1px 4px rgba(0,0,0,0.3);
     }
     .venue-info p {
-      font-size: 0.72rem; color: rgba(255, 253, 245, 0.55);
+      font-size: 0.72rem; color: rgba(255, 253, 245, 0.85);
       line-height: 1.9; font-weight: 300;
       text-shadow: 0 1px 8px rgba(0,0,0,0.4);
     }
@@ -963,15 +967,23 @@
       }
       .nav-toggle { display: block; }
 
+      .hero-logo-stack { padding: 2.4rem 3rem; }
       .hero-logo-stack .zh { font-size: 3.5rem; }
-      .hero-logo-stack .en { font-size: 0.65rem; letter-spacing: 0.5em; }
+      .hero-logo-stack .en { font-size: 1rem; letter-spacing: 0.4em; }
+      .hero-tagline-wrap { padding: 1.6rem 2rem; }
+      .hero-tagline-en { font-size: 0.7rem; letter-spacing: 0.35em; }
+      .hero-tagline-zh { font-size: 0.95rem; letter-spacing: 0.3em; }
 
       .promise { grid-template-columns: 1fr; }
       .promise-text { padding: 4rem 2rem; grid-column: 1; grid-row: auto; }
       .promise-img { min-height: 55vh; grid-column: 1; grid-row: auto; }
 
       .villa-strip { padding: 5rem 1.5rem; min-height: 60vh; }
-      .villa-strip-text-wrap { text-align: center; }
+      .villa-strip-text-wrap {
+        text-align: center;
+        padding: 2.5rem 1.5rem;
+        display: block;
+      }
       .villa-strip .section-title {
         font-size: 1.4rem !important;
         margin-bottom: 0.8rem !important;
@@ -980,6 +992,11 @@
         margin: 0 auto 2rem !important;
         max-width: none;
       }
+      .villa-strip-text-wrap .btn-berry {
+        white-space: nowrap;
+        display: inline-block;
+      }
+      .quote-video { object-position: 65% center; }
 
       .venues { padding: 5rem 2rem; }
       .venues-grid { grid-template-columns: 1fr; gap: 1rem; }
@@ -1087,7 +1104,7 @@
       <p class="section-label">Our Venues</p>
       <h2 class="section-title">我們的婚禮場地</h2>
       <p class="section-desc">
-        日光園區擁有多元婚禮空間，從戶外草坪到室內宴會廳，<br>
+        日光園區多元婚禮空間，從戶外草坪到室內宴會廳，<br>
         每一處都為浪漫而生。
       </p>
     </div>
@@ -1123,7 +1140,7 @@
   <div class="villa-strip fade-in">
     <div class="villa-strip-text-wrap">
       <p class="section-label">Guest Accommodation</p>
-      <h2 class="section-title" style="font-size:2.4rem; margin-bottom:1rem;">獨立Villa&nbsp;私密住宿</h2>
+      <h2 class="section-title" style="font-size:2.4rem; margin-bottom:1rem;">獨立Villa私密住宿</h2>
       <p class="section-desc" style="margin-bottom:2rem;">
         獨棟Villa可供賓客留宿，婚禮前夜，在隱私空間共度溫馨時光，<br>
         翌日於晨光中迎接最美的一天。
@@ -1224,7 +1241,7 @@
     <div class="journal-header fade-in">
       <p class="section-label">LOHERB Journal</p>
       <h2 class="section-title">幸福手帳</h2>
-      <p class="section-desc">收納關於婚禮的美好，還有對彼此述說的溫柔。</p>
+      <p class="section-desc">收納關於婚禮的美好，還有對彼此述說的溫柔</p>
     </div>
     <div class="journal-grid stagger-children">
       <a href="https://villa.loherb.com.tw/zh/journal/yilan-spring-proposal-top-5-hidden-gem-picnic-destinations" class="journal-card fade-in" target="_blank" rel="noopener">

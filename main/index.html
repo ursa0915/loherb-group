@@ -409,14 +409,22 @@ img {
   display: flex;
   flex-direction: column;
   align-items: center;
+  border-radius: 0;
+  /* Tight padding — blur hugs the vertical text column only. */
+  padding: 2rem 3rem;
+  isolation: isolate;
+}
+/* 毛玻璃放在 ::before，文字與 logo 維持完全不透明 */
+.hero-content::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
   /* Barely-there tint — just enough lift for text contrast. */
   background: rgba(0, 0, 0, 0.08);
   /* Lighter blur — subtle, not a "glass pane". */
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
-  border-radius: 0;
-  /* Tight padding — blur hugs the vertical text column only. */
-  padding: 2rem 3rem;
   /* Narrow-tall ellipse that follows the stacked 日／LOHERB／光 column.
      Gradient uses 9 stops with a gentle easing curve so the edge is
      imperceptible — no center plateau, no sharp boundary. */
@@ -1123,17 +1131,25 @@ section {
   background: var(--gold);
 }
 
-/* Soft frosted-glass backdrop behind brand card text for readability */
+/* Soft frosted-glass backdrop behind brand card text for readability
+   毛玻璃放 ::before，品牌名與描述文字維持完全不透明 */
 .brand-card-text {
   position: relative;
   z-index: 2;
   padding: 1.6rem 1.8rem;
-  background: rgba(0, 0, 0, 0.12);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
   display: flex;
   flex-direction: column;
   align-items: center;
+  isolation: isolate;
+}
+.brand-card-text::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: rgba(0, 0, 0, 0.12);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
   -webkit-mask-image: radial-gradient(
     ellipse 72% 95% at center,
     rgba(0,0,0,0.92) 0%,

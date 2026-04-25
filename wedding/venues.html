@@ -219,11 +219,19 @@
       margin-bottom: 0.5rem; letter-spacing: 0.08em;
     }
     .venue-capacity {
-      display: inline-flex; align-items: center; gap: 0.4rem;
-      padding: 0.35rem 1rem;
-      font-size: 0.7rem; letter-spacing: 0.1em; font-weight: 400;
-      border: 1px solid var(--gold); color: var(--gold);
-      border-radius: 2px; margin-bottom: 1.5rem;
+      display: block; margin: 0.6rem 0 1.6rem;
+      font-family: Georgia, 'Bodoni Moda', 'Bodoni 72', serif;
+      font-style: italic;
+      font-size: 1.05rem; font-weight: 400;
+      letter-spacing: 0.06em;
+      color: var(--gold);
+    }
+    .venue-capacity::before {
+      content: '— '; opacity: 0.55;
+    }
+    .venue-split-text .btn-gold {
+      padding: 0.55rem 1.8rem;
+      font-size: 0.7rem; letter-spacing: 0.25em;
       width: fit-content;
     }
     .venue-split-text .venue-desc {
@@ -308,7 +316,7 @@
        CTA SECTION
     ======================================== */
     .cta-section {
-      background: var(--champagne-light);
+      background: var(--ivory);
       text-align: center;
       padding: 7rem 2rem;
       position: relative; overflow: hidden;
@@ -540,21 +548,13 @@
     <div class="venue-split-text" style="background: var(--champagne-light);">
       <p class="venue-en">Outdoor Lawn Ceremony</p>
       <h2>戶外草坪儀式</h2>
-      <span class="venue-capacity">50 - 200 人</span>
+      <span class="venue-capacity">65人以內</span>
       <p class="venue-desc">
         千坪翠綠草地被稻田環繞，落羽松大道延伸為天然廊道，
         遠方山巒與金黃稻穗交織成最浪漫的背幕。
         在天地之間許下誓言，以自然為證，以日光為禮。
       </p>
-      <div class="venue-features">
-        <span class="chip">稻田環繞自然綠意</span>
-        <span class="chip">落羽松大道</span>
-        <span class="chip">千坪私密草坪</span>
-        <span class="chip">專業音響燈光</span>
-        <span class="chip">戶外自助餐區</span>
-        <span class="chip">雨天備案帳篷</span>
-      </div>
-      <a href="contact.html" class="btn-gold">預約場地參觀</a>
+      <a href="contact.html" class="btn-gold">預約參觀</a>
     </div>
   </section>
 
@@ -568,21 +568,13 @@
     <div class="venue-split-text" style="background: var(--ivory);">
       <p class="venue-en">Indoor Banquet Hall</p>
       <h2>室內宴會廳</h2>
-      <span class="venue-capacity">30 - 80 人</span>
+      <span class="venue-capacity">65人以內</span>
       <p class="venue-desc">
         典雅宴會空間以大面落地玻璃引入園區自然光，
         無論晴雨都能完美呈現。挑高天花板搭配柔美燈飾，
         營造溫馨而不失隆重的宴會氛圍。
       </p>
-      <div class="venue-features">
-        <span class="chip">溫馨典雅空間</span>
-        <span class="chip">落地玻璃採光</span>
-        <span class="chip">挑高天花板</span>
-        <span class="chip">全天候不受天氣影響</span>
-        <span class="chip">專業投影設備</span>
-        <span class="chip">獨立空調系統</span>
-      </div>
-      <a href="contact.html" class="btn-gold">預約場地參觀</a>
+      <a href="contact.html" class="btn-gold">預約參觀</a>
     </div>
     <div class="venue-split-img">
       <img src="images/IMG_2905.png" alt="室內宴會廳" loading="lazy">
@@ -602,21 +594,13 @@
     <div class="venue-split-text" style="background: var(--champagne-light);">
       <p class="venue-en">Poolside Reception</p>
       <h2>泳池水畔宴會</h2>
-      <span class="venue-capacity">20 - 60 人</span>
+      <span class="venue-capacity">100人以內</span>
       <p class="venue-desc">
         碧波映照的水岸平台，日間陽光灑落水面波光粼粼，
         夜間池畔燈光營造浪漫氛圍。
         最適合追求私密與浪漫的小型婚禮派對。
       </p>
-      <div class="venue-features">
-        <span class="chip">水岸浪漫氛圍</span>
-        <span class="chip">日夜雙重風情</span>
-        <span class="chip">私密小型派對</span>
-        <span class="chip">Pool Party 選項</span>
-        <span class="chip">露天雞尾酒會</span>
-        <span class="chip">夜間池畔照明</span>
-      </div>
-      <a href="contact.html" class="btn-gold">預約場地參觀</a>
+      <a href="contact.html" class="btn-gold">預約參觀</a>
     </div>
   </section>
 
@@ -625,7 +609,7 @@
     <div class="cta-text-wrap">
       <p class="section-label">Book a Visit</p>
       <h2 class="section-title">親臨感受日光的浪漫</h2>
-      <a href="contact.html" class="btn-gold">預約場地參觀</a>
+      <a href="contact.html" class="btn-gold">預約參觀</a>
     </div>
   </section>
 

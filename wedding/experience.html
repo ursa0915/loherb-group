@@ -93,7 +93,7 @@
     }
     .page-hero-bg {
       position: absolute; inset: 0;
-      background: url('https://images.pexels.com/photos/32588056/pexels-photo-32588056.jpeg?w=1920&q=80&auto=compress') center/cover no-repeat;
+      background: url('images/ChatGPT Image 2026年4月25日 下午08_30_17.png') center/cover no-repeat;
     }
     .page-hero-content {
       position: relative; z-index: 1;
@@ -191,6 +191,31 @@
     .timeline-header .section-title { color: var(--champagne-light); }
     .timeline-header .section-desc { color: rgba(255, 253, 245, 0.45); margin: 0 auto; text-align: center; }
 
+    .timeline-tabs {
+      display: flex; justify-content: center;
+      gap: 0.6rem; margin-bottom: 4rem;
+      flex-wrap: wrap; position: relative;
+    }
+    .timeline-tab {
+      padding: 0.7rem 2rem;
+      font-family: 'Noto Serif TC', Georgia, serif;
+      font-size: 0.78rem; letter-spacing: 0.25em;
+      background: transparent; cursor: pointer;
+      border: 1px solid rgba(201, 169, 110, 0.35);
+      color: rgba(255, 253, 245, 0.55);
+      transition: all 0.4s;
+    }
+    .timeline-tab:hover {
+      color: var(--gold);
+      border-color: var(--gold);
+    }
+    .timeline-tab.active {
+      background: var(--gold);
+      color: var(--ivory);
+      border-color: var(--gold);
+    }
+    .timeline-panel { display: none; }
+    .timeline-panel.active { display: block; }
     .timeline {
       max-width: 800px; margin: 0 auto;
       position: relative;
@@ -293,7 +318,7 @@
        CTA SECTION
     ======================================== */
     .cta-section {
-      background: var(--champagne-light);
+      background: var(--ivory);
       text-align: center;
       padding: 7rem 2rem;
       position: relative; overflow: hidden;
@@ -451,14 +476,26 @@
       .services-grid { grid-template-columns: 1fr; }
 
       .timeline-section { padding: 5rem 2rem; }
-      .timeline::before { left: 20px; }
+      .timeline { max-width: none; }
+      .timeline::before { left: 20px; transform: none; }
       .timeline-item,
-      .timeline-item:nth-child(even) { flex-direction: column; align-items: flex-start; padding-left: 45px; }
+      .timeline-item:nth-child(odd),
+      .timeline-item:nth-child(even) {
+        flex-direction: column; align-items: flex-start;
+        padding-left: 45px; position: relative;
+      }
       .timeline-time,
-      .timeline-item:nth-child(even) .timeline-time { text-align: left; padding: 0; margin-bottom: 0.3rem; }
+      .timeline-item:nth-child(even) .timeline-time {
+        text-align: left; padding: 0;
+        margin-bottom: 0.3rem; flex: none;
+      }
       .timeline-content,
-      .timeline-item:nth-child(even) .timeline-content { text-align: left; padding: 0; }
-      .timeline-dot { position: absolute; left: -45px; top: 0.3rem; }
+      .timeline-item:nth-child(even) .timeline-content {
+        text-align: left; padding: 0; flex: none;
+      }
+      .timeline-dot { position: absolute; left: -50px; top: 0.5rem; }
+      .timeline-tabs { gap: 0.4rem; }
+      .timeline-tab { padding: 0.6rem 1.2rem; letter-spacing: 0.18em; }
 
       .testimonials-section { padding: 5rem 2rem; }
       .testimonials-grid { grid-template-columns: 1fr; }
@@ -510,42 +547,41 @@
       <p class="section-label">Our Services</p>
       <h2 class="section-title">專屬婚禮服務</h2>
       <p class="section-desc">
-        從企劃到執行，從花藝到攝影，<br>
-        日光婚禮團隊全程為您統籌每一個環節。
+        交給日光婚禮團隊，協助您統籌每一個環節
       </p>
     </div>
     <div class="services-grid stagger-children">
       <div class="service-card fade-in">
         <div class="service-card-img">
-          <img src="https://images.unsplash.com/photo-1758810741900-0b2250ded8b3?w=800&q=80&auto=format&fit=crop" alt="婚禮企劃" loading="lazy">
+          <img src="images/Wedding_Website_素材/01_婚禮企劃/ChatGPT Image 2026年4月25日 下午09_31_01.png" alt="婚禮企劃" loading="lazy">
         </div>
         <div class="service-card-text">
           <p class="en-label">Wedding Planning</p>
           <h3>婚禮企劃</h3>
           <p>
-            資深婚禮統籌團隊從初步諮詢到婚禮當天全程陪伴，
-            依照您的風格與預算，規劃最完美的流程與動線，
-            讓您只需要享受幸福的每一刻。
+            日光小秘從諮詢到婚禮當天全程陪伴，
+            依照您的風格預算，規劃最流程動線，
+            讓您放鬆享受幸福每一刻。
           </p>
         </div>
       </div>
       <div class="service-card fade-in">
         <div class="service-card-img">
-          <img src="https://images.unsplash.com/photo-1647979898663-517cb7721464?w=800&q=80&auto=format&fit=crop" alt="場地佈置" loading="lazy">
+          <img src="images/Wedding_Website_素材/02_場地佈置/室內婚禮意境1.jpg" alt="場地佈置" loading="lazy">
         </div>
         <div class="service-card-text">
           <p class="en-label">Venue Decoration</p>
           <h3>場地佈置</h3>
           <p>
-            依照您的婚禮主題量身打造場地佈置，
-            從入口迎賓區到儀式舞台、宴客區域，
-            每一處都精心設計，營造獨一無二的氛圍。
+            依照婚禮主題量身打造場地，
+            從迎賓、觀禮到宴客，
+            室內戶外每處都精心設計，營造獨一無二氛圍。
           </p>
         </div>
       </div>
       <div class="service-card fade-in">
         <div class="service-card-img">
-          <img src="https://images.unsplash.com/photo-1524777313293-86d2ab467344?w=800&q=80&auto=format&fit=crop" alt="花藝設計" loading="lazy">
+          <img src="images/Wedding_Website_素材/03_花藝設計/ChatGPT Image 2026年4月25日 下午09_39_35.png" alt="花藝設計" loading="lazy">
         </div>
         <div class="service-card-text">
           <p class="en-label">Floral Design</p>
@@ -559,7 +595,7 @@
       </div>
       <div class="service-card fade-in">
         <div class="service-card-img">
-          <img src="https://images.unsplash.com/photo-1491858905701-dc9dc1f96909?w=800&q=80&auto=format&fit=crop" alt="攝影紀錄" loading="lazy">
+          <img src="images/Wedding_Website_素材/04_攝影紀錄/ChatGPT Image 2026年4月25日 下午09_28_49.png" alt="攝影紀錄" loading="lazy">
         </div>
         <div class="service-card-text">
           <p class="en-label">Photography</p>
@@ -573,29 +609,29 @@
       </div>
       <div class="service-card fade-in">
         <div class="service-card-img">
-          <img src="https://images.unsplash.com/photo-1632920665156-c84f643fcb37?w=800&q=80&auto=format&fit=crop" alt="新娘秘書" loading="lazy">
+          <img src="images/Wedding_Website_素材/05_新娘秘書/ChatGPT Image 2026年4月25日 下午08_30_17.png" alt="新娘秘書" loading="lazy">
         </div>
         <div class="service-card-text">
           <p class="en-label">Bridal Styling</p>
           <h3>新娘秘書</h3>
           <p>
-            專業新秘團隊提供妝髮造型服務，
-            依照您的氣質與禮服搭配，打造最美的新娘妝容，
+            合作專業新秘團隊提供妝髮造型服務，
+            依照您的氣質與禮服搭配打造妝容，
             從迎娶到宴客完美變換造型。
           </p>
         </div>
       </div>
       <div class="service-card fade-in">
         <div class="service-card-img">
-          <img src="https://images.unsplash.com/photo-1551696785-927d4ac2d35b?w=800&q=80&auto=format&fit=crop" alt="音樂表演" loading="lazy">
+          <img src="images/Wedding_Website_素材/06_音樂表演/ChatGPT Image 2026年4月25日 下午09_43_07.png" alt="音樂表演" loading="lazy">
         </div>
         <div class="service-card-text">
-          <p class="en-label">Live Music</p>
-          <h3>音樂表演</h3>
+          <p class="en-label">AV Equipment</p>
+          <h3>影音設備</h3>
           <p>
-            提供弦樂四重奏、爵士樂團、吉他歌手等
-            多種現場音樂演出選擇，讓美妙旋律
-            為您的婚禮增添動人氛圍。
+            從布幕投影到麥克風規劃，
+            專業設備醞釀婚禮氛圍；
+            更合作演唱會等級音響，打造震撼全場的視聽饗宴。
           </p>
         </div>
       </div>
@@ -609,65 +645,162 @@
       <h2 class="section-title" style="position:relative;">婚禮當日流程</h2>
       <p class="section-desc" style="position:relative;">精心安排的每一刻，讓幸福自然流淌。</p>
     </div>
-    <div class="timeline" style="position:relative;">
-      <div class="timeline-item fade-in">
-        <div class="timeline-time">
-          <span class="time">10:00</span>
+    <div class="timeline-tabs" style="position:relative;">
+      <button type="button" class="timeline-tab active" data-panel="lunch">午宴</button>
+      <button type="button" class="timeline-tab" data-panel="dinner">晚宴</button>
+      <button type="button" class="timeline-tab" data-panel="ceremony">證婚觀禮</button>
+    </div>
+
+    <!-- ===== 午宴 Lunch ===== -->
+    <div class="timeline-panel active" id="panel-lunch">
+      <div class="timeline" style="position:relative;">
+        <div class="timeline-item fade-in">
+          <div class="timeline-time"><span class="time">10:00</span></div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h4>新人準備</h4>
+            <p>新秘進場，妝髮造型<br>攝影師側拍準備花絮</p>
+          </div>
         </div>
-        <div class="timeline-dot"></div>
-        <div class="timeline-content">
-          <h4>新人準備</h4>
-          <p>新秘進場，妝髮造型<br>攝影師側拍準備花絮</p>
+        <div class="timeline-item fade-in">
+          <div class="timeline-time"><span class="time">11:00</span></div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h4>場地佈置確認</h4>
+            <p>花藝、桌位、影音<br>最後檢視彩排</p>
+          </div>
+        </div>
+        <div class="timeline-item fade-in">
+          <div class="timeline-time"><span class="time">11:30</span></div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h4>迎賓時刻</h4>
+            <p>賓客陸續抵達園區<br>茶會點心、自由參觀</p>
+          </div>
+        </div>
+        <div class="timeline-item fade-in">
+          <div class="timeline-time"><span class="time">12:00</span></div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h4>證婚儀式</h4>
+            <p>草坪／室內證婚，交換誓詞<br>在天地之間許下承諾</p>
+          </div>
+        </div>
+        <div class="timeline-item fade-in">
+          <div class="timeline-time"><span class="time">12:30</span></div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h4>婚宴時光</h4>
+            <p>主廚精心料理上桌<br>致詞、敬酒、切蛋糕</p>
+          </div>
+        </div>
+        <div class="timeline-item fade-in">
+          <div class="timeline-time"><span class="time">14:00</span></div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h4>歡送祝福</h4>
+            <p>送客小物、擁抱道別<br>午後陽光中的圓滿句點</p>
+          </div>
         </div>
       </div>
-      <div class="timeline-item fade-in">
-        <div class="timeline-time">
-          <span class="time">12:00</span>
+    </div>
+
+    <!-- ===== 晚宴 Dinner ===== -->
+    <div class="timeline-panel" id="panel-dinner">
+      <div class="timeline" style="position:relative;">
+        <div class="timeline-item fade-in">
+          <div class="timeline-time"><span class="time">16:00</span></div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h4>新人準備</h4>
+            <p>新秘進場，妝髮造型<br>攝影師側拍準備花絮</p>
+          </div>
         </div>
-        <div class="timeline-dot"></div>
-        <div class="timeline-content">
-          <h4>迎賓時刻</h4>
-          <p>賓客陸續抵達園區<br>茶會點心、自由參觀</p>
+        <div class="timeline-item fade-in">
+          <div class="timeline-time"><span class="time">17:00</span></div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h4>場地佈置確認</h4>
+            <p>花藝、桌位、影音<br>夜燈點亮、彩排走位</p>
+          </div>
+        </div>
+        <div class="timeline-item fade-in">
+          <div class="timeline-time"><span class="time">17:30</span></div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h4>迎賓時刻</h4>
+            <p>賓客陸續抵達園區<br>雞尾酒會、自由交流</p>
+          </div>
+        </div>
+        <div class="timeline-item fade-in">
+          <div class="timeline-time"><span class="time">18:00</span></div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h4>證婚儀式</h4>
+            <p>燭光下交換誓詞<br>夜空為證、星光為禮</p>
+          </div>
+        </div>
+        <div class="timeline-item fade-in">
+          <div class="timeline-time"><span class="time">18:30</span></div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h4>婚宴時光</h4>
+            <p>主廚精心料理上桌<br>致詞、敬酒、切蛋糕</p>
+          </div>
+        </div>
+        <div class="timeline-item fade-in">
+          <div class="timeline-time"><span class="time">20:00</span></div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h4>歡送祝福</h4>
+            <p>送客小物、擁抱道別<br>星夜下最美的句點</p>
+          </div>
         </div>
       </div>
-      <div class="timeline-item fade-in">
-        <div class="timeline-time">
-          <span class="time">13:00</span>
+    </div>
+
+    <!-- ===== 證婚觀禮 Ceremony Only (2 hr) ===== -->
+    <div class="timeline-panel" id="panel-ceremony">
+      <div class="timeline" style="position:relative;">
+        <div class="timeline-item fade-in">
+          <div class="timeline-time"><span class="time">15:00</span></div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h4>賓客報到</h4>
+            <p>迎賓入場、引導入座<br>輕食茶點招待</p>
+          </div>
         </div>
-        <div class="timeline-dot"></div>
-        <div class="timeline-content">
-          <h4>證婚儀式</h4>
-          <p>草坪證婚，交換誓詞<br>在天地之間許下承諾</p>
+        <div class="timeline-item fade-in">
+          <div class="timeline-time"><span class="time">15:20</span></div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h4>茶點交流</h4>
+            <p>下午茶點心、特調飲品<br>賓客間自由互動敘舊</p>
+          </div>
         </div>
-      </div>
-      <div class="timeline-item fade-in">
-        <div class="timeline-time">
-          <span class="time">14:00</span>
+        <div class="timeline-item fade-in">
+          <div class="timeline-time"><span class="time">16:00</span></div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h4>證婚儀式</h4>
+            <p>進場、交換誓詞與戒指<br>見證親友共同祝福</p>
+          </div>
         </div>
-        <div class="timeline-dot"></div>
-        <div class="timeline-content">
-          <h4>合影留念</h4>
-          <p>親友團體合照<br>園區各角落婚紗攝影</p>
+        <div class="timeline-item fade-in">
+          <div class="timeline-time"><span class="time">16:30</span></div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h4>合影留念</h4>
+            <p>親友團體合照<br>園區各角落新人留影</p>
+          </div>
         </div>
-      </div>
-      <div class="timeline-item fade-in">
-        <div class="timeline-time">
-          <span class="time">15:00</span>
-        </div>
-        <div class="timeline-dot"></div>
-        <div class="timeline-content">
-          <h4>婚宴時光</h4>
-          <p>主廚精心料理上桌<br>致詞、敬酒、切蛋糕</p>
-        </div>
-      </div>
-      <div class="timeline-item fade-in">
-        <div class="timeline-time">
-          <span class="time">17:00</span>
-        </div>
-        <div class="timeline-dot"></div>
-        <div class="timeline-content">
-          <h4>歡送祝福</h4>
-          <p>送客小物、擁抱道別<br>夕陽中最美的句點</p>
+        <div class="timeline-item fade-in">
+          <div class="timeline-time"><span class="time">17:00</span></div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h4>圓滿賦歸</h4>
+            <p>送客小物、感謝道別<br>下午陽光中的浪漫句點</p>
+          </div>
         </div>
       </div>
     </div>
@@ -689,8 +822,8 @@
         <div class="testimonial-author">
           <div class="testimonial-author-line"></div>
           <div>
-            <span>Kevin & Ivy</span><br>
-            <span class="date">2025 Autumn</span>
+            <span>Jennie & Ursa</span><br>
+            <span class="date">2017 Spring</span>
           </div>
         </div>
       </div>
@@ -703,8 +836,8 @@
         <div class="testimonial-author">
           <div class="testimonial-author-line"></div>
           <div>
-            <span>James & Yuki</span><br>
-            <span class="date">2025 Spring</span>
+            <span>Rue & Terence</span><br>
+            <span class="date">2020 Winter</span>
           </div>
         </div>
       </div>
@@ -718,7 +851,7 @@
           <div class="testimonial-author-line"></div>
           <div>
             <span>Alex & Mia</span><br>
-            <span class="date">2024 Winter</span>
+            <span class="date">2025 Summer</span>
           </div>
         </div>
       </div>
@@ -831,6 +964,20 @@
       link.addEventListener('click', () => {
         navToggle.classList.remove('active');
         navLinks.classList.remove('open');
+      });
+    });
+
+    /* Timeline tabs */
+    document.querySelectorAll('.timeline-tab').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const target = btn.dataset.panel;
+        document.querySelectorAll('.timeline-tab').forEach(b => b.classList.toggle('active', b === btn));
+        document.querySelectorAll('.timeline-panel').forEach(p => p.classList.toggle('active', p.id === 'panel-' + target));
+        // re-trigger fade-in for items in newly-shown panel
+        document.querySelectorAll('#panel-' + target + ' .fade-in').forEach(el => {
+          el.classList.remove('visible');
+          requestAnimationFrame(() => el.classList.add('visible'));
+        });
       });
     });
   </script>
