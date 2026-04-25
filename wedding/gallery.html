@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>客製體驗 — 日光婚禮 LOHERB Wedding</title>
-  <meta name="description" content="日光婚禮客製化體驗：婚禮企劃、場地佈置、花藝設計、攝影紀錄、新娘秘書、音樂表演，為您打造獨一無二的婚禮。">
+  <title>幸福時刻 — 日光婚禮 LOHERB Wedding</title>
+  <meta name="description" content="日光婚禮的幸福時刻精選照片：戶外草坪儀式、室內宴會廳、泳池水畔宴會與新人浪漫紀錄。">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200;300;400;600;700;900&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -46,10 +46,7 @@
       -webkit-backdrop-filter: blur(20px) saturate(1.2);
       box-shadow: 0 1px 20px rgba(201, 169, 110, 0.10);
     }
-    .nav-logo {
-      display: flex; flex-direction: column; align-items: center;
-      text-decoration: none; line-height: 1; gap: 0.08rem;
-    }
+    .nav-logo { display: flex; flex-direction: column; align-items: center; text-decoration: none; line-height: 1; gap: 0.08rem; }
     .nav-logo .zh-top { font-size: 1.1rem; font-weight: 500; color: var(--gold); letter-spacing: 0.2em; }
     .nav-logo .en { font-family: 'Bodoni 72', 'Bodoni Moda', Georgia, serif; font-size: 0.45rem; letter-spacing: 0.35em; padding-left: 0.35em; color: var(--gold); text-transform: uppercase; }
     .nav-logo .zh-bottom { font-size: 1.1rem; font-weight: 500; color: var(--gold); letter-spacing: 0.2em; }
@@ -93,7 +90,7 @@
     }
     .page-hero-bg {
       position: absolute; inset: 0;
-      background: url('https://images.pexels.com/photos/32588056/pexels-photo-32588056.jpeg?w=1920&q=80&auto=compress') center/cover no-repeat;
+      background: url('images/couple-bride-groom-enjoying-romantic-moments-wedding-ceremony.jpg') center/cover no-repeat;
     }
     .page-hero-content {
       position: relative; z-index: 1;
@@ -126,186 +123,98 @@
     }
 
     /* ========================================
-       SERVICES GRID
+       GALLERY SECTIONS
     ======================================== */
-    .services-section {
+    .gallery-section {
       background: var(--ivory);
-      padding: 7rem 4rem;
+      padding: 6rem 4rem 4rem;
     }
-    .services-header {
-      text-align: center; margin-bottom: 5rem;
+    .gallery-section + .gallery-section {
+      padding-top: 0;
     }
-    .services-header .section-desc {
+    .gallery-section.alt {
+      background: var(--champagne-light);
+    }
+    .gallery-header {
+      text-align: center; margin-bottom: 3.5rem;
+    }
+    .gallery-header .section-desc {
       margin: 0 auto; text-align: center;
     }
-    .services-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 2rem; max-width: 1200px; margin: 0 auto;
+    .gallery-flow {
+      column-count: 3;
+      column-gap: 1rem;
+      max-width: 1400px; margin: 0 auto;
     }
-    .service-card {
-      position: relative; overflow: hidden;
-      background: var(--champagne-light);
-      transition: transform 0.4s;
+    .gallery-flow .gallery-item {
+      break-inside: avoid;
+      margin-bottom: 1rem;
+      overflow: hidden;
+      position: relative;
+      cursor: zoom-in;
     }
-    .service-card:hover { transform: translateY(-4px); }
-    .service-card-img {
-      position: relative; overflow: hidden;
-      aspect-ratio: 4/3;
+    .gallery-flow .gallery-item img {
+      width: 100%; height: auto;
+      display: block;
+      transition: transform 6s ease, filter 0.5s ease;
+      filter: saturate(1.05);
     }
-    .service-card-img img {
-      width: 100%; height: 100%; object-fit: cover;
-      transition: transform 6s ease;
+    .gallery-flow .gallery-item:hover img {
+      transform: scale(1.06);
+      filter: saturate(1.15);
     }
-    .service-card:hover .service-card-img img { transform: scale(1.05); }
-    .service-card-text {
-      padding: 2rem 2rem 2.5rem;
-    }
-    .service-card-text .en-label {
-      font-family: Georgia, 'Bodoni 72', serif;
-      font-size: 0.55rem; letter-spacing: 0.4em;
-      color: var(--gold); text-transform: uppercase;
-      margin-bottom: 0.5rem;
-    }
-    .service-card-text h3 {
-      font-size: 1.1rem; font-weight: 600;
-      color: var(--charcoal); letter-spacing: 0.08em;
-      margin-bottom: 0.8rem;
-    }
-    .service-card-text p {
-      font-size: 0.78rem; color: rgba(80, 83, 80, 0.55);
-      line-height: 2.2; font-weight: 300;
+    .gallery-flow .gallery-item::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to bottom, transparent 60%, rgba(201, 169, 110, 0.08) 100%);
+      pointer-events: none;
     }
 
     /* ========================================
-       TIMELINE SECTION
+       LIGHTBOX
     ======================================== */
-    .timeline-section {
+    .lightbox {
+      position: fixed; inset: 0;
+      background: rgba(26, 26, 26, 0.95);
+      display: none; align-items: center; justify-content: center;
+      z-index: 2000;
+      padding: 2rem;
+      cursor: zoom-out;
+    }
+    .lightbox.active { display: flex; }
+    .lightbox img {
+      max-width: 92vw; max-height: 88vh;
+      object-fit: contain;
+      box-shadow: 0 40px 100px rgba(0,0,0,0.6);
+    }
+    .lightbox-close {
+      position: absolute; top: 1.5rem; right: 2rem;
+      color: var(--ivory); font-size: 2rem;
+      background: none; border: none; cursor: pointer;
+      opacity: 0.7; transition: opacity 0.3s;
+    }
+    .lightbox-close:hover { opacity: 1; }
+
+    /* ========================================
+       CTA STRIP
+    ======================================== */
+    .cta-strip {
       background: var(--charcoal-deep);
-      padding: 7rem 4rem;
-      position: relative; overflow: hidden;
-    }
-    .timeline-header {
-      text-align: center; margin-bottom: 5rem;
-      position: relative;
-    }
-    .timeline-header .section-title { color: var(--champagne-light); }
-    .timeline-header .section-desc { color: rgba(255, 253, 245, 0.45); margin: 0 auto; text-align: center; }
-
-    .timeline {
-      max-width: 800px; margin: 0 auto;
-      position: relative;
-    }
-    .timeline::before {
-      content: ''; position: absolute;
-      left: 50%; top: 0; bottom: 0;
-      width: 1px; background: rgba(201, 169, 110, 0.2);
-      transform: translateX(-50%);
-    }
-    .timeline-item {
-      display: flex; align-items: center;
-      margin-bottom: 3.5rem;
-      position: relative;
-    }
-    .timeline-item:last-child { margin-bottom: 0; }
-    .timeline-item:nth-child(odd) { flex-direction: row; }
-    .timeline-item:nth-child(even) { flex-direction: row-reverse; }
-    .timeline-time {
-      flex: 1; text-align: right; padding-right: 3rem;
-    }
-    .timeline-item:nth-child(even) .timeline-time {
-      text-align: left; padding-right: 0; padding-left: 3rem;
-    }
-    .timeline-time .time {
-      font-family: Georgia, 'Bodoni 72', serif;
-      font-size: 1.2rem; color: var(--gold);
-      letter-spacing: 0.1em; font-weight: 400;
-    }
-    .timeline-dot {
-      width: 12px; height: 12px;
-      background: var(--gold); border-radius: 50%;
-      flex-shrink: 0; position: relative; z-index: 1;
-    }
-    .timeline-content {
-      flex: 1; padding-left: 3rem;
-    }
-    .timeline-item:nth-child(even) .timeline-content {
-      padding-left: 0; padding-right: 3rem;
-      text-align: right;
-    }
-    .timeline-content h4 {
-      font-size: 0.95rem; font-weight: 600;
-      color: var(--champagne-light); letter-spacing: 0.08em;
-      margin-bottom: 0.4rem;
-    }
-    .timeline-content p {
-      font-size: 0.75rem; color: rgba(255, 253, 245, 0.4);
-      line-height: 2; font-weight: 300;
-    }
-
-    /* ========================================
-       TESTIMONIALS
-    ======================================== */
-    .testimonials-section {
-      background: var(--champagne-light);
-      padding: 7rem 4rem;
-    }
-    .testimonials-header {
-      text-align: center; margin-bottom: 4.5rem;
-    }
-    .testimonials-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 2.5rem; max-width: 1100px; margin: 0 auto;
-    }
-    .testimonial-card {
-      background: var(--ivory);
-      padding: 3rem 2.5rem;
-      position: relative;
-    }
-    .testimonial-card::before {
-      content: '\201C';
-      font-family: Georgia, 'Bodoni 72', serif;
-      font-size: 4rem; color: var(--gold);
-      opacity: 0.2; position: absolute;
-      top: 1rem; left: 1.5rem; line-height: 1;
-    }
-    .testimonial-card p {
-      font-size: 0.82rem; color: rgba(80, 83, 80, 0.6);
-      line-height: 2.3; font-weight: 300;
-      font-style: italic; margin-bottom: 1.5rem;
-      position: relative;
-    }
-    .testimonial-author {
-      display: flex; align-items: center; gap: 0.8rem;
-    }
-    .testimonial-author-line {
-      width: 24px; height: 1px; background: var(--gold);
-    }
-    .testimonial-author span {
-      font-size: 0.72rem; color: var(--champagne);
-      letter-spacing: 0.1em; font-weight: 400;
-    }
-    .testimonial-author .date {
-      font-size: 0.6rem; color: rgba(80, 83, 80, 0.35);
-      font-family: Georgia, serif;
-    }
-
-    /* ========================================
-       CTA SECTION
-    ======================================== */
-    .cta-section {
-      background: var(--champagne-light);
       text-align: center;
-      padding: 7rem 2rem;
-      position: relative; overflow: hidden;
+      padding: 5rem 2rem;
     }
-    .cta-text-wrap {
-      position: relative;
-      display: inline-block;
-      padding: 2rem 3rem;
+    .cta-strip h2 {
+      font-size: 1.6rem; font-weight: 600;
+      color: var(--champagne-light);
+      letter-spacing: 0.15em; margin-bottom: 1rem;
+    }
+    .cta-strip p {
+      color: rgba(255, 253, 245, 0.5);
+      font-size: 0.85rem; letter-spacing: 0.1em;
+      margin-bottom: 2rem;
     }
 
     /* ========================================
-       FOOTER
+       FOOTER (matches index.html)
     ======================================== */
     .footer {
       background: #1a1a1a;
@@ -418,23 +327,21 @@
     .fade-in.visible { opacity: 1; transform: translateY(0); }
     .fade-in-slow { opacity: 0; transform: translateY(20px); transition: opacity 1.4s ease, transform 1.4s ease; }
     .fade-in-slow.visible { opacity: 1; transform: translateY(0); }
-    .stagger-children .fade-in:nth-child(1) { transition-delay: 0s; }
-    .stagger-children .fade-in:nth-child(2) { transition-delay: 0.15s; }
-    .stagger-children .fade-in:nth-child(3) { transition-delay: 0.3s; }
-    .stagger-children .fade-in:nth-child(4) { transition-delay: 0.45s; }
-    .stagger-children .fade-in:nth-child(5) { transition-delay: 0.6s; }
-    .stagger-children .fade-in:nth-child(6) { transition-delay: 0.75s; }
 
     /* ========================================
        RESPONSIVE
     ======================================== */
+    @media (max-width: 1024px) {
+      .gallery-flow { column-count: 2; }
+    }
     @media (max-width: 768px) {
       nav { padding: 1rem 1.8rem; }
       .nav-links {
         position: fixed; top: 0; right: -100%;
         width: 75%; max-width: 320px; height: 100vh;
         background: rgba(255, 253, 245, 0.97);
-        backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
         flex-direction: column; justify-content: center;
         align-items: center; gap: 2rem;
         transition: right 0.4s ease;
@@ -447,23 +354,9 @@
       .page-hero-content { padding: 3rem 3rem; }
       .page-hero-content h1 { font-size: 2.2rem; letter-spacing: 0.2em; }
 
-      .services-section { padding: 5rem 2rem; }
-      .services-grid { grid-template-columns: 1fr; }
+      .gallery-section { padding: 4rem 1.2rem 2rem; }
+      .gallery-flow { column-count: 1; }
 
-      .timeline-section { padding: 5rem 2rem; }
-      .timeline::before { left: 20px; }
-      .timeline-item,
-      .timeline-item:nth-child(even) { flex-direction: column; align-items: flex-start; padding-left: 45px; }
-      .timeline-time,
-      .timeline-item:nth-child(even) .timeline-time { text-align: left; padding: 0; margin-bottom: 0.3rem; }
-      .timeline-content,
-      .timeline-item:nth-child(even) .timeline-content { text-align: left; padding: 0; }
-      .timeline-dot { position: absolute; left: -45px; top: 0.3rem; }
-
-      .testimonials-section { padding: 5rem 2rem; }
-      .testimonials-grid { grid-template-columns: 1fr; }
-
-      .section-title { font-size: 1.4rem; }
       .footer-top { grid-template-columns: 1fr; gap: 36px; }
       .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
     }
@@ -498,246 +391,97 @@
   <section class="page-hero">
     <div class="page-hero-bg"></div>
     <div class="page-hero-content fade-in">
-      <p class="section-label">Bespoke Experience</p>
-      <h1>客製體驗<span>Tailored Wedding Experience</span></h1>
-      <p>每一個細節，都為您的幸福量身打造</p>
+      <p class="section-label">Celebration Moments</p>
+      <h1>幸福時刻<span>Moments of Love</span></h1>
+      <p>每一場日光婚禮，都是獨一無二的故事</p>
     </div>
   </section>
 
-  <!-- ====== SERVICES ====== -->
-  <section class="services-section">
-    <div class="services-header fade-in">
-      <p class="section-label">Our Services</p>
-      <h2 class="section-title">專屬婚禮服務</h2>
-      <p class="section-desc">
-        從企劃到執行，從花藝到攝影，<br>
-        日光婚禮團隊全程為您統籌每一個環節。
-      </p>
+  <!-- ====== OUTDOOR GALLERY ====== -->
+  <section class="gallery-section">
+    <div class="gallery-header fade-in">
+      <p class="section-label">Outdoor Lawn Ceremony</p>
+      <h2 class="section-title">戶外草坪儀式</h2>
+      <p class="section-desc">陽光、稻田與落羽松為證，許下一生的承諾。</p>
     </div>
-    <div class="services-grid stagger-children">
-      <div class="service-card fade-in">
-        <div class="service-card-img">
-          <img src="https://images.unsplash.com/photo-1758810741900-0b2250ded8b3?w=800&q=80&auto=format&fit=crop" alt="婚禮企劃" loading="lazy">
-        </div>
-        <div class="service-card-text">
-          <p class="en-label">Wedding Planning</p>
-          <h3>婚禮企劃</h3>
-          <p>
-            資深婚禮統籌團隊從初步諮詢到婚禮當天全程陪伴，
-            依照您的風格與預算，規劃最完美的流程與動線，
-            讓您只需要享受幸福的每一刻。
-          </p>
-        </div>
-      </div>
-      <div class="service-card fade-in">
-        <div class="service-card-img">
-          <img src="https://images.unsplash.com/photo-1647979898663-517cb7721464?w=800&q=80&auto=format&fit=crop" alt="場地佈置" loading="lazy">
-        </div>
-        <div class="service-card-text">
-          <p class="en-label">Venue Decoration</p>
-          <h3>場地佈置</h3>
-          <p>
-            依照您的婚禮主題量身打造場地佈置，
-            從入口迎賓區到儀式舞台、宴客區域，
-            每一處都精心設計，營造獨一無二的氛圍。
-          </p>
-        </div>
-      </div>
-      <div class="service-card fade-in">
-        <div class="service-card-img">
-          <img src="https://images.unsplash.com/photo-1524777313293-86d2ab467344?w=800&q=80&auto=format&fit=crop" alt="花藝設計" loading="lazy">
-        </div>
-        <div class="service-card-text">
-          <p class="en-label">Floral Design</p>
-          <h3>花藝設計</h3>
-          <p>
-            與專業花藝師合作，依季節選用最美花材，
-            從新娘捧花到會場裝飾、桌花擺設，
-            以花語述說您的愛情故事。
-          </p>
-        </div>
-      </div>
-      <div class="service-card fade-in">
-        <div class="service-card-img">
-          <img src="https://images.unsplash.com/photo-1491858905701-dc9dc1f96909?w=800&q=80&auto=format&fit=crop" alt="攝影紀錄" loading="lazy">
-        </div>
-        <div class="service-card-text">
-          <p class="en-label">Photography</p>
-          <h3>攝影紀錄</h3>
-          <p>
-            合作專業婚禮攝影團隊，以細膩的鏡頭語言
-            捕捉每一個感動瞬間。從準備到送客，
-            為您留下最珍貴的回憶。
-          </p>
-        </div>
-      </div>
-      <div class="service-card fade-in">
-        <div class="service-card-img">
-          <img src="https://images.unsplash.com/photo-1632920665156-c84f643fcb37?w=800&q=80&auto=format&fit=crop" alt="新娘秘書" loading="lazy">
-        </div>
-        <div class="service-card-text">
-          <p class="en-label">Bridal Styling</p>
-          <h3>新娘秘書</h3>
-          <p>
-            專業新秘團隊提供妝髮造型服務，
-            依照您的氣質與禮服搭配，打造最美的新娘妝容，
-            從迎娶到宴客完美變換造型。
-          </p>
-        </div>
-      </div>
-      <div class="service-card fade-in">
-        <div class="service-card-img">
-          <img src="https://images.unsplash.com/photo-1551696785-927d4ac2d35b?w=800&q=80&auto=format&fit=crop" alt="音樂表演" loading="lazy">
-        </div>
-        <div class="service-card-text">
-          <p class="en-label">Live Music</p>
-          <h3>音樂表演</h3>
-          <p>
-            提供弦樂四重奏、爵士樂團、吉他歌手等
-            多種現場音樂演出選擇，讓美妙旋律
-            為您的婚禮增添動人氛圍。
-          </p>
-        </div>
-      </div>
+    <div class="gallery-flow">
+      <div class="gallery-item"><img src="images/戶外婚禮意境16.jpg" alt="戶外草坪儀式" loading="lazy"></div>
+      <div class="gallery-item"><img src="images/F廣場戶外婚禮意境14.jpg" alt="F廣場戶外婚禮" loading="lazy"></div>
+      <div class="gallery-item"><img src="images/戶外婚禮意境4.jpg" alt="戶外婚禮意境" loading="lazy"></div>
+      <div class="gallery-item"><img src="images/戶外婚禮意境9.png" alt="戶外婚禮意境" loading="lazy"></div>
+      <div class="gallery-item"><img src="images/戶外婚禮意境15.jpg" alt="戶外婚禮意境" loading="lazy"></div>
+      <div class="gallery-item"><img src="images/戶外婚禮意境17.jpg" alt="戶外婚禮意境" loading="lazy"></div>
+      <div class="gallery-item"><img src="images/戶外婚禮意境23.jpeg" alt="戶外婚禮意境" loading="lazy"></div>
+      <div class="gallery-item"><img src="images/戶外佈置1.png" alt="戶外佈置" loading="lazy"></div>
     </div>
   </section>
 
-  <!-- ====== TIMELINE ====== -->
-  <section class="timeline-section">
-    <div class="timeline-header fade-in">
-      <p class="section-label" style="position:relative;">Wedding Day Timeline</p>
-      <h2 class="section-title" style="position:relative;">婚禮當日流程</h2>
-      <p class="section-desc" style="position:relative;">精心安排的每一刻，讓幸福自然流淌。</p>
+  <!-- ====== INDOOR GALLERY ====== -->
+  <section class="gallery-section alt">
+    <div class="gallery-header fade-in">
+      <p class="section-label">Indoor Banquet Hall</p>
+      <h2 class="section-title">室內宴會廳</h2>
+      <p class="section-desc">典雅宴會空間，無論晴雨都能完美呈現。</p>
     </div>
-    <div class="timeline" style="position:relative;">
-      <div class="timeline-item fade-in">
-        <div class="timeline-time">
-          <span class="time">10:00</span>
-        </div>
-        <div class="timeline-dot"></div>
-        <div class="timeline-content">
-          <h4>新人準備</h4>
-          <p>新秘進場，妝髮造型<br>攝影師側拍準備花絮</p>
-        </div>
-      </div>
-      <div class="timeline-item fade-in">
-        <div class="timeline-time">
-          <span class="time">12:00</span>
-        </div>
-        <div class="timeline-dot"></div>
-        <div class="timeline-content">
-          <h4>迎賓時刻</h4>
-          <p>賓客陸續抵達園區<br>茶會點心、自由參觀</p>
-        </div>
-      </div>
-      <div class="timeline-item fade-in">
-        <div class="timeline-time">
-          <span class="time">13:00</span>
-        </div>
-        <div class="timeline-dot"></div>
-        <div class="timeline-content">
-          <h4>證婚儀式</h4>
-          <p>草坪證婚，交換誓詞<br>在天地之間許下承諾</p>
-        </div>
-      </div>
-      <div class="timeline-item fade-in">
-        <div class="timeline-time">
-          <span class="time">14:00</span>
-        </div>
-        <div class="timeline-dot"></div>
-        <div class="timeline-content">
-          <h4>合影留念</h4>
-          <p>親友團體合照<br>園區各角落婚紗攝影</p>
-        </div>
-      </div>
-      <div class="timeline-item fade-in">
-        <div class="timeline-time">
-          <span class="time">15:00</span>
-        </div>
-        <div class="timeline-dot"></div>
-        <div class="timeline-content">
-          <h4>婚宴時光</h4>
-          <p>主廚精心料理上桌<br>致詞、敬酒、切蛋糕</p>
-        </div>
-      </div>
-      <div class="timeline-item fade-in">
-        <div class="timeline-time">
-          <span class="time">17:00</span>
-        </div>
-        <div class="timeline-dot"></div>
-        <div class="timeline-content">
-          <h4>歡送祝福</h4>
-          <p>送客小物、擁抱道別<br>夕陽中最美的句點</p>
-        </div>
-      </div>
+    <div class="gallery-flow">
+      <div class="gallery-item"><img src="images/IMG_2905.png" alt="室內宴會廳" loading="lazy"></div>
+      <div class="gallery-item"><img src="images/20260201_室內整體佈置白桌巾.png" alt="室內整體佈置" loading="lazy"></div>
+      <div class="gallery-item"><img src="images/室內婚禮意境1.jpg" alt="室內婚禮意境" loading="lazy"></div>
+      <div class="gallery-item"><img src="images/室內婚禮意境6.jpg" alt="室內婚禮意境" loading="lazy"></div>
+      <div class="gallery-item"><img src="images/室內婚禮意境10.png" alt="室內婚禮意境" loading="lazy"></div>
+      <div class="gallery-item"><img src="images/IMG_0475.JPG" alt="室內婚禮精選" loading="lazy"></div>
     </div>
   </section>
 
-  <!-- ====== TESTIMONIALS ====== -->
-  <section class="testimonials-section">
-    <div class="testimonials-header fade-in">
+  <!-- ====== POOLSIDE GALLERY ====== -->
+  <section class="gallery-section">
+    <div class="gallery-header fade-in">
+      <p class="section-label">Poolside Reception</p>
+      <h2 class="section-title">泳池水畔宴會</h2>
+      <p class="section-desc">碧波映照的水畔平台，日夜皆有不同的浪漫風情。</p>
+    </div>
+    <div class="gallery-flow">
+      <div class="gallery-item"><img src="images/SnapInsta.to_659222054_1246380750934763_5932977447559780221_n.jpg" alt="泳池畔婚禮" loading="lazy"></div>
+      <div class="gallery-item"><img src="images/Gemini_Generated_Image_998m8d998m8d998m.png" alt="泳池畔婚禮意境" loading="lazy"></div>
+      <div class="gallery-item"><img src="images/wedding.jpg" alt="婚禮場景" loading="lazy"></div>
+    </div>
+  </section>
+
+  <!-- ====== LOVE MOMENTS GALLERY ====== -->
+  <section class="gallery-section alt">
+    <div class="gallery-header fade-in">
       <p class="section-label">Love Stories</p>
-      <h2 class="section-title">新人的話</h2>
+      <h2 class="section-title">愛的瞬間</h2>
+      <p class="section-desc">新人、家人、賓客間最真實的笑容與淚水。</p>
     </div>
-    <div class="testimonials-grid stagger-children">
-      <div class="testimonial-card fade-in">
-        <p>
-          從第一次場勘就被日光的環境深深感動，
-          婚禮當天一切都超乎想像的完美。
-          稻田間的證婚儀式讓我們和每一位賓客都感動落淚。
-        </p>
-        <div class="testimonial-author">
-          <div class="testimonial-author-line"></div>
-          <div>
-            <span>Kevin & Ivy</span><br>
-            <span class="date">2025 Autumn</span>
-          </div>
-        </div>
-      </div>
-      <div class="testimonial-card fade-in">
-        <p>
-          日光團隊的細心程度讓我們非常安心，
-          從菜單設計到花藝佈置都超越期待。
-          感謝你們讓我們擁有最夢幻的婚禮。
-        </p>
-        <div class="testimonial-author">
-          <div class="testimonial-author-line"></div>
-          <div>
-            <span>James & Yuki</span><br>
-            <span class="date">2025 Spring</span>
-          </div>
-        </div>
-      </div>
-      <div class="testimonial-card fade-in">
-        <p>
-          在星空下交換誓詞的那一刻，
-          是我們這輩子最難忘的回憶。
-          日光婚禮讓不可能變成了最美的現實。
-        </p>
-        <div class="testimonial-author">
-          <div class="testimonial-author-line"></div>
-          <div>
-            <span>Alex & Mia</span><br>
-            <span class="date">2024 Winter</span>
-          </div>
-        </div>
-      </div>
+    <div class="gallery-flow">
+      <div class="gallery-item"><img src="images/couple-bride-groom-enjoying-romantic-moments-wedding-ceremony.jpg" alt="新人浪漫時刻" loading="lazy"></div>
+      <div class="gallery-item"><img src="images/bride-her-wedding-dress.jpg" alt="新娘" loading="lazy"></div>
+      <div class="gallery-item"><img src="images/newlyweds-posing-top-sky-landscapes.jpg" alt="新人合影" loading="lazy"></div>
+      <div class="gallery-item"><img src="images/hands-with-wedding-rings-modish-groom-putting-golden-ring-bride-s-finger-wedding-ceremony-loving-couple-woman-wedding-dress-handsome-man-stylish-blue-suit.jpg" alt="交換戒指" loading="lazy"></div>
+      <div class="gallery-item"><img src="images/父親告別.png" alt="父親告別" loading="lazy"></div>
+      <div class="gallery-item"><img src="images/Gemini_Generated_Image_ffjhfoffjhfoffjh.png" alt="婚禮精選" loading="lazy"></div>
+      <div class="gallery-item"><img src="images/20230527-HA104733.jpg" alt="婚禮精選" loading="lazy"></div>
+      <div class="gallery-item"><img src="images/20230527-HA104734.jpg" alt="婚禮精選" loading="lazy"></div>
     </div>
   </section>
 
-  <!-- ====== CTA ====== -->
-  <section class="cta-section fade-in-slow">
-    <div class="cta-text-wrap">
-      <p class="section-label">Start Planning</p>
-      <h2 class="section-title">開始打造您的夢想婚禮</h2>
-      <a href="contact.html" class="btn-gold">預約諮詢</a>
-    </div>
+  <!-- ====== CTA STRIP ====== -->
+  <section class="cta-strip fade-in-slow">
+    <h2>讓我們也為您留下幸福時刻</h2>
+    <p>預約場勘，親身感受日光的氛圍。</p>
+    <a href="contact.html" class="btn-gold">預約諮詢</a>
   </section>
+
+  <!-- ====== LIGHTBOX ====== -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close">×</button>
+    <img id="lightboxImg" src="" alt="">
+  </div>
 
   <!-- ====== FOOTER ====== -->
   <footer class="footer" id="contact-footer">
     <div class="footer-top">
-      <!-- Logo column -->
       <div class="footer-logo-col">
         <div class="footer-logo">
           <span class="f-kanji">日</span>
@@ -747,7 +491,6 @@
         <p class="footer-tagline">享受生活，每一天</p>
       </div>
 
-      <!-- Contact column -->
       <div>
         <div class="footer-col-title">Contact</div>
         <div class="footer-contact-item">
@@ -769,7 +512,6 @@
           <span>台北市羅斯福路三段335號9樓<br>宜蘭縣冬山鄉寶福路372-450號</span>
         </div>
 
-        <!-- Social icons -->
         <div class="footer-social">
           <a href="https://www.facebook.com/LOHERB.TW/" target="_blank" rel="noopener" aria-label="Facebook">
             <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
@@ -786,7 +528,6 @@
         </div>
       </div>
 
-      <!-- Brands column -->
       <div>
         <div class="footer-col-title">Brands</div>
         <div class="footer-brands">
@@ -801,26 +542,27 @@
     </div>
 
     <div class="footer-bottom">
-      <span>&copy; 2026 LOHERB all rights reserved. Built by Disp-Tech.</span></div>
+      <span>&copy; 2026 LOHERB all rights reserved. Built by Disp-Tech.</span>
+    </div>
   </footer>
 
   <!-- ====== SCRIPTS ====== -->
   <script>
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) entry.target.classList.add('visible');
-        });
-      },
-      { threshold: 0.08, rootMargin: '0px 0px -40px 0px' }
-    );
+    /* Intersection Observer */
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
     document.querySelectorAll('.fade-in, .fade-in-slow').forEach((el) => observer.observe(el));
 
+    /* Nav scroll state */
     const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => {
       nav.classList.toggle('scrolled', window.scrollY > 60);
     }, { passive: true });
 
+    /* Mobile nav toggle */
     const navToggle = document.getElementById('navToggle');
     const navLinks = document.getElementById('navLinks');
     navToggle.addEventListener('click', () => {
@@ -832,6 +574,31 @@
         navToggle.classList.remove('active');
         navLinks.classList.remove('open');
       });
+    });
+
+    /* Lightbox */
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxClose = document.getElementById('lightboxClose');
+    document.querySelectorAll('.gallery-item img').forEach(img => {
+      img.parentElement.addEventListener('click', () => {
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+      lightboxImg.src = '';
+      document.body.style.overflow = '';
+    }
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox || e.target === lightboxClose) closeLightbox();
+    });
+    lightboxClose.addEventListener('click', closeLightbox);
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && lightbox.classList.contains('active')) closeLightbox();
     });
   </script>
 </body>
