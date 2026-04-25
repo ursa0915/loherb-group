@@ -245,6 +245,55 @@ img {
   color: var(--gold);
 }
 
+/* Language switcher */
+.nav-lang {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: clamp(12px, 2vw, 24px);
+  padding-left: clamp(12px, 2vw, 24px);
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+  font-family: var(--font-en);
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.nav.scrolled .nav-lang {
+  border-left-color: rgba(80, 83, 80, 0.2);
+}
+.nav-lang a {
+  color: rgba(255, 255, 255, 0.55);
+  transition: color 0.4s;
+}
+.nav.scrolled .nav-lang a {
+  color: rgba(80, 83, 80, 0.6);
+}
+.nav-lang a.active,
+.nav-lang a:hover {
+  color: var(--gold);
+}
+.nav-lang-sep {
+  color: rgba(255, 255, 255, 0.3);
+}
+.nav.scrolled .nav-lang-sep {
+  color: rgba(80, 83, 80, 0.3);
+}
+
+.mobile-lang {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-top: 16px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+}
+.mobile-lang .mobile-link.active { color: var(--gold); }
+.mobile-lang-sep { color: rgba(255, 255, 255, 0.3); }
+
 /* Mobile menu button */
 .nav-menu-btn {
   display: none;
@@ -1705,6 +1754,12 @@ section {
     <a href="https://dearbb.design" target="_blank" rel="noopener">Design</a>
   </div>
 
+  <div class="nav-lang">
+    <a href="index.html" class="active">中</a>
+    <span class="nav-lang-sep">/</span>
+    <a href="en.html">EN</a>
+  </div>
+
   <button class="nav-menu-btn" id="menuBtn" aria-label="Menu">
     <span></span>
     <span></span>
@@ -1720,6 +1775,11 @@ section {
   <a href="https://party.loherb.com.tw" target="_blank" rel="noopener" class="mobile-link">Party</a>
   <a href="https://wedding.loherb.com.tw/" target="_blank" rel="noopener" class="mobile-link">Wedding</a>
   <a href="https://dearbb.design" target="_blank" rel="noopener" class="mobile-link">Design</a>
+  <div class="mobile-lang">
+    <a href="index.html" class="mobile-link active">中文</a>
+    <span class="mobile-lang-sep">/</span>
+    <a href="en.html" class="mobile-link">EN</a>
+  </div>
 </div>
 
 <!-- ========== HERO ========== -->

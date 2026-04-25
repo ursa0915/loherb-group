@@ -686,14 +686,14 @@
     }
     .btn-berry {
       display: inline-block; padding: 0.9rem 3.5rem;
-      background: var(--gold); color: var(--ivory);
+      background: var(--champagne); color: var(--ivory);
       border: none; cursor: pointer;
       font-family: 'Noto Serif TC', Georgia, serif;
       font-size: 0.78rem; letter-spacing: 0.3em;
       transition: all 0.4s;
     }
     .btn-berry:hover {
-      background: var(--champagne);
+      background: var(--gold);
     }
 
     /* ========================================
@@ -1008,10 +1008,10 @@
         </div>
       </div>
       <div class="venue-card fade-in">
-        <div class="venue-card-bg" style="background-image: url('images/戶外佈置1.png');"></div>
+        <div class="venue-card-bg" style="background-image: url('images/SnapInsta.to_659222054_1246380750934763_5932977447559780221_n.jpg');"></div>
         <div class="venue-info">
-          <p class="venue-en">Poolside Ceremony</p>
-          <h3>水畔證婚</h3>
+          <p class="venue-en">Poolside Reception</p>
+          <h3>泳池水畔宴會</h3>
           <p>碧波映照的水畔平台，<br>日夜皆有不同的浪漫風情。</p>
         </div>
       </div>
@@ -1130,32 +1130,45 @@
       <form class="contact-form" onsubmit="handleSubmit(event)">
         <div class="form-row">
           <div class="form-field">
-            <label for="name">姓名 Name</label>
+            <label for="name">您的姓名 *</label>
             <input type="text" id="name" name="name" required placeholder="您的姓名">
           </div>
           <div class="form-field">
-            <label for="phone">電話 Phone</label>
-            <input type="tel" id="phone" name="phone" required placeholder="09XX-XXX-XXX">
+            <label for="partner">伴侶姓名</label>
+            <input type="text" id="partner" name="partner" placeholder="伴侶姓名">
           </div>
         </div>
         <div class="form-row">
           <div class="form-field">
-            <label for="date">預計婚期 Wedding Date</label>
+            <label for="phone">聯絡電話 *</label>
+            <input type="tel" id="phone" name="phone" required placeholder="09XX-XXX-XXX">
+          </div>
+          <div class="form-field">
+            <label for="email">電子信箱</label>
+            <input type="email" id="email" name="email" placeholder="your@email.com">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-field">
+            <label for="date">預計婚期</label>
             <input type="date" id="date" name="date">
           </div>
           <div class="form-field">
-            <label for="guests">預計人數 Guests</label>
-            <select id="guests" name="guests">
-              <option value="" disabled selected>請選擇</option>
-              <option value="20-50">20 - 50 人</option>
-              <option value="50-80">50 - 80 人</option>
-              <option value="80-120">80 - 120 人</option>
-              <option value="120+">120 人以上</option>
-            </select>
+            <label for="guests">預計賓客數</label>
+            <input type="number" id="guests" name="guests" min="1" placeholder="例如 80">
           </div>
         </div>
         <div class="form-field">
-          <label for="message">訊息 Message</label>
+          <label for="venue">偏好場地</label>
+          <select id="venue" name="venue">
+            <option value="" disabled selected>請選擇</option>
+            <option value="室內宴會廳">室內宴會廳</option>
+            <option value="戶外草坪儀式">戶外草坪儀式</option>
+            <option value="泳池水畔宴會">泳池水畔宴會</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label for="message">補充說明</label>
           <textarea id="message" name="message" rows="4" placeholder="請描述您理想中的婚禮..."></textarea>
         </div>
         <div class="form-submit">
@@ -1308,38 +1321,65 @@
       });
     });
 
-    /* Form handler (placeholder) */
-    function handleSubmit(e) {
+    /* Form handler — submit to service@loherb.com.tw via FormSubmit.co */
+    async function handleSubmit(e) {
       e.preventDefault();
       const form = e.target;
       const name = form.querySelector('#name').value;
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const originalText = submitBtn.textContent;
+      submitBtn.disabled = true;
+      submitBtn.textContent = '送出中...';
 
-      /* Replace form with thank-you message */
-      const container = form.parentElement;
-      form.style.opacity = '0';
-      form.style.transition = 'opacity 0.4s ease';
+      const payload = {
+        _subject: '【日光婚禮】首頁諮詢 — ' + name,
+        '您的姓名': name,
+        '伴侶姓名': form.querySelector('#partner').value || '（未填）',
+        '聯絡電話': form.querySelector('#phone').value,
+        '電子信箱': form.querySelector('#email').value || '（未填）',
+        '預計婚期': form.querySelector('#date').value || '（未填）',
+        '預計賓客數': form.querySelector('#guests').value || '（未填）',
+        '偏好場地': form.querySelector('#venue').value || '（未選）',
+        '補充說明': form.querySelector('#message').value || '（無）'
+      };
 
-      setTimeout(() => {
-        form.remove();
-        const thanks = document.createElement('div');
-        thanks.style.cssText = 'text-align:center; padding:2rem 0;';
-        thanks.innerHTML = `
-          <p style="font-size:1.3rem; color:#C9A96E; font-weight:600; margin-bottom:1rem; letter-spacing:0.1em;">
-            感謝您，${name}
-          </p>
-          <p style="font-size:0.85rem; color:rgba(80,83,80,0.55); line-height:2.2; font-weight:300;">
-            我們的婚禮團隊已收到您的諮詢，<br>
-            將於兩個工作日內與您聯繫。<br><br>
-            期待為您打造最美的日光婚禮。
-          </p>
-        `;
-        thanks.style.opacity = '0';
-        container.appendChild(thanks);
-        requestAnimationFrame(() => {
-          thanks.style.transition = 'opacity 0.6s ease';
-          thanks.style.opacity = '1';
+      try {
+        const res = await fetch('/api/wedding-inquiry', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
         });
-      }, 400);
+        if (!res.ok) throw new Error('submit failed');
+
+        const container = form.parentElement;
+        form.style.opacity = '0';
+        form.style.transition = 'opacity 0.4s ease';
+        setTimeout(() => {
+          form.remove();
+          const thanks = document.createElement('div');
+          thanks.style.cssText = 'text-align:center; padding:2rem 0;';
+          thanks.innerHTML = `
+            <p style="font-size:1.3rem; color:#C9A96E; font-weight:600; margin-bottom:1rem; letter-spacing:0.1em;">
+              感謝您，${name}
+            </p>
+            <p style="font-size:0.85rem; color:rgba(80,83,80,0.55); line-height:2.2; font-weight:300;">
+              我們的婚禮團隊已收到您的諮詢，<br>
+              將於兩個工作日內與您聯繫。<br><br>
+              期待為您打造最美的日光婚禮。
+            </p>
+          `;
+          thanks.style.opacity = '0';
+          container.appendChild(thanks);
+          requestAnimationFrame(() => {
+            thanks.style.transition = 'opacity 0.6s ease';
+            thanks.style.opacity = '1';
+          });
+        }, 400);
+      } catch (err) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalText;
+        alert('送出失敗，請稍後再試，或直接致電 +886-3-959-5685');
+      }
     }
   </script>
 </body>
