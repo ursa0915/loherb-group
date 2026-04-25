@@ -535,16 +535,18 @@
       font-family: 'Cormorant Garamond', 'Playfair Display', 'Bodoni Moda', Georgia, serif !important;
       font-weight: 400 !important;
     }
-    /* Body uses Manrope, but keep logo kanji in serif to render Chinese glyphs nicely */
     body { font-family: 'Manrope', -apple-system, 'Helvetica Neue', 'Inter', sans-serif; }
+    /* Restore original logo fonts (Chinese kanji + Bodoni wordmark) */
     .nav-logo .zh-top,
     .nav-logo .zh-bottom,
-    .nav-logo .en,
-    .footer-logo .f-kanji,
-    .footer-logo .f-en,
     .hero-logo-stack .zh,
-    .hero-logo-stack .en {
-      font-family: revert !important;
+    .footer-logo .f-kanji {
+      font-family: 'Noto Serif TC', '思源宋體', '宋體', serif !important;
+    }
+    .nav-logo .en,
+    .hero-logo-stack .en,
+    .footer-logo .f-en {
+      font-family: 'Bodoni 72', 'Bodoni Moda', Georgia, serif !important;
     }
 
   </style>
