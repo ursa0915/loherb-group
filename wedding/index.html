@@ -624,6 +624,88 @@
     }
 
     /* ========================================
+       JOURNAL / BLOG
+    ======================================== */
+    .journal-section {
+      background: var(--champagne-light);
+      padding: 7rem 4rem;
+    }
+    .journal-header {
+      text-align: center; margin-bottom: 4rem;
+    }
+    .journal-header .section-desc {
+      margin: 0 auto; text-align: center;
+    }
+    .journal-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 2rem; max-width: 1200px; margin: 0 auto;
+    }
+    .journal-card {
+      background: var(--ivory);
+      overflow: hidden;
+      display: flex; flex-direction: column;
+      text-decoration: none; color: inherit;
+      transition: transform 0.4s, box-shadow 0.4s;
+    }
+    .journal-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 44px rgba(58, 60, 58, 0.14);
+    }
+    .journal-card-img {
+      position: relative; overflow: hidden;
+      aspect-ratio: 4/3;
+    }
+    .journal-card-img img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 6s ease;
+    }
+    .journal-card:hover .journal-card-img img { transform: scale(1.06); }
+    .journal-card-body {
+      padding: 1.8rem 1.6rem 2rem;
+      display: flex; flex-direction: column; flex: 1;
+    }
+    .journal-date {
+      font-family: Georgia, 'Bodoni 72', serif;
+      font-size: 0.6rem; letter-spacing: 0.4em;
+      color: var(--gold); text-transform: uppercase;
+      margin-bottom: 0.8rem;
+    }
+    .journal-title {
+      font-size: 1rem; font-weight: 600;
+      color: var(--charcoal-deep);
+      letter-spacing: 0.05em; line-height: 1.7;
+      margin-bottom: 0.8rem;
+    }
+    .journal-excerpt {
+      font-size: 0.78rem; line-height: 1.9;
+      color: rgba(80, 83, 80, 0.6);
+      font-weight: 300; flex: 1;
+    }
+    .journal-readmore {
+      font-family: Georgia, 'Bodoni 72', serif;
+      font-size: 0.65rem; letter-spacing: 0.3em;
+      color: var(--gold); text-transform: uppercase;
+      margin-top: 1.4rem;
+      transition: letter-spacing 0.3s;
+    }
+    .journal-card:hover .journal-readmore {
+      letter-spacing: 0.45em;
+    }
+    .journal-footer-link {
+      text-align: center; margin-top: 4rem;
+    }
+
+    @media (max-width: 1024px) {
+      .journal-grid { grid-template-columns: repeat(2, 1fr); }
+      .journal-card:nth-child(3) { grid-column: 1 / -1; max-width: 500px; margin: 0 auto; width: 100%; }
+    }
+    @media (max-width: 768px) {
+      .journal-section { padding: 5rem 2rem; }
+      .journal-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+      .journal-card:nth-child(3) { max-width: none; }
+    }
+
+    /* ========================================
        CONTACT / CTA
     ======================================== */
     .contact-section {
@@ -1115,6 +1197,53 @@
       <div class="party-grid-item fade-in"><img src="images/室內婚禮意境1.jpg" alt="日光婚禮 — 室內婚禮意境" loading="lazy"></div>
       <div class="party-grid-item fade-in"><img src="images/bride-her-wedding-dress.jpg" alt="日光婚禮 — 新娘" loading="lazy"></div>
       <div class="party-grid-item fade-in"><img src="images/Gemini_Generated_Image_ffjhfoffjhfoffjh.png" alt="日光婚禮精選" loading="lazy"></div>
+    </div>
+  </section>
+
+  <!-- ====== JOURNAL ====== -->
+  <section class="journal-section" id="journal">
+    <div class="journal-header fade-in">
+      <p class="section-label">LOHERB Journal</p>
+      <h2 class="section-title">日光札記</h2>
+      <p class="section-desc">記錄日光的四季風景、生活提案與婚禮故事。</p>
+    </div>
+    <div class="journal-grid stagger-children">
+      <a href="https://villa.loherb.com.tw/zh/journal/yilan-spring-proposal-top-5-hidden-gem-picnic-destinations" class="journal-card fade-in" target="_blank" rel="noopener">
+        <div class="journal-card-img">
+          <img src="https://admin.loherb.com.tw/media/2543/conversions/羅東林業-photo-by-annie05160409-thumb.jpg" alt="宜蘭春日提案：盤點 5 個野餐首選寶藏聖地" loading="lazy">
+        </div>
+        <div class="journal-card-body">
+          <p class="journal-date">09 April 2026</p>
+          <h3 class="journal-title">宜蘭春日提案：盤點 5 個野餐首選寶藏聖地</h3>
+          <p class="journal-excerpt">漫步宜蘭翠綠草坪。享受春日悠閒野餐。</p>
+          <p class="journal-readmore">Read More →</p>
+        </div>
+      </a>
+      <a href="https://villa.loherb.com.tw/zh/journal/one-day-tour-guide-to-yilan" class="journal-card fade-in" target="_blank" rel="noopener">
+        <div class="journal-card-img">
+          <img src="https://admin.loherb.com.tw/media/7376/conversions/蜊埤湖1-jamielinnn_-thumb.jpg" alt="2026 宜蘭一日遊景點懶人包" loading="lazy">
+        </div>
+        <div class="journal-card-body">
+          <p class="journal-date">08 February 2026</p>
+          <h3 class="journal-title">2026 宜蘭一日遊景點懶人包</h3>
+          <p class="journal-excerpt">不需安排長假，也能盡情享受宜蘭之美的一日遊景點精選。</p>
+          <p class="journal-readmore">Read More →</p>
+        </div>
+      </a>
+      <a href="https://villa.loherb.com.tw/zh/journal/exclusive-two-meal-one-night-loherb-offer" class="journal-card fade-in" target="_blank" rel="noopener">
+        <div class="journal-card-img">
+          <img src="https://admin.loherb.com.tw/media/6025/conversions/female-friends-having-food-outdoor-restaurant-thumb.jpg" alt="一泊二食、一泊三食 宜蘭食宿雙享受" loading="lazy">
+        </div>
+        <div class="journal-card-body">
+          <p class="journal-date">08 February 2026</p>
+          <h3 class="journal-title">一泊二食、一泊三食 宜蘭食宿雙享受</h3>
+          <p class="journal-excerpt">日光一泊二食與一泊三食專案，附贈早餐與下午茶加購晚餐，讓味蕾身心同時滿足。</p>
+          <p class="journal-readmore">Read More →</p>
+        </div>
+      </a>
+    </div>
+    <div class="journal-footer-link fade-in">
+      <a href="https://villa.loherb.com.tw/zh/journal" class="btn-gold" target="_blank" rel="noopener">瀏覽更多札記</a>
     </div>
   </section>
 
