@@ -8,8 +8,8 @@
 <meta name="theme-color" content="#505350">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<!-- 高質感雙字體：Cormorant Garamond (luxury display serif) + Manrope (refined sans body) -->
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<!-- 古典高級雙字體：Playfair Display (Bodoni-style classical serif) + Manrope (refined sans body) -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="preconnect" href="https://www.loherb.com.tw">
 <link rel="preconnect" href="https://villa.loherb.com.tw">
 <link rel="preconnect" href="https://cuisine.loherb.com.tw">
@@ -38,10 +38,10 @@
   --font-logo: 'Bodoni 72', 'Bodoni Moda', Georgia, 'Times New Roman', serif;
   --font-zh-logo: 'Noto Serif TC', '思源宋體', '宋體', serif;
 
-  /* 其他英文文案的高質感字體配置 */
-  --font-en: 'Cormorant Garamond', 'Playfair Display', Georgia, 'Times New Roman', serif;
+  /* 其他英文文案的高質感字體配置 — Playfair Display 古典 Bodoni-style serif */
+  --font-en: 'Playfair Display', 'Bodoni Moda', Georgia, 'Times New Roman', serif;
   --font-zh: 'Manrope', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Inter', sans-serif;
-  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-display: 'Playfair Display', 'Bodoni Moda', Georgia, serif;
   --font-body: 'Manrope', -apple-system, 'Helvetica Neue', 'Inter', sans-serif;
 
   --nav-height: 72px;
@@ -118,9 +118,18 @@ img {
   letter-spacing: 0.02em;
 }
 
-/* 讓大字 Slogan 字重稍輕呈現精緻感 */
-.slogan-text { font-weight: 300; letter-spacing: 0.05em; }
-.philosophy-headline { font-weight: 400; letter-spacing: 0.04em; }
+/* Slogan / Philosophy 大字 — Playfair Display 中等字重，古典莊重感 */
+.slogan-text {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  font-style: italic;  /* 斜體增添古典書寫氣質 */
+}
+.philosophy-headline {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
 
 /* 大寫 caps 小標 — Cormorant Garamond 寬字距，奢華雜誌感 */
 .section-label,
