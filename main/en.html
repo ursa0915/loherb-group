@@ -107,7 +107,7 @@ img {
    古典有襯線，無斜體，統一視覺層級
    ============================================ */
 
-/* 所有大型標題、品牌字、卡片標題 → Playfair Display 正體 */
+/* 所有大型標題 → Playfair Display 全部大寫，寬字距，呼應 MANTRA 精品標籤風格 */
 .slogan-text,
 .brands-title,
 .philosophy-headline,
@@ -116,48 +116,55 @@ img {
 .ig-title,
 .ig-title a,
 .brand-card-zh,
-.brand-card-en,
-.journal-card-title,
 .hero-tagline-zh {
   font-family: var(--font-display);
-  font-style: normal;        /* 強制非斜體 */
-  letter-spacing: 0.02em;
+  font-style: normal;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
 }
 
-/* 視覺層級：用字重大小拉開，全部維持正體不斜 */
+/* 個別微調 — 字重和字距按尺寸校準 */
 .slogan-text {
-  font-weight: 500;
-  letter-spacing: 0.04em;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  line-height: 1.5;
 }
 .philosophy-headline {
-  font-weight: 500;
-  letter-spacing: 0.03em;
-  line-height: 1.25;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  line-height: 1.4;
 }
 .brands-title,
 .journal-title,
-.film-title,
-.ig-title {
+.film-title {
   font-weight: 500;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.25em;
+  line-height: 1.3;
+}
+.ig-title,
+.ig-title a {
+  font-weight: 500;
+  letter-spacing: 0.15em;   /* @loherb_yilan 含特殊字元，字距收窄 */
+  text-transform: none;     /* 保留 @ 與底線原樣 */
 }
 .brand-card-zh {
   font-weight: 500;
-  letter-spacing: 0.05em;
-}
-.brand-card-en {
-  font-weight: 400;
-  letter-spacing: 0.06em;
-  text-transform: none;     /* 取消大寫，讓 Villa / Cuisine 用原樣 Title Case */
-}
-.journal-card-title {
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  line-height: 1.45;
+  letter-spacing: 0.28em;   /* 短品牌名拉寬一點，視覺更精緻 */
 }
 .hero-tagline-zh {
   font-weight: 400;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.28em;
+}
+
+/* Journal 卡片標題保留 Title Case（句子過長，全大寫不易讀）*/
+.journal-card-title {
+  font-family: var(--font-display);
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  line-height: 1.45;
+  text-transform: none;
 }
 
 /* ============================================
