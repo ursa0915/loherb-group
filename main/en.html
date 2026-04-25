@@ -6,12 +6,10 @@
 <title>LOHERB Group — Villa | Cuisine | Estate | Party | Wedding | Design</title>
 <meta name="description" content="LOHERB Group — A Taiwan-rooted lifestyle brand established in 2013. Villa, Cuisine, Estate, Party, Wedding & Design.">
 <meta name="theme-color" content="#505350">
-<link rel="preconnect" href="https://use.typekit.net">
-<link rel="preconnect" href="https://p.typekit.net">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<!-- Adobe Typekit: bodoni-urw + atrament-web (matching party.loherb.com.tw) -->
-<link rel="stylesheet" href="https://use.typekit.net/mza6wie.css">
+<!-- 高質感雙字體：Cormorant Garamond (luxury display serif) + Manrope (refined sans body) -->
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="preconnect" href="https://www.loherb.com.tw">
 <link rel="preconnect" href="https://villa.loherb.com.tw">
 <link rel="preconnect" href="https://cuisine.loherb.com.tw">
@@ -36,11 +34,15 @@
   --black: #1a1a1a;
   --white: #ffffff;
 
-  /* English version typography — matches party.loherb.com.tw */
-  --font-en: "bodoni-urw", 'Bodoni 72', 'Bodoni Moda', Georgia, 'Times New Roman', serif;
-  --font-zh: "atrament-web", -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Inter', 'Noto Serif TC', sans-serif;
-  --font-display: "bodoni-urw", 'Bodoni 72', 'Bodoni Moda', Georgia, serif;
-  --font-body: "atrament-web", -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Inter', sans-serif;
+  /* LOGO 字體 — 永遠保留 Bodoni 的「值錢版本」（系統 Bodoni 72 / Bodoni Moda） */
+  --font-logo: 'Bodoni 72', 'Bodoni Moda', Georgia, 'Times New Roman', serif;
+  --font-zh-logo: 'Noto Serif TC', '思源宋體', '宋體', serif;
+
+  /* 其他英文文案的高質感字體配置 */
+  --font-en: 'Cormorant Garamond', 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-zh: 'Manrope', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Inter', sans-serif;
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Manrope', -apple-system, 'Helvetica Neue', 'Inter', sans-serif;
 
   --nav-height: 72px;
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
@@ -83,9 +85,27 @@ img {
   font-family: var(--font-zh);
 }
 
-/* English-version display headings — use elegant Bodoni
-   with gentler letter-spacing, since English doesn't need
-   the wide tracking that Chinese square characters benefit from. */
+/* ============================================
+   LOGO 字體鎖定 — LOHERB / 日 / 光 永遠用「值錢版本」Bodoni & Noto Serif TC
+   ============================================ */
+.preloader-logo .logo-en,
+.nav-logo .nav-logo-en,
+.hero-logo .logo-wordmark,
+.footer-logo .f-en {
+  font-family: var(--font-logo) !important;
+}
+.preloader-logo .logo-kanji,
+.nav-logo span:not(.nav-logo-en),
+.hero-logo .kanji-top,
+.hero-logo .kanji-bottom,
+.footer-logo .f-kanji {
+  font-family: var(--font-zh-logo) !important;
+}
+
+/* ============================================
+   高質感顯示標題 — Cormorant Garamond
+   優雅 serif，搭配輕字距讓字母自然呼吸
+   ============================================ */
 .slogan-text,
 .brands-title,
 .philosophy-headline,
@@ -94,10 +114,15 @@ img {
 .journal-card-title,
 .film-title {
   font-family: var(--font-display);
-  letter-spacing: 0.04em;
+  font-weight: 400;
+  letter-spacing: 0.02em;
 }
 
-/* Caps labels stay tracked for the luxury wordmark feel. */
+/* 讓大字 Slogan 字重稍輕呈現精緻感 */
+.slogan-text { font-weight: 300; letter-spacing: 0.05em; }
+.philosophy-headline { font-weight: 400; letter-spacing: 0.04em; }
+
+/* 大寫 caps 小標 — Cormorant Garamond 寬字距，奢華雜誌感 */
 .section-label,
 .slogan-label,
 .philosophy-label,
@@ -113,16 +138,22 @@ img {
 .nav-links a,
 .nav-lang {
   font-family: var(--font-en);
+  font-weight: 500;
+  letter-spacing: 0.4em;
 }
 
-/* Tagline & body italics get Bodoni italic touch */
+/* Body / 內文 / 描述 — Manrope 清晰現代 */
 .philosophy-text,
 .journal-card-excerpt,
 .brand-card-desc,
 .film-subtitle,
-.journal-subtitle {
+.journal-subtitle,
+.footer-tagline,
+.footer-contact-item,
+.footer-bottom {
   font-family: var(--font-body);
-  letter-spacing: 0.02em;
+  font-weight: 400;
+  letter-spacing: 0.01em;
 }
 
 /* ========================================
