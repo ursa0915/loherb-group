@@ -261,6 +261,37 @@ img { display: block; max-width: 100%; }
   color: rgba(80, 83, 80, 0.75); letter-spacing: 0.05em;
 }
 
+/* ==================== BENEFITS ==================== */
+.benefits-section { background: var(--warm-white); }
+.benefits-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: clamp(20px, 2.5vw, 32px); max-width: 1200px; margin: 0 auto;
+}
+.benefit-card {
+  background: var(--white); padding: clamp(28px, 3vw, 36px) clamp(24px, 2.8vw, 32px);
+  display: flex; flex-direction: column; gap: 14px;
+  border: 1px solid rgba(80, 83, 80, 0.08);
+  transition: transform 0.5s var(--ease-out), border-color 0.5s var(--ease-out), box-shadow 0.5s var(--ease-out);
+}
+.benefit-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(230, 164, 1, 0.4);
+  box-shadow: 0 12px 30px rgba(80, 83, 80, 0.08);
+}
+.benefit-num {
+  font-family: var(--font-en); font-size: 0.7rem;
+  letter-spacing: 0.4em; color: var(--gold); margin-bottom: 4px;
+}
+.benefit-title {
+  font-family: var(--font-display); font-size: clamp(1rem, 1.4vw, 1.18rem);
+  font-weight: 500; letter-spacing: 0.04em; color: var(--charcoal);
+  line-height: 1.4;
+}
+.benefit-desc {
+  font-family: var(--font-body); font-size: 0.82rem; line-height: 1.85;
+  color: rgba(80, 83, 80, 0.72); letter-spacing: 0.01em;
+}
+
 /* ==================== OPEN POSITIONS ==================== */
 .positions-section {
   background: var(--cream);
@@ -412,16 +443,18 @@ img { display: block; max-width: 100%; }
 /* ==================== RESPONSIVE ==================== */
 @media (max-width: 900px) {
   .why-grid { grid-template-columns: 1fr; }
+  .benefits-grid { grid-template-columns: repeat(2, 1fr); }
   .process-grid { grid-template-columns: repeat(2, 1fr); row-gap: 48px; }
   .position-row { grid-template-columns: 1fr auto; gap: 8px 16px; }
-  .position-row .position-meta:nth-of-type(2) { display: none; }
-  .position-row .position-meta:nth-of-type(3) { grid-column: 1; font-size: 0.65rem; }
+  .position-row .position-meta:nth-of-type(2) { font-size: 0.7rem; opacity: 0.6; grid-column: 1; }
+  .position-row .position-meta:nth-of-type(3) { display: none; }
   .footer-top { grid-template-columns: 1fr; gap: 40px; }
 }
 @media (max-width: 768px) {
   .nav-links { display: none; }
   .nav-menu-btn { display: flex; }
   .hero { height: 60vh; }
+  .benefits-grid { grid-template-columns: 1fr; }
   .process-grid { grid-template-columns: 1fr; }
 }
 </style>
@@ -532,41 +565,92 @@ img { display: block; max-width: 100%; }
   </div>
   <div class="positions-list reveal">
     <a href="https://www.104.com.tw/company/1a2x6bjfez" target="_blank" rel="noopener" class="position-row">
-      <span class="position-title">Villa Manager</span>
-      <span class="position-meta">Villa</span>
-      <span class="position-meta">Yilan · Full-time</span>
+      <span class="position-title">Villa Hospitality</span>
+      <span class="position-meta">Housekeeping · Front Desk · Guest Service · Operations</span>
+      <span class="position-meta">Yilan</span>
       <svg class="position-arrow" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
     </a>
     <a href="https://www.104.com.tw/company/1a2x6bjfez" target="_blank" rel="noopener" class="position-row">
-      <span class="position-title">Sous Chef</span>
-      <span class="position-meta">Cuisine</span>
-      <span class="position-meta">Yilan · Full-time</span>
+      <span class="position-title">Cuisine</span>
+      <span class="position-meta">Chefs · Sous Chefs · Sommelier · Patisserie · Floor</span>
+      <span class="position-meta">Yilan</span>
       <svg class="position-arrow" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
     </a>
     <a href="https://www.104.com.tw/company/1a2x6bjfez" target="_blank" rel="noopener" class="position-row">
-      <span class="position-title">Wedding Planner</span>
-      <span class="position-meta">Wedding</span>
-      <span class="position-meta">Yilan · Full-time</span>
+      <span class="position-title">Estate</span>
+      <span class="position-meta">Development · Planning · Construction · Sales</span>
+      <span class="position-meta">Taipei / Yilan</span>
       <svg class="position-arrow" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
     </a>
     <a href="https://www.104.com.tw/company/1a2x6bjfez" target="_blank" rel="noopener" class="position-row">
-      <span class="position-title">Barista</span>
-      <span class="position-meta">Party</span>
-      <span class="position-meta">Yilan · Full-time</span>
+      <span class="position-title">Party & Café</span>
+      <span class="position-meta">Event Planning · Barista · Floor · Admin</span>
+      <span class="position-meta">Yilan</span>
       <svg class="position-arrow" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
     </a>
     <a href="https://www.104.com.tw/company/1a2x6bjfez" target="_blank" rel="noopener" class="position-row">
-      <span class="position-title">Brand Designer</span>
-      <span class="position-meta">Design</span>
-      <span class="position-meta">Taipei · Full-time</span>
+      <span class="position-title">Wedding</span>
+      <span class="position-meta">Wedding Planning · Styling · Bridal Service</span>
+      <span class="position-meta">Yilan</span>
       <svg class="position-arrow" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
     </a>
     <a href="https://www.104.com.tw/company/1a2x6bjfez" target="_blank" rel="noopener" class="position-row">
-      <span class="position-title">Marketing Specialist</span>
-      <span class="position-meta">Group</span>
-      <span class="position-meta">Taipei · Full-time</span>
+      <span class="position-title">Design</span>
+      <span class="position-meta">Graphic · Product Development · Copy & Marketing</span>
+      <span class="position-meta">Taipei</span>
       <svg class="position-arrow" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
     </a>
+  </div>
+</section>
+
+<!-- ==================== BENEFITS ==================== -->
+<section class="section benefits-section" id="benefits">
+  <div class="section-header reveal">
+    <p class="section-label">Benefits</p>
+    <h2 class="section-title">BENEFITS</h2>
+    <p class="section-subtitle">We treat colleagues as family &mdash; from meals to growth, from work to life, every facet looked after by LOHERB.</p>
+  </div>
+  <div class="benefits-grid">
+    <div class="benefit-card reveal">
+      <span class="benefit-num">01</span>
+      <h3 class="benefit-title">Travel & Study Stipend</h3>
+      <p class="benefit-desc">Subsidy for travel and continued education. NT$1,500 per occasion, three times a year (NT$4,500 annually). Step out, bring the world back.</p>
+    </div>
+    <div class="benefit-card reveal reveal-delay-1">
+      <span class="benefit-num">02</span>
+      <h3 class="benefit-title">Team Dinners</h3>
+      <p class="benefit-desc">Spring banquets and seasonal feasts. Colleagues become family over shared tables.</p>
+    </div>
+    <div class="benefit-card reveal reveal-delay-2">
+      <span class="benefit-num">03</span>
+      <h3 class="benefit-title">Snack Bar</h3>
+      <p class="benefit-desc">Drinks &amp; snacks during busy seasons. Coffee, juice, and sweets within arm&rsquo;s reach.</p>
+    </div>
+    <div class="benefit-card reveal reveal-delay-3">
+      <span class="benefit-num">04</span>
+      <h3 class="benefit-title">Staff Dormitory</h3>
+      <p class="benefit-desc">For out-of-town members: NT$3,000/month, free after one year (utilities not included). Make Yilan your new home.</p>
+    </div>
+    <div class="benefit-card reveal">
+      <span class="benefit-num">05</span>
+      <h3 class="benefit-title">LOHERB Uniform</h3>
+      <p class="benefit-desc">Two pieces per person at NT$300 each. Elegant, consistent &mdash; the ritual of working at LOHERB.</p>
+    </div>
+    <div class="benefit-card reveal reveal-delay-1">
+      <span class="benefit-num">06</span>
+      <h3 class="benefit-title">Attendance Bonus</h3>
+      <p class="benefit-desc">Flexible scheduling paired with attendance rewards. We honor steady commitment.</p>
+    </div>
+    <div class="benefit-card reveal reveal-delay-2">
+      <span class="benefit-num">07</span>
+      <h3 class="benefit-title">Transparent Promotion</h3>
+      <p class="benefit-desc">SOP-based onboarding, clear career levels, and regular performance reviews. Effort is seen; promotion is structured.</p>
+    </div>
+    <div class="benefit-card reveal reveal-delay-3">
+      <span class="benefit-num">08</span>
+      <h3 class="benefit-title">Partner Discounts</h3>
+      <p class="benefit-desc">Apple, Hotai Rent-a-Car, OakBarrel Wines, Luodong Hokkaido Bakery, Yueh-Sui-Hsiang Bakery, DunQian Hospitality, and LOHERB-affiliated brands &mdash; from electronics to dining and travel.</p>
+    </div>
   </div>
 </section>
 

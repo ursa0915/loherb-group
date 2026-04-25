@@ -257,6 +257,39 @@ img { display: block; max-width: 100%; }
   color: rgba(80, 83, 80, 0.75); letter-spacing: 0.05em;
 }
 
+/* ==================== BENEFITS ==================== */
+.benefits-section { background: var(--warm-white); }
+.benefits-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: clamp(20px, 2.5vw, 32px); max-width: 1200px; margin: 0 auto;
+}
+.benefit-card {
+  background: var(--white); padding: clamp(28px, 3vw, 36px) clamp(24px, 2.8vw, 32px);
+  display: flex; flex-direction: column; gap: 14px;
+  border: 1px solid rgba(80, 83, 80, 0.08);
+  transition: transform 0.5s var(--ease-out), border-color 0.5s var(--ease-out), box-shadow 0.5s var(--ease-out);
+  position: relative;
+}
+.benefit-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(230, 164, 1, 0.4);
+  box-shadow: 0 12px 30px rgba(80, 83, 80, 0.08);
+}
+.benefit-num {
+  font-family: var(--font-en); font-size: 0.7rem;
+  letter-spacing: 0.4em; color: var(--gold);
+  margin-bottom: 4px;
+}
+.benefit-title {
+  font-family: var(--font-zh); font-size: clamp(1rem, 1.4vw, 1.15rem);
+  font-weight: 500; letter-spacing: 0.1em; color: var(--charcoal);
+  line-height: 1.4;
+}
+.benefit-desc {
+  font-family: var(--font-zh); font-size: 0.82rem; line-height: 1.9;
+  color: rgba(80, 83, 80, 0.72); letter-spacing: 0.04em;
+}
+
 /* ==================== OPEN POSITIONS ==================== */
 .positions-section {
   background: var(--cream);
@@ -408,16 +441,18 @@ img { display: block; max-width: 100%; }
 /* ==================== RESPONSIVE ==================== */
 @media (max-width: 900px) {
   .why-grid { grid-template-columns: 1fr; }
+  .benefits-grid { grid-template-columns: repeat(2, 1fr); }
   .process-grid { grid-template-columns: repeat(2, 1fr); row-gap: 48px; }
   .position-row { grid-template-columns: 1fr auto; gap: 8px 16px; }
-  .position-row .position-meta:nth-of-type(2) { display: none; }
-  .position-row .position-meta:nth-of-type(3) { grid-column: 1; font-size: 0.65rem; }
+  .position-row .position-meta:nth-of-type(2) { font-size: 0.7rem; opacity: 0.6; grid-column: 1; }
+  .position-row .position-meta:nth-of-type(3) { display: none; }
   .footer-top { grid-template-columns: 1fr; gap: 40px; }
 }
 @media (max-width: 768px) {
   .nav-links { display: none; }
   .nav-menu-btn { display: flex; }
   .hero { height: 60vh; }
+  .benefits-grid { grid-template-columns: 1fr; }
   .process-grid { grid-template-columns: 1fr; }
 }
 </style>
@@ -528,41 +563,92 @@ img { display: block; max-width: 100%; }
   </div>
   <div class="positions-list reveal">
     <a href="https://www.104.com.tw/company/1a2x6bjfez" target="_blank" rel="noopener" class="position-row">
-      <span class="position-title">旅宿主管</span>
-      <span class="position-meta">Villa</span>
-      <span class="position-meta">Yilan · Full-time</span>
+      <span class="position-title">旅宿 Villa</span>
+      <span class="position-meta">房務 · 客房服務 · 櫃台 · 旅宿管理</span>
+      <span class="position-meta">Yilan</span>
       <svg class="position-arrow" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
     </a>
     <a href="https://www.104.com.tw/company/1a2x6bjfez" target="_blank" rel="noopener" class="position-row">
-      <span class="position-title">副主廚</span>
-      <span class="position-meta">Cuisine</span>
-      <span class="position-meta">Yilan · Full-time</span>
+      <span class="position-title">高餐 Cuisine</span>
+      <span class="position-meta">主廚 · 副廚 · 外場 · 侍酒 · 甜點</span>
+      <span class="position-meta">Yilan</span>
       <svg class="position-arrow" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
     </a>
     <a href="https://www.104.com.tw/company/1a2x6bjfez" target="_blank" rel="noopener" class="position-row">
-      <span class="position-title">婚禮企劃</span>
-      <span class="position-meta">Wedding</span>
-      <span class="position-meta">Yilan · Full-time</span>
+      <span class="position-title">物業 Estate</span>
+      <span class="position-meta">開發 · 規劃 · 營建管理 · 業務</span>
+      <span class="position-meta">Taipei / Yilan</span>
       <svg class="position-arrow" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
     </a>
     <a href="https://www.104.com.tw/company/1a2x6bjfez" target="_blank" rel="noopener" class="position-row">
-      <span class="position-title">咖啡師</span>
-      <span class="position-meta">Party</span>
-      <span class="position-meta">Yilan · Full-time</span>
+      <span class="position-title">活動 Party</span>
+      <span class="position-meta">活動策劃 · 咖啡師 · 外場 · 行政</span>
+      <span class="position-meta">Yilan</span>
       <svg class="position-arrow" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
     </a>
     <a href="https://www.104.com.tw/company/1a2x6bjfez" target="_blank" rel="noopener" class="position-row">
-      <span class="position-title">文創設計師</span>
-      <span class="position-meta">Design</span>
-      <span class="position-meta">Taipei · Full-time</span>
+      <span class="position-title">婚禮 Wedding</span>
+      <span class="position-meta">婚禮企劃 · 場地佈置 · 新娘秘書</span>
+      <span class="position-meta">Yilan</span>
       <svg class="position-arrow" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
     </a>
     <a href="https://www.104.com.tw/company/1a2x6bjfez" target="_blank" rel="noopener" class="position-row">
-      <span class="position-title">行銷專員</span>
-      <span class="position-meta">Group</span>
-      <span class="position-meta">Taipei · Full-time</span>
+      <span class="position-title">文創 Design</span>
+      <span class="position-meta">平面設計 · 商品開發 · 文案行銷</span>
+      <span class="position-meta">Taipei</span>
       <svg class="position-arrow" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
     </a>
+  </div>
+</section>
+
+<!-- ==================== BENEFITS ==================== -->
+<section class="section benefits-section" id="benefits">
+  <div class="section-header reveal">
+    <p class="section-label">Benefits</p>
+    <h2 class="section-title">員工福利</h2>
+    <p class="section-subtitle">把同事當家人照顧 — 從吃住到成長，從工作到生活，每一個面向都有 LOHERB 為你打點。</p>
+  </div>
+  <div class="benefits-grid">
+    <div class="benefit-card reveal">
+      <span class="benefit-num">01</span>
+      <h3 class="benefit-title">出走補助</h3>
+      <p class="benefit-desc">員工旅遊與進修補助。每次 NT$1,500，每年三次共 NT$4,500，鼓勵走出去、把世界帶回來。</p>
+    </div>
+    <div class="benefit-card reveal reveal-delay-1">
+      <span class="benefit-num">02</span>
+      <h3 class="benefit-title">夥伴餐聚</h3>
+      <p class="benefit-desc">不定期春酒、節日聚餐。把同事變家人，一起吃飯，一起經營這份生活。</p>
+    </div>
+    <div class="benefit-card reveal reveal-delay-2">
+      <span class="benefit-num">03</span>
+      <h3 class="benefit-title">點心補給站</h3>
+      <p class="benefit-desc">忙碌時段的飲料 & 點心櫃，讓你在咖啡與糕點之間穩穩接住自己。</p>
+    </div>
+    <div class="benefit-card reveal reveal-delay-3">
+      <span class="benefit-num">04</span>
+      <h3 class="benefit-title">員工宿舍</h3>
+      <p class="benefit-desc">外縣市夥伴專屬：每月 NT$3,000，滿一年免租金（水電另計）。讓宜蘭，是你新的家。</p>
+    </div>
+    <div class="benefit-card reveal">
+      <span class="benefit-num">05</span>
+      <h3 class="benefit-title">LOHERB 制服</h3>
+      <p class="benefit-desc">每人兩件，每件 NT$300。優雅、整齊，與品牌一致的工作儀式感。</p>
+    </div>
+    <div class="benefit-card reveal reveal-delay-1">
+      <span class="benefit-num">06</span>
+      <h3 class="benefit-title">全勤獎金</h3>
+      <p class="benefit-desc">彈性排班搭配全勤獎勵，準時與穩定，是 LOHERB 對自律的肯定。</p>
+    </div>
+    <div class="benefit-card reveal reveal-delay-2">
+      <span class="benefit-num">07</span>
+      <h3 class="benefit-title">透明升遷制度</h3>
+      <p class="benefit-desc">SOP 制度教學、清楚的職級規劃、定期績效評估。讓努力被看見、晉升有依據。</p>
+    </div>
+    <div class="benefit-card reveal reveal-delay-3">
+      <span class="benefit-num">08</span>
+      <h3 class="benefit-title">夥伴專屬優惠</h3>
+      <p class="benefit-desc">Apple、和運租車、橡木桶洋酒、羅東北海道蛋糕、越穗香蛋糕、敦謙國際集團、日光集團相關企業 — 從 3C、租車、用餐到住宿全方位特約折扣。</p>
+    </div>
   </div>
 </section>
 
