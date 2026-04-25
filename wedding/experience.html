@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>客製體驗 — 日光婚禮 LOHERB Wedding</title>
+  <meta name="description" content="日光婚禮客製化體驗：婚禮企劃、場地佈置、花藝設計、攝影紀錄、新娘秘書、音樂表演，為您打造獨一無二的婚禮。">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200;300;400;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --champagne: #C9A96E;
+      --champagne-light: #F5ECD7;
+      --ivory: #FFFDF5;
+      --gold: #E6A401;
+      --warm-white: #FFFDF5;
+      --charcoal: #505350;
+      --charcoal-deep: #3A3C3A;
+      --champagne-dark: #A68B4B;
+      --gold-soft: rgba(230, 164, 1, 0.15);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Noto Serif TC', 'Source Han Serif TC', Georgia, serif;
+      color: var(--charcoal);
+      background: var(--ivory);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ========================================
+       NAVIGATION
+    ======================================== */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.4rem 4rem;
+      background: transparent;
+      transition: background 0.5s, backdrop-filter 0.5s;
+    }
+    nav.scrolled {
+      background: rgba(255, 253, 245, 0.82);
+      backdrop-filter: blur(20px) saturate(1.2);
+      -webkit-backdrop-filter: blur(20px) saturate(1.2);
+      box-shadow: 0 1px 20px rgba(201, 169, 110, 0.10);
+    }
+    .nav-logo {
+      display: flex; flex-direction: column; align-items: center;
+      text-decoration: none; line-height: 1; gap: 0.08rem;
+    }
+    .nav-logo .zh-top { font-size: 1.1rem; font-weight: 500; color: var(--gold); letter-spacing: 0.2em; }
+    .nav-logo .en { font-family: 'Bodoni 72', 'Bodoni Moda', Georgia, serif; font-size: 0.45rem; letter-spacing: 0.35em; padding-left: 0.35em; color: var(--gold); text-transform: uppercase; }
+    .nav-logo .zh-bottom { font-size: 1.1rem; font-weight: 500; color: var(--gold); letter-spacing: 0.2em; }
+    .nav-links { display: flex; gap: 2.2rem; align-items: center; }
+    .nav-links a { text-decoration: none; font-size: 0.78rem; letter-spacing: 0.12em; color: rgba(255, 253, 245, 0.65); transition: color 0.5s; }
+    nav.scrolled .nav-links a { color: rgba(80, 83, 80, 0.65); }
+    nav.scrolled .nav-logo .zh-top, nav.scrolled .nav-logo .zh-bottom { color: var(--gold); }
+    nav.scrolled .nav-logo .en { color: var(--gold); }
+    nav.scrolled .nav-toggle span { background: var(--charcoal); }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta { padding: 0.5rem 1.6rem !important; border: 1px solid var(--gold) !important; color: var(--gold) !important; font-size: 0.72rem !important; letter-spacing: 0.2em !important; transition: all 0.3s !important; }
+    .nav-cta:hover { background: var(--gold) !important; color: var(--ivory) !important; }
+    nav.scrolled .nav-cta { border-color: var(--gold) !important; color: var(--gold) !important; }
+    nav.scrolled .nav-cta:hover { background: var(--gold) !important; color: var(--ivory) !important; }
+
+    .nav-lang {
+      display: flex; align-items: center; gap: 6px;
+      margin-left: 1rem; padding-left: 1rem;
+      border-left: 1px solid rgba(255, 253, 245, 0.2);
+      font-family: Georgia, 'Bodoni 72', serif;
+      font-size: 0.7rem; letter-spacing: 0.18em;
+    }
+    nav.scrolled .nav-lang { border-left-color: rgba(80, 83, 80, 0.2); }
+    .nav-lang a {
+      color: rgba(255, 253, 245, 0.55);
+      text-decoration: none; transition: color 0.4s;
+    }
+    nav.scrolled .nav-lang a { color: rgba(80, 83, 80, 0.6); }
+    .nav-lang a.active, .nav-lang a:hover { color: var(--gold); }
+    .nav-lang-sep { color: rgba(255, 253, 245, 0.3); }
+    nav.scrolled .nav-lang-sep { color: rgba(80, 83, 80, 0.3); }
+    .nav-toggle { display: none; background: none; border: none; cursor: pointer; width: 28px; height: 20px; position: relative; z-index: 1001; }
+    .nav-toggle span { display: block; width: 100%; height: 1px; background: var(--ivory); position: absolute; left: 0; transition: all 0.5s; }
+    .nav-toggle span:nth-child(1) { top: 0; }
+    .nav-toggle span:nth-child(2) { top: 50%; }
+    .nav-toggle span:nth-child(3) { top: 100%; }
+    .nav-toggle.active span:nth-child(1) { top: 50%; transform: rotate(45deg); }
+    .nav-toggle.active span:nth-child(2) { opacity: 0; }
+    .nav-toggle.active span:nth-child(3) { top: 50%; transform: rotate(-45deg); }
+
+    /* ========================================
+       SHARED STYLES
+    ======================================== */
+    .section-label { font-family: Georgia, 'Bodoni 72', serif; font-size: 0.58rem; letter-spacing: 0.55em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.8rem; }
+    .section-title { font-size: 1.8rem; font-weight: 700; line-height: 1.7; margin-bottom: 1.2rem; letter-spacing: 0.05em; color: var(--champagne); }
+    .section-desc { font-size: 0.9rem; line-height: 2.3; font-weight: 300; max-width: 520px; letter-spacing: 0.02em; color: rgba(80, 83, 80, 0.55); }
+    .btn-gold { display: inline-block; padding: 0.8rem 2.8rem; border: 1px solid var(--gold); color: var(--gold); text-decoration: none; font-size: 0.75rem; letter-spacing: 0.3em; transition: all 0.4s; }
+    .btn-gold:hover { background: var(--gold); color: var(--ivory); }
+
+    /* ========================================
+       PAGE HERO
+    ======================================== */
+    .page-hero {
+      height: 70vh; min-height: 500px;
+      position: relative; overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--charcoal-deep);
+    }
+    .page-hero-bg {
+      position: absolute; inset: 0;
+      background: url('images/page-hero-experience.png') center/cover no-repeat;
+    }
+    .page-hero-content {
+      position: relative; z-index: 1;
+      text-align: center; color: var(--ivory);
+      padding: 4rem 5rem;
+    }
+    .page-hero-content::before {
+      content: ''; position: absolute; inset: 0; z-index: -1;
+      background: rgba(0, 0, 0, 0.32);
+      backdrop-filter: blur(14px) saturate(1.1);
+      -webkit-backdrop-filter: blur(14px) saturate(1.1);
+      -webkit-mask-image: radial-gradient(ellipse 50% 70% at center,rgba(0,0,0,1) 0%,rgba(0,0,0,0.92) 12%,rgba(0,0,0,0.74) 26%,rgba(0,0,0,0.5) 42%,rgba(0,0,0,0.28) 58%,rgba(0,0,0,0.13) 72%,rgba(0,0,0,0.05) 84%,rgba(0,0,0,0.01) 94%,rgba(0,0,0,0) 100%);
+      mask-image: radial-gradient(ellipse 50% 70% at center,rgba(0,0,0,1) 0%,rgba(0,0,0,0.92) 12%,rgba(0,0,0,0.74) 26%,rgba(0,0,0,0.5) 42%,rgba(0,0,0,0.28) 58%,rgba(0,0,0,0.13) 72%,rgba(0,0,0,0.05) 84%,rgba(0,0,0,0.01) 94%,rgba(0,0,0,0) 100%);
+    }
+    .page-hero-content .section-label { color: var(--gold); text-shadow: 0 1px 8px rgba(0,0,0,0.4); }
+    .page-hero-content h1 {
+      font-size: 3rem; font-weight: 900; letter-spacing: 0.3em; line-height: 1.3;
+      color: var(--ivory); text-shadow: 0 2px 24px rgba(0,0,0,0.5), 0 1px 8px rgba(0,0,0,0.3); margin-bottom: 1rem;
+    }
+    .page-hero-content h1 span {
+      display: block; font-family: Georgia, 'Bodoni 72', serif;
+      font-size: 0.8rem; letter-spacing: 0.6em;
+      color: var(--gold); font-weight: 400; margin-top: 0.5rem;
+      text-shadow: 0 2px 16px rgba(0,0,0,0.5);
+    }
+    .page-hero-content p {
+      font-size: 0.9rem; font-weight: 300;
+      color: rgba(255, 253, 245, 0.95); letter-spacing: 0.15em;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.4);
+    }
+
+    /* ========================================
+       SERVICES GRID
+    ======================================== */
+    .services-section {
+      background: var(--ivory);
+      padding: 7rem 4rem;
+    }
+    .services-header {
+      text-align: center; margin-bottom: 5rem;
+    }
+    .services-header .section-desc {
+      margin: 0 auto; text-align: center;
+    }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 2rem; max-width: 1200px; margin: 0 auto;
+    }
+    .service-card {
+      position: relative; overflow: hidden;
+      background: var(--champagne-light);
+      transition: transform 0.4s;
+    }
+    .service-card:hover { transform: translateY(-4px); }
+    .service-card-img {
+      position: relative; overflow: hidden;
+      aspect-ratio: 4/3;
+    }
+    .service-card-img img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 6s ease;
+    }
+    .service-card:hover .service-card-img img { transform: scale(1.05); }
+    .service-card-text {
+      padding: 2rem 2rem 2.5rem;
+    }
+    .service-card-text .en-label {
+      font-family: Georgia, 'Bodoni 72', serif;
+      font-size: 0.55rem; letter-spacing: 0.4em;
+      color: var(--gold); text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+    .service-card-text h3 {
+      font-size: 1.1rem; font-weight: 600;
+      color: var(--charcoal); letter-spacing: 0.08em;
+      margin-bottom: 0.8rem;
+    }
+    .service-card-text p {
+      font-size: 0.78rem; color: rgba(80, 83, 80, 0.55);
+      line-height: 2.2; font-weight: 300;
+    }
+
+    /* ========================================
+       TIMELINE SECTION
+    ======================================== */
+    .timeline-section {
+      background: var(--charcoal-deep);
+      padding: 7rem 4rem;
+      position: relative; overflow: hidden;
+    }
+    .timeline-header {
+      text-align: center; margin-bottom: 5rem;
+      position: relative;
+    }
+    .timeline-header .section-title { color: var(--champagne-light); }
+    .timeline-header .section-desc { color: rgba(255, 253, 245, 0.45); margin: 0 auto; text-align: center; }
+
+    .timeline-tabs {
+      display: flex; justify-content: center;
+      gap: 0.6rem; margin-bottom: 4rem;
+      flex-wrap: wrap; position: relative;
+    }
+    .timeline-tab {
+      padding: 0.7rem 2rem;
+      font-family: 'Noto Serif TC', Georgia, serif;
+      font-size: 0.78rem; letter-spacing: 0.25em;
+      background: transparent; cursor: pointer;
+      border: 1px solid rgba(201, 169, 110, 0.35);
+      color: rgba(255, 253, 245, 0.55);
+      transition: all 0.4s;
+    }
+    .timeline-tab:hover {
+      color: var(--gold);
+      border-color: var(--gold);
+    }
+    .timeline-tab.active {
+      background: var(--gold);
+      color: var(--ivory);
+      border-color: var(--gold);
+    }
+    .timeline-panel { display: none; }
+    .timeline-panel.active { display: block; }
+    .timeline {
+      max-width: 800px; margin: 0 auto;
+      position: relative;
+    }
+    .timeline::before {
+      content: ''; position: absolute;
+      left: 50%; top: 0; bottom: 0;
+      width: 1px; background: rgba(201, 169, 110, 0.2);
+      transform: translateX(-50%);
+    }
+    .timeline-item {
+      display: flex; align-items: center;
+      margin-bottom: 3.5rem;
+      position: relative;
+    }
+    .timeline-item:last-child { margin-bottom: 0; }
+    .timeline-item:nth-child(odd) { flex-direction: row; }
+    .timeline-item:nth-child(even) { flex-direction: row-reverse; }
+    .timeline-time {
+      flex: 1; text-align: right; padding-right: 3rem;
+    }
+    .timeline-item:nth-child(even) .timeline-time {
+      text-align: left; padding-right: 0; padding-left: 3rem;
+    }
+    .timeline-time .time {
+      font-family: Georgia, 'Bodoni 72', serif;
+      font-size: 1.2rem; color: var(--gold);
+      letter-spacing: 0.1em; font-weight: 400;
+    }
+    .timeline-dot {
+      width: 12px; height: 12px;
+      background: var(--gold); border-radius: 50%;
+      flex-shrink: 0; position: relative; z-index: 1;
+    }
+    .timeline-content {
+      flex: 1; padding-left: 3rem;
+    }
+    .timeline-item:nth-child(even) .timeline-content {
+      padding-left: 0; padding-right: 3rem;
+      text-align: right;
+    }
+    .timeline-content h4 {
+      font-size: 0.95rem; font-weight: 600;
+      color: var(--champagne-light); letter-spacing: 0.08em;
+      margin-bottom: 0.4rem;
+    }
+    .timeline-content p {
+      font-size: 0.75rem; color: rgba(255, 253, 245, 0.4);
+      line-height: 2; font-weight: 300;
+    }
+
+    /* ========================================
+       TESTIMONIALS
+    ======================================== */
+    .testimonials-section {
+      background: var(--champagne-light);
+      padding: 7rem 4rem;
+    }
+    .testimonials-header {
+      text-align: center; margin-bottom: 4.5rem;
+    }
+    .testimonials-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 2.5rem; max-width: 1100px; margin: 0 auto;
+    }
+    .testimonial-card {
+      background: var(--ivory);
+      padding: 3rem 2.5rem;
+      position: relative;
+    }
+    .testimonial-card::before {
+      content: '\201C';
+      font-family: Georgia, 'Bodoni 72', serif;
+      font-size: 4rem; color: var(--gold);
+      opacity: 0.2; position: absolute;
+      top: 1rem; left: 1.5rem; line-height: 1;
+    }
+    .testimonial-card p {
+      font-size: 0.82rem; color: rgba(80, 83, 80, 0.6);
+      line-height: 2.3; font-weight: 300;
+      font-style: italic; margin-bottom: 1.5rem;
+      position: relative;
+    }
+    .testimonial-author {
+      display: flex; align-items: center; gap: 0.8rem;
+    }
+    .testimonial-author-line {
+      width: 24px; height: 1px; background: var(--gold);
+    }
+    .testimonial-author span {
+      font-size: 0.72rem; color: var(--champagne);
+      letter-spacing: 0.1em; font-weight: 400;
+    }
+    .testimonial-author .date {
+      font-size: 0.6rem; color: rgba(80, 83, 80, 0.35);
+      font-family: Georgia, serif;
+    }
+
+    /* ========================================
+       CTA SECTION
+    ======================================== */
+    .cta-section {
+      background: var(--ivory);
+      text-align: center;
+      padding: 7rem 2rem;
+      position: relative; overflow: hidden;
+    }
+    .cta-text-wrap {
+      position: relative;
+      display: inline-block;
+      padding: 2rem 3rem;
+    }
+
+    /* ========================================
+       FOOTER
+    ======================================== */
+    .footer {
+      background: #1a1a1a;
+      color: #ffffff;
+      padding: clamp(60px, 8vh, 100px) clamp(24px, 6vw, 120px) clamp(32px, 4vh, 48px);
+    }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 48px;
+      padding-bottom: clamp(40px, 5vh, 60px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .footer-logo-col {
+      display: flex; flex-direction: column;
+      align-items: center; text-align: center; gap: 6px;
+    }
+    .footer-logo {
+      display: flex; flex-direction: column;
+      align-items: center; gap: 4px; margin-bottom: 20px;
+    }
+    .footer-logo .f-kanji {
+      font-family: 'Noto Serif TC', '思源宋體', '宋體', serif;
+      font-size: 1.5rem; font-weight: 500;
+      color: var(--gold); letter-spacing: 0.2em; line-height: 1;
+    }
+    .footer-logo .f-en {
+      font-family: 'Bodoni 72', 'Bodoni Moda', Georgia, serif;
+      font-size: 0.55rem; letter-spacing: 0.5em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5); line-height: 1;
+    }
+    .footer-tagline {
+      font-size: 0.78rem; color: rgba(255,255,255,0.35);
+      letter-spacing: 0.15em; line-height: 1.8;
+      text-align: center; margin: 0;
+    }
+    .footer-col-title {
+      font-family: 'Bodoni 72', 'Bodoni Moda', Georgia, serif;
+      font-size: 0.55rem; letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--gold); margin-bottom: 20px;
+    }
+    .footer-contact-item {
+      display: flex; align-items: flex-start;
+      gap: 12px; margin-bottom: 14px;
+      font-size: 0.82rem; color: rgba(255,255,255,0.5);
+      letter-spacing: 0.03em; line-height: 1.6;
+    }
+    .footer-contact-item svg {
+      width: 14px; height: 14px;
+      stroke: var(--gold); flex-shrink: 0;
+      margin-top: 3px; opacity: 0.7;
+    }
+    .footer-contact-item a {
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .footer-contact-item a:hover { color: var(--gold); }
+    .footer-social {
+      display: flex; gap: 20px; margin-top: 8px;
+    }
+    .footer-social a {
+      display: flex; align-items: center; justify-content: center;
+      width: 36px; height: 36px;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 50%; transition: all 0.3s;
+    }
+    .footer-social a:hover {
+      border-color: var(--gold);
+      background: rgba(230, 164, 1, 0.08);
+    }
+    .footer-social a svg {
+      width: 14px; height: 14px;
+      color: rgba(255,255,255,0.5);
+      fill: rgba(255,255,255,0.5);
+      transition: color 0.3s, fill 0.3s;
+    }
+    .footer-social a:hover svg {
+      color: var(--gold);
+      fill: var(--gold);
+    }
+    .footer-brands {
+      display: flex; flex-direction: column; gap: 10px;
+    }
+    .footer-brand-link {
+      font-size: 0.78rem; color: rgba(255,255,255,0.35);
+      letter-spacing: 0.08em; text-decoration: none;
+      transition: color 0.3s;
+    }
+    .footer-brand-link:hover { color: var(--gold); }
+    .footer-bottom {
+      display: flex; align-items: center; justify-content: center;
+      text-align: center;
+      padding-top: clamp(24px, 3vh, 40px);
+      font-size: 0.65rem; color: rgba(255,255,255,0.2);
+      letter-spacing: 0.1em;
+    }
+    .footer-bottom a {
+      color: rgba(255,255,255,0.2);
+      text-decoration: none; transition: color 0.3s;
+    }
+    .footer-bottom a:hover { color: var(--gold); }
+
+    /* ========================================
+       ANIMATIONS
+    ======================================== */
+    .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 1s ease, transform 1s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    .fade-in-slow { opacity: 0; transform: translateY(20px); transition: opacity 1.4s ease, transform 1.4s ease; }
+    .fade-in-slow.visible { opacity: 1; transform: translateY(0); }
+    .stagger-children .fade-in:nth-child(1) { transition-delay: 0s; }
+    .stagger-children .fade-in:nth-child(2) { transition-delay: 0.15s; }
+    .stagger-children .fade-in:nth-child(3) { transition-delay: 0.3s; }
+    .stagger-children .fade-in:nth-child(4) { transition-delay: 0.45s; }
+    .stagger-children .fade-in:nth-child(5) { transition-delay: 0.6s; }
+    .stagger-children .fade-in:nth-child(6) { transition-delay: 0.75s; }
+
+    /* ========================================
+       RESPONSIVE
+    ======================================== */
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.8rem; }
+      .nav-links {
+        position: fixed; top: 0; right: -100%;
+        width: 75%; max-width: 320px; height: 100vh;
+        background: rgba(255, 253, 245, 0.97);
+        backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+        flex-direction: column; justify-content: center;
+        align-items: center; gap: 2rem;
+        transition: right 0.4s ease;
+      }
+      .nav-links.open { right: 0; }
+      .nav-links a { font-size: 0.9rem; color: rgba(80, 83, 80, 0.7); }
+      .nav-toggle { display: block; }
+
+      .page-hero { height: 55vh; }
+      .page-hero-content { padding: 3rem 3rem; }
+      .page-hero-content h1 { font-size: 2.2rem; letter-spacing: 0.2em; }
+
+      .services-section { padding: 5rem 2rem; }
+      .services-grid { grid-template-columns: 1fr; }
+
+      .timeline-section { padding: 5rem 2rem; }
+      .timeline { max-width: none; }
+      .timeline::before { left: 20px; transform: none; }
+      .timeline-item,
+      .timeline-item:nth-child(odd),
+      .timeline-item:nth-child(even) {
+        flex-direction: column; align-items: flex-start;
+        padding-left: 45px; position: relative;
+      }
+      .timeline-time,
+      .timeline-item:nth-child(even) .timeline-time {
+        text-align: left; padding: 0;
+        margin-bottom: 0.3rem; flex: none;
+      }
+      .timeline-content,
+      .timeline-item:nth-child(even) .timeline-content {
+        text-align: left; padding: 0; flex: none;
+      }
+      .timeline-dot { position: absolute; left: -50px; top: 0.5rem; }
+      .timeline-tabs { gap: 0.4rem; }
+      .timeline-tab { padding: 0.6rem 1.2rem; letter-spacing: 0.18em; }
+
+      .testimonials-section { padding: 5rem 2rem; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+
+      .section-title { font-size: 1.4rem; }
+      .footer-top { grid-template-columns: 1fr; gap: 36px; }
+      .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+    }
+
+    @media (max-width: 480px) {
+      .page-hero-content h1 { font-size: 1.8rem; letter-spacing: 0.15em; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ====== NAVIGATION ====== -->
+  <nav id="nav">
+    <a href="index.html" class="nav-logo">
+      <span class="zh-top">日</span>
+      <span class="en">LOHERB</span>
+      <span class="zh-bottom">光</span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links" id="navLinks">
+      <a href="venues.html">婚禮場地</a>
+      <a href="experience.html">客製體驗</a>
+      <a href="cuisine.html">婚宴料理</a>
+      <a href="journal.html">幸福手帳</a>
+      <a href="contact.html">預約諮詢</a>
+    </div>
+    <div class="nav-lang">
+      <a href="experience.html" class="active">中</a>
+      <span class="nav-lang-sep">/</span>
+      <a href="en/experience.html">EN</a>
+    </div>
+  </nav>
+
+  <!-- ====== PAGE HERO ====== -->
+  <section class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="page-hero-content fade-in">
+      <p class="section-label">Bespoke Experience</p>
+      <h1>客製體驗<span>Tailored Wedding Experience</span></h1>
+      <p>每一個細節，都為您的幸福量身打造</p>
+    </div>
+  </section>
+
+  <!-- ====== SERVICES ====== -->
+  <section class="services-section">
+    <div class="services-header fade-in">
+      <p class="section-label">Our Services</p>
+      <h2 class="section-title">專屬婚禮服務</h2>
+      <p class="section-desc">
+        交給日光婚禮團隊，協助您統籌每一個環節
+      </p>
+    </div>
+    <div class="services-grid stagger-children">
+      <div class="service-card fade-in">
+        <div class="service-card-img">
+          <img src="images/service-01-planning.png" alt="婚禮企劃" loading="lazy">
+        </div>
+        <div class="service-card-text">
+          <p class="en-label">Wedding Planning</p>
+          <h3>婚禮企劃</h3>
+          <p>
+            日光小秘從諮詢到婚禮當天全程陪伴，
+            依照您的風格預算，規劃最流程動線，
+            讓您放鬆享受幸福每一刻。
+          </p>
+        </div>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-card-img">
+          <img src="images/service-02-decoration.jpg" alt="場地佈置" loading="lazy">
+        </div>
+        <div class="service-card-text">
+          <p class="en-label">Venue Decoration</p>
+          <h3>場地佈置</h3>
+          <p>
+            依照婚禮主題量身打造場地，
+            從迎賓、觀禮到宴客，
+            室內戶外每處都精心設計，營造獨一無二氛圍。
+          </p>
+        </div>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-card-img">
+          <img src="images/service-03-floral.png" alt="花藝設計" loading="lazy">
+        </div>
+        <div class="service-card-text">
+          <p class="en-label">Floral Design</p>
+          <h3>花藝設計</h3>
+          <p>
+            與專業花藝師合作，依季節選用最美花材，
+            從新娘捧花到會場裝飾、桌花擺設，
+            以花語述說您的愛情故事。
+          </p>
+        </div>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-card-img">
+          <img src="images/service-04-photography.png" alt="攝影紀錄" loading="lazy">
+        </div>
+        <div class="service-card-text">
+          <p class="en-label">Photography</p>
+          <h3>攝影紀錄</h3>
+          <p>
+            合作專業婚禮攝影團隊，以細膩的鏡頭語言
+            捕捉每一個感動瞬間。從準備到送客，
+            為您留下最珍貴的回憶。
+          </p>
+        </div>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-card-img">
+          <img src="images/service-05-bridal.png" alt="新娘秘書" loading="lazy">
+        </div>
+        <div class="service-card-text">
+          <p class="en-label">Bridal Styling</p>
+          <h3>新娘秘書</h3>
+          <p>
+            合作專業新秘團隊提供妝髮造型服務，
+            依照您的氣質與禮服搭配打造妝容，
+            從迎娶到宴客完美變換造型。
+          </p>
+        </div>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-card-img">
+          <img src="images/service-06-music.png" alt="音樂表演" loading="lazy">
+        </div>
+        <div class="service-card-text">
+          <p class="en-label">AV Equipment</p>
+          <h3>影音設備</h3>
+          <p>
+            從布幕投影到麥克風規劃，
+            專業設備醞釀婚禮氛圍；
+            更合作演唱會等級音響，打造震撼全場的視聽饗宴。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== TIMELINE ====== -->
+  <section class="timeline-section">
+    <div class="timeline-header fade-in">
+      <p class="section-label" style="position:relative;">Wedding Day Timeline</p>
+      <h2 class="section-title" style="position:relative;">婚禮當日流程</h2>
+      <p class="section-desc" style="position:relative;">精心安排的每一刻，讓幸福自然流淌。</p>
+    </div>
+    <div class="timeline-tabs" style="position:relative;">
+      <button type="button" class="timeline-tab active" data-panel="lunch">午宴</button>
+      <button type="button" class="timeline-tab" data-panel="dinner">晚宴</button>
+      <button type="button" class="timeline-tab" data-panel="ceremony">證婚觀禮</button>
+    </div>
+
+    <!-- ===== 午宴 Lunch ===== -->
+    <div class="timeline-panel active" id="panel-lunch">
+      <div class="timeline" style="position:relative;">
+        <div class="timeline-item fade-in">
+          <div class="timeline-time"><span class="time">10:00</span></div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h4>新人準備</h4>
+            <p>新秘進場，妝髮造型<br>攝影師側拍準備花絮</p>
+          </div>
+        </div>
+        <div class="timeline-item fade-in">
+          <div class="timeline-time"><span class="time">11:00</span></div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h4>場地佈置確認</h4>
+            <p>花藝、桌位、影音<br>最後檢視彩排</p>
+          </div>
+        </div>
+        <div class="timeline-item fade-in">
+          <div class="timeline-time"><span class="time">11:30</span></div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h4>迎賓時刻</h4>
+            <p>賓客陸續抵達園區<br>茶會點心、自由參觀</p>
+          </div>
+        </div>
+        <div class="timeline-item fade-in">
+          <div class="timeline-time"><span class="time">12:00</span></div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h4>證婚儀式</h4>
+            <p>草坪／室內證婚，交換誓詞<br>在天地之間許下承諾</p>
+          </div>
+        </div>
+        <div class="timeline-item fade-in">
+          <div class="timeline-time"><span class="time">12:30</span></div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h4>婚宴時光</h4>
+            <p>主廚精心料理上桌<br>致詞、敬酒、切蛋糕</p>
+          </div>
+        </div>
+        <div class="timeline-item fade-in">
+          <div class="timeline-time"><span class="time">14:00</span></div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h4>歡送祝福</h4>
+            <p>送客小物、擁抱道別<br>午後陽光中的圓滿句點</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== 晚宴 Dinner ===== -->
+    <div class="timeline-panel" id="panel-dinner">
+      <div class="timeline" style="position:relative;">
+        <div class="timeline-item fade-in">
+          <div class="timeline-time"><span class="time">16:00</span></div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h4>新人準備</h4>
+            <p>新秘進場，妝髮造型<br>攝影師側拍準備花絮</p>
+          </div>
+        </div>
+        <div class="timeline-item fade-in">
+          <div class="timeline-time"><span class="time">17:00</span></div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h4>場地佈置確認</h4>
+            <p>花藝、桌位、影音<br>夜燈點亮、彩排走位</p>
+          </div>
+        </div>
+        <div class="timeline-item fade-in">
+          <div class="timeline-time"><span class="time">17:30</span></div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h4>迎賓時刻</h4>
+            <p>賓客陸續抵達園區<br>雞尾酒會、自由交流</p>
+          </div>
+        </div>
+        <div class="timeline-item fade-in">
+          <div class="timeline-time"><span class="time">18:00</span></div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h4>證婚儀式</h4>
+            <p>燭光下交換誓詞<br>夜空為證、星光為禮</p>
+          </div>
+        </div>
+        <div class="timeline-item fade-in">
+          <div class="timeline-time"><span class="time">18:30</span></div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h4>婚宴時光</h4>
+            <p>主廚精心料理上桌<br>致詞、敬酒、切蛋糕</p>
+          </div>
+        </div>
+        <div class="timeline-item fade-in">
+          <div class="timeline-time"><span class="time">20:00</span></div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h4>歡送祝福</h4>
+            <p>送客小物、擁抱道別<br>星夜下最美的句點</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== 證婚觀禮 Ceremony Only (2 hr) ===== -->
+    <div class="timeline-panel" id="panel-ceremony">
+      <div class="timeline" style="position:relative;">
+        <div class="timeline-item fade-in">
+          <div class="timeline-time"><span class="time">15:00</span></div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h4>賓客報到</h4>
+            <p>迎賓入場、引導入座<br>輕食茶點招待</p>
+          </div>
+        </div>
+        <div class="timeline-item fade-in">
+          <div class="timeline-time"><span class="time">15:20</span></div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h4>茶點交流</h4>
+            <p>下午茶點心、特調飲品<br>賓客間自由互動敘舊</p>
+          </div>
+        </div>
+        <div class="timeline-item fade-in">
+          <div class="timeline-time"><span class="time">16:00</span></div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h4>證婚儀式</h4>
+            <p>進場、交換誓詞與戒指<br>見證親友共同祝福</p>
+          </div>
+        </div>
+        <div class="timeline-item fade-in">
+          <div class="timeline-time"><span class="time">16:30</span></div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h4>合影留念</h4>
+            <p>親友團體合照<br>園區各角落新人留影</p>
+          </div>
+        </div>
+        <div class="timeline-item fade-in">
+          <div class="timeline-time"><span class="time">17:00</span></div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h4>圓滿賦歸</h4>
+            <p>送客小物、感謝道別<br>下午陽光中的浪漫句點</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== TESTIMONIALS ====== -->
+  <section class="testimonials-section">
+    <div class="testimonials-header fade-in">
+      <p class="section-label">Love Stories</p>
+      <h2 class="section-title">新人的話</h2>
+    </div>
+    <div class="testimonials-grid stagger-children">
+      <div class="testimonial-card fade-in">
+        <p>
+          從第一次場勘就被日光的環境深深感動，
+          婚禮當天一切都超乎想像的完美。
+          稻田間的證婚儀式讓我們和每一位賓客都感動落淚。
+        </p>
+        <div class="testimonial-author">
+          <div class="testimonial-author-line"></div>
+          <div>
+            <span>Jennie & Ursa</span><br>
+            <span class="date">2017 Spring</span>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card fade-in">
+        <p>
+          日光團隊的細心程度讓我們非常安心，
+          從菜單設計到花藝佈置都超越期待。
+          感謝你們讓我們擁有最夢幻的婚禮。
+        </p>
+        <div class="testimonial-author">
+          <div class="testimonial-author-line"></div>
+          <div>
+            <span>Rue & Terence</span><br>
+            <span class="date">2020 Winter</span>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card fade-in">
+        <p>
+          在星空下交換誓詞的那一刻，
+          是我們這輩子最難忘的回憶。
+          日光婚禮讓不可能變成了最美的現實。
+        </p>
+        <div class="testimonial-author">
+          <div class="testimonial-author-line"></div>
+          <div>
+            <span>Alex & Mia</span><br>
+            <span class="date">2025 Summer</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== CTA ====== -->
+  <section class="cta-section fade-in-slow">
+    <div class="cta-text-wrap">
+      <p class="section-label">Start Planning</p>
+      <h2 class="section-title">開始打造您的夢想婚禮</h2>
+      <a href="contact.html" class="btn-gold">預約諮詢</a>
+    </div>
+  </section>
+
+  <!-- ====== FOOTER ====== -->
+  <footer class="footer" id="contact-footer">
+    <div class="footer-top">
+      <!-- Logo column -->
+      <div class="footer-logo-col">
+        <div class="footer-logo">
+          <span class="f-kanji">日</span>
+          <span class="f-en">LOHERB</span>
+          <span class="f-kanji">光</span>
+        </div>
+        <p class="footer-tagline">享受生活，每一天</p>
+      </div>
+
+      <!-- Contact column -->
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22,4 12,13 2,4"/>
+          </svg>
+          <a href="mailto:service@loherb.com.tw">service@loherb.com.tw</a>
+        </div>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+          </svg>
+          <a href="tel:+886-3-959-5685">+886-3-959-5685</a>
+        </div>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
+          </svg>
+          <span>台北市羅斯福路三段335號9樓<br>宜蘭縣冬山鄉寶福路372-450號</span>
+        </div>
+
+        <!-- Social icons -->
+        <div class="footer-social">
+          <a href="https://www.facebook.com/LOHERB.TW/" target="_blank" rel="noopener" aria-label="Facebook">
+            <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/loherb_yilan" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="4.5" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="17.5" cy="6.5" r="1.2"/></svg>
+          </a>
+          <a href="https://www.youtube.com/@loherb222" target="_blank" rel="noopener" aria-label="YouTube">
+            <svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 11.75a29 29 0 00.46 5.33A2.78 2.78 0 003.4 19.1c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 001.94-2 29 29 0 00.46-5.25 29 29 0 00-.46-5.43zM9.75 15.02V8.48l5.75 3.27-5.75 3.27z"/></svg>
+          </a>
+          <a href="https://line.me/R/ti/p/%40xye4557v" target="_blank" rel="noopener" aria-label="LINE">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 5.82 2 10.5c0 3.26 2.36 6.1 5.87 7.53-.08.67-.47 2.51-.54 2.9-.09.51.19.5.4.36.16-.1 2.37-1.61 3.33-2.27.3.03.62.05.94.05 5.52 0 10-3.82 10-8.5S17.52 2 12 2z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Brands column -->
+      <div>
+        <div class="footer-col-title">Brands</div>
+        <div class="footer-brands">
+          <a href="https://villa.loherb.com.tw" target="_blank" rel="noopener" class="footer-brand-link">日光綠築 &mdash; Villa</a>
+          <a href="https://cuisine.loherb.com.tw" target="_blank" rel="noopener" class="footer-brand-link">日光私廚 &mdash; Cuisine</a>
+          <a href="https://estate.loherb.com.tw" target="_blank" rel="noopener" class="footer-brand-link">日光物業 &mdash; Estate</a>
+          <a href="https://party.loherb.com.tw" target="_blank" rel="noopener" class="footer-brand-link">日光時刻 &mdash; Party</a>
+          <a href="https://wedding.loherb.com.tw" target="_blank" rel="noopener" class="footer-brand-link">日光婚禮 &mdash; Wedding</a>
+          <a href="https://design.loherb.com.tw" target="_blank" rel="noopener" class="footer-brand-link">日光文創 &mdash; Design</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>&copy; 2026 LOHERB all rights reserved. Built by Disp-Tech.</span></div>
+  </footer>
+
+  <!-- ====== SCRIPTS ====== -->
+  <script>
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
+      },
+      { threshold: 0.08, rootMargin: '0px 0px -40px 0px' }
+    );
+    document.querySelectorAll('.fade-in, .fade-in-slow').forEach((el) => observer.observe(el));
+
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    navToggle.addEventListener('click', () => {
+      navToggle.classList.toggle('active');
+      navLinks.classList.toggle('open');
+    });
+    navLinks.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        navToggle.classList.remove('active');
+        navLinks.classList.remove('open');
+      });
+    });
+
+    /* Timeline tabs */
+    document.querySelectorAll('.timeline-tab').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const target = btn.dataset.panel;
+        document.querySelectorAll('.timeline-tab').forEach(b => b.classList.toggle('active', b === btn));
+        document.querySelectorAll('.timeline-panel').forEach(p => p.classList.toggle('active', p.id === 'panel-' + target));
+        // re-trigger fade-in for items in newly-shown panel
+        document.querySelectorAll('#panel-' + target + ' .fade-in').forEach(el => {
+          el.classList.remove('visible');
+          requestAnimationFrame(() => el.classList.add('visible'));
+        });
+      });
+    });
+  </script>
+</body>
+</html>
