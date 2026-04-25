@@ -154,12 +154,24 @@
       margin-bottom: 0.5rem; letter-spacing: 0.08em;
     }
     .menu-price {
-      display: inline-flex; align-items: center; gap: 0.4rem;
-      padding: 0.35rem 1rem;
-      font-size: 0.75rem; letter-spacing: 0.1em; font-weight: 600;
-      border: 1px solid var(--gold); color: var(--gold);
-      font-family: Georgia, 'Bodoni 72', serif;
-      border-radius: 2px; margin-bottom: 1.5rem;
+      display: block; margin: 0.6rem 0 1.6rem;
+      font-family: Georgia, 'Bodoni Moda', 'Bodoni 72', serif;
+      font-style: italic;
+      font-size: 1.05rem; font-weight: 400;
+      letter-spacing: 0.06em;
+      color: var(--gold);
+    }
+    .menu-price::before {
+      content: '— '; opacity: 0.55;
+    }
+    .menu-price .price-unit {
+      font-size: 0.7rem; color: var(--champagne-dark);
+      letter-spacing: 0.15em; margin-left: 0.3rem;
+      font-style: normal;
+    }
+    .menu-split-text .btn-gold {
+      padding: 0.55rem 1.8rem;
+      font-size: 0.7rem; letter-spacing: 0.25em;
       width: fit-content;
     }
     .menu-split-text .menu-desc {
@@ -490,6 +502,11 @@
     </div>
   </section>
 
+  <div class="menu-divider">
+    <div class="divider-line"></div>
+    <p>Western Course</p>
+  </div>
+
   <!-- ====== WESTERN SET MENU ====== -->
   <section class="menu-split fade-in">
     <div class="menu-split-img">
@@ -498,21 +515,13 @@
     <div class="menu-split-text" style="background: var(--champagne-light);">
       <p class="menu-en">Western Course Menu</p>
       <h2>西式套餐</h2>
-      <span class="menu-price">NT$1,800+ / 人</span>
+      <span class="menu-price">NT$ 1,380 起<span class="price-unit">/ 位</span></span>
       <p class="menu-desc">
-        由主廚精心設計的西式婚宴套餐，
-        從開胃前菜到主菜甜點，每一道料理
-        都是以宜蘭在地食材為基底的當代法式饗宴。
+        由主廚設計的西式婚宴套餐，
+        從開胃菜到甜點，每道料理融合在地風味與法式廚藝，
+        創作浪漫如藝術品的美食饗宴。
       </p>
-      <div class="menu-highlights">
-        <span class="chip">前菜沙拉</span>
-        <span class="chip">濃湯</span>
-        <span class="chip">海鮮料理</span>
-        <span class="chip">主菜肉品</span>
-        <span class="chip">手工甜點</span>
-        <span class="chip">咖啡茶飲</span>
-      </div>
-      <a href="contact.html" class="btn-gold">洽詢菜單</a>
+      <a href="contact.html" class="btn-gold">探索菜單</a>
     </div>
   </section>
 
@@ -526,22 +535,14 @@
     <div class="menu-split-text" style="background: var(--ivory);">
       <p class="menu-en">Outdoor BBQ</p>
       <h2>戶外烤肉</h2>
-      <span class="menu-price">NT$1,200+ / 人</span>
+      <span class="menu-price">NT$ 1,200 起<span class="price-unit">/ 位</span></span>
       <p class="menu-desc">
         在草坪上享受最豪邁的婚禮饗宴，
         現場炭火直烤頂級肉品與海鮮，
         搭配主廚特製醃料與烤蔬，
         在煙火氣中盡情歡聚。
       </p>
-      <div class="menu-highlights">
-        <span class="chip">炭烤戰斧牛排</span>
-        <span class="chip">伊比利豬</span>
-        <span class="chip">活跳跳海鮮</span>
-        <span class="chip">主廚醃料</span>
-        <span class="chip">烤蔬與烤物</span>
-        <span class="chip">啤酒暢飲</span>
-      </div>
-      <a href="contact.html" class="btn-gold">洽詢菜單</a>
+      <a href="contact.html" class="btn-gold">探索菜單</a>
     </div>
     <div class="menu-split-img">
       <img src="images/Gemini_Generated_Image_kotj6jkotj6jkotj.png" alt="戶外烤肉" loading="lazy">
@@ -561,21 +562,13 @@
     <div class="menu-split-text" style="background: var(--champagne-light);">
       <p class="menu-en">Cocktail Reception</p>
       <h2>輕食雞尾酒宴</h2>
-      <span class="menu-price">NT$880+ / 人</span>
+      <span class="menu-price">NT$ 880 起<span class="price-unit">/ 位</span></span>
       <p class="menu-desc">
         以站立式酒會形式登場的浪漫派對，
         精緻 finger food 搭配主廚現場調製的特調雞尾酒，
         讓賓客自在交流，氣氛輕鬆而優雅。
       </p>
-      <div class="menu-highlights">
-        <span class="chip">主廚 Canapé</span>
-        <span class="chip">生蠔吧檯</span>
-        <span class="chip">義式火腿盤</span>
-        <span class="chip">調酒師現調</span>
-        <span class="chip">香檳塔</span>
-        <span class="chip">無酒精特調</span>
-      </div>
-      <a href="contact.html" class="btn-gold">洽詢菜單</a>
+      <a href="contact.html" class="btn-gold">探索菜單</a>
     </div>
   </section>
 
@@ -595,15 +588,7 @@
         法式泡芙塔與巧克力噴泉，
         為您的婚禮增添夢幻色彩。
       </p>
-      <div class="menu-highlights">
-        <span class="chip">婚禮蛋糕</span>
-        <span class="chip">馬卡龍塔</span>
-        <span class="chip">杯子蛋糕</span>
-        <span class="chip">法式泡芙</span>
-        <span class="chip">巧克力噴泉</span>
-        <span class="chip">手工餅乾</span>
-      </div>
-      <a href="contact.html" class="btn-gold">洽詢甜點方案</a>
+      <a href="contact.html" class="btn-gold">探索菜單</a>
     </div>
     <div class="menu-split-img">
       <img src="images/semi.jpg" alt="甜點桌" loading="lazy">
