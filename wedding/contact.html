@@ -172,6 +172,24 @@
       cursor: pointer;
       -webkit-appearance: none; -moz-appearance: none; appearance: none;
     }
+    .venue-checkboxes {
+      display: flex; flex-wrap: wrap; gap: 1.2rem 2rem;
+      padding: 0.8rem 0 0.4rem;
+      border-bottom: 1px solid rgba(201, 169, 110, 0.2);
+    }
+    .venue-checkbox {
+      display: flex; align-items: center; gap: 0.5rem;
+      cursor: pointer;
+      font-size: 0.85rem; letter-spacing: 0.05em;
+      color: var(--charcoal); font-weight: 400;
+      user-select: none;
+    }
+    .venue-checkbox input[type="checkbox"] {
+      width: 16px; height: 16px;
+      accent-color: var(--gold);
+      cursor: pointer;
+      margin: 0;
+    }
     .form-submit { text-align: center; margin-top: 2rem; }
     .btn-submit {
       display: inline-block; padding: 0.9rem 3.5rem;
@@ -557,13 +575,12 @@
           </div>
         </div>
         <div class="form-field">
-          <label for="venue">偏好場地</label>
-          <select id="venue" name="venue">
-            <option value="" disabled selected>請選擇</option>
-            <option value="室內宴會廳">室內宴會廳</option>
-            <option value="戶外草坪儀式">戶外草坪儀式</option>
-            <option value="泳池水畔宴會">泳池水畔宴會</option>
-          </select>
+          <label>偏好場地（可複選）</label>
+          <div class="venue-checkboxes">
+            <label class="venue-checkbox"><input type="checkbox" name="venue" value="室內宴會廳"> 室內宴會廳</label>
+            <label class="venue-checkbox"><input type="checkbox" name="venue" value="戶外草坪儀式"> 戶外草坪儀式</label>
+            <label class="venue-checkbox"><input type="checkbox" name="venue" value="泳池水畔宴會"> 泳池水畔宴會</label>
+          </div>
         </div>
         <div class="form-field">
           <label for="message">補充說明</label>
@@ -836,7 +853,7 @@
         '電子信箱': form.querySelector('#email').value || '（未填）',
         '預計婚期': form.querySelector('#date').value || '（未填）',
         '預計賓客數': form.querySelector('#guests').value || '（未填）',
-        '偏好場地': form.querySelector('#venue').value || '（未選）',
+        '偏好場地': [...form.querySelectorAll('input[name="venue"]:checked')].map(c => c.value).join('、') || '（未選）',
         '補充說明': form.querySelector('#message').value || '（無）'
       };
 
