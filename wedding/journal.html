@@ -31,62 +31,140 @@
     }
 
     /* ========================================
-       NAVIGATION
+       NAVIGATION (matches LOHERB Group style)
     ======================================== */
-    nav {
+    nav#nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 1.4rem 4rem;
+      height: 76px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 clamp(24px, 4vw, 64px);
       background: transparent;
-      transition: background 0.5s, backdrop-filter 0.5s;
+      transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    nav.scrolled {
-      background: rgba(255, 253, 245, 0.82);
-      backdrop-filter: blur(20px) saturate(1.2);
-      -webkit-backdrop-filter: blur(20px) saturate(1.2);
-      box-shadow: 0 1px 20px rgba(201, 169, 110, 0.10);
+    nav#nav::before {
+      content: ''; position: absolute; inset: 0;
+      background: rgba(255, 253, 245, 0);
+      backdrop-filter: blur(0px); -webkit-backdrop-filter: blur(0px);
+      border-bottom: 1px solid transparent;
+      transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: none;
     }
-    .nav-logo { display: flex; flex-direction: column; align-items: center; text-decoration: none; line-height: 1; gap: 0.08rem; }
-    .nav-logo .zh-top { font-size: 1.1rem; font-weight: 500; color: var(--gold); letter-spacing: 0.2em; }
-    .nav-logo .en { font-family: 'Bodoni 72', 'Bodoni Moda', Georgia, serif; font-size: 0.45rem; letter-spacing: 0.35em; padding-left: 0.35em; color: var(--gold); text-transform: uppercase; }
-    .nav-logo .zh-bottom { font-size: 1.1rem; font-weight: 500; color: var(--gold); letter-spacing: 0.2em; }
-    .nav-links { display: flex; gap: 2.2rem; align-items: center; }
-    .nav-links a { text-decoration: none; font-size: 0.78rem; letter-spacing: 0.12em; color: rgba(255, 253, 245, 0.65); transition: color 0.5s; }
-    nav.scrolled .nav-links a { color: rgba(80, 83, 80, 0.65); }
-    nav.scrolled .nav-logo .zh-top, nav.scrolled .nav-logo .zh-bottom { color: var(--gold); }
-    nav.scrolled .nav-logo .en { color: var(--gold); }
-    nav.scrolled .nav-toggle span { background: var(--charcoal); }
+    nav#nav.scrolled::before {
+      background: rgba(255, 253, 245, 0.85);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(230, 164, 1, 0.12);
+    }
+
+    .nav-logo {
+      position: relative; z-index: 2;
+      display: flex; flex-direction: column; align-items: center;
+      text-decoration: none; line-height: 1; gap: 0;
+      transition: opacity 0.4s;
+    }
+    .nav-logo .zh-top,
+    .nav-logo .zh-bottom {
+      font-family: 'Noto Serif TC', '思源宋體', '宋體', serif;
+      font-weight: 500; font-size: 1rem;
+      letter-spacing: 0.2em; padding-left: 0.2em;
+      color: var(--gold);
+      transition: color 0.6s;
+    }
+    .nav-logo .en {
+      font-family: 'Bodoni 72', 'Bodoni Moda', Georgia, serif;
+      font-size: 0.45rem; letter-spacing: 0.35em;
+      text-transform: uppercase; padding-left: 0.35em;
+      color: var(--gold);
+    }
+
+    .nav-links {
+      position: relative; z-index: 2;
+      display: flex; align-items: center;
+      gap: clamp(14px, 2.2vw, 32px);
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-size: 0.78rem; letter-spacing: 0.18em;
+      color: rgba(255, 253, 245, 0.75);
+      transition: color 0.4s;
+    }
+    nav#nav.scrolled .nav-links a { color: var(--charcoal); }
     .nav-links a:hover { color: var(--gold); }
-    .nav-cta { padding: 0.5rem 1.6rem !important; border: 1px solid var(--gold) !important; color: var(--gold) !important; font-size: 0.72rem !important; letter-spacing: 0.2em !important; transition: all 0.3s !important; }
-    .nav-cta:hover { background: var(--gold) !important; color: var(--ivory) !important; }
-    nav.scrolled .nav-cta { border-color: var(--gold) !important; color: var(--gold) !important; }
-    nav.scrolled .nav-cta:hover { background: var(--gold) !important; color: var(--ivory) !important; }
 
     .nav-lang {
-      display: flex; align-items: center; gap: 6px;
-      margin-left: 1rem; padding-left: 1rem;
+      position: relative; z-index: 2;
+      display: flex; align-items: center; gap: 8px;
+      margin-left: clamp(12px, 2vw, 24px);
+      padding-left: clamp(12px, 2vw, 24px);
       border-left: 1px solid rgba(255, 253, 245, 0.2);
       font-family: Georgia, 'Bodoni 72', serif;
       font-size: 0.7rem; letter-spacing: 0.18em;
+      text-transform: uppercase;
     }
-    nav.scrolled .nav-lang { border-left-color: rgba(80, 83, 80, 0.2); }
-    .nav-lang a {
-      color: rgba(255, 253, 245, 0.55);
-      text-decoration: none; transition: color 0.4s;
-    }
-    nav.scrolled .nav-lang a { color: rgba(80, 83, 80, 0.6); }
+    nav#nav.scrolled .nav-lang { border-left-color: rgba(80, 83, 80, 0.2); }
+    .nav-lang a { color: rgba(255, 253, 245, 0.55); text-decoration: none; transition: color 0.4s; }
+    nav#nav.scrolled .nav-lang a { color: rgba(80, 83, 80, 0.6); }
     .nav-lang a.active, .nav-lang a:hover { color: var(--gold); }
     .nav-lang-sep { color: rgba(255, 253, 245, 0.3); }
-    nav.scrolled .nav-lang-sep { color: rgba(80, 83, 80, 0.3); }
-    .nav-toggle { display: none; background: none; border: none; cursor: pointer; width: 28px; height: 20px; position: relative; z-index: 1001; }
-    .nav-toggle span { display: block; width: 100%; height: 1px; background: var(--ivory); position: absolute; left: 0; transition: all 0.5s; }
-    .nav-toggle span:nth-child(1) { top: 0; }
-    .nav-toggle span:nth-child(2) { top: 50%; }
-    .nav-toggle span:nth-child(3) { top: 100%; }
-    .nav-toggle.active span:nth-child(1) { top: 50%; transform: rotate(45deg); }
-    .nav-toggle.active span:nth-child(2) { opacity: 0; }
-    .nav-toggle.active span:nth-child(3) { top: 50%; transform: rotate(-45deg); }
+    nav#nav.scrolled .nav-lang-sep { color: rgba(80, 83, 80, 0.3); }
 
+    /* Mobile menu button — asymmetric 3-line group style */
+    .nav-menu-btn {
+      display: none; position: relative; z-index: 2;
+      width: 32px; height: 24px;
+      background: none; border: none; cursor: pointer;
+      flex-direction: column; justify-content: space-between; align-items: flex-end;
+    }
+    .nav-menu-btn span {
+      display: block; height: 1px;
+      background: var(--ivory);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .nav-menu-btn span:nth-child(1) { width: 32px; }
+    .nav-menu-btn span:nth-child(2) { width: 24px; }
+    .nav-menu-btn span:nth-child(3) { width: 28px; }
+    nav#nav.scrolled .nav-menu-btn span { background: var(--charcoal); }
+    .nav-menu-btn.active span { background: var(--ivory) !important; }
+    .nav-menu-btn.active span:nth-child(1) {
+      transform: rotate(45deg) translate(8px, 8px); width: 28px;
+    }
+    .nav-menu-btn.active span:nth-child(2) { opacity: 0; width: 0; }
+    .nav-menu-btn.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(8px, -8px); width: 28px;
+    }
+
+    /* Full-screen mobile overlay menu */
+    .mobile-menu {
+      position: fixed; inset: 0; z-index: 999;
+      background: var(--charcoal-deep);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 28px;
+      opacity: 0; visibility: hidden;
+      transition: opacity 0.5s ease, visibility 0.5s;
+    }
+    .mobile-menu.open { opacity: 1; visibility: visible; }
+    .mobile-menu a {
+      font-family: 'Noto Serif TC', Georgia, serif;
+      font-size: 1.1rem; letter-spacing: 0.3em;
+      color: rgba(255,253,245,0.7);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .mobile-menu a:hover, .mobile-menu a.active { color: var(--gold); }
+    .mobile-lang {
+      display: flex; gap: 12px; align-items: center;
+      margin-top: 16px; padding-top: 24px;
+      border-top: 1px solid rgba(255,253,245,0.15);
+      font-family: Georgia, 'Bodoni 72', serif;
+      font-size: 0.9rem; letter-spacing: 0.2em;
+    }
+    .mobile-lang a.active { color: var(--gold); }
+    .mobile-lang-sep { color: rgba(255,253,245,0.3); }
+
+    @media (max-width: 900px) {
+      .nav-links, .nav-lang { display: none; }
+      .nav-menu-btn { display: flex; }
+    }
     /* ========================================
        SHARED STYLES
     ======================================== */
@@ -400,14 +478,11 @@
       <span class="en">LOHERB</span>
       <span class="zh-bottom">光</span>
     </a>
-    <button class="nav-toggle" id="navToggle" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-    <div class="nav-links" id="navLinks">
+    <div class="nav-links">
       <a href="venues.html">婚禮場地</a>
       <a href="experience.html">客製體驗</a>
       <a href="cuisine.html">婚宴料理</a>
-      <a href="journal.html">幸福手帳</a>
+      <a href="journal.html" class="active">幸福手帳</a>
       <a href="contact.html">預約諮詢</a>
     </div>
     <div class="nav-lang">
@@ -415,7 +490,23 @@
       <span class="nav-lang-sep">/</span>
       <a href="en/journal.html">EN</a>
     </div>
+    <button class="nav-menu-btn" id="navMenuBtn" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="venues.html">婚禮場地</a>
+    <a href="experience.html">客製體驗</a>
+    <a href="cuisine.html">婚宴料理</a>
+    <a href="journal.html" class="active">幸福手帳</a>
+    <a href="contact.html">預約諮詢</a>
+    <div class="mobile-lang">
+      <a href="journal.html" class="active">中</a>
+      <span class="mobile-lang-sep">/</span>
+      <a href="en/journal.html">EN</a>
+    </div>
+  </div>
 
   <!-- ====== PAGE HERO ====== -->
   <section class="page-hero">
@@ -562,20 +653,22 @@
     const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => {
       nav.classList.toggle('scrolled', window.scrollY > 60);
-    }, { passive: true });
-
-    const navToggle = document.getElementById('navToggle');
-    const navLinks = document.getElementById('navLinks');
-    navToggle.addEventListener('click', () => {
-      navToggle.classList.toggle('active');
-      navLinks.classList.toggle('open');
-    });
-    navLinks.querySelectorAll('a').forEach((link) => {
-      link.addEventListener('click', () => {
-        navToggle.classList.remove('active');
-        navLinks.classList.remove('open');
+    }, { passive: true });    const navMenuBtn = document.getElementById('navMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (navMenuBtn && mobileMenu) {
+      navMenuBtn.addEventListener('click', () => {
+        navMenuBtn.classList.toggle('active');
+        mobileMenu.classList.toggle('open');
+        document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
       });
-    });
+      mobileMenu.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => {
+          navMenuBtn.classList.remove('active');
+          mobileMenu.classList.remove('open');
+          document.body.style.overflow = '';
+        });
+      });
+    }
   </script>
 </body>
 </html>
