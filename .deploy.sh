@@ -44,9 +44,21 @@ git push && git push origin "$NEW_TAG"
 # --- 2. 同步到 Firebase 部署資料夾（排除 firebase 設定檔）---
 echo ""
 echo "📁 [2/3] 同步到 Firebase 部署資料夾..."
-rsync -a --exclude='.git' --exclude='.claude' --exclude='.deploy.sh' \
+rsync -a --delete \
+  --exclude='.git' --exclude='.claude' --exclude='.deploy.sh' \
   --exclude='firebase.json' --exclude='.firebaserc' --exclude='.firebase-deploy.sh' \
   --exclude='functions/' \
+  --exclude='node_modules/' \
+  --exclude='wedding/vendor/' --exclude='wedding/storage/' \
+  --exclude='wedding/bootstrap/' --exclude='wedding/app/' \
+  --exclude='wedding/config/' --exclude='wedding/database/' \
+  --exclude='wedding/resources/' --exclude='wedding/routes/' \
+  --exclude='wedding/tests/' --exclude='wedding/public/' \
+  --exclude='wedding/composer.*' --exclude='wedding/package*.json' \
+  --exclude='wedding/artisan' --exclude='wedding/phpunit.xml' \
+  --exclude='wedding/vite.config.js' --exclude='wedding/.editorconfig' \
+  --exclude='wedding/.env*' --exclude='wedding/.gitattributes' \
+  --exclude='wedding/.gitignore' --exclude='wedding/README.md' \
   ./ /Users/ursa/Documents/loherb-firebase/
 
 # --- 3. Firebase 部署 ---
