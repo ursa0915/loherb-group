@@ -36,3 +36,9 @@ firebase-debug.log
 *.tmp
 *.bak
 *~
+
+# Laravel artifacts (wedding/ is migrating to Laravel; ignore build/runtime files)
+wedding/vendor/
+wedding/bootstrap/cache/
+wedding/storage/
+wedding/node_modules/
