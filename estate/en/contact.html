@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — LOHERB Estate</title>
+<meta name="description" content="Contact LOHERB Estate — for development partnerships, land acquisition, sustainability consulting, and press inquiries. Taipei and Yilan offices.">
+<meta name="theme-color" content="#0a2e64">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --gold: #E6A401;
+  --deep-gold: #D08C03;
+  --navy: #0a2e64;
+  --charcoal: #2c3e50;
+  --warm-white: #FAF2F0;
+  --cream: #F5ECE0;
+  --black: #06193a;
+  --white: #ffffff;
+
+  --font-logo: 'Bodoni 72', 'Bodoni Moda', Georgia, serif;
+  --font-zh-logo: 'Noto Serif TC', 'Songti TC', serif;
+  --font-en: 'Cormorant Garamond', 'Bodoni Moda', Georgia, serif;
+  --font-display: 'Cormorant Garamond', 'Bodoni Moda', Georgia, serif;
+  --font-zh: 'Noto Serif TC', 'Songti TC', serif;
+  --font-body: 'Manrope', -apple-system, 'Helvetica Neue', sans-serif;
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; overflow-x: hidden; }
+body { font-family: var(--font-zh); color: var(--charcoal); background: var(--warm-white); line-height: 1.8; overflow-x: hidden; }
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+
+.nav-logo-mark .en, .footer-logo .en { font-family: var(--font-logo) !important; }
+.nav-logo-mark .char, .footer-logo .char { font-family: var(--font-zh-logo) !important; }
+
+.label-gold { color: var(--gold); font-family: var(--font-display); font-weight: 500; font-size: 0.72rem; letter-spacing: 0.45em; text-transform: uppercase; }
+
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity 1s var(--ease-out), transform 1s var(--ease-out); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.15s; }
+.reveal-delay-2 { transition-delay: 0.3s; }
+.reveal-delay-3 { transition-delay: 0.45s; }
+.reveal-line { width: 0; transition: width 1.2s var(--ease-in-out); }
+.reveal-line.visible { width: 48px; }
+
+/* ========== NAVBAR ========== */
+.navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 0 2rem; height: 72px; display: flex; align-items: center; justify-content: space-between; transition: background 0.5s ease, box-shadow 0.5s ease; }
+.navbar.scrolled { background: rgba(255,255,255,0.78); -webkit-backdrop-filter: blur(24px) saturate(180%); backdrop-filter: blur(24px) saturate(180%); box-shadow: 0 1px 0 rgba(10,46,100,0.06); }
+.navbar.scrolled .nav-logo-text { color: var(--navy); }
+.navbar.scrolled .nav-link { color: var(--charcoal); }
+.navbar.scrolled .nav-link:hover, .navbar.scrolled .nav-link.active { color: var(--navy); }
+.nav-logo { display: flex; align-items: center; gap: 0.75rem; }
+.nav-logo-mark { display: flex; flex-direction: column; align-items: center; line-height: 1; gap: 1px; }
+.nav-logo-mark .char { font-weight: 500; font-size: 0.85rem; color: var(--gold); }
+.nav-logo-mark .en { font-weight: 400; font-size: 0.42rem; letter-spacing: 0.35em; padding-left: 0.35em; text-transform: uppercase; color: var(--gold); }
+.nav-logo-text { font-family: var(--font-display); font-weight: 500; font-size: 0.75rem; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(255,255,255,0.85); transition: color 0.5s ease; }
+.nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
+.nav-link { font-family: var(--font-display); font-weight: 500; font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.7); transition: color 0.3s ease; position: relative; }
+.nav-link::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px; background: var(--gold); transition: width 0.4s var(--ease-out); }
+.nav-link:hover::after, .nav-link.active::after { width: 100%; }
+.nav-link:hover, .nav-link.active { color: var(--white); }
+.nav-lang { display: flex; align-items: center; gap: 8px; margin-left: 1.5rem; padding-left: 1.5rem; border-left: 1px solid rgba(255,255,255,0.18); font-family: var(--font-display); font-weight: 500; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; }
+.nav-lang a { color: rgba(255,255,255,0.55); transition: color 0.4s; }
+.nav-lang a.active, .nav-lang a:hover { color: var(--gold); }
+.nav-lang-sep { color: rgba(255,255,255,0.3); }
+.navbar.scrolled .nav-lang { border-left-color: rgba(80,83,80,0.2); }
+.navbar.scrolled .nav-lang a { color: rgba(80,83,80,0.6); }
+.navbar.scrolled .nav-lang-sep { color: rgba(80,83,80,0.3); }
+.nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+.nav-toggle span { display: block; width: 22px; height: 1.5px; background: var(--white); transition: all 0.3s ease; }
+.navbar.scrolled .nav-toggle span { background: var(--navy); }
+
+/* ========== PAGE HERO (compact) ========== */
+.page-hero {
+  position: relative;
+  padding: clamp(8rem, 14vw, 11rem) 1.5rem clamp(4rem, 7vw, 6rem);
+  text-align: center;
+  background: var(--navy);
+  overflow: hidden;
+}
+.page-hero-bg { position: absolute; inset: 0; background: linear-gradient(135deg, var(--navy) 0%, #14407a 100%); opacity: 1; }
+.page-hero-bg::after {
+  content: ''; position: absolute; inset: 0;
+  background-image: linear-gradient(rgba(230,164,1,0.18) 1px, transparent 1px), linear-gradient(90deg, rgba(230,164,1,0.18) 1px, transparent 1px);
+  background-size: 64px 64px;
+  opacity: 0.4;
+  mask-image: radial-gradient(ellipse 80% 60% at center, rgba(0,0,0,0.6), transparent);
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at center, rgba(0,0,0,0.6), transparent);
+}
+.page-hero-inner { position: relative; z-index: 2; max-width: 720px; margin: 0 auto; }
+.page-hero-eyebrow { font-family: var(--font-display); font-weight: 500; font-size: 0.8rem; letter-spacing: 0.5em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; }
+.page-hero-title { font-family: var(--font-zh); font-weight: 300; font-size: clamp(2rem, 4.5vw, 3.2rem); color: var(--white); letter-spacing: 0.28em; line-height: 1.5; margin-bottom: 1rem; }
+.page-hero-title-en { font-family: var(--font-display); font-weight: 500; font-size: clamp(0.95rem, 1.6vw, 1.25rem); color: rgba(230,164,1,0.85); letter-spacing: 0.4em; text-transform: uppercase; }
+
+/* ========== CONTACT GRID ========== */
+.section-contact { background: var(--warm-white); padding: clamp(5rem, 10vw, 8rem) clamp(1.5rem, 6vw, 4rem); }
+.contact-grid { max-width: 1080px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2.5rem, 5vw, 5rem); align-items: start; }
+
+/* Left column — Form */
+.contact-form-wrap { background: var(--white); padding: clamp(2.4rem, 4vw, 3.6rem); border: 1px solid rgba(10,46,100,0.06); }
+.form-heading { font-family: var(--font-display); font-weight: 500; font-size: 0.72rem; letter-spacing: 0.4em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.6rem; }
+.form-title-zh { font-family: var(--font-zh); font-weight: 400; font-size: clamp(1.4rem, 2.6vw, 1.8rem); color: var(--navy); letter-spacing: 0.18em; line-height: 1.5; margin-bottom: 0.5rem; }
+.form-subtitle { font-family: var(--font-zh); font-weight: 300; font-size: 0.88rem; color: rgba(44,62,80,0.6); letter-spacing: 0.05em; line-height: 1.9; margin-bottom: 2rem; }
+
+.form-group { margin-bottom: 1.5rem; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+.form-label { display: block; font-family: var(--font-display); font-weight: 500; font-size: 0.62rem; letter-spacing: 0.32em; text-transform: uppercase; color: rgba(44,62,80,0.6); margin-bottom: 0.6rem; }
+.form-input, .form-textarea, .form-select {
+  width: 100%; padding: 0.85rem 0;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(10,46,100,0.18);
+  font-family: var(--font-zh); font-weight: 300; font-size: 0.95rem; color: var(--navy); letter-spacing: 0.04em;
+  transition: border-color 0.3s ease;
+  outline: none;
+}
+.form-input:focus, .form-textarea:focus, .form-select:focus { border-bottom-color: var(--gold); }
+.form-textarea { resize: vertical; min-height: 96px; }
+.form-select { appearance: none; -webkit-appearance: none; padding-right: 1.5rem; cursor: pointer; background-image: linear-gradient(45deg, transparent 50%, var(--gold) 50%), linear-gradient(135deg, var(--gold) 50%, transparent 50%); background-position: calc(100% - 12px) calc(50% + 2px), calc(100% - 7px) calc(50% + 2px); background-size: 5px 5px; background-repeat: no-repeat; }
+
+.form-submit {
+  margin-top: 1.5rem;
+  display: inline-flex; align-items: center; gap: 0.75rem;
+  padding: 14px 36px;
+  background: var(--navy); color: var(--white); border: 1px solid var(--navy); cursor: pointer;
+  font-family: var(--font-display); font-weight: 500; font-size: 0.7rem; letter-spacing: 0.32em; text-transform: uppercase;
+  transition: all 0.4s var(--ease-out);
+}
+.form-submit:hover { background: var(--gold); border-color: var(--gold); color: var(--white); }
+.form-submit-arrow { width: 18px; height: 1px; background: currentColor; position: relative; }
+.form-submit-arrow::after { content: ''; position: absolute; right: 0; top: -3px; width: 7px; height: 7px; border-right: 1px solid currentColor; border-top: 1px solid currentColor; transform: rotate(45deg); }
+
+.form-note { margin-top: 1rem; font-family: var(--font-zh); font-weight: 300; font-size: 0.78rem; color: rgba(44,62,80,0.55); letter-spacing: 0.04em; line-height: 1.8; }
+
+/* Right column — Office cards */
+.contact-info-wrap { display: flex; flex-direction: column; gap: 2.5rem; }
+.info-card { padding: 2rem 0; border-top: 1px solid rgba(10,46,100,0.1); }
+.info-card:first-child { border-top: none; padding-top: 0; }
+.info-card-label { font-family: var(--font-display); font-weight: 500; font-size: 0.65rem; letter-spacing: 0.4em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.8rem; }
+.info-card-title { font-family: var(--font-zh); font-weight: 500; font-size: 1.15rem; color: var(--navy); letter-spacing: 0.18em; margin-bottom: 1.2rem; }
+.info-row { display: flex; align-items: flex-start; gap: 0.9rem; margin-bottom: 0.85rem; font-family: var(--font-zh); font-weight: 300; font-size: 0.9rem; color: rgba(44,62,80,0.85); line-height: 1.85; letter-spacing: 0.03em; }
+.info-row svg { width: 14px; height: 14px; stroke: var(--gold); fill: none; stroke-width: 1.4; flex-shrink: 0; margin-top: 6px; }
+.info-row a { color: rgba(44,62,80,0.85); transition: color 0.3s; }
+.info-row a:hover { color: var(--gold); }
+
+/* ========== MAP ========== */
+.section-map { background: var(--cream); padding: 0; }
+.map-wrap {
+  position: relative;
+  width: 100%;
+  height: 50vh; min-height: 400px;
+  overflow: hidden;
+}
+.map-wrap iframe { width: 100%; height: 100%; border: 0; filter: saturate(0.85) contrast(0.95); }
+
+/* ========== FOOTER ========== */
+.footer { background: var(--black); padding: clamp(4rem, 8vw, 6rem) clamp(1.5rem, 6vw, 4rem) 2rem; }
+.footer-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3rem; }
+.footer-brand { display: flex; flex-direction: column; }
+.footer-logo { display: flex; flex-direction: column; align-items: center; gap: 2px; margin-bottom: 1.5rem; }
+.footer-logo .char { font-weight: 500; font-size: 0.9rem; color: var(--gold); }
+.footer-logo .en { font-size: 0.4rem; letter-spacing: 0.35em; padding-left: 0.35em; text-transform: uppercase; color: var(--gold); }
+.footer-desc { font-size: 0.78rem; color: rgba(255,255,255,0.3); line-height: 1.8; font-weight: 300; text-align: center; }
+.footer-heading { font-family: var(--font-display); font-weight: 500; font-size: 0.65rem; letter-spacing: 0.4em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; }
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+.footer-links a { font-size: 0.82rem; color: rgba(255,255,255,0.4); transition: color 0.3s ease; font-weight: 300; letter-spacing: 0.04em; }
+.footer-links a:hover { color: rgba(255,255,255,0.8); }
+.footer-contact-item { font-size: 0.8rem; color: rgba(255,255,255,0.4); font-weight: 300; margin-bottom: 0.6rem; letter-spacing: 0.03em; }
+.footer-contact-item a { transition: color 0.3s ease; }
+.footer-contact-item a:hover { color: rgba(255,255,255,0.8); }
+.footer-social { display: flex; gap: 1.25rem; margin-top: 1.5rem; }
+.footer-social a { width: 32px; height: 32px; border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: border-color 0.3s ease; }
+.footer-social a:hover { border-color: var(--gold); }
+.footer-social svg { width: 14px; height: 14px; fill: rgba(255,255,255,0.4); transition: fill 0.3s ease; }
+.footer-social a:hover svg { fill: var(--gold); }
+.footer-bottom { max-width: 1100px; margin: 4rem auto 0; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.06); display: flex; justify-content: center; align-items: center; }
+.footer-copy { font-family: var(--font-display); font-weight: 500; font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.25); text-align: center; }
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 900px) {
+  .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+}
+@media (max-width: 768px) {
+  .nav-links { position: fixed; top: 0; right: -100%; width: 280px; height: 100vh; background: var(--navy); flex-direction: column; justify-content: center; align-items: center; gap: 2rem; transition: right 0.5s var(--ease-out); }
+  .nav-links.open { right: 0; }
+  .nav-links.open .nav-link { color: rgba(255,255,255,0.6); }
+  .nav-toggle { display: flex; z-index: 1001; }
+  .nav-toggle.open span:nth-child(1) { transform: rotate(45deg) translate(4px, 4px); }
+  .nav-toggle.open span:nth-child(2) { opacity: 0; }
+  .nav-toggle.open span:nth-child(3) { transform: rotate(-45deg) translate(4px, -4px); }
+  .nav-lang { margin-left: 0.75rem; padding-left: 0.75rem; }
+  .form-row { grid-template-columns: 1fr; }
+  .footer-inner { grid-template-columns: 1fr; gap: 2.5rem; text-align: center; }
+  .footer-inner > div { display: flex; flex-direction: column; align-items: center; }
+  .footer-social { justify-content: center; }
+  .footer-links { align-items: center; }
+}
+@media (max-width: 480px) {
+  .navbar { padding: 0 1.25rem; }
+  .contact-form-wrap { padding: 2rem 1.5rem; }
+  .map-wrap { height: 40vh; min-height: 300px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ====== NAVBAR ====== -->
+<nav class="navbar" id="navbar">
+  <a href="index.html" class="nav-logo">
+    <div class="nav-logo-mark">
+      <span class="char">日</span>
+      <span class="en">LOHERB</span>
+      <span class="char">光</span>
+    </div>
+    <span class="nav-logo-text">Estate</span>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="sustainability.html" class="nav-link">Sustainability</a></li>
+    <li><a href="https://villa.loherb.com.tw" target="_blank" rel="noopener" class="nav-link">Villa</a></li>
+    <li><a href="contact.html" class="nav-link active">Contact</a></li>
+  </ul>
+  <div class="nav-lang">
+    <a href="../contact.html">中</a>
+    <span class="nav-lang-sep">/</span>
+    <a href="contact.html" class="active">EN</a>
+  </div>
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ====== PAGE HERO ====== -->
+<section class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-inner">
+    <p class="page-hero-eyebrow reveal">Contact</p>
+    <h1 class="page-hero-title reveal reveal-delay-1">Let&rsquo;s Talk</h1>
+    <p class="page-hero-title-en reveal reveal-delay-2">Let&rsquo;s Build Something Together</p>
+  </div>
+</section>
+
+<!-- ====== CONTACT GRID ====== -->
+<section class="section-contact">
+  <div class="contact-grid">
+
+    <!-- Left: Form -->
+    <div class="contact-form-wrap reveal">
+      <p class="form-heading">Inquiry Form</p>
+      <h2 class="form-title-zh">Inquiry</h2>
+      <p class="form-subtitle">For development partnerships, land acquisition, sustainability consulting, or press &mdash; leave your details and we&rsquo;ll reply within two business days.</p>
+
+      <form id="contactForm" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="cf-name">Name</label>
+            <input class="form-input" type="text" id="cf-name" name="name" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="cf-company">Company</label>
+            <input class="form-input" type="text" id="cf-company" name="company">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="cf-email">Email</label>
+            <input class="form-input" type="email" id="cf-email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="cf-phone">Phone</label>
+            <input class="form-input" type="tel" id="cf-phone" name="phone">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="cf-topic">Topic</label>
+          <select class="form-select" id="cf-topic" name="topic" required>
+            <option value="">Select…</option>
+            <option value="development">Development Partnership</option>
+            <option value="land">Land Acquisition</option>
+            <option value="sustainability">Sustainability Consulting</option>
+            <option value="media">Press / Interview</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="cf-message">Message</label>
+          <textarea class="form-textarea" id="cf-message" name="message" rows="3" required></textarea>
+        </div>
+        <button type="submit" class="form-submit">
+          Send Message
+          <span class="form-submit-arrow"></span>
+        </button>
+        <p class="form-note">Your information is sent securely and will be used only to respond to this inquiry.</p>
+      </form>
+    </div>
+
+    <!-- Right: Info cards -->
+    <div class="contact-info-wrap reveal reveal-delay-1">
+
+      <div class="info-card">
+        <p class="info-card-label">Taipei Office</p>
+        <h3 class="info-card-title">Taipei Office</h3>
+        <p class="info-row">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          9F, No.335, Sec.3, Roosevelt Rd.,<br>Taipei</p>
+        <p class="info-row">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22,4 12,13 2,4"/></svg>
+          <a href="mailto:service@loherb.com.tw">service@loherb.com.tw</a>
+        </p>
+        <p class="info-row">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          <a href="tel:+886-2-2369-1234">+886-2-2369-1234</a>
+        </p>
+      </div>
+
+      <div class="info-card">
+        <p class="info-card-label">Yilan Office</p>
+        <h3 class="info-card-title">Yilan Office</h3>
+        <p class="info-row">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          No.372&ndash;450, Baofu Rd.,<br>Dongshan, Yilan</p>
+        <p class="info-row">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22,4 12,13 2,4"/></svg>
+          <a href="mailto:service@loherb.com.tw">service@loherb.com.tw</a>
+        </p>
+        <p class="info-row">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          <a href="tel:+886-3-959-5685">+886-3-959-5685</a>
+        </p>
+        <p class="info-row">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 6v6l4 2"/></svg>
+          Mon&ndash;Fri 10:00 &ndash; 18:00
+        </p>
+      </div>
+
+      <div class="info-card">
+        <p class="info-card-label">Press &amp; Partnership</p>
+        <h3 class="info-card-title">Press &amp; Partnership</h3>
+        <p class="info-row">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22,4 12,13 2,4"/></svg>
+          <a href="mailto:press@loherb.com.tw">press@loherb.com.tw</a>
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ====== MAP ====== -->
+<section class="section-map">
+  <div class="map-wrap">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3631.4571!2d121.7458!3d24.6314!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjTCsDM3JzU0LjEiTiAxMjHCsDQ0JzQ0LjkiRQ!5e0!3m2!1szh-TW!2stw!4v1700000000000"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      title="LOHERB Estate Yilan Office Map"></iframe>
+  </div>
+</section>
+
+<!-- ====== FOOTER ====== -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <span class="char">日</span>
+        <span class="en">LOHERB</span>
+        <span class="char">光</span>
+      </div>
+      <p class="footer-desc">Nourish the Earth like Sunlight</p>
+    </div>
+    <div>
+      <h4 class="footer-heading">Contact</h4>
+      <p class="footer-contact-item">
+        <a href="mailto:service@loherb.com.tw">service@loherb.com.tw</a>
+      </p>
+      <p class="footer-contact-item">
+        <a href="tel:+886-3-959-5685">+886-3-959-5685</a>
+      </p>
+      <p class="footer-contact-item">
+        9F, No.335, Sec.3, Roosevelt Rd., Taipei<br>
+        No.372&ndash;450, Baofu Rd., Dongshan, Yilan
+      </p>
+      <div class="footer-social">
+        <a href="https://www.facebook.com/LOHERB.TW/" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/loherb_yilan" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="4.5" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="17.5" cy="6.5" r="1.2"/></svg>
+        </a>
+        <a href="https://www.youtube.com/@loherb222" target="_blank" rel="noopener" aria-label="YouTube">
+          <svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 11.75a29 29 0 00.46 5.33A2.78 2.78 0 003.4 19.1c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 001.94-2 29 29 0 00.46-5.25 29 29 0 00-.46-5.43zM9.75 15.02V8.48l5.75 3.27-5.75 3.27z"/></svg>
+        </a>
+        <a href="https://line.me/R/ti/p/%40xye4557v" target="_blank" rel="noopener" aria-label="LINE">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 5.82 2 10.5c0 3.26 2.36 6.1 5.87 7.53-.08.67-.47 2.51-.54 2.9-.09.51.19.5.4.36.16-.1 2.37-1.61 3.33-2.27.3.03.62.05.94.05 5.52 0 10-3.82 10-8.5S17.52 2 12 2z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div>
+      <h4 class="footer-heading">Brands</h4>
+      <ul class="footer-links">
+        <li><a href="https://villa.loherb.com.tw" target="_blank" rel="noopener">LOHERB Villa</a></li>
+        <li><a href="https://cuisine.loherb.com.tw" target="_blank" rel="noopener">LOHERB Cuisine</a></li>
+        <li><a href="../index.html">LOHERB Estate</a></li>
+        <li><a href="https://party.loherb.com.tw" target="_blank" rel="noopener">LOHERB Party</a></li>
+        <li><a href="../../wedding/index.html">LOHERB Wedding</a></li>
+        <li><a href="https://dearbb.design" target="_blank" rel="noopener">LOHERB Design</a></li>
+        <li style="margin-top:10px;border-top:1px solid rgba(255,255,255,0.08);padding-top:14px;"><a href="../../careers/en.html">Careers</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">&copy; 2026 LOHERB all rights reserved. Built by Disp-Tech.</span>
+  </div>
+</footer>
+
+<script>
+(function() {
+  const navbar = document.getElementById('navbar');
+  function onScroll() {
+    if (window.scrollY > 60) navbar.classList.add('scrolled');
+    else navbar.classList.remove('scrolled');
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+
+(function() {
+  const toggle = document.getElementById('navToggle');
+  const links = document.getElementById('navLinks');
+  toggle.addEventListener('click', function() {
+    toggle.classList.toggle('open');
+    links.classList.toggle('open');
+  });
+  links.querySelectorAll('.nav-link').forEach(function(link) {
+    link.addEventListener('click', function() {
+      toggle.classList.remove('open');
+      links.classList.remove('open');
+    });
+  });
+})();
+
+(function() {
+  const reveals = document.querySelectorAll('.reveal, .reveal-line');
+  if (!('IntersectionObserver' in window)) {
+    reveals.forEach(function(el) { el.classList.add('visible'); });
+    return;
+  }
+  const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(function(el) { observer.observe(el); });
+})();
+
+// Form: simple client-side note (no backend yet)
+(function() {
+  const form = document.getElementById('contactForm');
+  if (!form) return;
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const submitBtn = form.querySelector('.form-submit');
+    submitBtn.textContent = 'Sent (mock)';
+    submitBtn.style.background = 'var(--gold)';
+    submitBtn.style.borderColor = 'var(--gold)';
+  });
+})();
+</script>
+</body>
+</html>
