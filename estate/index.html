@@ -1132,6 +1132,28 @@ img {
 }
 
 /* ========================================
+   SLOGAN SECTION
+   ======================================== */
+.section-slogan {
+  background: var(--cream);
+  padding: clamp(5rem, 10vw, 8rem) clamp(1.5rem, 6vw, 4rem);
+  text-align: center;
+}
+.slogan-inner { max-width: 720px; margin: 0 auto; }
+.section-slogan .section-divider { margin: 1.5rem auto 2rem; }
+.slogan-text {
+  font-family: var(--font-zh); font-weight: 300;
+  font-size: clamp(2rem, 4.5vw, 3rem); color: var(--navy);
+  letter-spacing: 0.4em; line-height: 1.6;
+  margin-bottom: 0.6rem;
+}
+.slogan-text-en {
+  font-family: var(--font-display); font-weight: 500;
+  font-size: clamp(0.9rem, 1.5vw, 1.15rem); color: var(--gold);
+  letter-spacing: 0.4em; text-transform: uppercase;
+}
+
+/* ========================================
    RESPONSIVE
    ======================================== */
 @media (max-width: 768px) {
@@ -1299,15 +1321,13 @@ img {
     <div class="eco-image-row reveal reveal-delay-3">
       <div class="eco-image-card">
         <img src="./image/eco-green-facade.jpg"
-             alt="生態永續綠建築"
+             alt="現代綠建築"
              loading="lazy">
-        <span class="eco-image-caption">Eco Architecture</span>
       </div>
       <div class="eco-image-card">
         <img src="./image/eco-yilan-landscape.jpg"
-             alt="宜蘭自然景觀"
+             alt="生態永續建築"
              loading="lazy">
-        <span class="eco-image-caption">Yilan Landscape</span>
       </div>
     </div>
   </div>
@@ -1316,8 +1336,8 @@ img {
 <!-- ====== BUILDING FACADE ====== -->
 <section class="section-facade">
   <div class="facade-image-wrapper">
-    <img src="./image/facade-modern-tower.jpg"
-         alt="現代建築外觀"
+    <img src="./image/f-villa-side-aerial.jpg"
+         alt="日光綠築 F 館側面空拍"
          class="facade-photo"
          loading="lazy">
     <div class="facade-gradient-overlay"></div>
@@ -1335,23 +1355,23 @@ img {
     <div class="section-divider reveal-line"></div>
     <h2 class="section-title-zh reveal reveal-delay-1">物業管理與開發</h2>
     <p class="section-title-en reveal reveal-delay-1">Estate Management & Development</p>
-    <p class="section-body reveal reveal-delay-2">核心業務涵蓋不動產管理與開發，包括台北民豐大樓、新明路大樓，以及新北中央路大樓之營運管理。同時於宜蘭開發日光森林與生態綠建築日光綠築。</p>
+    <p class="section-body reveal reveal-delay-2">核心業務涵蓋不動產管理與開發，包括台北光復北路大樓、台北新明路大樓，以及新北中央路大樓之營運管理。同時於宜蘭開發日光森林車站與日光渡假村。</p>
   </div>
   <div class="management-showcase reveal reveal-delay-3">
     <div class="management-image">
-      <img src="./image/management-office-building.jpg"
-           alt="現代辦公大樓管理"
+      <img src="./image/brand-card-estate-original-raw.jpg"
+           alt="日光物業全景"
            loading="lazy">
     </div>
     <div class="management-details">
       <span class="management-details-label">Property Portfolio</span>
       <h3 class="management-details-title">核心物業項目</h3>
       <ul class="property-list">
-        <li class="property-item">台北民豐大樓</li>
-        <li class="property-item">新明路大樓</li>
+        <li class="property-item">台北光復北路大樓</li>
+        <li class="property-item">台北新明路大樓</li>
         <li class="property-item">新北中央路大樓</li>
-        <li class="property-item">日光森林 &#8212; 宜蘭火車站</li>
-        <li class="property-item">日光綠築 &#8212; 生態綠建築</li>
+        <li class="property-item">日光森林車站</li>
+        <li class="property-item">日光渡假村</li>
       </ul>
     </div>
   </div>
@@ -1364,8 +1384,8 @@ img {
     <div class="section-divider reveal-line"></div>
     <div class="villa-card reveal reveal-delay-1">
       <div class="villa-card-image">
-        <img src="./image/villa-aerial.jpg"
-             alt="日光綠築空拍全景"
+        <img src="./image/f-villa-front-aerial.jpg"
+             alt="日光綠築 F 館正面空拍"
              loading="lazy">
       </div>
       <div class="villa-card-content">
@@ -1380,13 +1400,9 @@ img {
     </div>
     <!-- Room showcase -->
     <div class="villa-room-banner reveal reveal-delay-2">
-      <img src="./image/villa-room-luxury.jpg"
-           alt="豪華雙人房"
+      <img src="./image/villa-room-T102-suite.jpg"
+           alt="T102 白橡木花園雙人房"
            loading="lazy">
-      <div class="villa-room-overlay">
-        <span class="villa-room-label">Luxury Double Room</span>
-        <span class="villa-room-title">豪華雙人房</span>
-      </div>
     </div>
   </div>
 </section>
@@ -1401,6 +1417,17 @@ img {
     <p class="philosophy-quote-en reveal reveal-delay-1">Nourish the Earth like Sunlight</p>
     <div class="philosophy-divider reveal-line reveal-delay-2"></div>
     <p class="philosophy-body reveal reveal-delay-3">日光物業以生態友善、永續發展為核心理念，如同陽光滋養萬物，我們致力於在每一個開發項目中，實現人與自然的和諧共生。從建築設計到社區營造，每一步都以對環境的尊重為出發點。</p>
+  </div>
+</section>
+
+
+<!-- ====== SLOGAN ====== -->
+<section class="section section-slogan">
+  <div class="slogan-inner">
+    <span class="label-gold reveal">LOHERB</span>
+    <div class="section-divider reveal-line"></div>
+    <h2 class="slogan-text reveal reveal-delay-1">享受生活，每一天</h2>
+    <p class="slogan-text-en reveal reveal-delay-2">Enjoy Life, Every Day.</p>
   </div>
 </section>
 

@@ -1132,6 +1132,29 @@ img {
 }
 
 /* ========================================
+   SLOGAN SECTION
+   ======================================== */
+.section-slogan {
+  background: var(--cream);
+  padding: clamp(5rem, 10vw, 8rem) clamp(1.5rem, 6vw, 4rem);
+  text-align: center;
+}
+.slogan-inner { max-width: 720px; margin: 0 auto; }
+.section-slogan .section-divider { margin: 1.5rem auto 2rem; }
+.slogan-text {
+  font-family: var(--font-display); font-weight: 500;
+  font-size: clamp(2rem, 4.5vw, 3rem); color: var(--navy);
+  letter-spacing: 0.18em; line-height: 1.5;
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+}
+.slogan-text-en {
+  font-family: var(--font-zh); font-weight: 300;
+  font-size: clamp(0.95rem, 1.5vw, 1.15rem); color: var(--gold);
+  letter-spacing: 0.4em;
+}
+
+/* ========================================
    RESPONSIVE
    ======================================== */
 @media (max-width: 768px) {
@@ -1316,8 +1339,8 @@ img {
 <!-- ====== BUILDING FACADE ====== -->
 <section class="section-facade">
   <div class="facade-image-wrapper">
-    <img src="../image/facade-modern-tower.jpg"
-         alt="Modern architecture facade"
+    <img src="../image/f-villa-side-aerial.jpg"
+         alt="LOHERB F-Building side aerial"
          class="facade-photo"
          loading="lazy">
     <div class="facade-gradient-overlay"></div>
@@ -1335,23 +1358,23 @@ img {
     <div class="section-divider reveal-line"></div>
     <h2 class="section-title-zh reveal reveal-delay-1">Estate Management &amp; Development</h2>
     <p class="section-title-en reveal reveal-delay-1">Properties &amp; Portfolio</p>
-    <p class="section-body reveal reveal-delay-2">Our core business spans property management and development &mdash; including the Minfeng, Xinming and Zhongyang towers across Taipei and New Taipei, alongside ground-up projects in Yilan: LOHERB Forest and the certified green-building LOHERB Villa.</p>
+    <p class="section-body reveal reveal-delay-2">Our core business spans property management and development &mdash; including the Guangfu N. Road, Xinming Road and Zhongyang Road towers across Taipei and New Taipei, alongside ground-up projects in Yilan: LOHERB Forest Station and LOHERB Resort.</p>
   </div>
   <div class="management-showcase reveal reveal-delay-3">
     <div class="management-image">
-      <img src="../image/management-office-building.jpg"
-           alt="Modern office building management"
+      <img src="../image/brand-card-estate-original-raw.jpg"
+           alt="LOHERB Estate aerial overview"
            loading="lazy">
     </div>
     <div class="management-details">
       <span class="management-details-label">Property Portfolio</span>
       <h3 class="management-details-title">Core Properties</h3>
       <ul class="property-list">
-        <li class="property-item">Minfeng Tower &mdash; Taipei</li>
-        <li class="property-item">Xinming Tower &mdash; Taipei</li>
-        <li class="property-item">Zhongyang Tower &mdash; New Taipei</li>
-        <li class="property-item">LOHERB Forest &mdash; Yilan Station</li>
-        <li class="property-item">LOHERB Estate Eco-Building &mdash; Yilan</li>
+        <li class="property-item">Guangfu N. Road Tower &mdash; Taipei</li>
+        <li class="property-item">Xinming Road Tower &mdash; Taipei</li>
+        <li class="property-item">Zhongyang Road Tower &mdash; New Taipei</li>
+        <li class="property-item">LOHERB Forest Station &mdash; Yilan</li>
+        <li class="property-item">LOHERB Resort &mdash; Yilan</li>
       </ul>
     </div>
   </div>
@@ -1364,8 +1387,8 @@ img {
     <div class="section-divider reveal-line"></div>
     <div class="villa-card reveal reveal-delay-1">
       <div class="villa-card-image">
-        <img src="../image/villa-aerial.jpg"
-             alt="LOHERB Villa aerial view"
+        <img src="../image/f-villa-front-aerial.jpg"
+             alt="LOHERB F-Building front aerial"
              loading="lazy">
       </div>
       <div class="villa-card-content">
@@ -1380,13 +1403,9 @@ img {
     </div>
     <!-- Room showcase -->
     <div class="villa-room-banner reveal reveal-delay-2">
-      <img src="../image/villa-room-luxury.jpg"
-           alt="Luxury Double Room"
+      <img src="../image/villa-room-T102-suite.jpg"
+           alt="T102 White Oak Garden Suite"
            loading="lazy">
-      <div class="villa-room-overlay">
-        <span class="villa-room-label">Luxury Double Room</span>
-        <span class="villa-room-title">Suite</span>
-      </div>
     </div>
   </div>
 </section>
@@ -1401,6 +1420,17 @@ img {
     <p class="philosophy-quote-en reveal reveal-delay-1">A LOHERB Way of Building</p>
     <div class="philosophy-divider reveal-line reveal-delay-2"></div>
     <p class="philosophy-body reveal reveal-delay-3">LOHERB Estate is grounded in eco-friendly principles and long-horizon thinking. Like sunlight nurturing all things, we pursue harmony between people and the natural world &mdash; from architectural design through community building, every step begins with respect for the environment.</p>
+  </div>
+</section>
+
+
+<!-- ====== SLOGAN ====== -->
+<section class="section section-slogan">
+  <div class="slogan-inner">
+    <span class="label-gold reveal">LOHERB</span>
+    <div class="section-divider reveal-line"></div>
+    <h2 class="slogan-text reveal reveal-delay-1">Enjoy Life, Every Day.</h2>
+    <p class="slogan-text-en reveal reveal-delay-2">享受生活，每一天</p>
   </div>
 </section>
 
