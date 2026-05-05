@@ -1085,22 +1085,20 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: border-color 0.3s ease;
+  color: rgba(255, 255, 255, 0.4);
+  transition: border-color 0.3s ease, color 0.3s ease;
 }
 
 .footer-social a:hover {
   border-color: var(--gold);
+  color: var(--gold);
 }
 
 .footer-social svg {
   width: 14px;
   height: 14px;
-  fill: rgba(255, 255, 255, 0.4);
+  fill: currentColor;
   transition: fill 0.3s ease;
-}
-
-.footer-social a:hover svg {
-  fill: var(--gold);
 }
 
 .footer-bottom {

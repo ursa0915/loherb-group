@@ -177,10 +177,9 @@ img { display: block; max-width: 100%; }
 .footer-contact-item a { transition: color 0.3s ease; }
 .footer-contact-item a:hover { color: rgba(255,255,255,0.8); }
 .footer-social { display: flex; gap: 1.25rem; margin-top: 1.5rem; }
-.footer-social a { width: 32px; height: 32px; border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: border-color 0.3s ease; }
-.footer-social a:hover { border-color: var(--gold); }
-.footer-social svg { width: 14px; height: 14px; fill: rgba(255,255,255,0.4); transition: fill 0.3s ease; }
-.footer-social a:hover svg { fill: var(--gold); }
+.footer-social a { width: 32px; height: 32px; border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.4); transition: border-color 0.3s ease, color 0.3s ease; }
+.footer-social a:hover { border-color: var(--gold); color: var(--gold); }
+.footer-social svg { width: 14px; height: 14px; fill: currentColor; transition: fill 0.3s ease; }
 .footer-bottom { max-width: 1100px; margin: 4rem auto 0; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.06); display: flex; justify-content: center; align-items: center; }
 .footer-copy { font-family: var(--font-display); font-weight: 500; font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.25); text-align: center; }
 
@@ -321,18 +320,14 @@ img { display: block; max-width: 100%; }
           <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
           <a href="tel:+886-3-959-5685">+886-3-959-5685</a>
         </p>
-        <p class="info-row">
-          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 6v6l4 2"/></svg>
-          Mon&ndash;Fri 10:00 &ndash; 18:00
-        </p>
-      </div>
+</div>
 
       <div class="info-card">
         <p class="info-card-label">Press &amp; Partnership</p>
         <h3 class="info-card-title">Press &amp; Partnership</h3>
         <p class="info-row">
           <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22,4 12,13 2,4"/></svg>
-          <a href="mailto:press@loherb.com.tw">press@loherb.com.tw</a>
+          <a href="mailto:service@loherb.com.tw">service@loherb.com.tw</a>
         </p>
       </div>
 
