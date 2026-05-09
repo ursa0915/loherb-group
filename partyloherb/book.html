@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>線上預約 · 日光時刻 LOHERB Moments</title>
+<meta name="description" content="預約場地參觀、午茶品嚐、活動洽談——讓日光小秘書為您安排專屬時刻。" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Noto+Serif+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/partyloherb/assets/css/main.css" />
+</head>
+<body>
+
+<nav class="top">
+  <a href="/partyloherb/" class="logo-mark"><span class="ch">日</span><span class="en">LOHERB</span><span class="ch">光</span></a>
+  <ul class="nav-links">
+    <li><a href="/partyloherb/events.html">多元活動</a></li>
+    <li><a href="/partyloherb/team.html">日光團隊</a></li>
+    <li><a href="/partyloherb/venues.html">場地空間</a></li>
+    <li><a href="/partyloherb/gourmet.html">美食百匯</a></li>
+    <li><a href="/partyloherb/menu.html">日光菜單</a></li>
+    <li><a href="/partyloherb/journal.html">時刻手札</a></li>
+    <li><a href="/partyloherb/contact.html">聯繫日光</a></li>
+  </ul>
+  <div class="nav-actions">
+    <a href="/partyloherb/en/book.html" class="nav-lang">EN</a>
+    <a href="/partyloherb/book.html" class="nav-cta active">即刻預約</a>
+    <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<header class="page-banner">
+  <span class="eyebrow en">— RESERVATIONS</span>
+  <h1>即刻預約</h1>
+  <p class="lead">填寫以下表單，我們會在 1 個工作天內回覆。也歡迎來電 +886-3-959-5685 或加入 LINE @xye4557v 直接洽談。</p>
+</header>
+
+<section>
+  <div class="section-head">
+    <span class="section-num">— 01</span>
+    <h2 class="section-title-cn">預約諮詢</h2>
+    <span class="section-title-en">Inquiry Form</span>
+  </div>
+
+  <form class="form-grid" action="https://formspree.io/f/your-form-id" method="POST">
+    <div class="form-row">
+      <div class="field">
+        <label for="name">姓名 / NAME</label>
+        <input type="text" id="name" name="name" required placeholder="請填寫您的姓名" />
+      </div>
+      <div class="field">
+        <label for="phone">電話 / PHONE</label>
+        <input type="tel" id="phone" name="phone" required placeholder="+886-9XX-XXX-XXX" />
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="field">
+        <label for="email">EMAIL</label>
+        <input type="email" id="email" name="email" required placeholder="your@email.com" />
+      </div>
+      <div class="field">
+        <label for="line">LINE / 通訊軟體</label>
+        <input type="text" id="line" name="line" placeholder="LINE ID 或其他聯繫方式" />
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="field">
+        <label for="event-type">活動類型 / TYPE</label>
+        <select id="event-type" name="event-type" required>
+          <option value="">請選擇</option>
+          <option>企業包場 Corporate</option>
+          <option>婚禮宴會 Wedding</option>
+          <option>派對慶生 Party</option>
+          <option>私人聚會 Private</option>
+          <option>場地參觀 Venue Tour</option>
+          <option>午茶品嚐 Tea Tasting</option>
+          <option>其他 Other</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="people">人數 / PARTY SIZE</label>
+        <input type="number" id="people" name="people" min="1" placeholder="預估人數" />
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="field">
+        <label for="date">活動日期 / DATE</label>
+        <input type="date" id="date" name="date" />
+      </div>
+      <div class="field">
+        <label for="budget">預算 / BUDGET</label>
+        <select id="budget" name="budget">
+          <option value="">請選擇</option>
+          <option>NT$ 30,000 以下</option>
+          <option>NT$ 30,000 – 100,000</option>
+          <option>NT$ 100,000 – 300,000</option>
+          <option>NT$ 300,000 – 1,000,000</option>
+          <option>NT$ 1,000,000 以上</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="message">需求說明 / MESSAGE</label>
+      <textarea id="message" name="message" placeholder="請簡述您的活動內容、特殊需求或想法⋯⋯"></textarea>
+    </div>
+
+    <div class="form-submit">
+      <button type="submit" class="btn-primary" style="border:none;cursor:pointer;font-family:inherit;">送出預約 →</button>
+    </div>
+  </form>
+</section>
+
+<section class="full-bleed dark-bg">
+  <div class="inner" style="text-align:center;">
+    <div class="section-head" style="justify-content:center;">
+      <span class="section-num">— 02</span>
+      <h2 class="section-title-cn">直接聯繫</h2>
+    </div>
+    <div class="info-row" style="margin-bottom:0;">
+      <div class="item"><div class="label">PHONE</div><div class="value" style="color:var(--blush);">+886-3-959-5685</div></div>
+      <div class="item"><div class="label">EMAIL</div><div class="value" style="color:var(--blush);">service@loherb.com.tw</div></div>
+      <div class="item"><div class="label">LINE</div><div class="value" style="color:var(--blush);">@xye4557v</div></div>
+      <div class="item"><div class="label">HOURS</div><div class="value" style="color:var(--blush);">08:00 – 20:00</div></div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="/partyloherb/" class="logo-mark"><span class="ch">日</span><span class="en">LOHERB</span><span class="ch">光</span></a>
+      <p>日光時刻位於宜蘭冬山，以五千坪私密莊園承接每一場值得珍藏的時刻。</p>
+      <div class="footer-info">
+        <div>+886-3-959-5685</div>
+        <div>service@loherb.com.tw</div>
+        <div>(269) 宜蘭縣冬山鄉寶福路 400 號</div>
+      </div>
+    </div>
+    <div><h5>EXPLORE</h5><ul><li><a href="/partyloherb/events.html">多元活動</a></li><li><a href="/partyloherb/team.html">日光團隊</a></li><li><a href="/partyloherb/venues.html">場地空間</a></li><li><a href="/partyloherb/gourmet.html">美食百匯</a></li><li><a href="/partyloherb/menu.html">日光菜單</a></li></ul></div>
+    <div><h5>SERVICE</h5><ul><li><a href="/partyloherb/book.html">線上預約</a></li><li><a href="/partyloherb/journal.html">時刻手札</a></li><li><a href="/partyloherb/contact.html">聯繫日光</a></li><li><a href="/partyloherb/en/">English</a></li></ul></div>
+    <div><h5>FOLLOW</h5><ul><li><a href="https://www.facebook.com/LOHERB.TW" target="_blank" rel="noopener">Facebook</a></li><li><a href="https://www.instagram.com/loherb_yilan" target="_blank" rel="noopener">Instagram</a></li><li><a href="https://www.youtube.com/channel/UCACSw7tK8uMz8j-CFGa2NfQ" target="_blank" rel="noopener">YouTube</a></li><li><a href="https://line.me/R/ti/p/@xye4557v" target="_blank" rel="noopener">LINE @xye4557v</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><span>© 2026 LOHERB · ALL RIGHTS RESERVED</span><span>日光時刻 · MOMENTS</span></div>
+</footer>
+<script src="/partyloherb/assets/js/main.js"></script>
+</body>
+</html>
