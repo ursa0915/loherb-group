@@ -942,6 +942,161 @@ section { padding: 130px 56px; max-width: 1280px; margin: 0 auto; }
   .menu-cards { grid-template-columns: 1fr; }
 }
 
+/* ───── Moments by Purpose (4 mini editorial cards) ───── */
+.moments-purpose {
+  padding: 130px 56px;
+  background: var(--ivory);
+  position: relative;
+}
+.moments-purpose::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 60px; height: 1px;
+  background: var(--gold);
+}
+.moments-purpose-head {
+  max-width: 880px;
+  margin: 0 auto 72px;
+  text-align: center;
+}
+.moments-purpose-head .eyebrow-en {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 13px;
+  letter-spacing: 0.5em;
+  color: var(--gold);
+  font-style: italic;
+  display: block;
+  margin-bottom: 22px;
+  text-transform: uppercase;
+}
+.moments-purpose-head h2 {
+  font-size: clamp(36px, 4.5vw, 56px);
+  font-weight: 300;
+  color: var(--teal-deep);
+  letter-spacing: 0.18em;
+  line-height: 1.35;
+  margin-bottom: 24px;
+}
+.moments-purpose-head h2 .accent { color: var(--gold); }
+.moments-purpose-head .en-italic {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 18px;
+  font-style: italic;
+  color: var(--rose-dry);
+  letter-spacing: 0.2em;
+  display: block;
+  margin-bottom: 28px;
+}
+.moments-purpose-head p {
+  font-size: 15px;
+  color: var(--charcoal);
+  line-height: 2;
+  letter-spacing: 0.04em;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.moments-grid {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.moment-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: #fff;
+  overflow: hidden;
+  position: relative;
+  min-height: 340px;
+  transition: transform 0.6s, box-shadow 0.6s;
+}
+.moment-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 50px -28px rgba(48, 76, 76, 0.3);
+}
+.moment-card.reverse { grid-template-columns: 1fr 1fr; direction: rtl; }
+.moment-card.reverse > * { direction: ltr; }
+.moment-photo {
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+}
+.moment-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent 60%, rgba(48, 76, 76, 0.25) 100%);
+}
+.moment-body {
+  padding: 40px 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.moment-body .num {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 12px;
+  letter-spacing: 0.4em;
+  color: var(--gold);
+  font-style: italic;
+  display: block;
+  margin-bottom: 14px;
+  text-transform: uppercase;
+}
+.moment-body h3 {
+  font-size: 26px;
+  font-weight: 300;
+  color: var(--teal-deep);
+  letter-spacing: 0.15em;
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+.moment-body .en-sub {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 13px;
+  letter-spacing: 0.3em;
+  color: var(--rose-dry);
+  font-style: italic;
+  display: block;
+  margin-bottom: 18px;
+  text-transform: uppercase;
+}
+.moment-body p {
+  font-size: 14px;
+  color: var(--charcoal);
+  line-height: 1.85;
+  letter-spacing: 0.04em;
+  margin-bottom: 18px;
+}
+.moment-body .keywords {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  padding-top: 16px;
+  border-top: 1px solid rgba(230, 164, 1, 0.25);
+}
+.moment-body .keywords span {
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+@media (max-width: 1100px) {
+  .moments-grid { grid-template-columns: 1fr; }
+  .moment-card.reverse { direction: ltr; grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 700px) {
+  .moments-purpose { padding: 80px 24px; }
+  .moment-card { grid-template-columns: 1fr; min-height: 0; }
+  .moment-photo { aspect-ratio: 16 / 10; }
+  .moment-body { padding: 32px 24px; }
+}
+
 /* ───── Event Venues (4 spaces) ───── */
 .venues-home {
   padding: 130px 56px;
