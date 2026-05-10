@@ -363,6 +363,94 @@ section { padding: 130px 56px; max-width: 1280px; margin: 0 auto; }
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 48px;
 }
+.cards-grid--4 {
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+}
+@media (max-width: 1100px) {
+  .cards-grid--4 { grid-template-columns: repeat(2, 1fr); gap: 36px; }
+}
+@media (max-width: 600px) {
+  .cards-grid--4 { grid-template-columns: 1fr; }
+}
+
+/* ───────────── Hero Strip (one-stop / privacy emphasis) ───────────── */
+.hero-strip {
+  padding: 120px 56px;
+  background: var(--ivory);
+  text-align: center;
+}
+.hero-strip.dark { background: var(--teal-deep); color: var(--blush); }
+.hero-strip-inner { max-width: 880px; margin: 0 auto; }
+.hero-strip .eyebrow {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 12px;
+  letter-spacing: 0.5em;
+  color: var(--gold);
+  font-style: italic;
+  margin-bottom: 24px;
+  display: block;
+  text-transform: uppercase;
+}
+.hero-strip h2 {
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 300;
+  color: var(--teal-deep);
+  letter-spacing: 0.15em;
+  margin-bottom: 32px;
+  line-height: 1.4;
+}
+.hero-strip.dark h2 { color: var(--blush); }
+.hero-strip p {
+  font-size: 16px;
+  line-height: 2;
+  color: var(--charcoal);
+  letter-spacing: 0.05em;
+}
+.hero-strip.dark p { color: rgba(250, 241, 239, 0.85); }
+.hero-strip .actions { margin-top: 48px; display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; }
+
+/* ───────────── Cases / Logo Grid ───────────── */
+.cases-section {
+  padding: 130px 56px;
+  background: var(--blush);
+  text-align: center;
+}
+.cases-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1px;
+  margin-top: 64px;
+  border: 1px solid var(--line-soft);
+  background: var(--line-soft);
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.case-cell {
+  background: var(--ivory);
+  aspect-ratio: 16 / 9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  color: var(--charcoal);
+  letter-spacing: 0.12em;
+  text-align: center;
+  padding: 16px;
+  transition: background 0.3s, color 0.3s;
+}
+.case-cell:hover {
+  background: var(--teal-deep);
+  color: var(--gold);
+}
+@media (max-width: 900px) {
+  .cases-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 480px) {
+  .cases-grid { grid-template-columns: repeat(2, 1fr); }
+  .case-cell { font-size: 13px; }
+}
 .card {
   background: var(--ivory);
   padding: 0;
