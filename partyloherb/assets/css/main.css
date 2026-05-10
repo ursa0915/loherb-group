@@ -567,6 +567,102 @@ section { padding: 130px 56px; max-width: 1280px; margin: 0 auto; }
   .privacy-grid.reverse { grid-template-columns: 1fr; }
 }
 
+/* ───────────── Cafe Invitation Section ───────────── */
+.cafe-section {
+  padding: 110px 56px 120px;
+  background: var(--ivory);
+  position: relative;
+  overflow: hidden;
+}
+.cafe-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+.cafe-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 48px;
+  margin-bottom: 56px;
+  flex-wrap: wrap;
+}
+.cafe-head-left { max-width: 640px; }
+.cafe-head .eyebrow {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 13px;
+  letter-spacing: 0.5em;
+  color: var(--gold);
+  font-style: italic;
+  margin-bottom: 18px;
+  display: block;
+  text-transform: uppercase;
+}
+.cafe-head h2 {
+  font-size: clamp(34px, 4vw, 52px);
+  font-weight: 300;
+  color: var(--teal-deep);
+  letter-spacing: 0.15em;
+  line-height: 1.3;
+}
+.cafe-head h2 .accent { color: var(--gold); }
+.cafe-head-right {
+  text-align: right;
+  max-width: 380px;
+  font-size: 15px;
+  line-height: 2;
+  color: var(--charcoal);
+  letter-spacing: 0.05em;
+}
+.cafe-head-right .actions { margin-top: 24px; }
+
+.cafe-gallery {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-auto-rows: 120px;
+  gap: 12px;
+}
+.cafe-gallery > div {
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.6s cubic-bezier(.16,1,.3,1);
+}
+.cafe-gallery > div::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 60%, rgba(48, 76, 76, 0.15) 100%);
+  pointer-events: none;
+}
+.cafe-gallery > div:hover { transform: scale(1.02); }
+
+/* Layout pattern: 12-col x 4 rows masonry */
+.cafe-gallery > div:nth-child(1) { grid-column: span 7; grid-row: span 3; }   /* big aerial */
+.cafe-gallery > div:nth-child(2) { grid-column: span 5; grid-row: span 2; }   /* interior */
+.cafe-gallery > div:nth-child(3) { grid-column: span 3; grid-row: span 2; }   /* food */
+.cafe-gallery > div:nth-child(4) { grid-column: span 2; grid-row: span 2; }   /* mood */
+.cafe-gallery > div:nth-child(5) { grid-column: span 4; grid-row: span 2; }   /* exterior */
+.cafe-gallery > div:nth-child(6) { grid-column: span 4; grid-row: span 2; }   /* drinks */
+.cafe-gallery > div:nth-child(7) { grid-column: span 4; grid-row: span 2; }   /* dessert */
+
+@media (max-width: 900px) {
+  .cafe-section { padding: 80px 24px; }
+  .cafe-gallery {
+    grid-template-columns: repeat(6, 1fr);
+    grid-auto-rows: 100px;
+  }
+  .cafe-gallery > div:nth-child(1) { grid-column: span 6; grid-row: span 3; }
+  .cafe-gallery > div:nth-child(2) { grid-column: span 6; grid-row: span 2; }
+  .cafe-gallery > div:nth-child(3) { grid-column: span 3; grid-row: span 2; }
+  .cafe-gallery > div:nth-child(4) { grid-column: span 3; grid-row: span 2; }
+  .cafe-gallery > div:nth-child(5) { grid-column: span 6; grid-row: span 2; }
+  .cafe-gallery > div:nth-child(6) { grid-column: span 3; grid-row: span 2; }
+  .cafe-gallery > div:nth-child(7) { grid-column: span 3; grid-row: span 2; }
+  .cafe-head { flex-direction: column; align-items: flex-start; }
+  .cafe-head-right { text-align: left; }
+}
+
 /* ───────────── Cases — Marquee Style ───────────── */
 .cases-section {
   padding: 130px 0 100px;
