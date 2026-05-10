@@ -465,6 +465,10 @@ section { padding: 130px 56px; max-width: 1280px; margin: 0 auto; }
   color: var(--blush);
   overflow: hidden;
 }
+.privacy-section.light {
+  background: var(--ivory);
+  color: var(--charcoal);
+}
 .privacy-grid {
   max-width: 1280px;
   margin: 0 auto;
@@ -474,6 +478,7 @@ section { padding: 130px 56px; max-width: 1280px; margin: 0 auto; }
   align-items: center;
   padding: 0 56px;
 }
+.privacy-grid.reverse { grid-template-columns: 1.1fr 1fr; }
 .privacy-text .eyebrow {
   font-family: "Cormorant Garamond", serif;
   font-size: 12px;
@@ -492,6 +497,7 @@ section { padding: 130px 56px; max-width: 1280px; margin: 0 auto; }
   margin-bottom: 32px;
   line-height: 1.3;
 }
+.privacy-section.light .privacy-text h2 { color: var(--teal-deep); }
 .privacy-text h2 .accent { color: var(--gold); }
 .privacy-text p {
   font-size: 16px;
@@ -500,6 +506,7 @@ section { padding: 130px 56px; max-width: 1280px; margin: 0 auto; }
   letter-spacing: 0.05em;
   margin-bottom: 16px;
 }
+.privacy-section.light .privacy-text p { color: var(--charcoal); }
 .privacy-text .meta-row {
   margin-top: 32px;
   display: flex;
@@ -510,6 +517,8 @@ section { padding: 130px 56px; max-width: 1280px; margin: 0 auto; }
 }
 .privacy-text .meta-row span { display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: rgba(250, 241, 239, 0.6); letter-spacing: 0.18em; }
 .privacy-text .meta-row strong { font-weight: 400; color: var(--gold); font-size: 22px; font-family: "Cormorant Garamond", serif; letter-spacing: 0.1em; }
+.privacy-section.light .privacy-text .meta-row { border-top-color: var(--line-soft); }
+.privacy-section.light .privacy-text .meta-row span { color: var(--rose-dry); }
 .privacy-text .actions { margin-top: 40px; }
 
 .privacy-image-grid {
@@ -533,9 +542,29 @@ section { padding: 130px 56px; max-width: 1280px; margin: 0 auto; }
 }
 .privacy-image-grid > div:nth-child(1) { grid-row: 1 / span 2; }
 
+/* Single photo variant */
+.privacy-photo {
+  position: relative;
+  aspect-ratio: 16 / 11;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+.privacy-photo::after {
+  content: "";
+  position: absolute;
+  inset: 16px;
+  border: 1px solid rgba(250, 241, 239, 0.4);
+  pointer-events: none;
+}
+.privacy-section.light .privacy-photo::after {
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
 @media (max-width: 900px) {
   .privacy-grid { grid-template-columns: 1fr; gap: 48px; padding: 0 24px; }
   .privacy-image-grid { aspect-ratio: 4 / 3; }
+  .privacy-grid.reverse { grid-template-columns: 1fr; }
 }
 
 /* ───────────── Cases — Marquee Style ───────────── */
