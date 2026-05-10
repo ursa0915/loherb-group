@@ -626,16 +626,161 @@ section { padding: 130px 56px; max-width: 1280px; margin: 0 auto; }
   background-position: center;
   position: relative;
   overflow: hidden;
-  transition: transform 0.6s cubic-bezier(.16,1,.3,1);
+  transition: transform 0.7s cubic-bezier(.16,1,.3,1);
+  cursor: pointer;
 }
-.cafe-gallery > div::after {
+.cafe-gallery > div::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 60%, rgba(48, 76, 76, 0.15) 100%);
-  pointer-events: none;
+  background: linear-gradient(180deg, transparent 45%, rgba(48, 76, 76, 0.6) 100%);
+  opacity: 0;
+  transition: opacity 0.6s;
+  z-index: 1;
 }
-.cafe-gallery > div:hover { transform: scale(1.02); }
+.cafe-gallery > div::after {
+  content: attr(data-caption);
+  position: absolute;
+  bottom: 22px;
+  left: 24px;
+  right: 24px;
+  color: var(--blush);
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  font-weight: 400;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.6s, transform 0.6s;
+  z-index: 2;
+  pointer-events: none;
+  white-space: pre-line;
+}
+.cafe-gallery > div:hover {
+  transform: scale(1.015);
+}
+.cafe-gallery > div:hover::before { opacity: 1; }
+.cafe-gallery > div:hover::after { opacity: 1; transform: translateY(0); }
+
+/* Subtle gold rule across cafe section top */
+.cafe-section { position: relative; }
+.cafe-section::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(230,164,1,0.35) 50%, transparent 100%);
+}
+
+/* ───────────── Pool / Activity Strip ───────────── */
+.pool-strip {
+  padding: 100px 56px 110px;
+  background: linear-gradient(180deg, #fffdf9 0%, #f3eae6 100%);
+  position: relative;
+  overflow: hidden;
+}
+.pool-strip-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.05fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 14px;
+  align-items: stretch;
+  min-height: 540px;
+}
+.pool-text-cell {
+  grid-row: span 2;
+  padding: 48px 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: var(--teal-deep);
+  color: var(--blush);
+}
+.pool-text-cell .eyebrow {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 12px;
+  letter-spacing: 0.5em;
+  color: var(--gold);
+  font-style: italic;
+  margin-bottom: 22px;
+  display: block;
+  text-transform: uppercase;
+}
+.pool-text-cell h2 {
+  font-size: clamp(28px, 3vw, 38px);
+  font-weight: 300;
+  letter-spacing: 0.15em;
+  margin-bottom: 24px;
+  line-height: 1.3;
+  color: var(--blush);
+}
+.pool-text-cell h2 .accent { color: var(--gold); }
+.pool-text-cell p {
+  font-size: 14px;
+  color: rgba(250, 241, 239, 0.82);
+  line-height: 1.95;
+  margin-bottom: 16px;
+  letter-spacing: 0.05em;
+}
+.pool-text-cell .actions {
+  margin-top: 24px;
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.pool-text-cell .btn-primary {
+  background: var(--gold);
+  color: var(--teal-deep);
+  font-size: 11px;
+  padding: 11px 22px;
+  letter-spacing: 0.25em;
+}
+.pool-text-cell .btn-ghost {
+  color: var(--blush);
+  border-bottom-color: var(--blush);
+  font-size: 11px;
+  letter-spacing: 0.25em;
+}
+.pool-text-cell .btn-ghost:hover {
+  color: var(--gold);
+  border-bottom-color: var(--gold);
+}
+.pool-img {
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.6s;
+}
+.pool-img:hover { transform: scale(1.02); }
+.pool-img::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 55%, rgba(48, 76, 76, 0.3) 100%);
+}
+
+@media (max-width: 900px) {
+  .pool-strip { padding: 70px 24px; }
+  .pool-strip-inner { grid-template-columns: 1fr; grid-template-rows: auto; min-height: 0; }
+  .pool-text-cell { grid-row: auto; padding: 40px 28px; }
+  .pool-img { min-height: 220px; }
+}
+
+/* ───────────── Scroll Reveal ───────────── */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 1s cubic-bezier(.16,1,.3,1), transform 1s cubic-bezier(.16,1,.3,1);
+}
+[data-reveal].in {
+  opacity: 1;
+  transform: translateY(0);
+}
+[data-reveal-delay="100"] { transition-delay: 0.1s; }
+[data-reveal-delay="200"] { transition-delay: 0.2s; }
+[data-reveal-delay="300"] { transition-delay: 0.3s; }
 
 /* Layout pattern: 12-col x 4 rows masonry */
 .cafe-gallery > div:nth-child(1) { grid-column: span 7; grid-row: span 3; }   /* big aerial */
