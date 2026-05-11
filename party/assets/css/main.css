@@ -2075,9 +2075,9 @@ footer.site-footer a:hover { color: var(--gold); }
 /* Social icons */
 .footer-social {
   display: flex;
-  gap: 18px;
-  margin-top: 20px;
-  justify-content: center;
+  gap: 14px;
+  margin-top: 18px;
+  justify-content: flex-start;
 }
 .footer-social a {
   width: 36px; height: 36px;
