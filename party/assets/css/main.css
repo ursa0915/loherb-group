@@ -565,12 +565,12 @@ section { padding: 130px 56px; max-width: 1280px; margin: 0 auto; }
   max-width: 1280px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr 1.1fr;
-  gap: 80px;
+  grid-template-columns: 1.35fr 1fr;
+  gap: 64px;
   align-items: center;
   padding: 0 56px;
 }
-.privacy-grid.reverse { grid-template-columns: 1.1fr 1fr; }
+.privacy-grid.reverse { grid-template-columns: 1fr 1.35fr; }
 .privacy-text .eyebrow {
   font-family: "Cormorant Garamond", serif;
   font-size: 12px;
@@ -637,7 +637,7 @@ section { padding: 130px 56px; max-width: 1280px; margin: 0 auto; }
 /* Single photo variant */
 .privacy-photo {
   position: relative;
-  aspect-ratio: 16 / 11;
+  aspect-ratio: 4 / 5;
   background-size: cover;
   background-position: center;
   overflow: hidden;
