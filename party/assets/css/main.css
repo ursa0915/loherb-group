@@ -257,8 +257,57 @@ nav.top.scrolled .nav-toggle span { background: var(--charcoal); }
 }
 .btn-ghost:hover { color: var(--rose-pink); border-color: var(--rose-pink); }
 
-/* Hero visual */
+/* Hero LOHERB logo stack */
+.hero-loherb-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 28px;
+  color: var(--gold);
+  line-height: 1;
+}
+.hero-loherb-logo .ch {
+  font-family: "Noto Serif TC", serif;
+  font-size: clamp(38px, 4.5vw, 56px);
+  font-weight: 500;
+  letter-spacing: 0.4em;
+  text-indent: 0.4em;
+}
+.hero-loherb-logo .en {
+  font-family: "Cormorant Garamond", "Bodoni 72", Georgia, serif;
+  font-size: clamp(15px, 1.5vw, 20px);
+  font-weight: 500;
+  letter-spacing: 0.35em;
+  margin: 10px 0;
+  color: var(--gold);
+}
+
+/* Hero visual carousel */
 .hero-visual {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+}
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  animation: heroFade 24s infinite ease-in-out;
+}
+.hero-slide:nth-child(1) { animation-delay: 0s; }
+.hero-slide:nth-child(2) { animation-delay: 6s; }
+.hero-slide:nth-child(3) { animation-delay: 12s; }
+.hero-slide:nth-child(4) { animation-delay: 18s; }
+@keyframes heroFade {
+  0%   { opacity: 0; }
+  4%   { opacity: 1; }
+  25%  { opacity: 1; }
+  30%  { opacity: 0; }
+  100% { opacity: 0; }
+}
+.hero-visual-fixed {
   position: relative;
   aspect-ratio: 4 / 5;
   background-size: cover;
@@ -1381,15 +1430,15 @@ section { padding: 130px 56px; max-width: 1280px; margin: 0 auto; }
   max-width: 1280px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1.05fr 1fr 1fr;
+  grid-template-columns: 1.1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   gap: 14px;
   align-items: stretch;
-  min-height: 540px;
+  min-height: 580px;
 }
 .pool-text-cell {
   grid-row: span 2;
-  padding: 48px 36px;
+  padding: 48px 32px;
   display: flex;
   flex-direction: column;
   justify-content: center;
