@@ -1322,11 +1322,13 @@ section { padding: 130px 56px; max-width: 1280px; margin: 0 auto; }
 .venues-home-head {
   max-width: 1280px;
   margin: 0 auto 64px;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   align-items: flex-end;
-  justify-content: space-between;
-  gap: 48px;
-  flex-wrap: wrap;
+  gap: 64px;
+}
+@media (max-width: 900px) {
+  .venues-home-head { grid-template-columns: 1fr; gap: 24px; }
 }
 .venues-home-head .eyebrow-en {
   font-family: "Cormorant Garamond", serif;
@@ -1347,11 +1349,12 @@ section { padding: 130px 56px; max-width: 1280px; margin: 0 auto; }
 }
 .venues-home-head h2 .accent { color: var(--gold); }
 .venues-home-head .right-cell {
-  max-width: 360px;
-  text-align: right;
   font-size: 15px;
   line-height: 1.95;
   color: var(--charcoal);
+}
+@media (max-width: 900px) {
+  .venues-home-head .right-cell { text-align: left; }
 }
 .venues-tiles {
   max-width: 1280px;
@@ -1609,10 +1612,11 @@ section { padding: 130px 56px; max-width: 1280px; margin: 0 auto; }
   justify-content: center;
   align-items: center;
   min-width: 220px;
-  height: 110px;
-  padding: 0 32px;
+  height: 96px;
+  padding: 0 36px;
   background: var(--ivory);
   border: 1px solid var(--line-soft);
+  border-radius: 999px;
   transition: all 0.4s;
 }
 .case-pill:hover {
