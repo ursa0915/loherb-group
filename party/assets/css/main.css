@@ -279,15 +279,17 @@ nav.top.scrolled .nav-toggle span { background: var(--charcoal); }
 }
 .hero-visual-label {
   position: absolute;
-  bottom: 32px; left: 32px;
+  bottom: 28px; left: 28px;
   color: var(--blush);
   font-family: "Cormorant Garamond", serif;
-  padding: 16px 22px;
-  background: rgba(48, 76, 76, 0.28);
-  backdrop-filter: blur(18px) saturate(1.2);
-  -webkit-backdrop-filter: blur(18px) saturate(1.2);
-  border: 1px solid rgba(255, 253, 245, 0.2);
-  border-radius: 2px;
+  padding: 18px 26px 20px;
+  background: rgba(48, 76, 76, 0.18);
+  backdrop-filter: blur(30px) saturate(1.35);
+  -webkit-backdrop-filter: blur(30px) saturate(1.35);
+  border: none;
+  border-radius: 0;
+  -webkit-mask: radial-gradient(120% 110% at 50% 50%, black 55%, transparent 100%);
+  mask: radial-gradient(120% 110% at 50% 50%, black 55%, transparent 100%);
   z-index: 2;
 }
 .hero-visual-label .num { font-size: 13px; letter-spacing: 0.4em; opacity: 0.8; margin-bottom: 8px; }
@@ -647,16 +649,17 @@ section { padding: 130px 56px; max-width: 1280px; margin: 0 auto; }
 .cafe-gallery > div::before {
   content: "";
   position: absolute;
-  inset: auto 16px 16px 16px;
-  height: 42px;
-  background: rgba(48, 76, 76, 0.32);
-  backdrop-filter: blur(16px) saturate(1.2);
-  -webkit-backdrop-filter: blur(16px) saturate(1.2);
-  border: 1px solid rgba(255, 253, 245, 0.18);
-  border-radius: 2px;
+  inset: auto 0 0 0;
+  height: 80px;
+  background: rgba(48, 76, 76, 0.22);
+  backdrop-filter: blur(26px) saturate(1.3);
+  -webkit-backdrop-filter: blur(26px) saturate(1.3);
+  border: none;
+  border-radius: 0;
+  -webkit-mask: linear-gradient(180deg, transparent 0%, black 60%);
+  mask: linear-gradient(180deg, transparent 0%, black 60%);
   opacity: 0;
-  transform: translateY(8px);
-  transition: opacity 0.5s, transform 0.5s;
+  transition: opacity 0.5s;
   z-index: 1;
 }
 .cafe-gallery > div::after {
@@ -679,7 +682,7 @@ section { padding: 130px 56px; max-width: 1280px; margin: 0 auto; }
 .cafe-gallery > div:hover {
   transform: scale(1.015);
 }
-.cafe-gallery > div:hover::before { opacity: 1; transform: translateY(0); }
+.cafe-gallery > div:hover::before { opacity: 1; }
 .cafe-gallery > div:hover::after { opacity: 1; transform: translateY(0); }
 
 /* Subtle gold rule across cafe section top */
@@ -991,12 +994,14 @@ section { padding: 130px 56px; max-width: 1280px; margin: 0 auto; }
 }
 .fullbleed-hero-content {
   max-width: 580px;
-  padding: 48px 44px;
-  background: rgba(48, 76, 76, 0.32);
-  backdrop-filter: blur(22px) saturate(1.3);
-  -webkit-backdrop-filter: blur(22px) saturate(1.3);
-  border: 1px solid rgba(230, 164, 1, 0.35);
-  border-radius: 3px;
+  padding: 56px 56px 60px;
+  background: rgba(48, 76, 76, 0.2);
+  backdrop-filter: blur(34px) saturate(1.35);
+  -webkit-backdrop-filter: blur(34px) saturate(1.35);
+  border: none;
+  border-radius: 0;
+  -webkit-mask: radial-gradient(140% 130% at 50% 50%, black 60%, transparent 100%);
+  mask: radial-gradient(140% 130% at 50% 50%, black 60%, transparent 100%);
 }
 .fullbleed-hero .eyebrow {
   font-family: "Cormorant Garamond", serif;
@@ -1292,20 +1297,21 @@ section { padding: 130px 56px; max-width: 1280px; margin: 0 auto; }
 }
 .venue-tile-content {
   position: absolute;
-  bottom: 14px; left: 14px; right: 14px;
-  padding: 20px 22px;
+  bottom: 0; left: 0; right: 0;
+  padding: 38px 24px 28px;
   z-index: 2;
   color: var(--blush);
-  background: rgba(48, 76, 76, 0.38);
-  backdrop-filter: blur(18px) saturate(1.3);
-  -webkit-backdrop-filter: blur(18px) saturate(1.3);
-  border: 1px solid rgba(255, 253, 245, 0.18);
-  border-radius: 2px;
-  transition: background 0.4s, border-color 0.4s;
+  background: rgba(48, 76, 76, 0.22);
+  backdrop-filter: blur(28px) saturate(1.35);
+  -webkit-backdrop-filter: blur(28px) saturate(1.35);
+  border: none;
+  border-radius: 0;
+  -webkit-mask: linear-gradient(180deg, transparent 0%, black 35%);
+  mask: linear-gradient(180deg, transparent 0%, black 35%);
+  transition: background 0.4s;
 }
 .venue-tile:hover .venue-tile-content {
-  background: rgba(48, 76, 76, 0.5);
-  border-color: rgba(230, 164, 1, 0.4);
+  background: rgba(48, 76, 76, 0.32);
 }
 .venue-tile-content .num {
   font-family: "Cormorant Garamond", serif;
