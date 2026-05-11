@@ -294,17 +294,16 @@ nav.top.scrolled .nav-toggle span { background: var(--charcoal); }
   background-size: cover;
   background-position: center;
   opacity: 0;
-  animation: heroFade 24s infinite ease-in-out;
+  animation: heroFade 18s infinite ease-in-out;
 }
 .hero-slide:nth-child(1) { animation-delay: 0s; }
 .hero-slide:nth-child(2) { animation-delay: 6s; }
 .hero-slide:nth-child(3) { animation-delay: 12s; }
-.hero-slide:nth-child(4) { animation-delay: 18s; }
 @keyframes heroFade {
   0%   { opacity: 0; }
-  4%   { opacity: 1; }
-  25%  { opacity: 1; }
-  30%  { opacity: 0; }
+  5%   { opacity: 1; }
+  33%  { opacity: 1; }
+  38%  { opacity: 0; }
   100% { opacity: 0; }
 }
 .hero-visual-fixed {
@@ -817,6 +816,12 @@ section { padding: 130px 56px; max-width: 1280px; margin: 0 auto; }
   border: 1px solid rgba(48, 76, 76, 0.15);
   background: #fff;
   border-radius: 999px;
+}
+.home-intro .chips span::before {
+  content: "·";
+  color: var(--gold);
+  margin-right: 8px;
+  font-weight: 700;
 }
 
 /* ───── Editorial Section (cafe story) ───── */
@@ -1375,19 +1380,27 @@ section { padding: 130px 56px; max-width: 1280px; margin: 0 auto; }
 .venue-tile-content {
   position: absolute;
   bottom: 0; left: 0; right: 0;
-  padding: 60px 24px 28px;
+  padding: 80px 28px 32px;
   z-index: 2;
   color: var(--blush);
-  background: linear-gradient(180deg, transparent 0%, rgba(48, 76, 76, 0.18) 35%, rgba(48, 76, 76, 0.22) 100%);
-  backdrop-filter: blur(0px);
+  background: linear-gradient(180deg, transparent 0%, rgba(48, 76, 76, 0.4) 40%, rgba(48, 76, 76, 0.75) 100%);
   border: none;
   transition: background 0.4s;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 .venue-tile-content > * {
-  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.6);
 }
-.venue-tile:hover .venue-tile-content {
-  background: rgba(48, 76, 76, 0.32);
+.venue-tile-content .meta {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 253, 245, 0.25);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: rgba(255, 253, 245, 0.85);
+  line-height: 1.6;
 }
 .venue-tile-content .num {
   font-family: "Cormorant Garamond", serif;
@@ -1396,7 +1409,7 @@ section { padding: 130px 56px; max-width: 1280px; margin: 0 auto; }
   color: var(--gold);
   font-style: italic;
   display: block;
-  margin-bottom: 8px;
+  margin: 0;
   text-transform: uppercase;
 }
 .venue-tile-content h3 {
@@ -1404,28 +1417,20 @@ section { padding: 130px 56px; max-width: 1280px; margin: 0 auto; }
   font-weight: 300;
   letter-spacing: 0.15em;
   color: var(--blush);
-  margin-bottom: 4px;
+  margin: 0;
 }
 .venue-tile-content .en {
   font-family: "Cormorant Garamond", serif;
   font-size: 12px;
   font-style: italic;
   letter-spacing: 0.3em;
-  color: rgba(250, 241, 239, 0.7);
+  color: rgba(250, 241, 239, 0.75);
   display: block;
-  margin-bottom: 14px;
+  margin: 0;
   text-transform: uppercase;
 }
-.venue-tile-content .meta {
-  font-size: 11px;
-  color: rgba(250, 241, 239, 0.7);
-  letter-spacing: 0.18em;
-  border-top: 1px solid rgba(250, 241, 239, 0.2);
-  padding-top: 12px;
-  transition: all 0.4s;
-}
 .venue-tile:hover { transform: translateY(-6px); }
-.venue-tile:hover .meta { color: var(--gold); border-top-color: var(--gold); }
+.venue-tile:hover .meta { color: var(--gold); border-top-color: rgba(230, 164, 1, 0.5); }
 @media (max-width: 1100px) {
   .venues-tiles { grid-template-columns: repeat(2, 1fr); }
   .venues-home-head .right-cell { text-align: left; max-width: none; }
