@@ -192,7 +192,6 @@ nav.top.scrolled .nav-toggle span { background: var(--charcoal); }
   padding: 140px 56px 100px;
   background:
     radial-gradient(ellipse at 80% 20%, rgba(222, 126, 147, 0.12) 0%, transparent 50%),
-    radial-gradient(ellipse at 10% 90%, rgba(48, 76, 76, 0.08) 0%, transparent 60%),
     var(--blush);
 }
 .hero-grid {
@@ -2438,11 +2437,21 @@ footer.site-footer a:hover { color: var(--gold); }
   /* Hero — keep portrait ratio (original photos are 3:4 / 4:5 / 1:1) */
   .hero { padding: 110px 24px 70px; min-height: auto; }
   .hero-grid { grid-template-columns: 1fr; gap: 48px; }
-  .hero-left { border-left: none; border-top: 1px solid var(--line-soft); padding-left: 0; padding-top: 28px; }
-  .hero-visual, .hero-visual-fixed { aspect-ratio: 4 / 5; max-width: 520px; margin: 0 auto; width: 100%; }
+  .hero-left { border-left: none; border-top: 1px solid var(--line-soft); padding-left: 0; padding-top: 28px; order: 2; }
+  .hero-visual, .hero-visual-fixed {
+    aspect-ratio: 4 / 5;
+    max-width: 480px;
+    margin: 0 auto;
+    width: 100%;
+    order: 1;
+  }
   .hero-visual::after { inset: 14px; }
-  .hero-visual-label { bottom: 18px; left: 18px; padding: 12px 18px 14px; }
+  .hero-visual-label { bottom: 16px; left: 16px; padding: 10px 16px 12px; }
   .hero-visual-label .title { font-size: 22px; }
+  .hero-visual-label .num { font-size: 11px; letter-spacing: 0.3em; margin-bottom: 6px; }
+  /* Guarantee first slide is visible even before animation starts */
+  .hero-slide { animation-fill-mode: both; background-position: center center; }
+  .hero-slide:first-child { opacity: 1; }
 
   /* Cafe gallery — collapse 12-col masonry to clean 2-col strip */
   .cafe-gallery {
@@ -2458,15 +2467,15 @@ footer.site-footer a:hover { color: var(--gold); }
   .cafe-gallery > div:nth-child(6) { grid-column: span 1; grid-row: span 1; }
   .cafe-gallery > div:nth-child(7) { grid-column: span 1; grid-row: span 1; }
 
-  /* Pool strip — 2-col photo grid below the text cell */
+  /* Pool strip — text on top, 3-col square photo grid below (like desktop) */
   .pool-strip-inner {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
     grid-template-rows: auto;
     gap: 10px;
     min-height: 0;
   }
-  .pool-text-cell { grid-column: span 2; grid-row: auto; }
-  .pool-img { min-height: 0; aspect-ratio: 4 / 3; }
+  .pool-text-cell { grid-column: 1 / -1; grid-row: auto; }
+  .pool-img { min-height: 0; aspect-ratio: 1 / 1; }
 
   /* Hero slides — make sure none collapse due to mobile aspect change */
   .hero-slide { background-position: center 30%; }
@@ -2554,13 +2563,14 @@ footer.site-footer a:hover { color: var(--gold); }
   .hero-cta-row { gap: 12px; }
   .hero-loherb-logo .ch { font-size: 30px; letter-spacing: 0.28em; }
   .hero-loherb-logo .en { font-size: 13px; letter-spacing: 0.3em; }
-  .hero-visual, .hero-visual-fixed { aspect-ratio: 4 / 5; max-width: 440px; }
+  .hero-visual, .hero-visual-fixed { aspect-ratio: 4 / 5; max-width: 380px; }
 
   /* Cafe gallery — even more compact */
   .cafe-gallery { grid-auto-rows: 130px; gap: 8px; }
 
-  /* Pool strip — tighter on phone */
-  .pool-img { aspect-ratio: 4 / 3; }
+  /* Pool strip — keep 3-col square photos, tighter gaps on phone */
+  .pool-strip-inner { gap: 8px; }
+  .pool-img { aspect-ratio: 1 / 1; }
 
   /* Buttons */
   .btn-primary { padding: 13px 26px; font-size: 12px; letter-spacing: 0.25em; }
