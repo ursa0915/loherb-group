@@ -1,0 +1,9 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # /zh  → index.html (網址保留 /zh)
+    RewriteRule ^zh/?$ index.html [L]
+
+    # /en  → /en.html
+    RewriteRule ^en/?$ en.html [L]
+</IfModule>
