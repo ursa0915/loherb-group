@@ -2647,6 +2647,7 @@ footer.site-footer a:hover { color: var(--gold); }
   .menu-section-head .eyebrow-en { font-size: 11.5px; letter-spacing: 0.35em; }
   .menu-section-head h2 { font-size: clamp(24px, 7vw, 34px); letter-spacing: 0.1em; margin-bottom: 14px; }
   .menu-section-head p { font-size: 13.5px; line-height: 1.85; }
+  .menu-card-img { aspect-ratio: 1 / 1; }
   .menu-card-body { padding: 22px 20px 26px; }
   .menu-card-body h3 { font-size: 19px; letter-spacing: 0.1em; }
   .menu-card-body .en-sub { font-size: 12px; letter-spacing: 0.22em; margin-bottom: 12px; }
