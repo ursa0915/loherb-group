@@ -2467,15 +2467,27 @@ footer.site-footer a:hover { color: var(--gold); }
   .cafe-gallery > div:nth-child(6) { grid-column: span 1; grid-row: span 1; }
   .cafe-gallery > div:nth-child(7) { grid-column: span 1; grid-row: span 1; }
 
-  /* Pool strip — text on top, 3-col square photo grid below (like desktop) */
+  /* Pool strip — text on top, 2-col square photo grid below */
   .pool-strip-inner {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     grid-template-rows: auto;
-    gap: 10px;
+    gap: 8px;
     min-height: 0;
   }
   .pool-text-cell { grid-column: 1 / -1; grid-row: auto; }
-  .pool-img { min-height: 0; aspect-ratio: 1 / 1; }
+  .pool-img { min-height: 0; aspect-ratio: 1 / 1; width: 100%; }
+
+  /* Moment cards — photo always on top regardless of reverse */
+  .moment-card,
+  .moment-card.reverse {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    grid-template-columns: none;
+    direction: ltr;
+  }
+  .moment-card .moment-photo { order: 1; }
+  .moment-card .moment-body { order: 2; }
 
   /* Hero slides — make sure none collapse due to mobile aspect change */
   .hero-slide { background-position: center 30%; }
@@ -2568,8 +2580,8 @@ footer.site-footer a:hover { color: var(--gold); }
   /* Cafe gallery — even more compact */
   .cafe-gallery { grid-auto-rows: 130px; gap: 8px; }
 
-  /* Pool strip — keep 3-col square photos, tighter gaps on phone */
-  .pool-strip-inner { gap: 8px; }
+  /* Pool strip — keep 2-col square photos, tighter gaps on phone */
+  .pool-strip-inner { gap: 6px; }
   .pool-img { aspect-ratio: 1 / 1; }
 
   /* Buttons */
