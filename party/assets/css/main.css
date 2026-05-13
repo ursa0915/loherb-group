@@ -2389,33 +2389,352 @@ footer.site-footer a:hover { color: var(--gold); }
 }
 .map-wrap iframe { width: 100%; height: 100%; border: 0; }
 
-/* ───────────── Responsive ───────────── */
+/* ════════════════════════════════════════
+   RESPONSIVE — Tablet · Phone · Small Phone
+   ════════════════════════════════════════ */
+
+/* ── TABLET / LARGE PHONE  ≤ 960px ── */
 @media (max-width: 960px) {
-  nav.top { padding: 18px 24px; }
+  /* Nav: always visible background so logo/burger stay legible over hero */
+  nav.top {
+    height: 64px;
+    padding: 0 20px;
+    background: rgba(250, 241, 239, 0.92);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(230, 164, 1, 0.12);
+  }
+  nav.top::before { display: none; }
+  nav.top .logo-mark .ch,
+  nav.top .logo-mark .en { color: var(--gold); }
+  nav.top .nav-toggle span { background: var(--charcoal); }
+  nav.top .nav-lang { color: var(--charcoal); border-left-color: rgba(48, 76, 76, 0.2); }
+
   .nav-links {
     position: fixed;
     top: 64px; left: 0; right: 0;
     flex-direction: column;
     background: var(--blush);
-    padding: 32px 24px;
-    gap: 24px;
+    padding: 28px 24px 36px;
+    gap: 22px;
     border-bottom: 1px solid var(--line-soft);
     transform: translateY(-120%);
-    transition: transform 0.4s;
+    transition: transform 0.45s cubic-bezier(.16, 1, .3, 1);
+    box-shadow: 0 14px 30px -22px rgba(0, 0, 0, 0.18);
+  }
+  .nav-links a {
+    color: var(--charcoal);
+    font-size: 0.92rem;
+    letter-spacing: 0.22em;
   }
   .nav-links.open { transform: translateY(0); }
   .nav-toggle { display: block; }
   .nav-cta { display: none; }
+  .nav-lang { padding-left: 14px; font-size: 0.72rem; }
+
+  /* Sections — uniform comfortable mobile padding */
   section, .full-bleed { padding: 80px 24px; }
-  .hero { padding: 120px 24px 80px; }
-  .hero-grid { grid-template-columns: 1fr; gap: 56px; }
-  .hero-left { border-left: none; border-top: 1px solid rgba(48,76,76,0.2); padding-left: 0; padding-top: 32px; }
-  .row, .row.reverse { grid-template-columns: 1fr; direction: ltr; gap: 32px; padding: 40px 0; }
-  .menu-grid { grid-template-columns: 1fr; gap: 36px; }
-  .reserve-cta { padding: 100px 24px; }
-  .info-row { gap: 32px; }
-  .footer-inner { grid-template-columns: 1fr 1fr; gap: 32px; padding: 0 0 40px; }
+
+  /* Hero */
+  .hero { padding: 110px 24px 70px; min-height: auto; }
+  .hero-grid { grid-template-columns: 1fr; gap: 48px; }
+  .hero-left { border-left: none; border-top: 1px solid var(--line-soft); padding-left: 0; padding-top: 28px; }
+  .hero-visual, .hero-visual-fixed { aspect-ratio: 4 / 3.4; max-height: 68vh; }
+  .hero-visual::after { inset: 16px; }
+  .hero-visual-label { bottom: 18px; left: 18px; padding: 12px 18px 14px; }
+  .hero-visual-label .title { font-size: 22px; }
+
+  /* Section head */
+  .section-head { gap: 18px; margin-bottom: 44px; flex-wrap: wrap; }
   .section-title-en { display: none; }
-  .form-row { grid-template-columns: 1fr; gap: 20px; }
-  .page-banner { padding: 140px 24px 80px; }
+
+  /* Page Banner */
+  .page-banner { padding: 130px 24px 70px; }
+
+  /* Generic rows / grids */
+  .row, .row.reverse { grid-template-columns: 1fr; direction: ltr; gap: 32px; padding: 40px 0; }
+  .menu-grid { grid-template-columns: 1fr; gap: 32px; }
+  .info-row { gap: 28px; }
+  .reserve-cta { padding: 96px 24px; }
+
+  /* Form */
+  .form-row { grid-template-columns: 1fr; gap: 18px; }
+  .field input, .field select, .field textarea { font-size: 16px; } /* prevents iOS auto-zoom */
+
+  /* Map */
+  .map-wrap { aspect-ratio: 4 / 3; }
+
+  /* Hero strip */
+  .hero-strip { padding: 80px 24px; }
+  .hero-strip .actions { gap: 18px; margin-top: 36px; }
+
+  /* Editorial */
+  .editorial { padding: 80px 24px; }
+
+  /* Home intro */
+  .home-intro { padding: 70px 24px; }
+
+  /* Brand bar */
+  .brand-bar { padding: 48px 24px; }
+  .brand-bar-inner { flex-direction: column; text-align: center; gap: 20px; }
+  .brand-bar-list { justify-content: center; gap: 16px 22px; }
+
+  /* Footer — 1 column, centred */
+  .footer-inner {
+    grid-template-columns: 1fr;
+    gap: 36px;
+    text-align: center;
+    padding-bottom: 36px;
+  }
+  .footer-brand .logo-mark { align-items: center; }
+  .footer-contact-item { justify-content: center; }
+  .footer-social { justify-content: center; }
+  footer.site-footer ul { display: inline-block; text-align: left; }
+
+  /* Cases */
+  .cases-section { padding: 80px 0 64px; }
+  .cases-section .section-head { padding: 24px 24px 0; }
+}
+
+/* ── PHONE  ≤ 600px ── */
+@media (max-width: 600px) {
+  body { line-height: 1.75; }
+
+  /* Section padding tighter */
+  section, .full-bleed { padding: 64px 20px; }
+
+  /* Section heads scaled down */
+  .section-head { gap: 12px; margin-bottom: 32px; }
+  .section-title-cn { font-size: 24px; letter-spacing: 0.1em; line-height: 1.4; }
+  .section-num { font-size: 12px; letter-spacing: 0.25em; }
+  .section-intro { font-size: 14px; line-height: 1.85; margin-bottom: 36px; }
+
+  /* Hero */
+  .hero { padding: 96px 20px 60px; }
+  .hero-grid { gap: 36px; }
+  .hero-eyebrow { letter-spacing: 0.35em; margin-bottom: 20px; font-size: 11px; }
+  .hero-title { font-size: clamp(34px, 9vw, 46px); letter-spacing: 0.04em; line-height: 1.22; }
+  .hero-en { font-size: 14.5px; letter-spacing: 0.25em; margin-bottom: 26px; }
+  .hero-desc { font-size: 14.5px; line-height: 1.85; margin-bottom: 30px; }
+  .hero-cta-row { gap: 12px; }
+  .hero-loherb-logo .ch { font-size: 30px; letter-spacing: 0.28em; }
+  .hero-loherb-logo .en { font-size: 13px; letter-spacing: 0.3em; }
+  .hero-visual, .hero-visual-fixed { aspect-ratio: 1 / 1; }
+
+  /* Buttons */
+  .btn-primary { padding: 13px 26px; font-size: 12px; letter-spacing: 0.25em; }
+  .btn-ghost { font-size: 12px; letter-spacing: 0.25em; }
+
+  /* Page banner */
+  .page-banner { padding: 118px 20px 56px; }
+  .page-banner h1 { font-size: clamp(28px, 8.5vw, 38px); letter-spacing: 0.1em; }
+  .page-banner .lead { font-size: 14px; line-height: 1.85; }
+  .page-banner .eyebrow { font-size: 11.5px; letter-spacing: 0.35em; margin-bottom: 14px; }
+
+  /* Pill section */
+  .pill-section { padding: 60px 20px; }
+  .pill-section .pill-head { margin-bottom: 28px; }
+  .pill-section .pill-head h2 { font-size: 22px; letter-spacing: 0.1em; }
+  .pill-section .pill-head .eyebrow-en { font-size: 11.5px; letter-spacing: 0.35em; margin-bottom: 12px; }
+  .pill-section .pill-head p { font-size: 13.5px; line-height: 1.8; }
+  .pill-grid { gap: 9px; }
+  .pill-item { font-size: 12px; letter-spacing: 0.08em; padding: 9px 16px; }
+  .pill-item::before { margin-right: 7px; }
+
+  /* Home intro */
+  .home-intro { padding: 60px 20px; }
+  .home-intro h2 { font-size: clamp(20px, 6vw, 28px); letter-spacing: 0.1em; line-height: 1.55; margin-bottom: 26px; }
+  .home-intro .chips { gap: 8px; }
+  .home-intro .chips span { font-size: 11px; letter-spacing: 0.16em; padding: 7px 13px; }
+
+  /* Service ribbon */
+  .service-ribbon { margin-top: 36px; gap: 10px; }
+  .service-chip { font-size: 12px; letter-spacing: 0.1em; padding: 8px 16px; }
+
+  /* Hero strip */
+  .hero-strip { padding: 60px 20px; }
+  .hero-strip .eyebrow { font-size: 11px; letter-spacing: 0.35em; }
+  .hero-strip h2 { font-size: clamp(22px, 6.5vw, 32px); letter-spacing: 0.08em; line-height: 1.4; margin-bottom: 22px; }
+  .hero-strip p { font-size: 14px; line-height: 1.9; letter-spacing: 0.03em; }
+  .hero-strip .actions { gap: 14px; margin-top: 28px; }
+
+  /* Editorial */
+  .editorial { padding: 60px 20px; }
+  .editorial-grid, .editorial-grid.reverse { gap: 30px; }
+  .editorial-text .num { font-size: 12px; letter-spacing: 0.25em; margin-bottom: 18px; }
+  .editorial-text h2 { font-size: clamp(26px, 7.5vw, 38px); letter-spacing: 0.06em; line-height: 1.25; margin-bottom: 22px; }
+  .editorial-text .en-italic { font-size: 14.5px; letter-spacing: 0.18em; margin-bottom: 24px; }
+  .editorial-text p { font-size: 14px; line-height: 1.9; }
+  .editorial-text .tag-row { gap: 16px; margin: 24px 0; }
+  .editorial-photo { aspect-ratio: 4 / 3.6; }
+
+  /* Privacy combined */
+  .privacy-section { padding: 64px 0; }
+  .privacy-grid { padding: 0 20px; gap: 36px; }
+  .privacy-text .eyebrow { font-size: 11px; letter-spacing: 0.35em; margin-bottom: 18px; }
+  .privacy-text h2 { font-size: clamp(26px, 7.5vw, 38px); letter-spacing: 0.08em; line-height: 1.3; margin-bottom: 22px; }
+  .privacy-text p { font-size: 14px; line-height: 1.85; }
+  .privacy-text .meta-row { gap: 22px; margin-top: 24px; padding-top: 22px; }
+  .privacy-text .meta-row strong { font-size: 18px; }
+  .privacy-photo { aspect-ratio: 4 / 4.2; }
+
+  /* Menu section (cards) */
+  .menu-section { padding: 60px 20px; }
+  .menu-section-head { margin-bottom: 36px; }
+  .menu-section-head .eyebrow-en { font-size: 11.5px; letter-spacing: 0.35em; }
+  .menu-section-head h2 { font-size: clamp(24px, 7vw, 34px); letter-spacing: 0.1em; margin-bottom: 14px; }
+  .menu-section-head p { font-size: 13.5px; line-height: 1.85; }
+  .menu-card-body { padding: 22px 20px 26px; }
+  .menu-card-body h3 { font-size: 19px; letter-spacing: 0.1em; }
+  .menu-card-body .en-sub { font-size: 12px; letter-spacing: 0.22em; margin-bottom: 12px; }
+  .menu-card-body p { font-size: 13px; line-height: 1.8; }
+
+  /* Fullbleed hero */
+  .fullbleed-hero { min-height: 60vh; }
+  .fullbleed-hero-inner { padding: 60px 20px; }
+  .fullbleed-hero-content { padding: 30px 22px 34px; max-width: none; }
+  .fullbleed-hero .eyebrow { font-size: 11.5px; letter-spacing: 0.35em; margin-bottom: 20px; }
+  .fullbleed-hero h2 { font-size: clamp(28px, 8vw, 42px); letter-spacing: 0.08em; line-height: 1.18; margin-bottom: 22px; }
+  .fullbleed-hero .en-italic { font-size: 15.5px; letter-spacing: 0.18em; margin-bottom: 24px; }
+  .fullbleed-hero p { font-size: 14px; line-height: 1.85; }
+  .fullbleed-hero .meta-row { gap: 22px; padding: 20px 0; margin: 26px 0; }
+  .fullbleed-hero .meta-row strong { font-size: 22px; }
+  .fullbleed-hero .actions { gap: 12px; }
+
+  /* Moments purpose */
+  .moments-purpose { padding: 60px 20px; }
+  .moments-purpose-head { margin-bottom: 40px; }
+  .moments-purpose-head .eyebrow-en { font-size: 11.5px; letter-spacing: 0.35em; margin-bottom: 16px; }
+  .moments-purpose-head h2 { font-size: clamp(24px, 7vw, 36px); letter-spacing: 0.1em; line-height: 1.35; margin-bottom: 18px; }
+  .moments-purpose-head .en-italic { font-size: 14.5px; letter-spacing: 0.18em; margin-bottom: 22px; }
+  .moments-purpose-head p { font-size: 13.5px; line-height: 1.85; }
+  .moments-grid { gap: 16px; }
+  .moment-body { padding: 26px 20px; }
+  .moment-body .num { font-size: 11px; letter-spacing: 0.32em; }
+  .moment-body h3 { font-size: 21px; letter-spacing: 0.1em; }
+  .moment-body .en-sub { font-size: 12px; letter-spacing: 0.22em; }
+  .moment-body p { font-size: 13.5px; line-height: 1.8; }
+  .moment-body .keywords { gap: 12px; padding-top: 14px; }
+  .moment-body .keywords span { font-size: 10.5px; letter-spacing: 0.2em; }
+
+  /* Venues home */
+  .venues-home { padding: 60px 20px; }
+  .venues-home-head { margin-bottom: 36px; gap: 18px; }
+  .venues-home-head .eyebrow-en { font-size: 11.5px; letter-spacing: 0.35em; }
+  .venues-home-head h2 { font-size: clamp(26px, 7.5vw, 38px); letter-spacing: 0.1em; line-height: 1.3; }
+  .venues-home-head .right-cell { font-size: 14px; line-height: 1.85; }
+  .venue-tile-content { padding: 56px 20px 22px; }
+  .venue-tile-content h3 { font-size: 19px; letter-spacing: 0.1em; }
+
+  /* Cafe section */
+  .cafe-section { padding: 60px 20px; }
+  .cafe-head { margin-bottom: 32px; gap: 22px; flex-direction: column; align-items: flex-start; }
+  .cafe-head .eyebrow { font-size: 11.5px; letter-spacing: 0.35em; margin-bottom: 14px; }
+  .cafe-head h2 { font-size: clamp(24px, 7vw, 36px); letter-spacing: 0.1em; line-height: 1.32; }
+  .cafe-head-right { text-align: left; font-size: 13.5px; line-height: 1.85; max-width: none; }
+  .cafe-gallery { grid-auto-rows: 78px; gap: 8px; }
+
+  /* Pool strip */
+  .pool-strip { padding: 60px 20px; }
+  .pool-text-cell { padding: 32px 22px; }
+  .pool-text-cell .eyebrow { font-size: 11px; letter-spacing: 0.35em; margin-bottom: 18px; }
+  .pool-text-cell h2 { font-size: clamp(22px, 6.5vw, 32px); letter-spacing: 0.1em; margin-bottom: 20px; }
+  .pool-text-cell p { font-size: 13.5px; line-height: 1.85; }
+  .pool-img { min-height: 180px; }
+
+  /* Cases / marquee */
+  .cases-section { padding: 60px 0 56px; }
+  .cases-section .section-head { padding: 18px 20px 0; }
+  .cases-section > p { font-size: 14px; padding: 0 20px; margin-bottom: 44px; }
+  .case-pill { min-width: 180px; height: 84px; padding: 0 26px; }
+  .case-pill .ch { font-size: 15.5px; letter-spacing: 0.12em; }
+  .case-pill .en { font-size: 11px; letter-spacing: 0.22em; }
+
+  /* Cards */
+  .card-body { padding: 24px 20px 28px; }
+  .card-eyebrow { font-size: 11px; letter-spacing: 0.3em; }
+  .card h3 { font-size: 19px; letter-spacing: 0.12em; margin-bottom: 12px; }
+  .card p { font-size: 13.5px; line-height: 1.85; margin-bottom: 20px; }
+
+  /* Row text */
+  .row-text h3 { font-size: 22px; letter-spacing: 0.1em; }
+  .row-text .en-sub { font-size: 15px; letter-spacing: 0.18em; }
+  .row-text p { font-size: 14px; }
+  .row-meta { gap: 22px; font-size: 12px; letter-spacing: 0.14em; }
+
+  /* Menu / pricing items */
+  .menu-item h4 { font-size: 19px; letter-spacing: 0.1em; }
+  .menu-item .price { font-size: 16px; letter-spacing: 0.1em; }
+  .menu-item p { font-size: 13.5px; }
+
+  /* Reserve CTA */
+  .reserve-cta { padding: 70px 20px; }
+  .reserve-cta h2 { font-size: clamp(24px, 7vw, 36px); letter-spacing: 0.1em; margin-bottom: 18px; }
+  .reserve-cta .eyebrow { font-size: 11.5px; letter-spacing: 0.35em; }
+  .reserve-cta .en-quote { font-size: 15px; letter-spacing: 0.15em; margin-bottom: 32px; }
+  .info-row { gap: 24px; margin-bottom: 32px; }
+  .info-row .value { font-size: 14.5px; letter-spacing: 0.08em; }
+  .info-row .label { font-size: 11px; letter-spacing: 0.25em; }
+
+  /* Social row */
+  .social-row { padding: 60px 20px; }
+  .social-row .eyebrow-en { font-size: 11.5px; letter-spacing: 0.35em; }
+  .social-row h2 { font-size: 24px; letter-spacing: 0.1em; }
+  .social-row .lead { font-size: 13px; letter-spacing: 0.1em; margin-bottom: 36px; }
+  .social-icons-row { gap: 18px; }
+  .social-big-icon { width: 54px; height: 54px; }
+  .social-big-icon svg { width: 22px; height: 22px; }
+
+  /* Footer */
+  footer.site-footer { padding: 56px 24px 32px; }
+  .footer-inner { gap: 30px; padding-bottom: 26px; }
+  .footer-brand .logo-mark .ch { font-size: 1.3rem; letter-spacing: 0.2em; }
+  .footer-brand .logo-mark .en { font-size: 0.55rem; }
+  .footer-tagline { font-size: 0.72rem; }
+  footer.site-footer h5 { margin-bottom: 16px; font-size: 0.55rem; }
+  footer.site-footer li { font-size: 0.82rem; margin-bottom: 12px; }
+  .footer-contact-item { font-size: 0.82rem; gap: 10px; }
+  .footer-social { gap: 12px; margin-top: 16px; }
+  .footer-social a { width: 34px; height: 34px; }
+
+  /* Form */
+  .form-grid { gap: 22px; }
+  .field label { font-size: 10.5px; letter-spacing: 0.3em; }
+  .field textarea { min-height: 110px; }
+  .form-submit { margin-top: 8px; }
+
+  /* Map */
+  .map-wrap { aspect-ratio: 4 / 3; }
+
+  /* Cafe head when stacked needs gallery taller rows */
+  .cafe-gallery > div:nth-child(1) { grid-row: span 2; }
+
+  /* Article */
+  .article-img { aspect-ratio: 16 / 10; margin-bottom: 18px; }
+  .article-card h3 { font-size: 17px; letter-spacing: 0.08em; min-height: calc(17px * 1.55 * 2); }
+  .article-card p { font-size: 13.5px; }
+  .journal-grid { gap: 40px; }
+}
+
+/* ── SMALL PHONE  ≤ 380px ── */
+@media (max-width: 380px) {
+  section, .full-bleed { padding: 56px 16px; }
+  nav.top { padding: 0 16px; }
+  .hero { padding: 92px 16px 56px; }
+  .hero-title { font-size: clamp(28px, 9vw, 36px); letter-spacing: 0.03em; }
+  .hero-loherb-logo .ch { font-size: 26px; letter-spacing: 0.24em; }
+  .page-banner { padding: 110px 16px 52px; }
+  .page-banner h1 { font-size: clamp(24px, 8vw, 32px); letter-spacing: 0.08em; }
+  .pill-section { padding: 52px 16px; }
+  .pill-item { font-size: 11.5px; padding: 8px 14px; letter-spacing: 0.06em; }
+  .pill-section .pill-head h2 { font-size: 20px; }
+  .editorial { padding: 52px 16px; }
+  .menu-section, .moments-purpose, .venues-home, .home-intro, .hero-strip, .pool-strip, .cafe-section, .privacy-grid, .reserve-cta, .social-row { padding-left: 16px; padding-right: 16px; }
+  .case-pill { min-width: 158px; height: 78px; padding: 0 22px; }
+  .case-pill .ch { font-size: 14.5px; }
+  .footer-bottom { font-size: 0.58rem; gap: 8px; }
+  .social-icons-row { gap: 14px; }
+  .social-big-icon { width: 50px; height: 50px; }
+  .social-big-icon svg { width: 20px; height: 20px; }
+  footer.site-footer { padding: 48px 20px 28px; }
 }
