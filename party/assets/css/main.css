@@ -1173,6 +1173,95 @@ section { padding: 130px 56px; max-width: 1280px; margin: 0 auto; }
   .fullbleed-hero .meta-row strong { font-size: 26px; }
 }
 
+/* ───── Pill Group (reusable pill list) ───── */
+.pill-section {
+  padding: 110px 56px;
+  background: var(--ivory);
+  text-align: center;
+}
+.pill-section.dark {
+  background: var(--teal-deep);
+  color: var(--blush);
+}
+.pill-section .pill-head {
+  max-width: 1280px;
+  margin: 0 auto 48px;
+}
+.pill-section .pill-head .eyebrow-en {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 13px;
+  letter-spacing: 0.5em;
+  color: var(--gold);
+  font-style: italic;
+  display: block;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+.pill-section .pill-head h2 {
+  font-size: clamp(28px, 3.5vw, 40px);
+  font-weight: 300;
+  color: var(--teal-deep);
+  letter-spacing: 0.18em;
+}
+.pill-section.dark .pill-head h2 { color: var(--blush); }
+.pill-section .pill-head p {
+  max-width: 600px;
+  margin: 18px auto 0;
+  font-size: 14px;
+  line-height: 1.9;
+  color: var(--charcoal);
+}
+.pill-section.dark .pill-head p { color: rgba(250, 241, 239, 0.75); }
+
+.pill-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.pill-item {
+  display: inline-flex;
+  align-items: center;
+  font-size: 13.5px;
+  letter-spacing: 0.15em;
+  padding: 11px 24px;
+  border: 1px solid rgba(48, 76, 76, 0.18);
+  background: #fff;
+  border-radius: 999px;
+  color: var(--teal-deep);
+  text-decoration: none;
+  transition: all 0.3s;
+  font-family: "Noto Serif TC", serif;
+}
+.pill-item::before {
+  content: "·";
+  color: var(--gold);
+  font-weight: 700;
+  margin-right: 10px;
+}
+.pill-item:hover {
+  border-color: var(--gold);
+  background: var(--gold);
+  color: var(--ivory);
+}
+.pill-item:hover::before { color: var(--ivory); }
+.pill-section.dark .pill-item {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.18);
+  color: var(--blush);
+}
+.pill-section.dark .pill-item:hover {
+  background: var(--gold);
+  color: var(--teal-deep);
+  border-color: var(--gold);
+}
+.pill-section.dark .pill-item:hover::before { color: var(--teal-deep); }
+@media (max-width: 600px) {
+  .pill-section { padding: 70px 24px; }
+}
+
 /* ───── Contact Strip (4 columns with gold dividers) ───── */
 .contact-strip {
   padding: 90px 56px;
