@@ -1,256 +1,228 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>時刻手札 — 日光時刻 LOHERB Party</title>
-  <meta name="description" content="日光時刻活動花絮與靈感手札，記錄每一場精彩活動的珍貴時刻。">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-    :root {
-      --deep-teal: #304C4C; --dried-rose: #A27678; --rose-pink: #DE7E93;
-      --blush-white: #FAF1EF; --brand-gold: #E6A401; --charcoal: #505350;
-      --white: #FFFFFF;
-      --font-en: 'Bodoni 72', 'Bodoni Moda', Georgia, serif;
-      --font-zh: 'Noto Serif TC', serif;
-    }
-    html { scroll-behavior: smooth; font-size: 16px; }
-    body { font-family: var(--font-zh); color: var(--charcoal); background: var(--white); line-height: 1.8; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
-    img { max-width: 100%; display: block; }
-    a { text-decoration: none; color: inherit; }
-
-    .navbar { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; padding: 1.2rem 2rem; display: flex; align-items: center; justify-content: space-between; transition: all 0.5s cubic-bezier(0.4,0,0.2,1); }
-    .navbar.scrolled { background: rgba(48,76,76,0.82); backdrop-filter: blur(20px) saturate(1.4); -webkit-backdrop-filter: blur(20px) saturate(1.4); padding: 0.8rem 2rem; }
-    .nav-logo { display: flex; flex-direction: column; align-items: center; line-height: 1.1; gap: 0; }
-    .nav-logo-char { font-family: var(--font-zh); font-weight: 500; font-size: 1rem; color: var(--brand-gold); letter-spacing: 0.1em; }
-    .nav-logo-en { font-family: var(--font-en); font-size: 0.55rem; letter-spacing: 0.25em; padding-left: 0.25em; color: var(--brand-gold); text-transform: uppercase; }
-    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-    .nav-links a { font-family: var(--font-zh); font-weight: 300; font-size: 0.85rem; color: var(--blush-white); letter-spacing: 0.12em; position: relative; transition: color 0.3s; }
-    .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px; background: var(--brand-gold); transition: width 0.3s; }
-    .nav-links a:hover { color: var(--brand-gold); }
-    .nav-links a:hover::after { width: 100%; }
-    .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
-    .nav-hamburger span { width: 24px; height: 1.5px; background: var(--blush-white); transition: all 0.3s; }
-    .nav-hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
-    .nav-hamburger.active span:nth-child(2) { opacity: 0; }
-    .nav-hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
-    .mobile-menu { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(48,76,76,0.96); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); z-index: 999; flex-direction: column; align-items: center; justify-content: center; gap: 2.5rem; }
-    .mobile-menu.active { display: flex; }
-    .mobile-menu a { font-family: var(--font-zh); font-weight: 300; font-size: 1.2rem; color: var(--blush-white); letter-spacing: 0.2em; transition: color 0.3s; }
-    .mobile-menu a:hover { color: var(--brand-gold); }
-
-    .page-hero { position: relative; height: 60vh; min-height: 400px; display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden; background: var(--deep-teal); }
-    .page-hero-bg { position: absolute; inset: 0; background-size: cover; background-position: center; }
-    .page-hero-content { position: relative; z-index: 2; text-align: center; padding: 2rem 3rem; background: rgba(48, 76, 76, 0.08); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); -webkit-mask-image: radial-gradient(ellipse 60% 95% at center,rgba(0,0,0,0.9) 0%,rgba(0,0,0,0.82) 18%,rgba(0,0,0,0.66) 34%,rgba(0,0,0,0.46) 50%,rgba(0,0,0,0.26) 66%,rgba(0,0,0,0.12) 80%,rgba(0,0,0,0.04) 90%,rgba(0,0,0,0.01) 97%,rgba(0,0,0,0) 100%); mask-image: radial-gradient(ellipse 60% 95% at center,rgba(0,0,0,0.9) 0%,rgba(0,0,0,0.82) 18%,rgba(0,0,0,0.66) 34%,rgba(0,0,0,0.46) 50%,rgba(0,0,0,0.26) 66%,rgba(0,0,0,0.12) 80%,rgba(0,0,0,0.04) 90%,rgba(0,0,0,0.01) 97%,rgba(0,0,0,0) 100%); }
-    .page-hero-label { font-family: var(--font-en); font-style: italic; font-size: 0.8rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--brand-gold); margin-bottom: 0.8rem; }
-    .page-hero-title { font-family: var(--font-zh); font-weight: 400; font-size: clamp(1.8rem,5vw,2.8rem); color: var(--blush-white); letter-spacing: 0.25em; text-shadow: 0 2px 20px rgba(0,0,0,0.5), 0 1px 6px rgba(0,0,0,0.3); margin-bottom: 0.8rem; }
-    .page-hero-sub { font-family: var(--font-zh); font-weight: 300; font-size: clamp(0.8rem,2vw,0.95rem); color: var(--dried-rose); letter-spacing: 0.15em; text-shadow: 0 2px 20px rgba(0,0,0,0.5), 0 1px 6px rgba(0,0,0,0.3); }
-
-    .section { padding: clamp(4rem,10vw,8rem) clamp(1.5rem,5vw,4rem); }
-    .section-inner { max-width: 1100px; margin: 0 auto; }
-    .section-title { font-family: var(--font-zh); font-weight: 400; font-size: clamp(1.5rem,4vw,2.4rem); letter-spacing: 0.15em; color: var(--deep-teal); text-align: center; margin-bottom: 1rem; }
-    .en-label { font-family: var(--font-en); font-style: italic; font-weight: 400; font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dried-rose); text-align: center; margin-bottom: 0.5rem; }
-    .gold-line { width: 40px; height: 1px; background: var(--brand-gold); margin: 0 auto 2.5rem; opacity: 0.5; }
-
-    /* JOURNAL GRID */
-    .journal-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; margin-top: 3.5rem; }
-    .journal-card { border-radius: 12px; overflow: hidden; background: var(--white); box-shadow: 0 2px 16px rgba(48,76,76,0.06); transition: transform 0.4s, box-shadow 0.4s; }
-    .journal-card:hover { transform: translateY(-6px); box-shadow: 0 12px 40px rgba(48,76,76,0.12); }
-    .journal-card-img { position: relative; aspect-ratio: 16/10; overflow: hidden; }
-    .journal-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.4,0,0.2,1); }
-    .journal-card:hover .journal-card-img img { transform: scale(1.06); }
-    .journal-card-body { padding: 1.5rem; }
-    .journal-card-date { font-family: var(--font-en); font-size: 0.7rem; color: var(--dried-rose); letter-spacing: 0.15em; margin-bottom: 0.5rem; }
-    .journal-card-title { font-family: var(--font-zh); font-weight: 500; font-size: 1.05rem; color: var(--deep-teal); letter-spacing: 0.1em; margin-bottom: 0.8rem; line-height: 1.6; }
-    .journal-card-excerpt { font-family: var(--font-zh); font-weight: 300; font-size: 0.85rem; color: var(--charcoal); line-height: 1.9; letter-spacing: 0.03em; opacity: 0.75; }
-    .journal-card-link { display: inline-block; margin-top: 1rem; font-family: var(--font-en); font-style: italic; font-size: 0.75rem; color: var(--brand-gold); letter-spacing: 0.15em; transition: opacity 0.3s; }
-    .journal-card-link:hover { opacity: 0.7; }
-
-    .footer { background: var(--deep-teal); padding: 4rem 2rem 2.5rem; text-align: center; }
-    .footer-logo { display: flex; flex-direction: column; align-items: center; margin-bottom: 2rem; }
-    .footer-logo-char { font-family: var(--font-zh); font-weight: 500; font-size: 1.2rem; color: var(--brand-gold); letter-spacing: 0.2em; }
-    .footer-logo-en { font-family: var(--font-en); font-size: 0.6rem; letter-spacing: 0.35em; padding-left: 0.35em; color: var(--brand-gold); text-transform: uppercase; margin: 0.3rem 0; opacity: 0.7; }
-    .footer-divider { width: 30px; height: 1px; background: var(--dried-rose); margin: 1.5rem auto; opacity: 0.4; }
-    .footer-contact { margin-bottom: 0.5rem; }
-    .footer-contact a { font-family: var(--font-en); font-size: 0.8rem; color: var(--blush-white); letter-spacing: 0.15em; opacity: 0.6; transition: opacity 0.3s, color 0.3s; }
-    .footer-contact a:hover { opacity: 1; color: var(--brand-gold); }
-    .footer-copyright { font-family: var(--font-en); font-size: 0.65rem; color: var(--blush-white); opacity: 0.3; letter-spacing: 0.1em; margin-top: 2rem; text-align: center; }
-    .footer-group-links { display: flex; justify-content: center; gap: 2rem; margin-top: 1.5rem; flex-wrap: wrap; }
-    .footer-group-links a { font-family: var(--font-zh); font-weight: 300; font-size: 0.75rem; color: var(--blush-white); letter-spacing: 0.12em; opacity: 0.4; transition: opacity 0.3s; }
-    .footer-group-links a:hover { opacity: 0.9; }
-
-    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s cubic-bezier(0.4,0,0.2,1), transform 0.8s cubic-bezier(0.4,0,0.2,1); }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-    .stagger-children > * { opacity: 0; transform: translateY(20px); transition: opacity 0.6s, transform 0.6s; }
-    .stagger-children.visible > *:nth-child(1) { transition-delay: 0.05s; }
-    .stagger-children.visible > *:nth-child(2) { transition-delay: 0.12s; }
-    .stagger-children.visible > *:nth-child(3) { transition-delay: 0.19s; }
-    .stagger-children.visible > *:nth-child(4) { transition-delay: 0.26s; }
-    .stagger-children.visible > *:nth-child(5) { transition-delay: 0.33s; }
-    .stagger-children.visible > *:nth-child(6) { transition-delay: 0.40s; }
-    .stagger-children.visible > * { opacity: 1; transform: translateY(0); }
-
-    @media (max-width: 900px) {
-      .journal-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
-    }
-    @media (max-width: 640px) {
-      .nav-links { display: none; }
-      .nav-hamburger { display: flex; }
-      .journal-grid { grid-template-columns: 1fr; gap: 1.5rem; }
-      .page-hero { height: 45vh; min-height: 320px; }
-      .page-hero-content { padding: 3rem 2rem; }
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>時刻手札 · 日光時刻 LOHERB Moments</title>
+<meta name="description" content="日光時刻部落格——記錄活動現場、宜蘭時光、料理研究與品牌故事。" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Noto+Serif+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/party/assets/css/main.css" />
 </head>
 <body>
 
-  <nav class="navbar" id="navbar">
-    <a href="index.html" class="nav-logo" aria-label="LOHERB Party">
-      <span class="nav-logo-char">日</span><span class="nav-logo-en">LOHERB</span><span class="nav-logo-char">光</span>
-    </a>
-    <ul class="nav-links">
-      <li><a href="events.html">活動類型</a></li>
-      <li><a href="team.html">一站式服務</a></li>
-      <li><a href="venues.html">場地空間</a></li>
-      <li><a href="gourmet.html">餐飲服務</a></li>
-      <li><a href="journal.html">活動花絮</a></li>
-      <li><a href="contact.html">聯繫我們</a></li>
-    </ul>
-    <div class="nav-hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></div>
-  </nav>
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="events.html" onclick="closeMobile()">活動類型</a>
-    <a href="team.html" onclick="closeMobile()">一站式服務</a>
-    <a href="venues.html" onclick="closeMobile()">場地空間</a>
-    <a href="gourmet.html" onclick="closeMobile()">餐飲服務</a>
-    <a href="journal.html" onclick="closeMobile()">活動花絮</a>
-    <a href="contact.html" onclick="closeMobile()">聯繫我們</a>
+<nav class="top">
+  <a href="/party/" class="logo-mark"><span class="ch">日</span><span class="en">LOHERB</span><span class="ch">光</span></a>
+  <ul class="nav-links">
+    <li><a href="/party/events.html">多元活動</a></li>
+    <li><a href="/party/venues.html">場地空間</a></li>
+    <li><a href="/party/gourmet.html">美食百匯</a></li>
+    <li><a href="https://party.loherb.com.tw/zh/book" target="_blank" rel="noopener">線上訂位</a></li>
+    <li><a href="/party/journal.html" class="active">時刻手札</a></li>
+    <li><a href="/party/contact.html">聯繫日光</a></li>
+  </ul>
+  <div class="nav-actions">
+    <a href="/party/en/journal.html" class="nav-lang">EN</a>
+    <a href="/party/book.html" class="nav-cta">即刻預約</a>
+    <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<header class="page-banner">
+  <span class="eyebrow en">— JOURNAL</span>
+  <h1>時刻手札</h1>
+  <p class="lead">日光時刻部落格——記錄宜蘭時光、活動現場、料理研究、品牌故事與每一次值得收藏的時刻。</p>
+</header>
+
+<section>
+  <div class="section-head">
+    <span class="section-num">— 01</span>
+    <h2 class="section-title-cn">最新文章</h2>
+    <span class="section-title-en">Latest Stories</span>
   </div>
 
-  <!-- HERO -->
-  <section class="page-hero">
-    <div class="page-hero-bg" style="background-image: url('https://admin.loherb.com.tw/images/ig-photos/party/20250412-3.jpg');"></div>
-    <div class="page-hero-content">
-      <p class="page-hero-label">Party Journal</p>
-      <h1 class="page-hero-title">時刻手札</h1>
-      <p class="page-hero-sub">用文字與影像，珍藏每一段美好</p>
-    </div>
-  </section>
+  <div class="journal-grid">
 
-  <!-- JOURNAL ARTICLES -->
-  <section class="section">
-    <div class="section-inner">
-      <div class="reveal">
-        <p class="en-label">Stories & Inspirations</p>
-        <h2 class="section-title">靈感與故事</h2>
-        <div class="gold-line"></div>
+    <article class="article-card">
+      <div class="article-img" style="background-image:url('/party/images/wedding/gallery-loherb-feature.jpg');"></div>
+      <div class="meta">2026 · MAY · 09</div>
+      <h3>婚禮專屬菜單</h3>
+      <a href="https://party.loherb.com.tw/zh/journal" target="_blank" rel="noopener" class="card-link">閱讀全文 →</a>
+    </article>
+
+    <article class="article-card">
+      <div class="article-img" style="background-image:url('/party/images/wedding/cuisine-western-set.jpg');"></div>
+      <div class="meta">2026 · APRIL · 27</div>
+      <h3>母親節餐廳推薦：宜蘭 10 家適合家族聚餐的高評價餐廳</h3>
+      <a href="https://party.loherb.com.tw/zh/journal" target="_blank" rel="noopener" class="card-link">閱讀全文 →</a>
+    </article>
+
+    <article class="article-card">
+      <div class="article-img" style="background-image:url('/party/images/wedding/wedding-outdoor-lawn.jpg');"></div>
+      <div class="meta">2026 · APRIL · 09</div>
+      <h3>宜蘭春日提案：盤點 5 個野餐首選寶藏聖地</h3>
+      <a href="https://party.loherb.com.tw/zh/journal" target="_blank" rel="noopener" class="card-link">閱讀全文 →</a>
+    </article>
+
+    <article class="article-card">
+      <div class="article-img" style="background-image:url('/party/images/events/event.jpg');"></div>
+      <div class="meta">2026 · MARCH · 29</div>
+      <h3>最熱門企業團建提案｜兩天一夜行程分享</h3>
+      <a href="https://party.loherb.com.tw/zh/journal" target="_blank" rel="noopener" class="card-link">閱讀全文 →</a>
+    </article>
+
+    <article class="article-card">
+      <div class="article-img" style="background-image:url('/party/images/cuisine/set.jpg');"></div>
+      <div class="meta">2026 · MARCH · 24</div>
+      <h3>來自宜蘭的世界級精緻伴手禮</h3>
+      <a href="https://party.loherb.com.tw/zh/journal" target="_blank" rel="noopener" class="card-link">閱讀全文 →</a>
+    </article>
+
+    <article class="article-card">
+      <div class="article-img" style="background-image:url('/party/images/wedding/cuisine-outdoor-bbq.jpg');"></div>
+      <div class="meta">2026 · MARCH · 18</div>
+      <h3>一站式奢華提案：饗。日光 Buffet 燒烤輕食盛宴</h3>
+      <a href="https://party.loherb.com.tw/zh/journal" target="_blank" rel="noopener" class="card-link">閱讀全文 →</a>
+    </article>
+
+    <article class="article-card">
+      <div class="article-img" style="background-image:url('/party/images/wedding/cuisine-dessert-table.jpg');"></div>
+      <div class="meta">2026 · MARCH · 09</div>
+      <h3>白色情人節回禮：宜蘭質感甜點推薦</h3>
+      <a href="https://party.loherb.com.tw/zh/journal" target="_blank" rel="noopener" class="card-link">閱讀全文 →</a>
+    </article>
+
+    <article class="article-card">
+      <div class="article-img" style="background-image:url('/party/images/events/event.jpg');"></div>
+      <div class="meta">2026 · MARCH · 08</div>
+      <h3>2026 宜蘭綠色博覽會精華導覽</h3>
+      <a href="https://party.loherb.com.tw/zh/journal" target="_blank" rel="noopener" class="card-link">閱讀全文 →</a>
+    </article>
+
+    <article class="article-card">
+      <div class="article-img" style="background-image:url('/party/images/venues/villa.jpg');"></div>
+      <div class="meta">2026 · FEBRUARY · 08</div>
+      <h3>一泊二食 · 一泊三食　宜蘭食宿雙享受</h3>
+      <a href="https://party.loherb.com.tw/zh/journal" target="_blank" rel="noopener" class="card-link">閱讀全文 →</a>
+    </article>
+
+    <article class="article-card">
+      <div class="article-img" style="background-image:url('/party/images/wedding/gallery-newlyweds.jpg');"></div>
+      <div class="meta">2026 · FEBRUARY · 20</div>
+      <h3>一同見證日光婚禮</h3>
+      <a href="https://party.loherb.com.tw/zh/journal" target="_blank" rel="noopener" class="card-link">閱讀全文 →</a>
+    </article>
+
+    <article class="article-card">
+      <div class="article-img" style="background-image:url('/party/images/wedding/cuisine-dessert-table.jpg');"></div>
+      <div class="meta">2026 · FEBRUARY · 28</div>
+      <h3>2026 宜蘭母親節活動精選</h3>
+      <a href="https://party.loherb.com.tw/zh/journal" target="_blank" rel="noopener" class="card-link">閱讀全文 →</a>
+    </article>
+
+    <article class="article-card">
+      <div class="article-img" style="background-image:url('/party/images/wedding/cuisine-western-set.jpg');"></div>
+      <div class="meta">2026 · FEBRUARY · 28</div>
+      <h3>母親節餐廳五月限定活動</h3>
+      <a href="https://party.loherb.com.tw/zh/journal" target="_blank" rel="noopener" class="card-link">閱讀全文 →</a>
+    </article>
+
+    <article class="article-card">
+      <div class="article-img" style="background-image:url('/party/images/venues/villa.jpg');"></div>
+      <div class="meta">2026 · JANUARY · 27</div>
+      <h3>宜蘭新年走春避開人潮私房景點</h3>
+      <a href="https://party.loherb.com.tw/zh/journal" target="_blank" rel="noopener" class="card-link">閱讀全文 →</a>
+    </article>
+
+    <article class="article-card">
+      <div class="article-img" style="background-image:url('/party/images/events/event.jpg');"></div>
+      <div class="meta">2026 · JANUARY · 23</div>
+      <h3>2026 企業春酒場地首選：宜蘭包棟派對 vs 傳統飯店比較</h3>
+      <a href="https://party.loherb.com.tw/zh/journal" target="_blank" rel="noopener" class="card-link">閱讀全文 →</a>
+    </article>
+
+    <article class="article-card">
+      <div class="article-img" style="background-image:url('/party/images/events/gathering.jpg');"></div>
+      <div class="meta">2026 · JANUARY · 18</div>
+      <h3>帶毛孩一起旅行！宜蘭好評「寵物友善」民宿推薦</h3>
+      <a href="https://party.loherb.com.tw/zh/journal" target="_blank" rel="noopener" class="card-link">閱讀全文 →</a>
+    </article>
+
+    <article class="article-card">
+      <div class="article-img" style="background-image:url('/party/images/wedding/wedding-outdoor-promise.jpg');"></div>
+      <div class="meta">2026 · JANUARY · 10</div>
+      <h3>求婚大作戰！宜蘭最浪漫的 5 個私房景點</h3>
+      <a href="https://party.loherb.com.tw/zh/journal" target="_blank" rel="noopener" class="card-link">閱讀全文 →</a>
+    </article>
+
+    <article class="article-card">
+      <div class="article-img" style="background-image:url('/party/images/events/event.jpg');"></div>
+      <div class="meta">2025 · OCTOBER · 11</div>
+      <h3>連假不塞車玩法｜宜蘭兩天一夜行程推薦</h3>
+      <a href="https://party.loherb.com.tw/zh/journal" target="_blank" rel="noopener" class="card-link">閱讀全文 →</a>
+    </article>
+
+    <article class="article-card">
+      <div class="article-img" style="background-image:url('/party/images/wedding/hero-slide-indoor-scene.jpg');"></div>
+      <div class="meta">2025 · JUNE · 30</div>
+      <h3>時刻菜單</h3>
+      <a href="https://party.loherb.com.tw/zh/journal" target="_blank" rel="noopener" class="card-link">閱讀全文 →</a>
+    </article>
+
+  </div>
+</section>
+
+<section class="reserve-cta">
+  <span class="eyebrow en">— STAY IN TOUCH</span>
+  <h2>訂閱日光手札<br />讓好時刻不缺席</h2>
+  <div class="en-quote">"Slow stories from a sunlit garden."</div>
+  <a href="/party/contact.html" class="btn-primary">訂閱電子報 →</a>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="/party/" class="logo-mark"><span class="ch">日</span><span class="en">LOHERB</span><span class="ch">光</span></a>
+      <p class="footer-tagline">享受生活，每一天</p>
+    </div>
+    <div>
+      <h5>Contact</h5>
+      <div class="footer-contact-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <a href="mailto:service@loherb.com.tw">service@loherb.com.tw</a>
       </div>
-      <div class="journal-grid stagger-children">
-
-        <div class="journal-card">
-          <div class="journal-card-img">
-            <img src="https://party.loherb.com.tw/images/home/events_party.png" alt="春日野餐提案" loading="lazy">
-          </div>
-          <div class="journal-card-body">
-            <p class="journal-card-date">2026.03.15</p>
-            <h3 class="journal-card-title">春日野餐提案</h3>
-            <p class="journal-card-excerpt">當春風拂過日光的草坪，正是舉辦戶外野餐派對的最佳時節。精選春季限定食材，搭配清新花藝佈置...</p>
-            <a href="index.html" class="journal-card-link">Read More &rarr;</a>
-          </div>
-        </div>
-
-        <div class="journal-card">
-          <div class="journal-card-img">
-            <img src="https://admin.loherb.com.tw/images/ig-photos/party/20250412-1.jpg" alt="兩泊一食限定" loading="lazy">
-          </div>
-          <div class="journal-card-body">
-            <p class="journal-card-date">2026.02.28</p>
-            <h3 class="journal-card-title">兩泊一食限定</h3>
-            <p class="journal-card-excerpt">全新推出的兩泊一食住宿方案，結合日光綠築的舒適客房與私廚團隊的精緻晚餐，為您的旅程增添美味記憶...</p>
-            <a href="index.html" class="journal-card-link">Read More &rarr;</a>
-          </div>
-        </div>
-
-        <div class="journal-card">
-          <div class="journal-card-img">
-            <img src="https://party.loherb.com.tw/images/home/events_gathering.png" alt="企業團建行程" loading="lazy">
-          </div>
-          <div class="journal-card-body">
-            <p class="journal-card-date">2026.02.10</p>
-            <h3 class="journal-card-title">企業團建行程</h3>
-            <p class="journal-card-excerpt">從會議研討到團隊遊戲，從品牌發表到獎勵旅遊，日光團隊為企業客戶量身打造完整的團建行程規劃...</p>
-            <a href="index.html" class="journal-card-link">Read More &rarr;</a>
-          </div>
-        </div>
-
-        <div class="journal-card">
-          <div class="journal-card-img">
-            <img src="https://admin.loherb.com.tw/images/ig-photos/party/20250412-5.jpg" alt="日光菜單介紹" loading="lazy">
-          </div>
-          <div class="journal-card-body">
-            <p class="journal-card-date">2026.01.20</p>
-            <h3 class="journal-card-title">日光菜單介紹</h3>
-            <p class="journal-card-excerpt">嚴選宜蘭在地食材，從自助百匯到精緻套餐，一窺日光私廚團隊如何用料理為每場活動增添風味與溫度...</p>
-            <a href="index.html" class="journal-card-link">Read More &rarr;</a>
-          </div>
-        </div>
-
-        <div class="journal-card">
-          <div class="journal-card-img">
-            <img src="https://party.loherb.com.tw/images/home/events_wedding.png" alt="夢想成真" loading="lazy">
-          </div>
-          <div class="journal-card-body">
-            <p class="journal-card-date">2025.12.25</p>
-            <h3 class="journal-card-title">夢想成真</h3>
-            <p class="journal-card-excerpt">一場在日光草坪上的求婚紀實。從秘密籌劃到驚喜揭曉，記錄這對戀人在星光下許下承諾的感動瞬間...</p>
-            <a href="index.html" class="journal-card-link">Read More &rarr;</a>
-          </div>
-        </div>
-
-        <div class="journal-card">
-          <div class="journal-card-img">
-            <img src="https://party.loherb.com.tw/images/home/events_wedding.png" alt="永恆紀念日" loading="lazy">
-          </div>
-          <div class="journal-card-body">
-            <p class="journal-card-date">2025.11.18</p>
-            <h3 class="journal-card-title">永恆紀念日</h3>
-            <p class="journal-card-excerpt">一對新人選擇在日光舉辦戶外婚禮的完整紀錄。從籌備到當日，每一個環節都充滿了愛與細膩的安排...</p>
-            <a href="index.html" class="journal-card-link">Read More &rarr;</a>
-          </div>
-        </div>
-
+      <div class="footer-contact-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <a href="tel:+886-3-959-5685">+886-3-959-5685</a>
+      </div>
+      <div class="footer-contact-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>(269) 宜蘭縣冬山鄉寶福路 400 號</span>
+      </div>
+      <div class="footer-social">
+        <a href="https://www.facebook.com/LOHERB.TW" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"/></svg></a>
+        <a href="https://www.instagram.com/loherb_yilan" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.81.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.81-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.81-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.81.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16M12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63c-.79.31-1.46.72-2.13 1.39C1.34 2.69.93 3.36.62 4.15.32 4.91.12 5.78.06 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.14.56 2.91.31.79.72 1.46 1.39 2.13.67.67 1.34 1.08 2.13 1.39.77.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.14-.26 2.91-.56.79-.31 1.46-.72 2.13-1.39.67-.67 1.08-1.34 1.39-2.13.3-.77.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.14-.56-2.91-.31-.79-.72-1.46-1.39-2.13C21.31 1.34 20.64.93 19.85.62 19.09.32 18.22.12 16.95.06 15.67.01 15.26 0 12 0zm0 5.84c-3.4 0-6.16 2.76-6.16 6.16S8.6 18.16 12 18.16s6.16-2.76 6.16-6.16S15.4 5.84 12 5.84zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm6.41-11.85a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z"/></svg></a>
+        <a href="https://www.youtube.com/channel/UCACSw7tK8uMz8j-CFGa2NfQ" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3.02 3.02 0 0 0-2.13-2.13C19.46 3.55 12 3.55 12 3.55s-7.46 0-9.37.52A3.02 3.02 0 0 0 .5 6.2C0 8.11 0 12 0 12s0 3.89.5 5.8a3.02 3.02 0 0 0 2.13 2.13c1.91.52 9.37.52 9.37.52s7.46 0 9.37-.52a3.02 3.02 0 0 0 2.13-2.13c.5-1.91.5-5.8.5-5.8s0-3.89-.5-5.8zM9.6 15.6V8.4l6.24 3.6L9.6 15.6z"/></svg></a>
+        <a href="https://line.me/R/ti/p/@xye4557v" target="_blank" rel="noopener" aria-label="LINE"><svg viewBox="0 0 24 24"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg></a>
       </div>
     </div>
-  </section>
-
-  <footer class="footer">
-    <div class="footer-logo"><span class="footer-logo-char">日</span><span class="footer-logo-en">LOHERB</span><span class="footer-logo-char">光</span></div>
-    <div class="footer-divider"></div>
-    <div class="footer-contact"><a href="mailto:service@loherb.com.tw">service@loherb.com.tw</a></div>
-    <div class="footer-contact"><a href="tel:+886-3-959-5685">+886-3-959-5685</a></div>
-    <div class="footer-group-links">
-      <a href="https://www.loherb.com.tw" target="_blank" rel="noopener">日光物業</a>
-      <a href="https://villa.loherb.com.tw" target="_blank" rel="noopener">日光綠築</a>
-      <a href="https://cuisine.loherb.com.tw" target="_blank" rel="noopener">日光私廚</a>
-      <a href="https://party.loherb.com.tw" target="_blank" rel="noopener">日光時刻</a>
-      <a href="https://design.loherb.com.tw" target="_blank" rel="noopener">日光文創</a>
+    <div>
+      <h5>Brands</h5>
+      <ul>
+        <li><a href="https://villa.loherb.com.tw" target="_blank" rel="noopener">日光綠築 — Villa</a></li>
+        <li><a href="https://cuisine.loherb.com.tw" target="_blank" rel="noopener">日光私廚 — Cuisine</a></li>
+        <li><a href="https://estate.loherb.com.tw" target="_blank" rel="noopener">日光物業 — Estate</a></li>
+        <li><a href="/party/">日光時刻 — Party</a></li>
+        <li><a href="https://wedding.loherb.com.tw" target="_blank" rel="noopener">日光婚禮 — Wedding</a></li>
+        <li><a href="https://design.loherb.com.tw" target="_blank" rel="noopener">日光文創 — Design</a></li>
+      </ul>
     </div>
-    <p class="footer-copyright">&copy; 2026 LOHERB all rights reserved. Built by Disp-Tech.</p>
-  </footer>
-
-  <script>
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 60); }, { passive: true });
-    const hamburger = document.getElementById('hamburger');
-    const mobileMenu = document.getElementById('mobileMenu');
-    hamburger.addEventListener('click', () => { hamburger.classList.toggle('active'); mobileMenu.classList.toggle('active'); document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : ''; });
-    function closeMobile() { hamburger.classList.remove('active'); mobileMenu.classList.remove('active'); document.body.style.overflow = ''; }
-    const revealEls = document.querySelectorAll('.reveal, .stagger-children');
-    const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); }); }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
-    revealEls.forEach(el => observer.observe(el));
-  </script>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 LOHERB all rights reserved.</span>
+  </div>
+</footer>
+<script src="/party/assets/js/main.js"></script>
 </body>
 </html>
