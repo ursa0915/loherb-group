@@ -2745,17 +2745,17 @@ nav.top.top--landing-soft {
 }
 nav.top.top--landing-soft::before { display: none; }
 nav.top.top--landing-soft .logo-mark .ch,
-nav.top.top--landing-soft .logo-mark .en { color: var(--rose-pink); }
+nav.top.top--landing-soft .logo-mark .en { color: var(--gold); }
 nav.top.top--landing-soft .nav-cta {
   display: inline-block;
-  border: 1px solid var(--rose-pink);
-  color: var(--rose-pink);
+  border: 1px solid var(--gold);
+  color: var(--gold);
   background: transparent;
 }
 nav.top.top--landing-soft .nav-cta:hover {
-  background: var(--rose-pink);
+  background: var(--gold);
   color: var(--ivory);
-  border-color: var(--rose-pink);
+  border-color: var(--gold);
 }
 nav.top.top--landing-soft .nav-ig {
   display: inline-flex;
@@ -2763,7 +2763,7 @@ nav.top.top--landing-soft .nav-ig {
   justify-content: center;
   width: 36px;
   height: 36px;
-  color: var(--rose-pink);
+  color: var(--teal-deep);
   border-radius: 50%;
   transition: color 0.3s;
 }
@@ -2812,7 +2812,7 @@ nav.top.top--landing-soft .nav-ig svg { width: 18px; height: 18px; }
   font-style: italic;
   font-size: 13px;
   letter-spacing: 0.35em;
-  color: var(--rose-pink);
+  color: var(--gold);
   display: block;
   margin-bottom: 28px;
   text-transform: uppercase;
@@ -2830,7 +2830,7 @@ nav.top.top--landing-soft .nav-ig svg { width: 18px; height: 18px; }
   font-family: "Cormorant Garamond", serif;
   font-style: italic;
   font-size: clamp(40px, 5vw, 56px);
-  color: var(--rose-pink);
+  color: var(--rose-dry);
   letter-spacing: 0.04em;
 }
 .lp2-hero-ch {
@@ -2887,7 +2887,7 @@ nav.top.top--landing-soft .nav-ig svg { width: 18px; height: 18px; }
 .lp2-quote-mark {
   font-family: "Cormorant Garamond", serif;
   font-size: 120px;
-  color: var(--rose-pink);
+  color: var(--gold);
   line-height: 0.6;
   display: block;
   margin-bottom: 18px;
@@ -2955,7 +2955,7 @@ nav.top.top--landing-soft .nav-ig svg { width: 18px; height: 18px; }
   font-style: italic;
   font-size: 13px;
   letter-spacing: 0.35em;
-  color: var(--rose-pink);
+  color: var(--gold);
   display: block;
   margin-bottom: 10px;
   text-transform: uppercase;
@@ -3009,7 +3009,7 @@ nav.top.top--landing-soft .nav-ig svg { width: 18px; height: 18px; }
   line-height: 1.4;
 }
 .lp2-menu-head h2 .accent {
-  color: var(--rose-pink);
+  color: var(--gold);
   font-family: "Cormorant Garamond", serif;
   font-style: italic;
   font-size: 0.85em;
@@ -3059,7 +3059,7 @@ nav.top.top--landing-soft .nav-ig svg { width: 18px; height: 18px; }
   font-style: italic;
   font-size: 16px;
   letter-spacing: 0.18em;
-  color: var(--rose-pink);
+  color: var(--rose-dry);
   text-transform: lowercase;
 }
 .lp2-polaroid h3 {
@@ -3102,7 +3102,7 @@ nav.top.top--landing-soft .nav-ig svg { width: 18px; height: 18px; }
   line-height: 1.4;
   margin-bottom: 18px;
 }
-.lp2-feed-head h2 .accent { color: var(--rose-pink); }
+.lp2-feed-head h2 .accent { color: var(--gold); }
 .lp2-feed-handle {
   font-family: "Cormorant Garamond", serif;
   font-style: italic;
@@ -3174,7 +3174,7 @@ nav.top.top--landing-soft .nav-ig svg { width: 18px; height: 18px; }
   line-height: 1.3;
   margin-bottom: 30px;
 }
-.lp2-setting-text h2 .accent { color: var(--rose-pink); }
+.lp2-setting-text h2 .accent { color: var(--gold); }
 .lp2-setting-text p {
   font-size: 16px;
   line-height: 2;
@@ -3285,7 +3285,7 @@ nav.top.top--landing-soft .nav-ig svg { width: 18px; height: 18px; }
 .lp2-visit-label {
   font-family: "Cormorant Garamond", "Noto Serif TC", serif;
   font-size: 12.5px;
-  color: var(--rose-pink);
+  color: var(--gold);
   letter-spacing: 0.3em;
   flex-shrink: 0;
 }
@@ -3313,7 +3313,7 @@ nav.top.top--landing-soft .nav-ig svg { width: 18px; height: 18px; }
   font-family: "Cormorant Garamond", serif;
   font-style: italic;
   font-size: clamp(36px, 4.5vw, 52px);
-  color: var(--rose-pink);
+  color: var(--rose-dry);
   display: block;
   margin-bottom: 18px;
   letter-spacing: 0.06em;
@@ -3335,10 +3335,10 @@ nav.top.top--landing-soft .nav-ig svg { width: 18px; height: 18px; }
   margin-bottom: 28px;
 }
 .lp2-cta-buttons .btn-primary {
-  background: var(--rose-pink);
+  background: var(--teal-deep);
   color: var(--ivory);
 }
-.lp2-cta-buttons .btn-primary:hover { background: var(--teal-deep); }
+.lp2-cta-buttons .btn-primary:hover { background: var(--gold); color: var(--teal-deep); }
 .lp2-cta-tag {
   font-family: "Cormorant Garamond", serif;
   font-style: italic;
@@ -3367,8 +3367,8 @@ nav.top.top--landing-soft .nav-ig svg { width: 18px; height: 18px; }
   gap: 14px;
 }
 .lp2-footer .logo-mark { align-items: center; margin-bottom: 4px; }
-.lp2-footer .logo-mark .ch { font-size: 1.3rem; color: var(--rose-pink); }
-.lp2-footer .logo-mark .en { color: var(--rose-dry); }
+.lp2-footer .logo-mark .ch { font-size: 1.3rem; color: var(--gold); }
+.lp2-footer .logo-mark .en { color: var(--gold); }
 .lp2-footer-tagline {
   font-size: 0.82rem;
   color: var(--rose-dry);
@@ -3489,24 +3489,25 @@ nav.top.top--landing-soft .nav-ig svg { width: 18px; height: 18px; }
    網美 Café v2 — bakery-inspired additions
    ════════════════════════════════════════ */
 
-/* ───── Pink Pill Buttons ───── */
+/* ───── CTA Pill Buttons (CIS palette — teal-deep primary, gold hover) ───── */
 .btn-pink {
   display: inline-block;
   font-family: "Noto Serif TC", serif;
   font-size: 12.5px;
   letter-spacing: 0.22em;
   padding: 10px 22px;
-  background: var(--rose-pink);
+  background: var(--teal-deep);
   color: var(--ivory);
-  border: 1px solid var(--rose-pink);
+  border: 1px solid var(--teal-deep);
   border-radius: 999px;
   text-decoration: none;
   transition: all 0.35s;
   white-space: nowrap;
 }
 .btn-pink:hover {
-  background: var(--teal-deep);
-  border-color: var(--teal-deep);
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--teal-deep);
 }
 .btn-pink--sm { font-size: 11.5px; padding: 7px 18px; letter-spacing: 0.18em; }
 .btn-pink--lg { font-size: 13px; padding: 14px 32px; letter-spacing: 0.28em; }
@@ -3517,15 +3518,15 @@ nav.top.top--landing-soft .nav-ig svg { width: 18px; height: 18px; }
   letter-spacing: 0.22em;
   padding: 10px 22px;
   background: transparent;
-  color: var(--rose-pink);
-  border: 1px solid var(--rose-pink);
+  color: var(--teal-deep);
+  border: 1px solid var(--teal-deep);
   border-radius: 999px;
   text-decoration: none;
   transition: all 0.35s;
   white-space: nowrap;
 }
 .btn-pink-outline:hover {
-  background: var(--rose-pink);
+  background: var(--teal-deep);
   color: var(--ivory);
 }
 
@@ -3585,7 +3586,7 @@ nav.top.top--landing-soft .nav-ig svg { width: 18px; height: 18px; }
 .lp2-why-head { max-width: 720px; margin: 0 auto 56px; }
 .lp2-flower {
   font-size: 18px;
-  color: var(--rose-pink);
+  color: var(--gold);
   display: block;
   margin-bottom: 14px;
 }
@@ -3596,7 +3597,7 @@ nav.top.top--landing-soft .nav-ig svg { width: 18px; height: 18px; }
   letter-spacing: 0.15em;
   line-height: 1.4;
 }
-.lp2-why-head h2 .accent { color: var(--rose-pink); }
+.lp2-why-head h2 .accent { color: var(--gold); }
 .lp2-why-grid {
   max-width: 1180px;
   margin: 0 auto;
@@ -3659,7 +3660,7 @@ nav.top.top--landing-soft .nav-ig svg { width: 18px; height: 18px; }
   line-height: 1.4;
   margin-bottom: 16px;
 }
-.lp2-bakes-head h2 .accent { color: var(--rose-pink); }
+.lp2-bakes-head h2 .accent { color: var(--gold); }
 .lp2-bakes-head p {
   font-size: 14px;
   color: var(--charcoal);
@@ -3734,7 +3735,7 @@ nav.top.top--landing-soft .nav-ig svg { width: 18px; height: 18px; }
   letter-spacing: 0.15em;
   line-height: 1.4;
 }
-.lp2-mains-head h2 .accent { color: var(--rose-pink); }
+.lp2-mains-head h2 .accent { color: var(--gold); }
 .lp2-mains-grid {
   max-width: 1180px;
   margin: 0 auto;
@@ -3770,7 +3771,7 @@ nav.top.top--landing-soft .nav-ig svg { width: 18px; height: 18px; }
   font-style: italic;
   font-size: 12px;
   letter-spacing: 0.4em;
-  color: var(--rose-pink);
+  color: var(--gold);
   display: block;
   margin-bottom: 10px;
 }
@@ -3803,7 +3804,7 @@ nav.top.top--landing-soft .nav-ig svg { width: 18px; height: 18px; }
   align-items: center;
   gap: 18px;
   padding-top: 14px;
-  border-top: 1px solid rgba(222, 126, 147, 0.25);
+  border-top: 1px solid rgba(230, 164, 1, 0.25);
 }
 .lp2-main-price {
   font-family: "Cormorant Garamond", serif;
@@ -3878,7 +3879,7 @@ nav.top.top--landing-soft .nav-ig svg { width: 18px; height: 18px; }
   content: "❀";
   position: absolute;
   font-size: 240px;
-  color: rgba(222, 126, 147, 0.06);
+  color: rgba(230, 164, 1, 0.08);
   z-index: 0;
   font-family: serif;
 }
@@ -3900,17 +3901,18 @@ nav.top.top--landing-soft .nav-ig svg { width: 18px; height: 18px; }
   line-height: 1.4;
   margin-bottom: 20px;
 }
-.lp2-reviews-head h2 .accent { color: var(--rose-pink); }
+.lp2-reviews-head h2 .accent { color: var(--gold); }
 .lp2-reviews-rating {
   display: inline-flex;
   align-items: baseline;
   gap: 10px;
   padding: 12px 26px;
   background: var(--blush);
+  border: 1px solid rgba(230, 164, 1, 0.25);
   border-radius: 999px;
 }
 .lp2-reviews-stars {
-  color: var(--rose-pink);
+  color: var(--gold);
   font-size: 16px;
   letter-spacing: 0.18em;
 }
@@ -3940,7 +3942,7 @@ nav.top.top--landing-soft .nav-ig svg { width: 18px; height: 18px; }
 .lp2-review {
   background: #fff;
   padding: 32px 28px;
-  border: 1px solid rgba(222, 126, 147, 0.18);
+  border: 1px solid rgba(48, 76, 76, 0.12);
   box-shadow: 0 14px 36px -22px rgba(48, 76, 76, 0.18);
   transition: transform 0.5s, box-shadow 0.5s;
   display: flex;
@@ -3952,7 +3954,7 @@ nav.top.top--landing-soft .nav-ig svg { width: 18px; height: 18px; }
 }
 .lp2-review--featured {
   background: var(--blush);
-  border-color: var(--rose-pink);
+  border-color: var(--gold);
   border-width: 1px;
   position: relative;
 }
@@ -3961,15 +3963,15 @@ nav.top.top--landing-soft .nav-ig svg { width: 18px; height: 18px; }
   position: absolute;
   top: -12px;
   right: 24px;
-  background: var(--rose-pink);
-  color: var(--ivory);
+  background: var(--gold);
+  color: var(--teal-deep);
   padding: 5px 14px;
   border-radius: 999px;
   font-size: 10.5px;
   letter-spacing: 0.22em;
 }
 .lp2-review-stars {
-  color: var(--rose-pink);
+  color: var(--gold);
   font-size: 15px;
   letter-spacing: 0.22em;
   margin-bottom: 18px;
@@ -4022,13 +4024,13 @@ nav.top.top--landing-soft .nav-ig svg { width: 18px; height: 18px; }
   flex-wrap: wrap;
   gap: 6px;
   padding-top: 16px;
-  border-top: 1px dashed rgba(222, 126, 147, 0.3);
+  border-top: 1px dashed rgba(48, 76, 76, 0.18);
 }
 .lp2-review-tags span {
   font-size: 11px;
   letter-spacing: 0.1em;
-  color: var(--rose-pink);
-  background: rgba(222, 126, 147, 0.08);
+  color: var(--gold);
+  background: rgba(230, 164, 1, 0.08);
   padding: 4px 10px;
   border-radius: 999px;
 }
