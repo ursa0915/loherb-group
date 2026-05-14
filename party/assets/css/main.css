@@ -2714,3 +2714,557 @@ footer.site-footer a:hover { color: var(--gold); }
   .social-big-icon svg { width: 20px; height: 20px; }
   footer.site-footer { padding: 48px 20px 28px; }
 }
+
+/* ════════════════════════════════════════
+   Café Landing Page — /party/cafe.html
+   ════════════════════════════════════════ */
+
+/* Minimal nav variant for landing page */
+nav.top.top--landing {
+  background: rgba(250, 241, 239, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(230, 164, 1, 0.12);
+}
+nav.top.top--landing::before { display: none; }
+nav.top.top--landing .logo-mark .ch,
+nav.top.top--landing .logo-mark .en { color: var(--gold); }
+nav.top.top--landing .nav-cta {
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  display: inline-block;
+}
+
+/* Hero */
+.lp-hero {
+  position: relative;
+  min-height: 92vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  padding: 140px 56px 100px;
+  color: var(--blush);
+}
+.lp-hero-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+}
+.lp-hero-mask {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(48, 76, 76, 0.35) 0%, rgba(48, 76, 76, 0.55) 60%, rgba(48, 76, 76, 0.75) 100%);
+  z-index: 1;
+}
+.lp-hero-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 720px;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.55);
+}
+.lp-hero-eyebrow {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 13px;
+  letter-spacing: 0.5em;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 28px;
+  text-transform: uppercase;
+}
+.lp-hero h1 {
+  font-size: clamp(44px, 6.5vw, 84px);
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  line-height: 1.18;
+  margin-bottom: 22px;
+  color: var(--blush);
+}
+.lp-hero h1 .accent { color: var(--gold); }
+.lp-hero-en {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 20px;
+  letter-spacing: 0.3em;
+  color: rgba(250, 241, 239, 0.85);
+  margin-bottom: 32px;
+}
+.lp-hero-desc {
+  font-size: 16px;
+  line-height: 2;
+  color: rgba(250, 241, 239, 0.92);
+  letter-spacing: 0.08em;
+  margin-bottom: 44px;
+}
+.lp-hero-cta {
+  display: flex;
+  gap: 18px;
+  justify-content: center;
+  margin-bottom: 56px;
+  flex-wrap: wrap;
+}
+.lp-hero-cta .btn-primary {
+  background: var(--gold);
+  color: var(--teal-deep);
+}
+.lp-hero-cta .btn-primary:hover { background: var(--blush); }
+.lp-hero-cta .btn-ghost {
+  color: var(--blush);
+  border-bottom-color: var(--blush);
+}
+.lp-hero-cta .btn-ghost:hover {
+  color: var(--gold);
+  border-bottom-color: var(--gold);
+}
+.lp-hero-meta {
+  display: flex;
+  gap: 48px;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding-top: 36px;
+  border-top: 1px solid rgba(230, 164, 1, 0.35);
+}
+.lp-hero-meta span {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  color: rgba(250, 241, 239, 0.7);
+}
+.lp-hero-meta strong {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 22px;
+  letter-spacing: 0.08em;
+  color: var(--gold);
+  font-weight: 400;
+}
+
+/* Intro strip */
+.lp-intro {
+  padding: 80px 56px;
+  background: var(--ivory);
+  text-align: center;
+  border-top: 1px solid rgba(230, 164, 1, 0.15);
+}
+.lp-intro .eyebrow-en {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 13px;
+  letter-spacing: 0.5em;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 22px;
+  text-transform: uppercase;
+}
+.lp-intro h2 {
+  font-size: clamp(28px, 3.5vw, 40px);
+  font-weight: 300;
+  color: var(--teal-deep);
+  letter-spacing: 0.15em;
+  line-height: 1.5;
+  margin-bottom: 32px;
+}
+.lp-intro h2 .accent { color: var(--gold); }
+.lp-intro-chips {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  max-width: 760px;
+  margin: 0 auto;
+}
+.lp-intro-chips span {
+  font-size: 12px;
+  letter-spacing: 0.25em;
+  color: var(--charcoal);
+  padding: 8px 18px;
+  border: 1px solid rgba(48, 76, 76, 0.15);
+  background: #fff;
+  border-radius: 999px;
+}
+.lp-intro-chips span::before {
+  content: "·";
+  color: var(--gold);
+  margin-right: 8px;
+  font-weight: 700;
+}
+
+/* Menu Tiers grid (4 cards) */
+.lp-menu-grid {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+.lp-menu-card {
+  background: #fff;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: transform 0.5s cubic-bezier(.16, 1, .3, 1), box-shadow 0.5s;
+  color: inherit;
+}
+.lp-menu-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px -22px rgba(48, 76, 76, 0.28);
+}
+.lp-menu-img {
+  aspect-ratio: 4 / 3;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+  transition: transform 1.2s cubic-bezier(.16, 1, .3, 1);
+}
+.lp-menu-card:hover .lp-menu-img { transform: scale(1.04); }
+.lp-menu-body {
+  padding: 24px 22px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+.lp-menu-num {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 11px;
+  letter-spacing: 0.35em;
+  color: var(--gold);
+  font-style: italic;
+  text-transform: uppercase;
+}
+.lp-menu-card h3 {
+  font-size: 22px;
+  font-weight: 300;
+  color: var(--teal-deep);
+  letter-spacing: 0.15em;
+}
+.lp-menu-card .en-sub {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 13px;
+  letter-spacing: 0.3em;
+  color: var(--rose-dry);
+  text-transform: uppercase;
+}
+.lp-menu-card p {
+  font-size: 13px;
+  color: var(--charcoal);
+  line-height: 1.8;
+  letter-spacing: 0.03em;
+  margin-top: 6px;
+}
+.lp-menu-price {
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid rgba(230, 164, 1, 0.25);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 18px;
+  color: var(--gold);
+  letter-spacing: 0.18em;
+  font-style: italic;
+}
+.lp-menu-cta {
+  max-width: 1280px;
+  margin: 56px auto 0;
+  text-align: center;
+}
+
+/* Food Gallery (masonry) */
+.lp-gallery-section {
+  padding: 100px 56px;
+  background: var(--blush);
+}
+.lp-gallery-head {
+  max-width: 880px;
+  margin: 0 auto 56px;
+  text-align: center;
+}
+.lp-gallery-head .eyebrow-en {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 13px;
+  letter-spacing: 0.5em;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 22px;
+  text-transform: uppercase;
+}
+.lp-gallery-head h2 {
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 300;
+  color: var(--teal-deep);
+  letter-spacing: 0.15em;
+  line-height: 1.3;
+  margin-bottom: 22px;
+}
+.lp-gallery-head h2 .accent { color: var(--gold); }
+.lp-gallery-head p {
+  font-size: 15px;
+  color: var(--charcoal);
+  line-height: 1.9;
+}
+.lp-gallery {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 180px;
+  gap: 12px;
+}
+.lp-gallery-img {
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.6s cubic-bezier(.16, 1, .3, 1);
+}
+.lp-gallery-img::after {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border: 1px solid rgba(250, 241, 239, 0.3);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.lp-gallery-img:hover { transform: scale(1.02); }
+.lp-gallery-img:hover::after { opacity: 1; }
+.lp-gallery-img--tall { grid-row: span 2; }
+.lp-gallery-img--wide { grid-column: span 2; }
+
+/* Mood / atmosphere photos */
+.lp-mood {
+  padding: 100px 56px;
+  background: var(--ivory);
+}
+.lp-mood-head {
+  max-width: 880px;
+  margin: 0 auto 56px;
+  text-align: center;
+}
+.lp-mood-head .eyebrow-en {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 13px;
+  letter-spacing: 0.5em;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 22px;
+  text-transform: uppercase;
+}
+.lp-mood-head h2 {
+  font-size: clamp(28px, 3.5vw, 44px);
+  font-weight: 300;
+  color: var(--teal-deep);
+  letter-spacing: 0.15em;
+  line-height: 1.4;
+}
+.lp-mood-head h2 .accent { color: var(--gold); }
+.lp-mood-grid {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+.lp-mood-img {
+  aspect-ratio: 3 / 4;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.6s cubic-bezier(.16, 1, .3, 1);
+}
+.lp-mood-img:hover { transform: scale(1.02); }
+
+/* Visit info section */
+.lp-visit {
+  padding: 100px 56px;
+  background: var(--teal-deep);
+  color: var(--blush);
+}
+.lp-visit-head {
+  max-width: 880px;
+  margin: 0 auto 56px;
+  text-align: center;
+}
+.lp-visit-head .eyebrow-en {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 13px;
+  letter-spacing: 0.5em;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 22px;
+  text-transform: uppercase;
+}
+.lp-visit-head h2 {
+  font-size: clamp(28px, 3.5vw, 42px);
+  font-weight: 300;
+  color: var(--blush);
+  letter-spacing: 0.18em;
+  margin-bottom: 18px;
+}
+.lp-visit-head p {
+  font-size: 14.5px;
+  line-height: 1.9;
+  color: rgba(250, 241, 239, 0.75);
+}
+.lp-visit-grid {
+  max-width: 1080px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+.lp-visit-card {
+  padding: 36px 24px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(230, 164, 1, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 6px;
+}
+.lp-visit-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid rgba(230, 164, 1, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+.lp-visit-icon svg {
+  width: 18px;
+  height: 18px;
+  color: var(--gold);
+}
+.lp-visit-label {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 11px;
+  letter-spacing: 0.35em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.lp-visit-value {
+  font-size: 16px;
+  color: var(--blush);
+  letter-spacing: 0.1em;
+  font-weight: 400;
+}
+.lp-visit-hint {
+  font-size: 11.5px;
+  color: rgba(250, 241, 239, 0.55);
+  letter-spacing: 0.1em;
+  margin-top: 4px;
+}
+
+/* Minimal Footer */
+.lp-footer {
+  padding: 60px 56px 36px;
+  background: #1a1a1a;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: center;
+}
+.lp-footer-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+.lp-footer .logo-mark { align-items: center; margin-bottom: 8px; }
+.lp-footer .logo-mark .ch { font-size: 1.4rem; }
+.lp-footer-tagline {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.55);
+  letter-spacing: 0.2em;
+}
+.lp-footer-meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 24px;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.45);
+  margin-top: 12px;
+}
+.lp-footer-bottom {
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  color: rgba(255, 255, 255, 0.25);
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  width: 100%;
+}
+
+/* Landing page responsive */
+@media (max-width: 960px) {
+  .lp-hero { padding: 100px 24px 80px; }
+  .lp-hero-meta { gap: 28px; padding-top: 28px; }
+  .lp-hero-meta strong { font-size: 18px; }
+  .lp-intro { padding: 60px 24px; }
+  .lp-menu-grid { grid-template-columns: repeat(2, 1fr); gap: 18px; }
+  .lp-gallery-section { padding: 70px 24px; }
+  .lp-gallery { grid-template-columns: repeat(3, 1fr); grid-auto-rows: 140px; gap: 10px; }
+  .lp-gallery-img--wide { grid-column: span 2; }
+  .lp-mood { padding: 70px 24px; }
+  .lp-mood-grid { grid-template-columns: repeat(2, 1fr); }
+  .lp-visit { padding: 70px 24px; }
+  .lp-visit-grid { grid-template-columns: repeat(2, 1fr); }
+  nav.top.top--landing .nav-cta { display: inline-block; font-size: 0.7rem; padding: 9px 18px; }
+}
+@media (max-width: 600px) {
+  .lp-hero { padding: 92px 20px 64px; min-height: auto; }
+  .lp-hero h1 { font-size: clamp(34px, 8.5vw, 48px); letter-spacing: 0.06em; }
+  .lp-hero-en { font-size: 15px; letter-spacing: 0.22em; margin-bottom: 24px; }
+  .lp-hero-desc { font-size: 14.5px; line-height: 1.9; margin-bottom: 32px; }
+  .lp-hero-cta { gap: 14px; margin-bottom: 36px; }
+  .lp-hero-meta { gap: 22px; padding-top: 24px; }
+  .lp-hero-meta strong { font-size: 16px; }
+  .lp-intro { padding: 56px 20px; }
+  .lp-intro h2 { font-size: clamp(22px, 6vw, 30px); letter-spacing: 0.1em; }
+  .lp-intro-chips { gap: 8px; }
+  .lp-intro-chips span { font-size: 11px; letter-spacing: 0.18em; padding: 7px 14px; }
+  .menu-section { padding: 56px 20px; }
+  .lp-menu-grid { grid-template-columns: 1fr; }
+  .lp-menu-cta { margin-top: 40px; }
+  .lp-gallery-section { padding: 56px 16px; }
+  .lp-gallery-head { margin-bottom: 36px; }
+  .lp-gallery-head h2 { font-size: clamp(24px, 7vw, 36px); letter-spacing: 0.1em; }
+  .lp-gallery { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 130px; gap: 6px; }
+  .lp-gallery-img--tall { grid-row: span 2; }
+  .lp-gallery-img--wide { grid-column: span 2; }
+  .lp-mood { padding: 56px 20px; }
+  .lp-mood-head h2 { font-size: clamp(22px, 6.5vw, 32px); letter-spacing: 0.1em; }
+  .lp-mood-grid { gap: 8px; }
+  .lp-visit { padding: 56px 20px; }
+  .lp-visit-head h2 { font-size: clamp(22px, 6vw, 32px); letter-spacing: 0.1em; }
+  .lp-visit-grid { gap: 10px; }
+  .lp-visit-card { padding: 28px 18px; }
+  .lp-visit-value { font-size: 14.5px; letter-spacing: 0.08em; }
+  .lp-footer { padding: 48px 20px 28px; }
+  .lp-footer-meta { font-size: 0.72rem; gap: 6px 16px; }
+}
+@media (max-width: 380px) {
+  .lp-visit-grid { grid-template-columns: 1fr; }
+  .lp-gallery { grid-template-columns: 1fr; grid-auto-rows: 220px; }
+  .lp-gallery-img--tall,
+  .lp-gallery-img--wide { grid-row: auto; grid-column: auto; }
+}
