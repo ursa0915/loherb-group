@@ -2842,9 +2842,15 @@ footer.site-footer a:hover { color: var(--gold); }
   .pill-item { font-size: 12px; letter-spacing: 0.08em; padding: 9px 16px; }
   .pill-item::before { margin-right: 7px; }
 
-  /* Home intro */
-  .home-intro { padding: 60px 20px; }
-  .home-intro h2 { font-size: clamp(20px, 6vw, 28px); letter-spacing: 0.1em; line-height: 1.55; margin-bottom: 26px; }
+  /* Home intro — scale headline so each line stays single-line on phone */
+  .home-intro { padding: 60px 16px; }
+  .home-intro h2 {
+    font-size: clamp(15px, 4.4vw, 24px);
+    letter-spacing: 0.04em;
+    line-height: 1.7;
+    margin-bottom: 26px;
+    white-space: nowrap;
+  }
   .home-intro .chips { gap: 8px; }
   .home-intro .chips span { font-size: 11px; letter-spacing: 0.16em; padding: 7px 13px; }
 
