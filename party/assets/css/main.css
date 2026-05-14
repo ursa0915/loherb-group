@@ -2110,7 +2110,7 @@ section { padding: 130px 56px; max-width: 1280px; margin: 0 auto; }
 /* ───────────── Reserve / CTA ───────────── */
 .reserve-cta {
   text-align: center;
-  padding: 90px 56px 120px;
+  padding: 30px 56px 120px;
   background: var(--blush);
 }
 .reserve-cta .eyebrow {
@@ -3019,7 +3019,7 @@ footer.site-footer a:hover { color: var(--gold); }
   .row, .row.reverse { grid-template-columns: 1fr; direction: ltr; gap: 32px; padding: 40px 0; }
   .menu-grid { grid-template-columns: 1fr; gap: 32px; }
   .info-row { gap: 28px; }
-  .reserve-cta { padding: 70px 24px 90px; }
+  .reserve-cta { padding: 24px 24px 80px; }
 
   /* Form */
   .form-row { grid-template-columns: 1fr; gap: 18px; }
@@ -3248,7 +3248,7 @@ footer.site-footer a:hover { color: var(--gold); }
   .menu-item p { font-size: 13.5px; }
 
   /* Reserve CTA */
-  .reserve-cta { padding: 56px 20px 72px; }
+  .reserve-cta { padding: 16px 20px 64px; }
   .reserve-cta h2 { font-size: clamp(24px, 7vw, 36px); letter-spacing: 0.1em; margin-bottom: 18px; }
   .reserve-cta .eyebrow { font-size: 11.5px; letter-spacing: 0.35em; }
   .reserve-cta .en-quote { font-size: 15px; letter-spacing: 0.15em; margin-bottom: 32px; }
