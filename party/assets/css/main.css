@@ -2632,6 +2632,70 @@ footer.site-footer a:hover { color: var(--gold); }
 }
 .menu-gallery-img:hover { transform: scale(1.02); }
 
+/* Per-dish photo cards */
+.menu-dish-grid {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  gap: 28px;
+}
+.menu-dish-grid--2 { grid-template-columns: repeat(2, 1fr); }
+.menu-dish-grid--3 { grid-template-columns: repeat(3, 1fr); }
+
+.menu-dish {
+  background: #fff;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.5s cubic-bezier(.16, 1, .3, 1), box-shadow 0.5s;
+  position: relative;
+}
+.menu-dish:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 40px -22px rgba(48, 76, 76, 0.28);
+}
+.menu-block--alt .menu-dish { background: var(--ivory); }
+
+.menu-dish-photo {
+  aspect-ratio: 4 / 3;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+  transition: transform 1.2s cubic-bezier(.16, 1, .3, 1);
+}
+.menu-dish:hover .menu-dish-photo { transform: scale(1.03); }
+
+.menu-dish-body {
+  padding: 24px 22px 28px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.menu-dish-body h4 {
+  font-size: 19px;
+  font-weight: 400;
+  color: var(--teal-deep);
+  letter-spacing: 0.12em;
+}
+.menu-dish-body .en {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 13px;
+  letter-spacing: 0.28em;
+  color: var(--rose-dry);
+  text-transform: uppercase;
+  display: block;
+}
+.menu-dish-body p {
+  margin-top: 8px;
+  font-size: 13.5px;
+  color: var(--charcoal);
+  line-height: 1.85;
+  letter-spacing: 0.03em;
+}
+
 /* Menu page responsive */
 @media (max-width: 900px) {
   .menu-info { padding: 40px 24px 0; }
@@ -2642,6 +2706,8 @@ footer.site-footer a:hover { color: var(--gold); }
   .menu-gallery { margin-top: 36px; gap: 10px; }
   .menu-gallery--3 { grid-template-columns: 1fr 1fr; }
   .menu-gallery--3 .menu-gallery-img:nth-child(3) { grid-column: 1 / -1; }
+  .menu-dish-grid--3 { grid-template-columns: repeat(2, 1fr); gap: 18px; }
+  .menu-dish-grid--2 { gap: 18px; }
 }
 @media (max-width: 600px) {
   .menu-info { padding: 32px 20px 0; }
@@ -2666,6 +2732,16 @@ footer.site-footer a:hover { color: var(--gold); }
   .menu-block-foot { margin-top: 32px; font-size: 12px; letter-spacing: 0.15em; padding: 14px 16px; }
   .menu-gallery { gap: 8px; margin-top: 28px; }
   .menu-gallery-img::after { inset: 6px; }
+  .menu-dish-grid--3 { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .menu-dish-grid--2 { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .menu-dish-body { padding: 16px 14px 20px; }
+  .menu-dish-body h4 { font-size: 15.5px; letter-spacing: 0.08em; }
+  .menu-dish-body .en { font-size: 10.5px; letter-spacing: 0.2em; }
+  .menu-dish-body p { font-size: 12.5px; line-height: 1.7; margin-top: 6px; }
+}
+@media (max-width: 380px) {
+  .menu-dish-grid--3,
+  .menu-dish-grid--2 { grid-template-columns: 1fr; }
 }
 
 /* ════════════════════════════════════════
