@@ -2186,6 +2186,16 @@ section { padding: 130px 56px; max-width: 1280px; margin: 0 auto; }
 .field textarea { resize: vertical; min-height: 120px; }
 .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--rose-pink); }
 .field input::placeholder, .field textarea::placeholder { color: rgba(80, 83, 80, 0.4); }
+/* Empty date input — grey until user picks a date */
+.field input[type="date"] { color: rgba(80, 83, 80, 0.4); }
+.field input[type="date"]:focus,
+.field input[type="date"][data-filled] { color: var(--teal-deep); }
+/* Empty select — grey when the default "請選擇 / Please select" option is shown */
+.field select { color: var(--teal-deep); }
+.field select:invalid,
+.field select[data-empty] { color: rgba(80, 83, 80, 0.4); }
+.field select option { color: var(--teal-deep); }
+.field select option[value=""] { color: rgba(80, 83, 80, 0.4); }
 .form-submit { text-align: center; margin-top: 16px; }
 
 /* ───────────── Journal / Articles ───────────── */

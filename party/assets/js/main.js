@@ -42,6 +42,19 @@
       heroVisual.style.transform = `translateY(${y}px)`;
     }, { passive: true });
   }
+
+  // Mark form fields as filled (so empty date/select can show grey "placeholder")
+  document.querySelectorAll('.field input[type="date"]').forEach((el) => {
+    const sync = () => el.toggleAttribute('data-filled', !!el.value);
+    el.addEventListener('input', sync);
+    el.addEventListener('change', sync);
+    sync();
+  });
+  document.querySelectorAll('.field select').forEach((el) => {
+    const sync = () => el.toggleAttribute('data-empty', !el.value);
+    el.addEventListener('change', sync);
+    sync();
+  });
 })();
 
 // Form submit handler — used by /book pages
