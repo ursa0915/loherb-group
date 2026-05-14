@@ -3484,3 +3484,382 @@ nav.top.top--landing-soft .nav-ig svg { width: 18px; height: 18px; }
   .lp2-mood-grid { grid-template-columns: 1fr; }
   .lp2-mood-img { aspect-ratio: 4 / 3; }
 }
+
+/* ════════════════════════════════════════
+   網美 Café v2 — bakery-inspired additions
+   ════════════════════════════════════════ */
+
+/* ───── Pink Pill Buttons ───── */
+.btn-pink {
+  display: inline-block;
+  font-family: "Noto Serif TC", serif;
+  font-size: 12.5px;
+  letter-spacing: 0.22em;
+  padding: 10px 22px;
+  background: var(--rose-pink);
+  color: var(--ivory);
+  border: 1px solid var(--rose-pink);
+  border-radius: 999px;
+  text-decoration: none;
+  transition: all 0.35s;
+  white-space: nowrap;
+}
+.btn-pink:hover {
+  background: var(--teal-deep);
+  border-color: var(--teal-deep);
+}
+.btn-pink--sm { font-size: 11.5px; padding: 7px 18px; letter-spacing: 0.18em; }
+.btn-pink--lg { font-size: 13px; padding: 14px 32px; letter-spacing: 0.28em; }
+.btn-pink-outline {
+  display: inline-block;
+  font-family: "Noto Serif TC", serif;
+  font-size: 12.5px;
+  letter-spacing: 0.22em;
+  padding: 10px 22px;
+  background: transparent;
+  color: var(--rose-pink);
+  border: 1px solid var(--rose-pink);
+  border-radius: 999px;
+  text-decoration: none;
+  transition: all 0.35s;
+  white-space: nowrap;
+}
+.btn-pink-outline:hover {
+  background: var(--rose-pink);
+  color: var(--ivory);
+}
+
+/* ───── Hero v2 — Food collage + text card ───── */
+.lp2-hero-v2 {
+  position: relative;
+  padding: 130px 56px 100px;
+  background:
+    radial-gradient(ellipse at 50% 30%, rgba(222, 126, 147, 0.08) 0%, transparent 70%),
+    var(--blush);
+  display: grid;
+  grid-template-columns: 1fr 480px;
+  gap: 48px;
+  align-items: center;
+  max-width: 1320px;
+  margin: 0 auto;
+  min-height: 88vh;
+}
+.lp2-collage {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 160px;
+  gap: 12px;
+}
+.lp2-collage-img {
+  background-size: cover;
+  background-position: center;
+  border-radius: 6px;
+  box-shadow: 0 12px 32px -16px rgba(48, 76, 76, 0.25);
+  transition: transform 0.5s cubic-bezier(.16, 1, .3, 1);
+}
+.lp2-collage-img:hover { transform: scale(1.02); }
+.lp2-collage-img--a { grid-column: span 2; grid-row: span 2; }
+.lp2-collage-img--b { grid-column: span 1; grid-row: span 1; }
+.lp2-collage-img--c { grid-column: span 1; grid-row: span 1; }
+.lp2-collage-img--d { grid-column: span 1; grid-row: span 1; }
+.lp2-collage-img--e { grid-column: span 1; grid-row: span 1; }
+.lp2-collage-img--f { grid-column: span 2; grid-row: span 1; }
+
+.lp2-hero-card {
+  background: rgba(255, 253, 249, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 56px 48px;
+  text-align: center;
+  border: 1px solid rgba(222, 126, 147, 0.18);
+  box-shadow: 0 30px 70px -40px rgba(48, 76, 76, 0.3);
+}
+
+/* ───── Why Choose Us — 3 feature cards ───── */
+.lp2-why {
+  padding: 100px 56px;
+  background: var(--ivory);
+  text-align: center;
+}
+.lp2-why-head { max-width: 720px; margin: 0 auto 56px; }
+.lp2-flower {
+  font-size: 18px;
+  color: var(--rose-pink);
+  display: block;
+  margin-bottom: 14px;
+}
+.lp2-why-head h2 {
+  font-size: clamp(28px, 3.5vw, 40px);
+  font-weight: 300;
+  color: var(--teal-deep);
+  letter-spacing: 0.15em;
+  line-height: 1.4;
+}
+.lp2-why-head h2 .accent { color: var(--rose-pink); }
+.lp2-why-grid {
+  max-width: 1180px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+.lp2-why-card {
+  background: #fff;
+  padding: 22px 22px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 14px 36px -22px rgba(48, 76, 76, 0.2);
+  transition: transform 0.5s, box-shadow 0.5s;
+}
+.lp2-why-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 22px 50px -24px rgba(48, 76, 76, 0.3);
+}
+.lp2-why-img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 22px;
+}
+.lp2-why-card h3 {
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--teal-deep);
+  letter-spacing: 0.15em;
+  margin-bottom: 12px;
+}
+.lp2-why-card p {
+  font-size: 13.5px;
+  color: var(--charcoal);
+  line-height: 1.85;
+  letter-spacing: 0.04em;
+  margin-bottom: 22px;
+  padding: 0 12px;
+}
+
+/* ───── Today's Bakes — 6 product cards (3x2) ───── */
+.lp2-bakes {
+  padding: 100px 56px;
+  background: var(--blush);
+}
+.lp2-bakes-head {
+  max-width: 880px;
+  margin: 0 auto 56px;
+  text-align: center;
+}
+.lp2-bakes-head h2 {
+  font-size: clamp(28px, 3.6vw, 42px);
+  font-weight: 300;
+  color: var(--teal-deep);
+  letter-spacing: 0.15em;
+  line-height: 1.4;
+  margin-bottom: 16px;
+}
+.lp2-bakes-head h2 .accent { color: var(--rose-pink); }
+.lp2-bakes-head p {
+  font-size: 14px;
+  color: var(--charcoal);
+  line-height: 1.9;
+  letter-spacing: 0.05em;
+}
+.lp2-bakes-grid {
+  max-width: 1180px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px 24px;
+}
+.lp2-bake {
+  background: #fff;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.5s, box-shadow 0.5s;
+  box-shadow: 0 14px 36px -22px rgba(48, 76, 76, 0.2);
+}
+.lp2-bake:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 50px -24px rgba(48, 76, 76, 0.3);
+}
+.lp2-bake-img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background-size: cover;
+  background-position: center;
+  transition: transform 1.2s cubic-bezier(.16, 1, .3, 1);
+}
+.lp2-bake:hover .lp2-bake-img { transform: scale(1.04); }
+.lp2-bake-body {
+  padding: 20px 22px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+.lp2-bake-body h3 {
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--teal-deep);
+  letter-spacing: 0.12em;
+}
+.lp2-bake-en {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 12.5px;
+  letter-spacing: 0.28em;
+  color: var(--rose-dry);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.lp2-bake-body .btn-pink--sm { align-self: flex-start; }
+
+/* ───── Featured Mains — 4 large dish cards (2x2) ───── */
+.lp2-mains {
+  padding: 100px 56px;
+  background: var(--ivory);
+}
+.lp2-mains-head {
+  max-width: 880px;
+  margin: 0 auto 56px;
+  text-align: center;
+}
+.lp2-mains-head h2 {
+  font-size: clamp(28px, 3.6vw, 42px);
+  font-weight: 300;
+  color: var(--teal-deep);
+  letter-spacing: 0.15em;
+  line-height: 1.4;
+}
+.lp2-mains-head h2 .accent { color: var(--rose-pink); }
+.lp2-mains-grid {
+  max-width: 1180px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+.lp2-main {
+  background: #fff;
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  overflow: hidden;
+  transition: transform 0.5s, box-shadow 0.5s;
+  box-shadow: 0 14px 36px -22px rgba(48, 76, 76, 0.2);
+  min-height: 280px;
+}
+.lp2-main:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 22px 50px -24px rgba(48, 76, 76, 0.3);
+}
+.lp2-main-img {
+  background-size: cover;
+  background-position: center;
+}
+.lp2-main-body {
+  padding: 28px 26px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.lp2-main-num {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 12px;
+  letter-spacing: 0.4em;
+  color: var(--rose-pink);
+  display: block;
+  margin-bottom: 10px;
+}
+.lp2-main-body h3 {
+  font-size: 19px;
+  font-weight: 400;
+  color: var(--teal-deep);
+  letter-spacing: 0.14em;
+  margin-bottom: 4px;
+}
+.lp2-main-en {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 12.5px;
+  letter-spacing: 0.25em;
+  color: var(--rose-dry);
+  display: block;
+  margin-bottom: 14px;
+}
+.lp2-main-body p {
+  font-size: 13.5px;
+  color: var(--charcoal);
+  line-height: 1.85;
+  letter-spacing: 0.04em;
+  margin-bottom: 20px;
+}
+.lp2-main-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(222, 126, 147, 0.25);
+}
+.lp2-main-price {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 20px;
+  color: var(--gold);
+  letter-spacing: 0.1em;
+}
+
+/* ───── IG feed grid — 4-col variant ───── */
+.lp2-feed-grid--4col {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* ───── v2 Responsive ───── */
+@media (max-width: 1024px) {
+  .lp2-hero-v2 { grid-template-columns: 1fr; gap: 40px; min-height: auto; padding: 110px 24px 80px; }
+  .lp2-hero-card { max-width: 540px; margin: 0 auto; padding: 44px 32px; }
+  .lp2-collage { grid-auto-rows: 140px; max-width: 720px; margin: 0 auto; }
+}
+@media (max-width: 960px) {
+  .lp2-why { padding: 70px 24px; }
+  .lp2-why-grid { grid-template-columns: 1fr; gap: 24px; max-width: 460px; }
+  .lp2-bakes { padding: 70px 24px; }
+  .lp2-bakes-grid { grid-template-columns: repeat(2, 1fr); gap: 22px 18px; max-width: 640px; }
+  .lp2-mains { padding: 70px 24px; }
+  .lp2-mains-grid { grid-template-columns: 1fr; gap: 22px; max-width: 560px; }
+  .lp2-main { grid-template-columns: 1fr; min-height: 0; }
+  .lp2-main-img { aspect-ratio: 16 / 10; }
+  .lp2-feed-grid--4col { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 600px) {
+  .lp2-hero-v2 { padding: 96px 16px 56px; gap: 28px; }
+  .lp2-hero-card { padding: 32px 22px; }
+  .lp2-collage { grid-auto-rows: 96px; gap: 8px; }
+  .lp2-why { padding: 56px 16px; }
+  .lp2-why-card { padding: 16px 16px 26px; }
+  .lp2-why-img { margin-bottom: 18px; }
+  .lp2-why-card h3 { font-size: 18px; letter-spacing: 0.12em; }
+  .lp2-why-card p { font-size: 13px; padding: 0; }
+  .lp2-bakes { padding: 56px 16px; }
+  .lp2-bakes-grid { gap: 16px 12px; }
+  .lp2-bake-body { padding: 16px 16px 20px; }
+  .lp2-bake-body h3 { font-size: 16px; letter-spacing: 0.08em; }
+  .lp2-bake-en { font-size: 11px; letter-spacing: 0.22em; margin-bottom: 10px; }
+  .lp2-mains { padding: 56px 16px; }
+  .lp2-mains-grid { gap: 18px; }
+  .lp2-main-body { padding: 22px 20px; }
+  .lp2-main-body h3 { font-size: 17px; letter-spacing: 0.1em; }
+  .lp2-main-body p { font-size: 13px; }
+  .lp2-feed-grid--4col { grid-template-columns: repeat(3, 1fr); gap: 4px; }
+  .btn-pink { font-size: 11.5px; padding: 9px 18px; letter-spacing: 0.18em; }
+  .btn-pink--lg { font-size: 12.5px; padding: 13px 28px; letter-spacing: 0.22em; }
+  .btn-pink--sm { font-size: 10.5px; padding: 6px 14px; letter-spacing: 0.14em; }
+}
+@media (max-width: 380px) {
+  .lp2-bakes-grid { grid-template-columns: 1fr; max-width: 280px; }
+  .lp2-feed-grid--4col { grid-template-columns: repeat(2, 1fr); }
+}
