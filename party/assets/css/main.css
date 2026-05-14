@@ -3863,3 +3863,202 @@ nav.top.top--landing-soft .nav-ig svg { width: 18px; height: 18px; }
   .lp2-bakes-grid { grid-template-columns: 1fr; max-width: 280px; }
   .lp2-feed-grid--4col { grid-template-columns: repeat(2, 1fr); }
 }
+
+/* ════════════════════════════════════════
+   Café v2 — Reviews / 網美推薦 section
+   ════════════════════════════════════════ */
+.lp2-reviews {
+  padding: 100px 56px;
+  background: var(--ivory);
+  position: relative;
+  overflow: hidden;
+}
+.lp2-reviews::before,
+.lp2-reviews::after {
+  content: "❀";
+  position: absolute;
+  font-size: 240px;
+  color: rgba(222, 126, 147, 0.06);
+  z-index: 0;
+  font-family: serif;
+}
+.lp2-reviews::before { top: 40px; left: -40px; transform: rotate(-15deg); }
+.lp2-reviews::after { bottom: 40px; right: -40px; transform: rotate(20deg); }
+
+.lp2-reviews-head {
+  max-width: 720px;
+  margin: 0 auto 56px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+.lp2-reviews-head h2 {
+  font-size: clamp(28px, 3.6vw, 42px);
+  font-weight: 300;
+  color: var(--teal-deep);
+  letter-spacing: 0.15em;
+  line-height: 1.4;
+  margin-bottom: 20px;
+}
+.lp2-reviews-head h2 .accent { color: var(--rose-pink); }
+.lp2-reviews-rating {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 12px 26px;
+  background: var(--blush);
+  border-radius: 999px;
+}
+.lp2-reviews-stars {
+  color: var(--rose-pink);
+  font-size: 16px;
+  letter-spacing: 0.18em;
+}
+.lp2-reviews-score {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 22px;
+  color: var(--gold);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+.lp2-reviews-count {
+  font-size: 12.5px;
+  color: var(--charcoal);
+  letter-spacing: 0.12em;
+}
+
+.lp2-reviews-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  position: relative;
+  z-index: 1;
+}
+.lp2-review {
+  background: #fff;
+  padding: 32px 28px;
+  border: 1px solid rgba(222, 126, 147, 0.18);
+  box-shadow: 0 14px 36px -22px rgba(48, 76, 76, 0.18);
+  transition: transform 0.5s, box-shadow 0.5s;
+  display: flex;
+  flex-direction: column;
+}
+.lp2-review:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 22px 50px -22px rgba(48, 76, 76, 0.28);
+}
+.lp2-review--featured {
+  background: var(--blush);
+  border-color: var(--rose-pink);
+  border-width: 1px;
+  position: relative;
+}
+.lp2-review--featured::before {
+  content: "★ 精選";
+  position: absolute;
+  top: -12px;
+  right: 24px;
+  background: var(--rose-pink);
+  color: var(--ivory);
+  padding: 5px 14px;
+  border-radius: 999px;
+  font-size: 10.5px;
+  letter-spacing: 0.22em;
+}
+.lp2-review-stars {
+  color: var(--rose-pink);
+  font-size: 15px;
+  letter-spacing: 0.22em;
+  margin-bottom: 18px;
+}
+.lp2-review-quote {
+  font-family: "Noto Serif TC", serif;
+  font-size: 14.5px;
+  color: var(--charcoal);
+  line-height: 1.95;
+  letter-spacing: 0.04em;
+  margin-bottom: 24px;
+  flex: 1;
+}
+.lp2-review-author {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+.lp2-review-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 19px;
+  color: var(--ivory);
+  font-weight: 500;
+  letter-spacing: 0;
+  flex-shrink: 0;
+}
+.lp2-review-name {
+  font-size: 14px;
+  color: var(--teal-deep);
+  letter-spacing: 0.1em;
+  margin-bottom: 2px;
+}
+.lp2-review-handle {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 11.5px;
+  letter-spacing: 0.15em;
+  color: var(--rose-dry);
+}
+.lp2-review-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding-top: 16px;
+  border-top: 1px dashed rgba(222, 126, 147, 0.3);
+}
+.lp2-review-tags span {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--rose-pink);
+  background: rgba(222, 126, 147, 0.08);
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+.lp2-reviews-cta {
+  text-align: center;
+  margin-top: 48px;
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 960px) {
+  .lp2-reviews { padding: 70px 24px; }
+  .lp2-reviews-grid { grid-template-columns: repeat(2, 1fr); gap: 18px; }
+  .lp2-review { padding: 26px 22px; }
+}
+@media (max-width: 600px) {
+  .lp2-reviews { padding: 56px 16px; }
+  .lp2-reviews-head { margin-bottom: 40px; }
+  .lp2-reviews-rating { padding: 10px 20px; gap: 8px; }
+  .lp2-reviews-stars { font-size: 14px; letter-spacing: 0.14em; }
+  .lp2-reviews-score { font-size: 18px; }
+  .lp2-reviews-count { font-size: 11px; letter-spacing: 0.08em; }
+  .lp2-reviews-grid { grid-template-columns: 1fr; gap: 14px; max-width: 460px; }
+  .lp2-review { padding: 22px 20px; }
+  .lp2-review-stars { font-size: 13px; letter-spacing: 0.18em; }
+  .lp2-review-quote { font-size: 13.5px; line-height: 1.85; }
+  .lp2-review-avatar { width: 36px; height: 36px; font-size: 16px; }
+  .lp2-review-name { font-size: 13px; }
+  .lp2-review-handle { font-size: 10.5px; letter-spacing: 0.12em; }
+  .lp2-review-tags span { font-size: 10px; padding: 3px 8px; }
+  .lp2-reviews::before, .lp2-reviews::after { font-size: 140px; }
+}
