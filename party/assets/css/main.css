@@ -2400,6 +2400,148 @@ footer.site-footer a:hover { color: var(--gold); }
 }
 .footer-bottom span { display: inline-block; }
 
+/* ════════════════════════════════════════
+   LOHERB Group brand cards (contact page)
+   ════════════════════════════════════════ */
+.brands-section {
+  padding: 110px 0;
+  background: var(--teal-deep);
+  color: var(--blush);
+}
+.brands-head {
+  max-width: 1280px;
+  margin: 0 auto 56px;
+  padding: 0 56px;
+  text-align: center;
+}
+.brands-head .eyebrow-en {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 13px;
+  letter-spacing: 0.5em;
+  color: var(--gold);
+  font-style: italic;
+  display: block;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+.brands-head h2 {
+  font-size: clamp(28px, 3.5vw, 40px);
+  font-weight: 300;
+  color: var(--blush);
+  letter-spacing: 0.18em;
+  margin-bottom: 14px;
+}
+.brands-head p {
+  max-width: 600px;
+  margin: 0 auto;
+  font-size: 14px;
+  line-height: 1.9;
+  color: rgba(250, 241, 239, 0.75);
+}
+
+.brands-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  padding: 0 clamp(16px, 3vw, 48px);
+}
+.brand-card {
+  position: relative;
+  aspect-ratio: 5 / 4;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 32px 24px;
+  text-decoration: none;
+  color: var(--blush);
+  transition: transform 0.6s cubic-bezier(.16, 1, .3, 1);
+}
+.brand-card-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.9s cubic-bezier(.16, 1, .3, 1);
+  z-index: 0;
+}
+.brand-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(48, 76, 76, 0.25) 0%, rgba(48, 76, 76, 0.65) 60%, rgba(48, 76, 76, 0.85) 100%);
+  z-index: 1;
+  transition: opacity 0.5s;
+}
+.brand-card:hover .brand-card-bg { transform: scale(1.06); }
+.brand-card:hover::before { opacity: 0.7; }
+
+.brand-card-body {
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.5);
+}
+.brand-card-en {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 12px;
+  letter-spacing: 0.45em;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 14px;
+  text-transform: uppercase;
+}
+.brand-card h3 {
+  font-size: 28px;
+  font-weight: 300;
+  color: var(--blush);
+  letter-spacing: 0.2em;
+  margin-bottom: 16px;
+  line-height: 1.3;
+}
+.brand-card-tag {
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  color: rgba(250, 241, 239, 0.85);
+  display: block;
+  position: relative;
+  padding-top: 14px;
+}
+.brand-card-tag::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 24px;
+  height: 1px;
+  background: var(--gold);
+}
+
+@media (max-width: 960px) {
+  .brands-section { padding: 80px 0; }
+  .brands-head { padding: 0 24px; margin-bottom: 40px; }
+  .brands-grid { grid-template-columns: 1fr 1fr; padding: 0 16px; }
+  .brand-card { padding: 28px 20px; }
+  .brand-card h3 { font-size: 22px; letter-spacing: 0.15em; }
+}
+@media (max-width: 600px) {
+  .brands-section { padding: 64px 0; }
+  .brands-head { padding: 0 20px; }
+  .brands-head h2 { font-size: 22px; letter-spacing: 0.12em; }
+  .brands-grid { grid-template-columns: 1fr 1fr; gap: 2px; padding: 0 12px; }
+  .brand-card { aspect-ratio: 4 / 5; padding: 22px 14px; }
+  .brand-card-en { font-size: 10.5px; letter-spacing: 0.35em; margin-bottom: 10px; }
+  .brand-card h3 { font-size: 18px; letter-spacing: 0.12em; margin-bottom: 12px; }
+  .brand-card-tag { font-size: 10.5px; letter-spacing: 0.14em; padding-top: 10px; }
+  .brand-card-tag::before { width: 18px; }
+}
+@media (max-width: 380px) {
+  .brands-grid { grid-template-columns: 1fr; }
+  .brand-card { aspect-ratio: 16 / 10; }
+}
+
 /* ───────────── Map ───────────── */
 .map-wrap {
   width: 100%;
