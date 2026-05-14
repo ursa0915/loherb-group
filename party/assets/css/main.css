@@ -2565,7 +2565,7 @@ footer.site-footer a:hover { color: var(--gold); }
    Menu Page — 時刻菜單
    ════════════════════════════════════════ */
 .menu-info {
-  padding: 48px 56px 24px;
+  padding: 48px 56px;
   max-width: 1280px;
   margin: 0 auto;
 }
@@ -2850,7 +2850,7 @@ footer.site-footer a:hover { color: var(--gold); }
 
 /* Menu page responsive */
 @media (max-width: 900px) {
-  .menu-info { padding: 40px 24px 0; }
+  .menu-info { padding: 40px 24px; }
   .menu-info-card { padding: 32px 28px; }
   .menu-block { padding: 80px 24px; }
   .menu-grid--2 { grid-template-columns: 1fr; gap: 28px; }
@@ -2862,7 +2862,7 @@ footer.site-footer a:hover { color: var(--gold); }
   .menu-dish-grid--2 { gap: 18px; }
 }
 @media (max-width: 600px) {
-  .menu-info { padding: 32px 20px 0; }
+  .menu-info { padding: 32px 20px; }
   .menu-info-card { padding: 28px 22px; }
   .menu-info-row { font-size: 13px; flex-direction: column; gap: 4px; align-items: flex-start; padding: 10px 0; }
   .menu-info-row .value { font-size: 15px; letter-spacing: 0.15em; }
