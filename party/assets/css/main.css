@@ -2905,12 +2905,13 @@ nav.top.top--landing-soft .nav-ig svg { width: 18px; height: 18px; }
   position: relative;
 }
 .lp2-quote-mark {
-  font-family: "Cormorant Garamond", serif;
-  font-size: 120px;
-  color: var(--gold);
-  line-height: 0.6;
-  display: block;
-  margin-bottom: 18px;
+  display: inline-block;
+  width: 72px;
+  height: 72px;
+  background-color: var(--gold);
+  -webkit-mask: url('/party/images/brand/loherb-moments-mark.png') no-repeat center / contain;
+  mask: url('/party/images/brand/loherb-moments-mark.png') no-repeat center / contain;
+  margin: 0 auto 24px;
 }
 .lp2-pullquote p {
   font-family: "Noto Serif TC", serif;
@@ -3444,7 +3445,7 @@ nav.top.top--landing-soft .nav-ig svg { width: 18px; height: 18px; }
   .lp2-hero-tag { font-size: 10.5px; letter-spacing: 0.22em; margin-top: 26px; padding-top: 18px; }
 
   .lp2-pullquote { padding: 56px 20px; }
-  .lp2-quote-mark { font-size: 76px; }
+  .lp2-quote-mark { width: 56px; height: 56px; margin-bottom: 18px; }
   .lp2-pullquote p { font-size: clamp(18px, 5.5vw, 26px); letter-spacing: 0.1em; line-height: 1.85; }
   .lp2-quote-en { font-size: 13.5px; letter-spacing: 0.2em; }
 
@@ -3914,15 +3915,18 @@ nav.top.top--landing-soft .nav-ig svg { width: 18px; height: 18px; }
 }
 .lp2-reviews::before,
 .lp2-reviews::after {
-  content: "❀";
+  content: "";
   position: absolute;
-  font-size: 240px;
-  color: rgba(230, 164, 1, 0.08);
+  width: 380px;
+  height: 380px;
+  background-color: rgba(230, 164, 1, 0.09);
+  -webkit-mask: url('/party/images/brand/loherb-moments-mark.png') no-repeat center / contain;
+  mask: url('/party/images/brand/loherb-moments-mark.png') no-repeat center / contain;
   z-index: 0;
-  font-family: serif;
+  pointer-events: none;
 }
-.lp2-reviews::before { top: 40px; left: -40px; transform: rotate(-15deg); }
-.lp2-reviews::after { bottom: 40px; right: -40px; transform: rotate(20deg); }
+.lp2-reviews::before { top: 20px; left: -90px; transform: rotate(-12deg); }
+.lp2-reviews::after { bottom: 20px; right: -90px; transform: rotate(18deg); }
 
 .lp2-reviews-head {
   max-width: 720px;
