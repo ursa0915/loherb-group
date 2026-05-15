@@ -1,0 +1,15 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Moon body with cloud-bite contour on top right -->
+  <path d="M 48 12 Q 56 8 62 14 Q 70 8 76 16 Q 84 14 86 22 Q 90 30 84 34 Q 90 42 86 50 Q 92 68 80 80 Q 66 92 50 92 Q 28 92 16 76 Q 8 60 12 44 Q 16 28 28 18 Q 38 12 48 12 Z"/>
+  <!-- Martini glass cup (V) -->
+  <path d="M 30 36 L 46 36 L 38 50 Z"/>
+  <!-- Martini stem -->
+  <line x1="38" y1="50" x2="38" y2="64"/>
+  <!-- Martini base -->
+  <line x1="31" y1="64" x2="45" y2="64"/>
+  <!-- Olive in glass -->
+  <circle cx="38" cy="41" r="1.4" fill="currentColor" stroke="none"/>
+  <!-- Water waves -->
+  <path d="M 22 72 Q 32 67 42 72 T 62 72 Q 72 67 80 72"/>
+  <path d="M 26 80 Q 36 75 46 80 T 66 80 Q 74 76 80 80"/>
+</svg>
