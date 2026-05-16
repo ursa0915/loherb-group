@@ -1,0 +1,31 @@
+{
+  "name": "日光綠築 LOHERB Villa",
+  "short_name": "LOHERB Villa",
+  "description": "宜蘭冬山頂級綠建築民宿．稻田落羽松渡假村",
+  "lang": "zh-Hant",
+  "start_url": "/villa-loherb-redesign.html",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#084136",
+  "background_color": "#FAF2F0",
+  "categories": ["travel", "lifestyle", "hospitality"],
+  "icons": [
+    {
+      "src": "https://villa.loherb.com.tw/images/logos/loherb_logo_simple.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "https://villa.loherb.com.tw/images/villa_facebook.jpg",
+      "sizes": "1200x630",
+      "type": "image/jpeg",
+      "label": "日光綠築 LOHERB Villa 主視覺"
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
+}

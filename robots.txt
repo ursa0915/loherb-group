@@ -1,0 +1,47 @@
+# LOHERB 日光集團 — robots.txt
+# https://loherb-test.web.app/
+
+User-agent: *
+Allow: /
+
+# Block deployment / config artefacts
+Disallow: /.git/
+Disallow: /.claude/
+Disallow: /.deploy.sh
+Disallow: /wedding/vendor/
+Disallow: /wedding/storage/
+Disallow: /wedding/bootstrap/
+
+# 主要搜尋引擎優先
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Googlebot-Video
+Allow: /
+
+# 排除惡意爬蟲
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+# Sitemap
+Sitemap: https://loherb-test.web.app/sitemap.xml
+
+# Host hint
+Host: loherb-test.web.app

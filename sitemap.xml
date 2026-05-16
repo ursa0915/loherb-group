@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/0.9">
+
+  <!-- ============ 集團主站 ============ -->
+  <url>
+    <loc>https://loherb-test.web.app/main/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://loherb-test.web.app/main/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://loherb-test.web.app/main/en.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://loherb-test.web.app/main/" />
+  </url>
+  <url>
+    <loc>https://loherb-test.web.app/main/en.html</loc>
+    <lastmod>2026-05-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- ============ 日光綠築 LOHERB Villa（重點頁面） ============ -->
+  <url>
+    <loc>https://loherb-test.web.app/villa-loherb-redesign.html</loc>
+    <lastmod>2026-05-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://villa.loherb.com.tw/images/page-banners/about_page.jpg</image:loc>
+      <image:title>日光綠築 LOHERB Villa 主視覺</image:title>
+      <image:caption>宜蘭冬山稻田中的綠建築渡假村</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://villa.loherb.com.tw/images/villa_facebook.jpg</image:loc>
+      <image:title>日光綠築 LOHERB Villa</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://loherb-test.web.app/villa/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://loherb-test.web.app/villa/rooms.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://loherb-test.web.app/villa/about.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://loherb-test.web.app/villa/journal.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://loherb-test.web.app/villa/contact.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- ============ 日光私廚 LOHERB Cuisine ============ -->
+  <url>
+    <loc>https://loherb-test.web.app/cuisine/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://loherb-test.web.app/cuisine/menu.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://loherb-test.web.app/cuisine/book.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://loherb-test.web.app/cuisine/about.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://loherb-test.web.app/cuisine/journal.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://loherb-test.web.app/cuisine/contact.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- ============ 日光婚禮 LOHERB Wedding ============ -->
+  <url>
+    <loc>https://loherb-test.web.app/wedding/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://loherb-test.web.app/wedding/venues.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://loherb-test.web.app/wedding/cuisine.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://loherb-test.web.app/wedding/experience.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://loherb-test.web.app/wedding/journal.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://loherb-test.web.app/wedding/contact.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- ============ 日光時刻 LOHERB Party ============ -->
+  <url>
+    <loc>https://loherb-test.web.app/party/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://loherb-test.web.app/party/cafe.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://loherb-test.web.app/party/events.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://loherb-test.web.app/party/venues.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://loherb-test.web.app/party/gourmet.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://loherb-test.web.app/party/menu.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://loherb-test.web.app/party/team.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://loherb-test.web.app/party/book.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://loherb-test.web.app/party/journal.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://loherb-test.web.app/party/contact.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- ============ 日光物業 LOHERB Estate ============ -->
+  <url>
+    <loc>https://loherb-test.web.app/estate/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://loherb-test.web.app/estate/sustainability.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://loherb-test.web.app/estate/contact.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- ============ Careers 徵才 ============ -->
+  <url>
+    <loc>https://loherb-test.web.app/careers/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://loherb-test.web.app/careers/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://loherb-test.web.app/careers/en.html" />
+  </url>
+  <url>
+    <loc>https://loherb-test.web.app/careers/en.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.65</priority>
+  </url>
+
+  <!-- ============ 宜蘭優惠專案 ============ -->
+  <url>
+    <loc>https://loherb-test.web.app/yilan-deals/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+</urlset>
