@@ -281,25 +281,28 @@ input, select { font: inherit; color: inherit; }
   width: 20px; height: 20px;
   color: var(--gold);
 }
-.hero-stats {
-  display: flex; justify-content: center;
-  gap: clamp(28px, 5vw, 64px);
-  margin-top: 36px;
+.hero-quick-tags {
+  display: flex; flex-wrap: wrap; justify-content: center;
+  gap: 10px;
+  margin-top: 32px;
 }
-.hero-stat-num {
-  font-family: var(--font-en);
-  font-size: clamp(1.6rem, 2.6vw, 2rem);
-  font-weight: 500; font-style: italic;
-  color: var(--gold);
-  line-height: 1; margin-bottom: 6px;
-  text-shadow: 0 2px 18px rgba(0,0,0,0.6);
+.hero-quick-tags a {
+  padding: 9px 18px;
+  background: rgba(255,255,255,0.14);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 999px;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  color: var(--white);
+  transition: all 0.3s var(--ease-out);
 }
-.hero-stat-label {
-  font-size: 0.7rem;
-  letter-spacing: 0.32em;
-  color: rgba(255, 255, 255, 0.75);
-  font-family: var(--font-en);
-  text-transform: uppercase;
+.hero-quick-tags a:hover {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--white);
+  transform: translateY(-2px);
 }
 
 /* ========================================
@@ -758,6 +761,250 @@ input, select { font: inherit; color: inherit; }
 }
 
 /* ========================================
+   FEATURE BLOCK — alternating image+content
+   ======================================== */
+.feature-block {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 480px;
+  background: var(--paper);
+}
+.feature-block + .feature-block { border-top: 1px solid var(--line); }
+.feature-block.reverse .feature-block-image { order: 2; }
+
+.feature-block-image {
+  position: relative;
+  overflow: hidden;
+  min-height: 380px;
+}
+.feature-block-image img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 1.6s var(--ease-out);
+}
+.feature-block:hover .feature-block-image img { transform: scale(1.04); }
+.feature-block-image::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 60%, rgba(0,0,0,0.25) 100%);
+  pointer-events: none;
+}
+
+.feature-block-content {
+  display: flex; flex-direction: column;
+  justify-content: center;
+  padding: clamp(40px, 6vw, 88px);
+  background: var(--paper);
+}
+.feature-block-label {
+  font-family: var(--font-en);
+  font-style: italic;
+  font-size: 0.78rem;
+  letter-spacing: 0.4em;
+  color: var(--gold);
+  margin-bottom: 18px;
+}
+.feature-block-label::after {
+  content: ''; display: block;
+  width: 36px; height: 1px;
+  background: var(--gold);
+  opacity: 0.5;
+  margin-top: 14px;
+}
+.feature-block h2 {
+  font-family: var(--font-zh);
+  font-size: clamp(1.7rem, 2.8vw, 2.2rem);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  line-height: 1.5;
+  color: var(--black);
+  margin-bottom: 20px;
+}
+.feature-block h2 .gold { color: var(--gold); }
+.feature-block-body {
+  font-size: 0.95rem;
+  line-height: 2;
+  color: var(--charcoal);
+  letter-spacing: 0.04em;
+  margin-bottom: 28px;
+  max-width: 460px;
+}
+.feature-highlights {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  margin-bottom: 32px;
+}
+.feature-highlights span {
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  color: var(--charcoal);
+  background: var(--cream);
+  padding: 5px 12px;
+  border-radius: 999px;
+}
+.feature-block-cta {
+  display: inline-flex; align-items: center; gap: 12px;
+  padding: 14px 28px;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-family: var(--font-en);
+  font-size: 0.78rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  align-self: flex-start;
+  transition: all 0.4s var(--ease-out);
+  background: transparent;
+}
+.feature-block-cta:hover {
+  background: var(--gold);
+  color: var(--white);
+}
+.feature-block-cta .arrow { transition: transform 0.3s var(--ease-out); }
+.feature-block-cta:hover .arrow { transform: translateX(4px); }
+
+@media (max-width: 900px) {
+  .feature-block { grid-template-columns: 1fr; }
+  .feature-block.reverse .feature-block-image { order: 0; }
+  .feature-block-image { min-height: 280px; }
+}
+
+/* ========================================
+   BLOG — travel journal cards
+   ======================================== */
+.blog-section {
+  padding: clamp(80px, 10vh, 120px) clamp(20px, 4vw, 56px);
+  background: var(--cream);
+}
+.blog-inner { max-width: 1320px; margin: 0 auto; }
+.blog-header {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  flex-wrap: wrap; gap: 16px;
+  margin-bottom: 48px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--line);
+}
+.blog-title-wrap {
+  display: flex; flex-direction: column; gap: 8px;
+}
+.blog-eyebrow {
+  font-family: var(--font-en);
+  font-style: italic;
+  font-size: 0.78rem;
+  letter-spacing: 0.4em;
+  color: var(--gold);
+}
+.blog-h2 {
+  font-family: var(--font-zh);
+  font-size: clamp(1.5rem, 2.4vw, 1.9rem);
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  color: var(--black);
+}
+.blog-all {
+  font-family: var(--font-en);
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: inline-flex; align-items: center; gap: 8px;
+  transition: gap 0.3s var(--ease-out);
+}
+.blog-all:hover { gap: 14px; }
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 26px;
+}
+.blog-card {
+  background: var(--paper);
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  transition: all 0.4s var(--ease-out);
+  cursor: pointer;
+  display: flex; flex-direction: column;
+  box-shadow: var(--shadow-card);
+}
+.blog-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-card-hover);
+  border-color: rgba(230, 164, 1, 0.3);
+}
+.blog-card-image {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+}
+.blog-card-image img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.9s var(--ease-out);
+}
+.blog-card:hover .blog-card-image img { transform: scale(1.08); }
+.blog-card-tag {
+  position: absolute; top: 12px; left: 12px;
+  z-index: 2;
+  font-family: var(--font-zh);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-weight: 500;
+  background: rgba(255,255,255,0.92);
+  color: var(--gold);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.blog-card-body {
+  padding: 22px 24px 24px;
+  display: flex; flex-direction: column;
+  flex: 1;
+}
+.blog-card h3 {
+  font-family: var(--font-zh);
+  font-size: 1.1rem;
+  letter-spacing: 0.04em;
+  font-weight: 500;
+  color: var(--black);
+  line-height: 1.55;
+  margin-bottom: 12px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.blog-card-excerpt {
+  font-size: 0.85rem;
+  line-height: 1.85;
+  color: var(--charcoal);
+  opacity: 0.82;
+  margin-bottom: 18px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  flex: 1;
+}
+.blog-card-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 14px;
+  border-top: 1px dashed var(--line);
+  font-size: 0.75rem;
+  color: var(--charcoal);
+  opacity: 0.65;
+}
+.blog-card-cta {
+  font-family: var(--font-en);
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 600;
+}
+
+/* ========================================
    HOWTO — keeps minimal section
    ======================================== */
 .howto {
@@ -1054,10 +1301,10 @@ input, select { font: inherit; color: inherit; }
   <div class="hero-bg" id="heroBg"></div>
   <div class="hero-overlay"></div>
   <div class="hero-inner">
-    <div class="hero-eyebrow reveal">YILAN LOCAL PRIVILEGE</div>
-    <h1 class="reveal reveal-d1">玩遍宜蘭，<span class="gold">日光待客</span></h1>
+    <div class="hero-eyebrow reveal">YILAN EXCLUSIVE DEALS</div>
+    <h1 class="reveal reveal-d1">整趟宜蘭都打折<br><span class="gold">只要入住日光</span></h1>
     <p class="hero-sub reveal reveal-d2">
-      入住日光綠築即享在地夥伴獨家優惠 ——<br>從餐桌、職人手作到山林秘境，每段旅程都更划算。
+      餐飲 9 折 · 景點優惠 · 伴手禮買 5 送 1<br>40+ 在地夥伴獨家折扣，憑住宿憑證即享
     </p>
     <div class="hero-search reveal reveal-d3">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1066,19 +1313,11 @@ input, select { font: inherit; color: inherit; }
       </svg>
       <input type="search" id="searchInput" placeholder="搜尋店家、優惠內容、地區…" autocomplete="off">
     </div>
-    <div class="hero-stats reveal reveal-d3">
-      <div class="hero-stat">
-        <div class="hero-stat-num" id="statTotal">—</div>
-        <div class="hero-stat-label">合作商家</div>
-      </div>
-      <div class="hero-stat">
-        <div class="hero-stat-num" id="statTownships">—</div>
-        <div class="hero-stat-label">覆蓋鄉鎮</div>
-      </div>
-      <div class="hero-stat">
-        <div class="hero-stat-num">100<span style="font-size:0.55em;">%</span></div>
-        <div class="hero-stat-label">在地嚴選</div>
-      </div>
+    <div class="hero-quick-tags reveal reveal-d3">
+      <a href="#deals" data-quick="餐飲">🍽 餐飲優惠</a>
+      <a href="#deals" data-quick="景點門票">🎟 景點門票</a>
+      <a href="#deals" data-quick="伴手禮">🎁 在地伴手禮</a>
+      <a href="#deals" data-quick="DIY">✂ DIY 體驗</a>
     </div>
   </div>
 </header>
@@ -1109,11 +1348,141 @@ input, select { font: inherit; color: inherit; }
 </section>
 
 <!-- ========== GRID ========== -->
-<section class="grid-section">
+<section class="grid-section" id="deals">
   <div class="deals-grid" id="dealsGrid">
     <div class="loading-state">
       <div class="loading-spinner"></div>
       LOADING
+    </div>
+  </div>
+</section>
+
+<!-- ========== FEATURE: ACCOMMODATION (住宿) ========== -->
+<section class="feature-block">
+  <div class="feature-block-image">
+    <img src="https://villa.loherb.com.tw/images/page-banners/room_overview2024_banner.jpg"
+         alt="日光綠築 Villa" loading="lazy"
+         onerror="this.src='/party/images/venues/aerial-villa.png'">
+  </div>
+  <div class="feature-block-content">
+    <div class="feature-block-label reveal">— Stay With Loherb —</div>
+    <h2 class="reveal reveal-d1">下榻<span class="gold">日光綠築</span><br>步入冬山河畔的私密綠洲</h2>
+    <p class="feature-block-body reveal reveal-d2">
+      座落於宜蘭冬山河與梅花湖之間，日光綠築以極簡建築語彙融入山林田野。
+      泳池、露台與大片落地窗，讓每一刻都成為宜蘭風景的延伸。
+    </p>
+    <div class="feature-highlights reveal reveal-d2">
+      <span>獨棟 Villa</span>
+      <span>戶外泳池</span>
+      <span>森林景觀</span>
+      <span>專屬管家</span>
+    </div>
+    <a href="https://villa.loherb.com.tw" target="_blank" rel="noopener" class="feature-block-cta reveal reveal-d3">
+      查看房型 <span class="arrow">→</span>
+    </a>
+  </div>
+</section>
+
+<!-- ========== FEATURE: DINING (用餐) ========== -->
+<section class="feature-block reverse">
+  <div class="feature-block-image">
+    <img src="/wedding/images/cuisine-cocktail-snacks.jpg"
+         alt="日光私廚 Cuisine" loading="lazy"
+         onerror="this.src='https://images.unsplash.com/photo-1528127269322-539801943592?w=1200&q=80&auto=format&fit=crop'">
+  </div>
+  <div class="feature-block-content">
+    <div class="feature-block-label reveal">— Dine At Loherb —</div>
+    <h2 class="reveal reveal-d1">在<span class="gold">日光私廚</span>用餐<br>季節限定的味覺旅程</h2>
+    <p class="feature-block-body reveal reveal-d2">
+      日光私廚精選宜蘭在地時令食材，由主廚客製為現代法式料理。
+      落地窗外是田野水光，餐桌上是來自冬山的鮮甜 ── 一場不必出門就完整的宜蘭體驗。
+    </p>
+    <div class="feature-highlights reveal reveal-d2">
+      <span>當季產地直送</span>
+      <span>套餐 / 半 Buffet</span>
+      <span>湖畔包場</span>
+      <span>客製菜單</span>
+    </div>
+    <a href="https://cuisine.loherb.com.tw" target="_blank" rel="noopener" class="feature-block-cta reveal reveal-d3">
+      查看菜單 <span class="arrow">→</span>
+    </a>
+  </div>
+</section>
+
+<!-- ========== BLOG / TRAVEL JOURNAL ========== -->
+<section class="blog-section" id="journal">
+  <div class="blog-inner">
+    <div class="blog-header">
+      <div class="blog-title-wrap">
+        <div class="blog-eyebrow reveal">— Travel Journal —</div>
+        <h2 class="blog-h2 reveal reveal-d1">宜蘭遊記</h2>
+      </div>
+      <a href="#" class="blog-all reveal reveal-d2">所有文章 <span>→</span></a>
+    </div>
+    <div class="blog-grid">
+      <article class="blog-card reveal">
+        <div class="blog-card-image">
+          <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=800&q=80&auto=format&fit=crop"
+               alt="冬山河三日遊" loading="lazy">
+          <span class="blog-card-tag">旅遊路線</span>
+        </div>
+        <div class="blog-card-body">
+          <h3>冬山河三日遊 ── 從綠築出發的私房路線</h3>
+          <p class="blog-card-excerpt">沿著冬山河，從清晨的森林咖啡到夜晚的星空野餐，三天兩夜把宜蘭的四季都裝進行李。</p>
+          <div class="blog-card-meta">
+            <span>2026.05 · 8 min read</span>
+            <span class="blog-card-cta">閱讀 →</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="blog-card reveal reveal-d1">
+        <div class="blog-card-image">
+          <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800&q=80&auto=format&fit=crop"
+               alt="雨天也好玩" loading="lazy">
+          <span class="blog-card-tag">景點推薦</span>
+        </div>
+        <div class="blog-card-body">
+          <h3>雨天也好玩 ── 宜蘭室內景點 8 選</h3>
+          <p class="blog-card-excerpt">下雨不掃興。從職人工坊、文創園區到溫泉湯屋，這 8 個地方讓你愛上宜蘭的陰雨天。</p>
+          <div class="blog-card-meta">
+            <span>2026.04 · 6 min read</span>
+            <span class="blog-card-cta">閱讀 →</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="blog-card reveal reveal-d2">
+        <div class="blog-card-image">
+          <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80&auto=format&fit=crop"
+               alt="在地人帶你吃" loading="lazy">
+          <span class="blog-card-tag">美食地圖</span>
+        </div>
+        <div class="blog-card-body">
+          <h3>在地人帶你吃 ── 冬山河畔 5 家必訪餐桌</h3>
+          <p class="blog-card-excerpt">從早午餐到深夜居酒屋，這 5 家是日光員工自己會帶朋友去的口袋名單。</p>
+          <div class="blog-card-meta">
+            <span>2026.04 · 10 min read</span>
+            <span class="blog-card-cta">閱讀 →</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="blog-card reveal reveal-d3">
+        <div class="blog-card-image">
+          <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=800&q=80&auto=format&fit=crop"
+               alt="親子宜蘭" loading="lazy">
+          <span class="blog-card-tag">親子旅遊</span>
+        </div>
+        <div class="blog-card-body">
+          <h3>帶孩子玩宜蘭 ── 5 個無痛親子行程</h3>
+          <p class="blog-card-excerpt">餵小動物、做手工餅乾、玩水玩沙 ── 從綠築出發 30 分鐘內，搞定一整天的笑聲。</p>
+          <div class="blog-card-meta">
+            <span>2026.03 · 7 min read</span>
+            <span class="blog-card-cta">閱讀 →</span>
+          </div>
+        </div>
+      </article>
     </div>
   </div>
 </section>
@@ -1515,7 +1884,6 @@ async function loadData() {
     });
 
     renderFilters();
-    renderStats();
     render();
   } catch (err) {
     console.error('Failed to load data:', err);
@@ -1526,12 +1894,6 @@ async function loadData() {
       </div>`;
     document.getElementById('resultsMeta').textContent = '— 載入失敗 —';
   }
-}
-
-function renderStats() {
-  document.getElementById('statTotal').textContent = allDeals.length;
-  const townships = new Set(allDeals.map(d => d._township).filter(Boolean));
-  document.getElementById('statTownships').textContent = townships.size || '—';
 }
 
 const CATEGORY_ORDER = ['餐飲', '景點門票', '伴手禮', 'DIY', '交通', '其他'];
@@ -1763,6 +2125,22 @@ document.getElementById('searchInput').addEventListener('input', e => {
 document.getElementById('sortSelect').addEventListener('change', e => {
   currentSort = e.target.value;
   render();
+});
+
+// Hero quick category tags
+document.querySelectorAll('.hero-quick-tags a').forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    const cat = link.dataset.quick;
+    const btn = document.querySelector(`#catFilters .filter-pill[data-cat="${cat}"]`);
+    if (btn) btn.click();
+    // Smooth scroll to deals (offset for sticky controls + nav)
+    const target = document.getElementById('deals');
+    if (target) {
+      const y = target.getBoundingClientRect().top + window.pageYOffset - 200;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
+  });
 });
 
 // Mobile menu
