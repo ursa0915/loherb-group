@@ -127,3 +127,31 @@
       wrap.addEventListener('touchstart', pause, { passive: true });
       wrap.addEventListener('touchend', resume, { passive: true });
     })();
+
+    /* Split-image slideshows (旅程準備 / 四季悠然) */
+    document.querySelectorAll('.split-img.slideshow').forEach(slideshow => {
+      const slides = slideshow.querySelectorAll('.slide');
+      const dots   = slideshow.querySelectorAll('.slide-dot');
+      if (slides.length < 2) return;
+      let i = 0;
+      let timer;
+
+      function goTo(idx) {
+        slides[i].classList.remove('active');
+        if (dots[i]) dots[i].classList.remove('active');
+        i = (idx + slides.length) % slides.length;
+        slides[i].classList.add('active');
+        if (dots[i]) dots[i].classList.add('active');
+      }
+      function next() { goTo(i + 1); }
+      function start() { timer = setInterval(next, 5000); }
+      function stop()  { clearInterval(timer); }
+
+      dots.forEach((d, idx) => d.addEventListener('click', () => { stop(); goTo(idx); start(); }));
+      slideshow.addEventListener('mouseenter', stop);
+      slideshow.addEventListener('mouseleave', start);
+      slideshow.addEventListener('touchstart', stop, { passive: true });
+      slideshow.addEventListener('touchend', start, { passive: true });
+
+      start();
+    });
