@@ -212,15 +212,48 @@ input, select { font: inherit; color: inherit; }
 }
 .hero-overlay {
   position: absolute; inset: 0;
-  /* Very subtle bottom gradient only — for text legibility, preserves image color */
-  background: linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(0,0,0,0.35) 100%);
+  /* No overlay — frosted glass on .hero-inner handles text contrast */
   pointer-events: none;
 }
 .hero-inner {
   position: relative; z-index: 2;
   text-align: center;
   max-width: 960px;
-  padding: 2rem;
+  padding: clamp(2rem, 5vw, 3.5rem) clamp(2rem, 6vw, 4rem);
+  isolation: isolate;
+}
+/* Frosted-glass blur that fades to transparent at edges (matches main site).
+   Sits behind text but in front of hero background image. */
+.hero-inner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: rgba(0, 0, 0, 0.10);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  -webkit-mask-image: radial-gradient(
+    ellipse 75% 95% at center,
+    rgba(0, 0, 0, 0.95) 0%,
+    rgba(0, 0, 0, 0.85) 22%,
+    rgba(0, 0, 0, 0.65) 42%,
+    rgba(0, 0, 0, 0.42) 60%,
+    rgba(0, 0, 0, 0.22) 76%,
+    rgba(0, 0, 0, 0.08) 90%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  mask-image: radial-gradient(
+    ellipse 75% 95% at center,
+    rgba(0, 0, 0, 0.95) 0%,
+    rgba(0, 0, 0, 0.85) 22%,
+    rgba(0, 0, 0, 0.65) 42%,
+    rgba(0, 0, 0, 0.42) 60%,
+    rgba(0, 0, 0, 0.22) 76%,
+    rgba(0, 0, 0, 0.08) 90%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  border-radius: inherit;
+  pointer-events: none;
 }
 .hero-eyebrow {
   font-family: var(--font-en);
@@ -618,82 +651,7 @@ input, select { font: inherit; color: inherit; }
   .township-circles { gap: 8px; }
 }
 
-/* ----- Selected summary bar ----- */
-.selected-summary {
-  display: none;
-  margin-top: 20px;
-  padding: 14px 18px;
-  background: rgba(230, 164, 1, 0.08);
-  border: 1px solid rgba(230, 164, 1, 0.25);
-  border-radius: 8px;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 10px 14px;
-}
-.selected-summary.show { display: flex; }
-.sel-label {
-  font-family: var(--font-sans);
-  font-size: 0.82rem;
-  letter-spacing: 0.05em;
-  color: var(--deep-gold);
-  font-weight: 600;
-}
-.sel-chips {
-  display: flex; flex-wrap: wrap; gap: 6px;
-  flex: 1;
-}
-.sel-chip {
-  display: inline-flex; align-items: center; gap: 6px;
-  padding: 4px 10px 4px 12px;
-  background: var(--gold);
-  color: white;
-  border-radius: 999px;
-  font-family: var(--font-sans);
-  font-size: 0.82rem;
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-.sel-chip:hover { background: var(--deep-gold); }
-.sel-chip .x {
-  display: inline-flex; align-items: center; justify-content: center;
-  width: 16px; height: 16px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.25);
-  font-size: 0.75rem;
-  line-height: 1;
-}
-.sel-count {
-  font-family: var(--font-sans);
-  font-size: 0.82rem;
-  letter-spacing: 0.02em;
-  color: var(--charcoal);
-  white-space: nowrap;
-}
-.sel-count strong {
-  color: var(--gold);
-  font-family: var(--font-en);
-  font-style: italic;
-  font-size: 1rem;
-  margin: 0 3px;
-}
-.sel-clear {
-  padding: 6px 12px;
-  border: 1px solid var(--deep-gold);
-  color: var(--deep-gold);
-  border-radius: 999px;
-  font-family: var(--font-sans);
-  font-size: 0.8rem;
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  transition: all 0.25s var(--ease-out);
-  white-space: nowrap;
-}
-.sel-clear:hover {
-  background: var(--deep-gold);
-  color: white;
-}
+/* Selected-summary bar removed — circle color change is the indicator */
 
 @media (max-width: 720px) {
   .region-map { padding: 16px; }
@@ -1723,8 +1681,6 @@ input, select { font: inherit; color: inherit; }
       <button class="t-circle" data-t="南澳">南澳</button>
     </div>
 
-    <!-- Selected-summary bar (only visible when at least one township selected) -->
-    <div class="selected-summary" id="selectedSummary"></div>
   </div>
 </section>
 
@@ -1766,8 +1722,8 @@ input, select { font: inherit; color: inherit; }
 <!-- ========== FEATURE: DINING (用餐) ========== -->
 <section class="feature-block reverse">
   <div class="feature-block-image">
-    <img src="/yilan-deals/image/ChatGPT%20Image%202026%E5%B9%B45%E6%9C%8817%E6%97%A5%20%E4%B8%8B%E5%8D%8810_44_02.png"
-         alt="私廚 ── 季節限定料理" loading="lazy">
+    <img src="/yilan-deals/image/20251111_%E5%A8%81%E9%9D%88%E9%A0%93%E5%A5%97%E9%A4%90_%E6%96%B9%E5%9E%8B_%E5%B7%B2%E7%99%BC.jpg"
+         alt="私廚 ── 威靈頓套餐" loading="lazy">
   </div>
   <div class="feature-block-content">
     <div class="feature-block-label reveal">— Private Dining —</div>
@@ -2329,9 +2285,6 @@ function render() {
     return true;
   });
 
-  // Update selected-townships summary (uses filtered count)
-  renderSelectedSummary(filtered.length);
-
   if (filtered.length === 0) {
     grid.innerHTML = `
       <div class="empty-state">
@@ -2406,38 +2359,6 @@ function renderRegionMap() {
     const allSelected = ALL_TOWNSHIPS.every(t => currentTownships.has(t));
     tAll.classList.toggle('active', allSelected);
   }
-}
-
-function renderSelectedSummary(filteredCount) {
-  const wrap = document.getElementById('selectedSummary');
-  if (!wrap) return;
-  if (currentTownships.size === 0) {
-    wrap.classList.remove('show');
-    wrap.innerHTML = '';
-    return;
-  }
-  const chips = Array.from(currentTownships).map(t =>
-    `<span class="sel-chip" data-t="${escapeAttr(t)}">${escapeHtml(t)} <span class="x">×</span></span>`
-  ).join('');
-  wrap.innerHTML = `
-    <span class="sel-label">已選地區</span>
-    <div class="sel-chips">${chips}</div>
-    <span class="sel-count">顯示 <strong>${filteredCount}</strong> 間商家</span>
-    <button class="sel-clear" id="selClear">清除全部</button>
-  `;
-  wrap.classList.add('show');
-  wrap.querySelectorAll('.sel-chip').forEach(chip => {
-    chip.addEventListener('click', () => {
-      currentTownships.delete(chip.dataset.t);
-      renderRegionMap();
-      render();
-    });
-  });
-  document.getElementById('selClear').addEventListener('click', () => {
-    currentTownships.clear();
-    renderRegionMap();
-    render();
-  });
 }
 
 function decorateRegionMap() {
