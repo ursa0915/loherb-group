@@ -18,11 +18,8 @@
 <link rel="preconnect" href="https://docs.google.com">
 <link rel="preconnect" href="https://images.unsplash.com">
 <link rel="preconnect" href="https://images.pexels.com">
-<link rel="preconnect" href="https://unpkg.com">
-<link rel="preconnect" href="https://tile.openstreetmap.org">
 <link rel="preload" as="image" href="/party/images/lifestyle/hero-lake-walk.jpg">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -426,27 +423,27 @@ input, select { font: inherit; color: inherit; }
 .sort-select:focus { outline: none; border-color: var(--gold); }
 
 /* ========================================
-   MAP — Leaflet view of all merchants
+   REGION MAP — SVG illustrative Yilan townships
    ======================================== */
-.map-section {
+.region-map-section {
   max-width: 1320px;
   margin: 32px auto 0;
   padding: 0 clamp(20px, 4vw, 56px);
 }
-.map-header {
+.region-map-header {
   display: flex; justify-content: space-between; align-items: flex-end;
   margin-bottom: 16px;
   gap: 16px;
   flex-wrap: wrap;
 }
-.map-title h3 {
+.region-map-title h3 {
   font-family: var(--font-zh);
   font-weight: 500;
   font-size: 1.05rem;
   letter-spacing: 0.18em;
   color: var(--charcoal);
 }
-.map-eyebrow {
+.region-map-eyebrow {
   display: block;
   font-family: var(--font-en);
   font-style: italic;
@@ -455,97 +452,118 @@ input, select { font: inherit; color: inherit; }
   color: var(--gold);
   margin-bottom: 6px;
 }
-.map-toggle-btn {
-  font-family: var(--font-en);
-  font-size: 0.72rem;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  color: var(--gold);
-  padding: 8px 14px;
-  border: 1px solid var(--line-strong);
-  border-radius: 4px;
-  transition: all 0.3s var(--ease-out);
-}
-.map-toggle-btn:hover { border-color: var(--gold); }
-.map-container {
-  width: 100%;
-  height: 460px;
-  border-radius: 8px;
-  overflow: hidden;
-  border: 1px solid var(--line);
-  background: var(--cream);
-  transition: height 0.4s var(--ease-out), opacity 0.3s, margin 0.4s;
-}
-.map-container.collapsed {
-  height: 0;
-  border: none;
-  opacity: 0;
-  pointer-events: none;
-}
-/* Leaflet overrides */
-.leaflet-container { font-family: var(--font-zh); }
-.leaflet-popup-content-wrapper {
-  border-radius: 6px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.18);
-}
-.leaflet-popup-content {
-  margin: 14px 18px 12px;
-  min-width: 200px;
-}
-.map-popup {
-  display: flex; flex-direction: column; gap: 8px;
-}
-.map-popup-img {
-  width: 100%; height: 110px;
-  object-fit: cover;
-  border-radius: 4px;
-  margin-bottom: 4px;
-}
-.map-popup-cat {
-  font-size: 0.7rem;
+.region-map-reset {
+  font-family: var(--font-zh);
+  font-size: 0.82rem;
   letter-spacing: 0.18em;
   color: var(--gold);
-  font-family: var(--font-en);
-  text-transform: uppercase;
+  padding: 8px 18px;
+  border: 1px solid var(--gold);
+  border-radius: 999px;
+  transition: all 0.3s var(--ease-out);
+  background: transparent;
 }
-.map-popup h4 {
-  font-size: 1rem;
+.region-map-reset:hover { background: var(--gold); color: white; }
+.region-map-reset.active { background: var(--gold); color: white; }
+
+.region-map {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 24px;
+  position: relative;
+}
+.region-map svg {
+  width: 100%;
+  height: auto;
+  max-width: 720px;
+  margin: 0 auto;
+  display: block;
+  user-select: none;
+}
+.region {
+  cursor: pointer;
+  transition: transform 0.2s var(--ease-out);
+  transform-origin: center;
+  transform-box: fill-box;
+}
+.region polygon {
+  fill: var(--cream);
+  stroke: rgba(80, 83, 80, 0.45);
+  stroke-width: 1.4;
+  stroke-linejoin: round;
+  transition: all 0.25s var(--ease-out);
+}
+.region:hover polygon {
+  fill: rgba(230, 164, 1, 0.12);
+  stroke: var(--gold);
+  stroke-width: 2;
+}
+.region.active polygon {
+  fill: var(--gold);
+  stroke: var(--deep-gold);
+  stroke-width: 2;
+}
+.region.empty { cursor: default; }
+.region.empty polygon {
+  fill: #F0EAE5;
+  stroke: rgba(80, 83, 80, 0.18);
+  stroke-dasharray: 4 3;
+}
+.region.empty:hover polygon {
+  fill: #F0EAE5;
+  stroke: rgba(80, 83, 80, 0.18);
+  stroke-width: 1.4;
+}
+.region-label {
+  font-family: var(--font-zh);
+  font-size: 15px;
   font-weight: 500;
-  color: var(--black);
+  fill: var(--charcoal);
+  pointer-events: none;
+  text-anchor: middle;
+  dominant-baseline: middle;
   letter-spacing: 0.04em;
-  margin: 0;
 }
-.map-popup-discount {
-  display: inline-block;
-  background: var(--gold);
-  color: white;
+.region.active .region-label { fill: var(--white); }
+.region.empty .region-label { fill: rgba(80, 83, 80, 0.35); }
+.region-count {
   font-family: var(--font-en);
   font-style: italic;
-  font-size: 0.78rem;
-  padding: 2px 8px;
-  border-radius: 3px;
-  width: fit-content;
+  font-size: 13px;
+  fill: var(--gold);
+  pointer-events: none;
+  text-anchor: middle;
 }
-.map-popup-btn {
-  margin-top: 8px;
-  padding: 8px 12px;
-  background: var(--charcoal);
-  color: white;
-  text-align: center;
-  border-radius: 4px;
-  font-size: 0.78rem;
-  letter-spacing: 0.18em;
-  transition: background 0.3s;
+.region.active .region-count { fill: var(--white); }
+.region.empty .region-count { fill: rgba(80, 83, 80, 0.2); }
+
+.region-map-legend {
+  display: flex; justify-content: center; flex-wrap: wrap;
+  gap: 18px;
+  margin-top: 16px;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  color: var(--charcoal);
+  opacity: 0.7;
 }
-.map-popup-btn:hover { background: var(--gold); }
-.leaflet-marker-icon.merchant-marker {
-  background: var(--gold);
-  border: 2px solid white;
-  border-radius: 50%;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+.region-map-legend-item {
+  display: inline-flex; align-items: center; gap: 6px;
 }
+.region-map-legend-item .swatch {
+  display: inline-block;
+  width: 12px; height: 12px;
+  border: 1.5px solid;
+  border-radius: 2px;
+}
+.region-map-legend-item.has .swatch { background: var(--cream); border-color: rgba(80,83,80,0.45); }
+.region-map-legend-item.empty .swatch { background: #F0EAE5; border-color: rgba(80,83,80,0.2); border-style: dashed; }
+.region-map-legend-item.active .swatch { background: var(--gold); border-color: var(--deep-gold); }
+
 @media (max-width: 720px) {
-  .map-container { height: 360px; }
+  .region-map { padding: 16px; }
+  .region-label { font-size: 13px; }
+  .region-count { font-size: 11px; }
 }
 
 /* ========================================
@@ -1487,16 +1505,96 @@ input, select { font: inherit; color: inherit; }
   </div>
 </section>
 
-<!-- ========== MAP ========== -->
-<section class="map-section">
-  <div class="map-header">
-    <div class="map-title">
-      <span class="map-eyebrow">— Map View —</span>
-      <h3>全宜蘭優惠地圖</h3>
+<!-- ========== REGION MAP (illustrative SVG of Yilan townships) ========== -->
+<section class="region-map-section" aria-label="宜蘭鄉鎮地圖">
+  <div class="region-map-header">
+    <div class="region-map-title">
+      <span class="region-map-eyebrow">— Choose A Region —</span>
+      <h3>點選鄉鎮，篩選優惠</h3>
     </div>
-    <button class="map-toggle-btn" id="mapToggle">收合地圖 ▲</button>
+    <button class="region-map-reset active" id="regionReset">全宜蘭</button>
   </div>
-  <div class="map-container" id="map"></div>
+  <div class="region-map">
+    <svg viewBox="0 0 720 540" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="宜蘭縣鄉鎮分區圖">
+      <!-- 大同（西側山區大區） -->
+      <g class="region" data-t="大同">
+        <polygon points="30,90 200,80 220,180 200,300 60,330 30,200"/>
+        <text class="region-label" x="115" y="195">大同</text>
+        <text class="region-count" x="115" y="218"></text>
+      </g>
+      <!-- 員山 -->
+      <g class="region" data-t="員山">
+        <polygon points="200,80 320,90 320,180 220,180"/>
+        <text class="region-label" x="260" y="130">員山</text>
+        <text class="region-count" x="260" y="153"></text>
+      </g>
+      <!-- 礁溪 -->
+      <g class="region" data-t="礁溪">
+        <polygon points="320,30 510,30 500,140 320,150"/>
+        <text class="region-label" x="412" y="85">礁溪</text>
+        <text class="region-count" x="412" y="108"></text>
+      </g>
+      <!-- 頭城 -->
+      <g class="region" data-t="頭城">
+        <polygon points="510,30 700,40 690,200 540,210 500,140"/>
+        <text class="region-label" x="600" y="115">頭城</text>
+        <text class="region-count" x="600" y="138"></text>
+      </g>
+      <!-- 宜蘭市 -->
+      <g class="region" data-t="宜蘭">
+        <polygon points="320,150 430,150 430,260 320,260"/>
+        <text class="region-label" x="375" y="200">宜蘭</text>
+        <text class="region-count" x="375" y="223"></text>
+      </g>
+      <!-- 壯圍 -->
+      <g class="region" data-t="壯圍">
+        <polygon points="430,150 540,210 530,310 430,300"/>
+        <text class="region-label" x="485" y="240">壯圍</text>
+        <text class="region-count" x="485" y="263"></text>
+      </g>
+      <!-- 三星 -->
+      <g class="region" data-t="三星">
+        <polygon points="60,330 200,300 210,400 70,420"/>
+        <text class="region-label" x="135" y="360">三星</text>
+        <text class="region-count" x="135" y="383"></text>
+      </g>
+      <!-- 羅東 -->
+      <g class="region" data-t="羅東">
+        <polygon points="200,300 320,260 330,380 210,400"/>
+        <text class="region-label" x="265" y="335">羅東</text>
+        <text class="region-count" x="265" y="358"></text>
+      </g>
+      <!-- 五結 -->
+      <g class="region" data-t="五結">
+        <polygon points="330,260 430,260 530,310 540,400 330,380"/>
+        <text class="region-label" x="440" y="335">五結</text>
+        <text class="region-count" x="440" y="358"></text>
+      </g>
+      <!-- 冬山 -->
+      <g class="region" data-t="冬山">
+        <polygon points="70,420 210,400 330,380 340,470 210,490 90,470"/>
+        <text class="region-label" x="210" y="437">冬山</text>
+        <text class="region-count" x="210" y="460"></text>
+      </g>
+      <!-- 蘇澳 -->
+      <g class="region" data-t="蘇澳">
+        <polygon points="340,400 540,400 600,510 360,510 340,470"/>
+        <text class="region-label" x="470" y="455">蘇澳</text>
+        <text class="region-count" x="470" y="478"></text>
+      </g>
+      <!-- 南澳 -->
+      <g class="region" data-t="南澳">
+        <polygon points="90,470 210,490 340,470 360,510 600,510 600,530 30,530 30,440"/>
+        <text class="region-label" x="320" y="515">南澳</text>
+        <text class="region-count" x="320" y="535"></text>
+      </g>
+    </svg>
+    <div class="region-map-legend">
+      <span class="region-map-legend-item active"><span class="swatch"></span>已選</span>
+      <span class="region-map-legend-item has"><span class="swatch"></span>有優惠</span>
+      <span class="region-map-legend-item empty"><span class="swatch"></span>暫無優惠</span>
+    </div>
+  </div>
 </section>
 
 <!-- ========== GRID ========== -->
@@ -1742,9 +1840,6 @@ input, select { font: inherit; color: inherit; }
   </div>
 </footer>
 
-<!-- Leaflet JS for map -->
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-
 <!-- ========== MODAL ========== -->
 <div class="modal" id="modal" aria-hidden="true">
   <div class="modal-backdrop" id="modalBackdrop"></div>
@@ -1986,6 +2081,7 @@ function parseExpiry(s) {
 const SHEET_URL = 'https://docs.google.com/spreadsheets/d/1J4-lWexX-vZJud1gSIw08eErDF5Sm4wi5LuyM6aXPyY/gviz/tq?tqx=out:csv&gid=115500043';
 let allDeals = [];
 let currentCats = new Set(['餐飲', '景點門票']);  // multi-select, default both
+let currentTownship = null;  // single-select via region map; null = 全宜蘭
 let searchTerm = '';
 let currentSort = 'default';
 
@@ -2002,38 +2098,6 @@ const CAT_ICONS = {
   '其他': '<svg viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg>',
 };
 
-/* ========================================
-   TOWNSHIP COORDINATES (for map)
-   ======================================== */
-const TOWNSHIP_COORDS = {
-  '宜蘭': [24.7570, 121.7536],
-  '羅東': [24.6772, 121.7669],
-  '冬山': [24.6361, 121.7919],
-  '五結': [24.6850, 121.7986],
-  '礁溪': [24.8230, 121.7651],
-  '頭城': [24.8585, 121.8235],
-  '三星': [24.6691, 121.6594],
-  '員山': [24.7430, 121.7188],
-  '壯圍': [24.7440, 121.7896],
-  '蘇澳': [24.5944, 121.8489],
-  '南澳': [24.4661, 121.8016],
-  '大同': [24.6754, 121.5821],
-};
-const DEFAULT_COORD = [24.6800, 121.7600];
-
-function getMerchantCoord(deal) {
-  // 1) Sheet override (經緯度 column)
-  if (deal.latlng) {
-    const m = deal.latlng.match(/(\d+\.\d+)\s*,\s*(\d+\.\d+)/);
-    if (m) return [+m[1], +m[2]];
-  }
-  // 2) Township-based with stable jitter
-  const base = (deal._township && TOWNSHIP_COORDS[deal._township]) || DEFAULT_COORD;
-  const h = stringHash(deal.name);
-  const dLat = ((h % 200) / 200 - 0.5) * 0.025;   // ±~1.4km
-  const dLng = (((h >> 8) % 200) / 200 - 0.5) * 0.025;
-  return [base[0] + dLat, base[1] + dLng];
-}
 
 async function loadData() {
   try {
@@ -2086,6 +2150,8 @@ async function loadData() {
     });
 
     renderFilters();
+    renderRegionMap();
+    wireRegionMap();
     render();
   } catch (err) {
     console.error('Failed to load data:', err);
@@ -2139,6 +2205,7 @@ function render() {
   const grid = document.getElementById('dealsGrid');
   let filtered = allDeals.filter(d => {
     if (currentCats.size > 0 && !currentCats.has(d.category)) return false;
+    if (currentTownship && d._township !== currentTownship) return false;
     if (searchTerm) {
       const q = searchTerm.toLowerCase();
       return d.name.toLowerCase().includes(q)
@@ -2203,88 +2270,61 @@ function render() {
     });
   });
 
-  // Sync map with current filter
-  renderMap(filtered);
 }
 
 /* ========================================
-   MAP rendering (Leaflet)
+   REGION MAP (SVG) — click to filter by township
    ======================================== */
-let leafletMap = null;
-let markerLayer = null;
-
-function initMap() {
-  if (leafletMap || !window.L) return;
-  leafletMap = L.map('map', {
-    center: DEFAULT_COORD,
-    zoom: 11,
-    scrollWheelZoom: false,
-    zoomControl: true,
-  });
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 18,
-    attribution: '© OpenStreetMap',
-  }).addTo(leafletMap);
-  markerLayer = L.layerGroup().addTo(leafletMap);
-
-  // Enable scroll-wheel zoom only after user clicks the map
-  leafletMap.on('click', () => leafletMap.scrollWheelZoom.enable());
-  leafletMap.on('mouseout', () => leafletMap.scrollWheelZoom.disable());
-}
-
-function makeGoldIcon() {
-  return L.divIcon({
-    className: '',
-    html: '<div style="width:16px;height:16px;background:#E6A401;border:2px solid white;border-radius:50%;box-shadow:0 2px 6px rgba(0,0,0,0.4);"></div>',
-    iconSize: [20, 20],
-    iconAnchor: [10, 10],
-    popupAnchor: [0, -8],
-  });
-}
-
-function renderMap(filteredDeals) {
-  if (!leafletMap) initMap();
-  if (!leafletMap || !markerLayer) return;
-  markerLayer.clearLayers();
-
-  if (filteredDeals.length === 0) return;
-
-  const icon = makeGoldIcon();
-  const bounds = [];
-  filteredDeals.forEach((d, i) => {
-    const [lat, lng] = getMerchantCoord(d);
-    bounds.push([lat, lng]);
-    const marker = L.marker([lat, lng], { icon })
-      .bindPopup(`
-        <div class="map-popup">
-          <img class="map-popup-img" src="${escapeAttr(d.photo)}" alt="${escapeAttr(d.name)}">
-          <span class="map-popup-cat">${escapeHtml(d.category)}${d._township ? ' · ' + escapeHtml(d._township) : ''}</span>
-          <h4>${escapeHtml(d.name)}</h4>
-          ${d._discount ? `<span class="map-popup-discount">${escapeHtml(d._discount)}</span>` : ''}
-          <div class="map-popup-btn" data-open-deal="${i}">查看詳情 →</div>
-        </div>
-      `);
-    markerLayer.addLayer(marker);
+function renderRegionMap() {
+  const counts = {};
+  allDeals.forEach(d => {
+    if (d._township) counts[d._township] = (counts[d._township] || 0) + 1;
   });
 
-  // Wire popup buttons to modal (via event delegation since popups render on demand)
-  leafletMap.off('popupopen').on('popupopen', e => {
-    const btn = e.popup._contentNode.querySelector('[data-open-deal]');
-    if (btn) {
-      btn.style.cursor = 'pointer';
-      btn.addEventListener('click', () => {
-        const idx = +btn.dataset.openDeal;
-        openModal(filteredDeals[idx]);
-        leafletMap.closePopup();
-      }, { once: true });
+  document.querySelectorAll('.region').forEach(region => {
+    const t = region.dataset.t;
+    const count = counts[t] || 0;
+    region.classList.toggle('active', t === currentTownship);
+    region.classList.toggle('empty', count === 0);
+
+    const labelEl = region.querySelector('.region-label');
+    const countEl = region.querySelector('.region-count');
+    if (countEl) {
+      countEl.textContent = count > 0 ? count + '間' : '';
+    }
+    // Adjust label vertical position when count is shown
+    if (labelEl && countEl) {
+      const baseY = parseFloat(labelEl.dataset.baseY || labelEl.getAttribute('y'));
+      if (!labelEl.dataset.baseY) labelEl.dataset.baseY = baseY;
+      labelEl.setAttribute('y', count > 0 ? baseY - 6 : baseY + 4);
     }
   });
 
-  if (bounds.length > 1) {
-    leafletMap.fitBounds(bounds, { padding: [40, 40], maxZoom: 13 });
-  } else if (bounds.length === 1) {
-    leafletMap.setView(bounds[0], 14);
-  }
+  const resetBtn = document.getElementById('regionReset');
+  if (resetBtn) resetBtn.classList.toggle('active', currentTownship === null);
+}
+
+function wireRegionMap() {
+  document.querySelectorAll('.region').forEach(region => {
+    region.addEventListener('click', () => {
+      if (region.classList.contains('empty')) return;
+      const t = region.dataset.t;
+      currentTownship = (currentTownship === t) ? null : t;
+      renderRegionMap();
+      render();
+      // Smooth scroll to grid so user sees the filtered results
+      const target = document.getElementById('deals');
+      if (target) {
+        const y = target.getBoundingClientRect().top + window.pageYOffset - 200;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }
+    });
+  });
+  document.getElementById('regionReset').addEventListener('click', () => {
+    currentTownship = null;
+    renderRegionMap();
+    render();
+  });
 }
 
 /* ========================================
@@ -2416,17 +2456,6 @@ document.querySelectorAll('.hero-quick-tags a').forEach(link => {
   });
 });
 
-// Map collapse toggle
-const mapToggle = document.getElementById('mapToggle');
-const mapContainer = document.getElementById('map');
-mapToggle.addEventListener('click', () => {
-  const collapsed = mapContainer.classList.toggle('collapsed');
-  mapToggle.textContent = collapsed ? '顯示地圖 ▼' : '收合地圖 ▲';
-  if (!collapsed && leafletMap) {
-    // Re-render tiles after un-collapse
-    setTimeout(() => leafletMap.invalidateSize(), 420);
-  }
-});
 
 // Mobile menu
 const menuBtn = document.getElementById('menuBtn');
