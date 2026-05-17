@@ -18,8 +18,11 @@
 <link rel="preconnect" href="https://docs.google.com">
 <link rel="preconnect" href="https://images.unsplash.com">
 <link rel="preconnect" href="https://images.pexels.com">
+<link rel="preconnect" href="https://unpkg.com">
+<link rel="preconnect" href="https://tile.openstreetmap.org">
 <link rel="preload" as="image" href="/party/images/lifestyle/hero-lake-walk.jpg">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -336,37 +339,54 @@ input, select { font: inherit; color: inherit; }
   font-weight: 500;
   white-space: nowrap;
 }
-.filters {
-  display: flex; flex-wrap: wrap; gap: 8px;
+.cat-filters {
+  display: flex; flex-wrap: wrap; gap: 10px;
   flex: 1;
+  justify-content: center;
 }
-.filter-pill {
-  padding: 7px 16px;
-  background: var(--paper);
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  font-size: 0.82rem;
-  letter-spacing: 0.08em;
+.cat-pill {
+  display: inline-flex;
+  align-items: center; gap: 8px;
+  padding: 10px 18px;
+  background: transparent;
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  font-size: 0.88rem;
+  letter-spacing: 0.06em;
   color: var(--charcoal);
   transition: all 0.25s var(--ease-out);
-  white-space: nowrap;
+  cursor: pointer;
 }
-.filter-pill:hover {
+.cat-pill svg {
+  width: 18px; height: 18px;
+  stroke: currentColor;
+  stroke-width: 1.4;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: all 0.25s var(--ease-out);
+}
+.cat-pill:hover {
   border-color: var(--gold);
   color: var(--gold);
 }
-.filter-pill.active {
-  background: var(--gold);
+.cat-pill.active {
+  background: rgba(230, 164, 1, 0.08);
   border-color: var(--gold);
-  color: white;
+  color: var(--gold);
+  font-weight: 500;
 }
-.filter-pill .count {
-  font-size: 0.7rem;
-  opacity: 0.65;
-  margin-left: 6px;
+.cat-pill.active svg {
+  stroke-width: 1.8;
+}
+.cat-pill .count {
+  font-size: 0.72rem;
+  opacity: 0.55;
+  margin-left: 2px;
   font-family: var(--font-en);
+  font-weight: 400;
 }
-.filter-pill.active .count { opacity: 0.9; }
+.cat-pill.active .count { opacity: 0.85; }
 
 .controls-divider {
   width: 1px; height: 16px;
@@ -404,6 +424,129 @@ input, select { font: inherit; color: inherit; }
   cursor: pointer;
 }
 .sort-select:focus { outline: none; border-color: var(--gold); }
+
+/* ========================================
+   MAP — Leaflet view of all merchants
+   ======================================== */
+.map-section {
+  max-width: 1320px;
+  margin: 32px auto 0;
+  padding: 0 clamp(20px, 4vw, 56px);
+}
+.map-header {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  margin-bottom: 16px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.map-title h3 {
+  font-family: var(--font-zh);
+  font-weight: 500;
+  font-size: 1.05rem;
+  letter-spacing: 0.18em;
+  color: var(--charcoal);
+}
+.map-eyebrow {
+  display: block;
+  font-family: var(--font-en);
+  font-style: italic;
+  font-size: 0.72rem;
+  letter-spacing: 0.35em;
+  color: var(--gold);
+  margin-bottom: 6px;
+}
+.map-toggle-btn {
+  font-family: var(--font-en);
+  font-size: 0.72rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  padding: 8px 14px;
+  border: 1px solid var(--line-strong);
+  border-radius: 4px;
+  transition: all 0.3s var(--ease-out);
+}
+.map-toggle-btn:hover { border-color: var(--gold); }
+.map-container {
+  width: 100%;
+  height: 460px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: var(--cream);
+  transition: height 0.4s var(--ease-out), opacity 0.3s, margin 0.4s;
+}
+.map-container.collapsed {
+  height: 0;
+  border: none;
+  opacity: 0;
+  pointer-events: none;
+}
+/* Leaflet overrides */
+.leaflet-container { font-family: var(--font-zh); }
+.leaflet-popup-content-wrapper {
+  border-radius: 6px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+}
+.leaflet-popup-content {
+  margin: 14px 18px 12px;
+  min-width: 200px;
+}
+.map-popup {
+  display: flex; flex-direction: column; gap: 8px;
+}
+.map-popup-img {
+  width: 100%; height: 110px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-bottom: 4px;
+}
+.map-popup-cat {
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  color: var(--gold);
+  font-family: var(--font-en);
+  text-transform: uppercase;
+}
+.map-popup h4 {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--black);
+  letter-spacing: 0.04em;
+  margin: 0;
+}
+.map-popup-discount {
+  display: inline-block;
+  background: var(--gold);
+  color: white;
+  font-family: var(--font-en);
+  font-style: italic;
+  font-size: 0.78rem;
+  padding: 2px 8px;
+  border-radius: 3px;
+  width: fit-content;
+}
+.map-popup-btn {
+  margin-top: 8px;
+  padding: 8px 12px;
+  background: var(--charcoal);
+  color: white;
+  text-align: center;
+  border-radius: 4px;
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  transition: background 0.3s;
+}
+.map-popup-btn:hover { background: var(--gold); }
+.leaflet-marker-icon.merchant-marker {
+  background: var(--gold);
+  border: 2px solid white;
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+@media (max-width: 720px) {
+  .map-container { height: 360px; }
+}
 
 /* ========================================
    GRID — KKday-style card grid
@@ -1328,12 +1471,7 @@ input, select { font: inherit; color: inherit; }
 <section class="controls" id="controls">
   <div class="controls-inner">
     <div class="controls-row">
-      <span class="controls-label">類別</span>
-      <div class="filters" id="catFilters"></div>
-    </div>
-    <div class="controls-row" id="townshipRow">
-      <span class="controls-label">鄉鎮</span>
-      <div class="filters" id="townshipFilters"></div>
+      <div class="cat-filters" id="catFilters"></div>
     </div>
     <div class="results-meta">
       <span id="resultsMeta">— 載入中 —</span>
@@ -1347,6 +1485,18 @@ input, select { font: inherit; color: inherit; }
       </div>
     </div>
   </div>
+</section>
+
+<!-- ========== MAP ========== -->
+<section class="map-section">
+  <div class="map-header">
+    <div class="map-title">
+      <span class="map-eyebrow">— Map View —</span>
+      <h3>全宜蘭優惠地圖</h3>
+    </div>
+    <button class="map-toggle-btn" id="mapToggle">收合地圖 ▲</button>
+  </div>
+  <div class="map-container" id="map"></div>
 </section>
 
 <!-- ========== GRID ========== -->
@@ -1592,6 +1742,9 @@ input, select { font: inherit; color: inherit; }
   </div>
 </footer>
 
+<!-- Leaflet JS for map -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
 <!-- ========== MODAL ========== -->
 <div class="modal" id="modal" aria-hidden="true">
   <div class="modal-backdrop" id="modalBackdrop"></div>
@@ -1832,10 +1985,55 @@ function parseExpiry(s) {
    ======================================== */
 const SHEET_URL = 'https://docs.google.com/spreadsheets/d/1J4-lWexX-vZJud1gSIw08eErDF5Sm4wi5LuyM6aXPyY/gviz/tq?tqx=out:csv&gid=115500043';
 let allDeals = [];
-let currentCat = '全部';
-let currentTownship = '全部';
+let currentCats = new Set(['餐飲', '景點門票']);  // multi-select, default both
 let searchTerm = '';
 let currentSort = 'default';
+
+/* ========================================
+   CATEGORY ICONS (line style)
+   ======================================== */
+const CAT_ICONS = {
+  '全部': '<svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>',
+  '餐飲': '<svg viewBox="0 0 24 24"><path d="M4 2v7a3 3 0 0 0 3 3v10M7 12V2M10 2v7a3 3 0 0 1-3 3M18 2c-1.66 0-3 2.69-3 6s1.34 6 3 6v8"/></svg>',
+  '景點門票': '<svg viewBox="0 0 24 24"><path d="M3 8a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v2a2 2 0 0 0 0 4v2a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-2a2 2 0 0 0 0-4z"/><path d="M13 6v2M13 11v2M13 16v2" stroke-dasharray="2 2"/></svg>',
+  '伴手禮': '<svg viewBox="0 0 24 24"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5" rx="1"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7zM12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>',
+  'DIY': '<svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg>',
+  '交通': '<svg viewBox="0 0 24 24"><path d="M5 17h14M5 17a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2M5 10l2-5h10l2 5"/><circle cx="7.5" cy="17" r="1.5"/><circle cx="16.5" cy="17" r="1.5"/></svg>',
+  '其他': '<svg viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg>',
+};
+
+/* ========================================
+   TOWNSHIP COORDINATES (for map)
+   ======================================== */
+const TOWNSHIP_COORDS = {
+  '宜蘭': [24.7570, 121.7536],
+  '羅東': [24.6772, 121.7669],
+  '冬山': [24.6361, 121.7919],
+  '五結': [24.6850, 121.7986],
+  '礁溪': [24.8230, 121.7651],
+  '頭城': [24.8585, 121.8235],
+  '三星': [24.6691, 121.6594],
+  '員山': [24.7430, 121.7188],
+  '壯圍': [24.7440, 121.7896],
+  '蘇澳': [24.5944, 121.8489],
+  '南澳': [24.4661, 121.8016],
+  '大同': [24.6754, 121.5821],
+};
+const DEFAULT_COORD = [24.6800, 121.7600];
+
+function getMerchantCoord(deal) {
+  // 1) Sheet override (經緯度 column)
+  if (deal.latlng) {
+    const m = deal.latlng.match(/(\d+\.\d+)\s*,\s*(\d+\.\d+)/);
+    if (m) return [+m[1], +m[2]];
+  }
+  // 2) Township-based with stable jitter
+  const base = (deal._township && TOWNSHIP_COORDS[deal._township]) || DEFAULT_COORD;
+  const h = stringHash(deal.name);
+  const dLat = ((h % 200) / 200 - 0.5) * 0.025;   // ±~1.4km
+  const dLng = (((h >> 8) % 200) / 200 - 0.5) * 0.025;
+  return [base[0] + dLat, base[1] + dLng];
+}
 
 async function loadData() {
   try {
@@ -1855,6 +2053,7 @@ async function loadData() {
       imageUrl: header.findIndex(h => /圖片URL|圖片|image/i.test(h)),
       township: header.findIndex(h => /鄉鎮|地區|location/i.test(h)),
       mapsUrl: header.findIndex(h => /地圖|maps|google.?maps/i.test(h)),
+      latlng: header.findIndex(h => /經緯度|座標|coord|lat.*lng/i.test(h)),
     };
 
     allDeals = rows.slice(1)
@@ -1870,6 +2069,7 @@ async function loadData() {
           imageUrl: idx.imageUrl >= 0 ? (r[idx.imageUrl] || '').trim() : '',
           township: idx.township >= 0 ? (r[idx.township] || '').trim() : '',
           mapsUrl: idx.mapsUrl >= 0 ? (r[idx.mapsUrl] || '').trim() : '',
+          latlng: idx.latlng >= 0 ? (r[idx.latlng] || '').trim() : '',
         };
         return deal;
       })
@@ -1900,8 +2100,20 @@ async function loadData() {
 
 const CATEGORY_ORDER = ['餐飲', '景點門票', '伴手禮', 'DIY', '交通', '其他'];
 
+function isCatActive(c) {
+  if (c === '全部') return currentCats.size === 0;
+  return currentCats.has(c);
+}
+function toggleCat(c) {
+  if (c === '全部') {
+    currentCats.clear();
+  } else {
+    if (currentCats.has(c)) currentCats.delete(c);
+    else currentCats.add(c);
+  }
+}
+
 function renderFilters() {
-  // Categories
   const catCounts = {};
   allDeals.forEach(d => { catCounts[d.category] = (catCounts[d.category] || 0) + 1; });
   const orderedCats = CATEGORY_ORDER.filter(c => catCounts[c]);
@@ -1911,46 +2123,22 @@ function renderFilters() {
   const catBox = document.getElementById('catFilters');
   catBox.innerHTML = allCats.map(c => {
     const count = c === '全部' ? allDeals.length : catCounts[c];
-    return `<button class="filter-pill ${c === currentCat ? 'active' : ''}" data-cat="${escapeAttr(c)}">${escapeHtml(c)}<span class="count">${count}</span></button>`;
+    const icon = CAT_ICONS[c] || CAT_ICONS['其他'];
+    return `<button class="cat-pill ${isCatActive(c) ? 'active' : ''}" data-cat="${escapeAttr(c)}">${icon}<span>${escapeHtml(c)}</span><span class="count">${count}</span></button>`;
   }).join('');
-  catBox.querySelectorAll('.filter-pill').forEach(btn => {
+  catBox.querySelectorAll('.cat-pill').forEach(btn => {
     btn.addEventListener('click', () => {
-      currentCat = btn.dataset.cat;
-      catBox.querySelectorAll('.filter-pill').forEach(b => b.classList.toggle('active', b === btn));
+      toggleCat(btn.dataset.cat);
+      catBox.querySelectorAll('.cat-pill').forEach(b => b.classList.toggle('active', isCatActive(b.dataset.cat)));
       render();
     });
   });
-
-  // Townships
-  const tCounts = {};
-  allDeals.forEach(d => { if (d._township) tCounts[d._township] = (tCounts[d._township] || 0) + 1; });
-  const orderedT = TOWNSHIPS.map(t => t.replace('市', '')).filter(t => tCounts[t]);
-  const otherT = Object.keys(tCounts).filter(t => !orderedT.includes(t));
-  const allT = ['全部', ...orderedT, ...otherT];
-
-  const tBox = document.getElementById('townshipFilters');
-  if (Object.keys(tCounts).length === 0) {
-    document.getElementById('townshipRow').style.display = 'none';
-  } else {
-    tBox.innerHTML = allT.map(t => {
-      const count = t === '全部' ? allDeals.length : tCounts[t];
-      return `<button class="filter-pill ${t === currentTownship ? 'active' : ''}" data-t="${escapeAttr(t)}">${escapeHtml(t)}<span class="count">${count}</span></button>`;
-    }).join('');
-    tBox.querySelectorAll('.filter-pill').forEach(btn => {
-      btn.addEventListener('click', () => {
-        currentTownship = btn.dataset.t;
-        tBox.querySelectorAll('.filter-pill').forEach(b => b.classList.toggle('active', b === btn));
-        render();
-      });
-    });
-  }
 }
 
 function render() {
   const grid = document.getElementById('dealsGrid');
   let filtered = allDeals.filter(d => {
-    if (currentCat !== '全部' && d.category !== currentCat) return false;
-    if (currentTownship !== '全部' && d._township !== currentTownship) return false;
+    if (currentCats.size > 0 && !currentCats.has(d.category)) return false;
     if (searchTerm) {
       const q = searchTerm.toLowerCase();
       return d.name.toLowerCase().includes(q)
@@ -2014,6 +2202,89 @@ function render() {
       openModal(deal);
     });
   });
+
+  // Sync map with current filter
+  renderMap(filtered);
+}
+
+/* ========================================
+   MAP rendering (Leaflet)
+   ======================================== */
+let leafletMap = null;
+let markerLayer = null;
+
+function initMap() {
+  if (leafletMap || !window.L) return;
+  leafletMap = L.map('map', {
+    center: DEFAULT_COORD,
+    zoom: 11,
+    scrollWheelZoom: false,
+    zoomControl: true,
+  });
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 18,
+    attribution: '© OpenStreetMap',
+  }).addTo(leafletMap);
+  markerLayer = L.layerGroup().addTo(leafletMap);
+
+  // Enable scroll-wheel zoom only after user clicks the map
+  leafletMap.on('click', () => leafletMap.scrollWheelZoom.enable());
+  leafletMap.on('mouseout', () => leafletMap.scrollWheelZoom.disable());
+}
+
+function makeGoldIcon() {
+  return L.divIcon({
+    className: '',
+    html: '<div style="width:16px;height:16px;background:#E6A401;border:2px solid white;border-radius:50%;box-shadow:0 2px 6px rgba(0,0,0,0.4);"></div>',
+    iconSize: [20, 20],
+    iconAnchor: [10, 10],
+    popupAnchor: [0, -8],
+  });
+}
+
+function renderMap(filteredDeals) {
+  if (!leafletMap) initMap();
+  if (!leafletMap || !markerLayer) return;
+  markerLayer.clearLayers();
+
+  if (filteredDeals.length === 0) return;
+
+  const icon = makeGoldIcon();
+  const bounds = [];
+  filteredDeals.forEach((d, i) => {
+    const [lat, lng] = getMerchantCoord(d);
+    bounds.push([lat, lng]);
+    const marker = L.marker([lat, lng], { icon })
+      .bindPopup(`
+        <div class="map-popup">
+          <img class="map-popup-img" src="${escapeAttr(d.photo)}" alt="${escapeAttr(d.name)}">
+          <span class="map-popup-cat">${escapeHtml(d.category)}${d._township ? ' · ' + escapeHtml(d._township) : ''}</span>
+          <h4>${escapeHtml(d.name)}</h4>
+          ${d._discount ? `<span class="map-popup-discount">${escapeHtml(d._discount)}</span>` : ''}
+          <div class="map-popup-btn" data-open-deal="${i}">查看詳情 →</div>
+        </div>
+      `);
+    markerLayer.addLayer(marker);
+  });
+
+  // Wire popup buttons to modal (via event delegation since popups render on demand)
+  leafletMap.off('popupopen').on('popupopen', e => {
+    const btn = e.popup._contentNode.querySelector('[data-open-deal]');
+    if (btn) {
+      btn.style.cursor = 'pointer';
+      btn.addEventListener('click', () => {
+        const idx = +btn.dataset.openDeal;
+        openModal(filteredDeals[idx]);
+        leafletMap.closePopup();
+      }, { once: true });
+    }
+  });
+
+  if (bounds.length > 1) {
+    leafletMap.fitBounds(bounds, { padding: [40, 40], maxZoom: 13 });
+  } else if (bounds.length === 1) {
+    leafletMap.setView(bounds[0], 14);
+  }
 }
 
 /* ========================================
@@ -2129,20 +2400,32 @@ document.getElementById('sortSelect').addEventListener('change', e => {
   render();
 });
 
-// Hero quick category tags
+// Hero quick category tags — apply as ONLY-this-category (replace current selection)
 document.querySelectorAll('.hero-quick-tags a').forEach(link => {
   link.addEventListener('click', e => {
     e.preventDefault();
     const cat = link.dataset.quick;
-    const btn = document.querySelector(`#catFilters .filter-pill[data-cat="${cat}"]`);
-    if (btn) btn.click();
-    // Smooth scroll to deals (offset for sticky controls + nav)
-    const target = document.getElementById('deals');
+    currentCats = new Set([cat]);
+    renderFilters();
+    render();
+    const target = document.getElementById('controls');
     if (target) {
-      const y = target.getBoundingClientRect().top + window.pageYOffset - 200;
+      const y = target.getBoundingClientRect().top + window.pageYOffset - 60;
       window.scrollTo({ top: y, behavior: 'smooth' });
     }
   });
+});
+
+// Map collapse toggle
+const mapToggle = document.getElementById('mapToggle');
+const mapContainer = document.getElementById('map');
+mapToggle.addEventListener('click', () => {
+  const collapsed = mapContainer.classList.toggle('collapsed');
+  mapToggle.textContent = collapsed ? '顯示地圖 ▼' : '收合地圖 ▲';
+  if (!collapsed && leafletMap) {
+    // Re-render tiles after un-collapse
+    setTimeout(() => leafletMap.invalidateSize(), 420);
+  }
 });
 
 // Mobile menu
