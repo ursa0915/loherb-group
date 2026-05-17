@@ -337,38 +337,34 @@ input, select { font: inherit; color: inherit; }
   white-space: nowrap;
 }
 .cat-filters {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px 32px;
+  justify-content: center;
   width: 100%;
 }
 .cat-pill {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 6px;
-  padding: 14px 8px;
-  min-height: 92px;
+  gap: 10px;
+  padding: 0;
   background: transparent;
-  border: 1px solid var(--line-strong);
-  border-radius: 8px;
-  font-size: 0.85rem;
-  letter-spacing: 0.06em;
-  color: var(--charcoal);
-  transition: all 0.25s var(--ease-out);
+  border: none;
   cursor: pointer;
-  text-align: center;
+  color: var(--charcoal);
+  transition: color 0.25s var(--ease-out);
 }
-@media (max-width: 900px) {
-  .cat-filters { grid-template-columns: repeat(4, 1fr); }
+.cat-pill-icon {
+  width: 76px; height: 76px;
+  border-radius: 50%;
+  border: 1px solid var(--line-strong);
+  display: flex; align-items: center; justify-content: center;
+  background: transparent;
+  transition: all 0.3s var(--ease-out);
 }
-@media (max-width: 540px) {
-  .cat-filters { grid-template-columns: repeat(3, 1fr); gap: 8px; }
-  .cat-pill { min-height: 84px; padding: 10px 6px; font-size: 0.78rem; }
-}
-.cat-pill svg {
-  width: 26px; height: 26px;
+.cat-pill-icon svg {
+  width: 30px; height: 30px;
   stroke: currentColor;
   stroke-width: 1.4;
   fill: none;
@@ -376,27 +372,29 @@ input, select { font: inherit; color: inherit; }
   stroke-linejoin: round;
   transition: all 0.25s var(--ease-out);
 }
-.cat-pill:hover {
-  border-color: var(--gold);
-  color: var(--gold);
-}
-.cat-pill.active {
-  background: rgba(230, 164, 1, 0.08);
-  border-color: var(--gold);
-  color: var(--gold);
+.cat-pill-label {
+  font-size: 0.88rem;
+  letter-spacing: 0.1em;
   font-weight: 500;
 }
-.cat-pill.active svg {
-  stroke-width: 1.8;
+.cat-pill:hover { color: var(--gold); }
+.cat-pill:hover .cat-pill-icon {
+  border-color: var(--gold);
+  transform: translateY(-3px);
 }
-.cat-pill .count {
-  font-size: 0.78rem;
-  opacity: 0.55;
-  font-family: var(--font-en);
-  font-style: italic;
-  font-weight: 400;
+.cat-pill.active { color: var(--gold); }
+.cat-pill.active .cat-pill-icon {
+  border-color: var(--gold);
+  background: rgba(230, 164, 1, 0.10);
+  border-width: 1.5px;
 }
-.cat-pill.active .count { opacity: 0.85; }
+.cat-pill.active .cat-pill-icon svg { stroke-width: 1.8; }
+@media (max-width: 540px) {
+  .cat-filters { gap: 14px 18px; }
+  .cat-pill-icon { width: 62px; height: 62px; }
+  .cat-pill-icon svg { width: 24px; height: 24px; }
+  .cat-pill-label { font-size: 0.8rem; }
+}
 
 .controls-divider {
   width: 1px; height: 16px;
@@ -1700,6 +1698,32 @@ input, select { font: inherit; color: inherit; }
   </div>
 </section>
 
+<!-- ========== HOWTO ========== -->
+<section class="howto">
+  <div class="howto-inner">
+    <div class="section-eyebrow reveal">— How to Redeem —</div>
+    <h2 class="section-title reveal reveal-d1">如何使用優惠</h2>
+    <div class="section-divider reveal reveal-d1"></div>
+    <div class="howto-grid">
+      <div class="howto-step reveal">
+        <div class="howto-num">01</div>
+        <h3>入住合作渡假村</h3>
+        <p>於本集團旗下宜蘭渡假村完成入住，保留訂房通知或住宿憑證。</p>
+      </div>
+      <div class="howto-step reveal reveal-d1">
+        <div class="howto-num">02</div>
+        <h3>挑選喜愛商家</h3>
+        <p>點擊卡片查看完整優惠詳情，可一鍵撥電話或開啟 Google Maps。</p>
+      </div>
+      <div class="howto-step reveal reveal-d2">
+        <div class="howto-num">03</div>
+        <h3>出示憑證享優惠</h3>
+        <p>抵達店家時出示住宿憑證，即可享受獨家折扣。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ========== FOOTER ========== -->
 <footer class="footer">
   <div class="footer-top">
@@ -2114,7 +2138,10 @@ function renderFilters() {
   catBox.innerHTML = allCats.map(c => {
     const count = c === '全部' ? allDeals.length : catCounts[c];
     const icon = CAT_ICONS[c] || CAT_ICONS['其他'];
-    return `<button class="cat-pill ${isCatActive(c) ? 'active' : ''}" data-cat="${escapeAttr(c)}">${icon}<span class="label">${escapeHtml(c)}</span><span class="count">${count}</span></button>`;
+    return `<button class="cat-pill ${isCatActive(c) ? 'active' : ''}" data-cat="${escapeAttr(c)}" title="${escapeAttr(c)} (${count})">
+              <span class="cat-pill-icon">${icon}</span>
+              <span class="cat-pill-label">${escapeHtml(c)}</span>
+            </button>`;
   }).join('');
   catBox.querySelectorAll('.cat-pill').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -2207,19 +2234,10 @@ function renderRegionMap() {
 
   document.querySelectorAll('.region').forEach(region => {
     const t = region.dataset.t;
-    const count = counts[t] || 0;
     region.classList.toggle('active', t === currentTownship);
-
-    const labelEl = region.querySelector('.region-label');
+    // Count text intentionally not shown (per user request)
     const countEl = region.querySelector('.region-count');
-    if (countEl) {
-      countEl.textContent = count > 0 ? count + '間' : '';
-    }
-    if (labelEl && countEl) {
-      const baseY = parseFloat(labelEl.dataset.baseY || labelEl.getAttribute('y'));
-      if (!labelEl.dataset.baseY) labelEl.dataset.baseY = baseY;
-      labelEl.setAttribute('y', count > 0 ? baseY - 6 : baseY + 4);
-    }
+    if (countEl) countEl.textContent = '';
   });
 
   const resetBtn = document.getElementById('regionReset');
