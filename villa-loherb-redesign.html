@@ -696,29 +696,33 @@
     .quote-text-wrap {
       position: relative;
       display: inline-block;
+      padding: 3rem 4rem;
+      isolation: isolate;
+    }
+    .quote-text-wrap::before {
+      content: ''; position: absolute; inset: 0; z-index: -1;
       background: rgba(0, 0, 0, 0.32);
       backdrop-filter: blur(14px) saturate(1.1);
       -webkit-backdrop-filter: blur(14px) saturate(1.1);
-      padding: 3rem 4rem;
       -webkit-mask-image: radial-gradient(ellipse 60% 95% at center, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.82) 18%, rgba(0,0,0,0.66) 34%, rgba(0,0,0,0.46) 50%, rgba(0,0,0,0.26) 66%, rgba(0,0,0,0.12) 80%, rgba(0,0,0,0.04) 90%, rgba(0,0,0,0.01) 97%, rgba(0,0,0,0) 100%);
       mask-image: radial-gradient(ellipse 60% 95% at center, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.82) 18%, rgba(0,0,0,0.66) 34%, rgba(0,0,0,0.46) 50%, rgba(0,0,0,0.26) 66%, rgba(0,0,0,0.12) 80%, rgba(0,0,0,0.04) 90%, rgba(0,0,0,0.01) 97%, rgba(0,0,0,0) 100%);
     }
-    .quote-stars { color: var(--gold); letter-spacing: 0.5em; margin-bottom: 1.4rem; font-size: 0.85rem; }
+    .quote-text-wrap > * { position: relative; z-index: 1; }
     .quote-zh {
-      font-size: clamp(1.1rem, 1.8vw, 1.45rem); font-weight: 400;
-      color: var(--mint-white);
-      letter-spacing: 0.18em; line-height: 2;
+      font-size: clamp(1.15rem, 1.9vw, 1.55rem); font-weight: 500;
+      color: var(--warm-white);
+      letter-spacing: 0.22em; line-height: 2.05;
       margin-bottom: 1.4rem; position: relative;
-      text-indent: 0.18em;
-      text-shadow: 0 2px 16px rgba(0,0,0,0.55);
+      text-indent: 0.22em;
+      text-shadow: 0 2px 18px rgba(0,0,0,0.85), 0 1px 4px rgba(0,0,0,0.6);
     }
     .quote-cite {
       font-family: var(--font-en-fallback);
-      font-size: 0.7rem; letter-spacing: 0.4em;
-      color: rgba(230, 164, 1, 0.85);
+      font-size: 0.72rem; letter-spacing: 0.42em;
+      color: rgba(230, 164, 1, 0.95);
       text-transform: uppercase; font-style: italic;
-      position: relative; text-indent: 0.4em;
-      text-shadow: 0 1px 6px rgba(0,0,0,0.4);
+      position: relative; text-indent: 0.42em;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.6);
     }
     .quote-deco {
       width: 40px; height: 1px;
@@ -1364,7 +1368,6 @@
   <section class="quote-banner">
     <div class="quote-banner-bg" style="background-image: url('/villa-redesign/assets/img/quote-stargazing-night.jpg');"></div>
     <div class="quote-text-wrap">
-      <div class="quote-stars">★ ★ ★ ★ ★</div>
       <p class="quote-zh">
         在月色中睡去　在晨星下醒來<br/>
         四周只有蛙鳴　沒有城市的紛擾
@@ -1412,14 +1415,6 @@
       </p>
     </div>
 
-    <div class="amenities-row">
-      <div class="amenity"><div class="amenity-letter">A</div><div class="amenity-name">空中花園</div></div>
-      <div class="amenity"><div class="amenity-letter">B</div><div class="amenity-name">水榭大道</div></div>
-      <div class="amenity"><div class="amenity-letter">C</div><div class="amenity-name">光合農場</div></div>
-      <div class="amenity"><div class="amenity-letter">D</div><div class="amenity-name">沐棧碼頭</div></div>
-      <div class="amenity"><div class="amenity-letter">E</div><div class="amenity-name">家庭劇院</div></div>
-      <div class="amenity"><div class="amenity-letter">F</div><div class="amenity-name">私廚高餐</div></div>
-    </div>
   </section>
 
   <!-- ========== MOMENTS — 紀念 / 婚禮 / 寵物 ========== -->
@@ -1489,7 +1484,7 @@
       </div>
       <div class="bespoke-item">
         <div class="en-label">Celebration</div>
-        <h4>慶典安排</h4>
+        <h4>節日慶祝</h4>
         <p>房間佈置、影片驚喜、私廚晚宴，為紀念日點亮儀式感。</p>
       </div>
       <div class="bespoke-item">
