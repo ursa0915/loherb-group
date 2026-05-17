@@ -155,3 +155,35 @@
 
       start();
     });
+
+    /* Booking bar — date defaults + validation */
+    (function() {
+      const checkin = document.getElementById('checkin');
+      const checkout = document.getElementById('checkout');
+      if (!checkin || !checkout) return;
+
+      const fmt = (d) => {
+        const yyyy = d.getFullYear();
+        const mm = String(d.getMonth() + 1).padStart(2, '0');
+        const dd = String(d.getDate()).padStart(2, '0');
+        return `${yyyy}-${mm}-${dd}`;
+      };
+
+      const today = new Date();
+      const tomorrow = new Date(today); tomorrow.setDate(today.getDate() + 1);
+
+      checkin.min = fmt(today);
+      checkin.value = fmt(today);
+      checkout.min = fmt(tomorrow);
+      checkout.value = fmt(tomorrow);
+
+      checkin.addEventListener('change', () => {
+        const next = new Date(checkin.value);
+        next.setDate(next.getDate() + 1);
+        const nextStr = fmt(next);
+        checkout.min = nextStr;
+        if (new Date(checkout.value) <= new Date(checkin.value)) {
+          checkout.value = nextStr;
+        }
+      });
+    })();
