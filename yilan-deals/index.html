@@ -10,7 +10,7 @@
 <meta property="og:title" content="宜蘭吃喝玩樂 Coupon 優惠卷｜40+ 在地商家獨家折扣">
 <meta property="og:description" content="40+ 在地商家獨家折扣 ── 餐飲、景點、伴手禮、DIY 體驗一次到位。">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://www.loherb.com.tw/party/images/lifestyle/hero-lake-walk.jpg">
+<meta property="og:image" content="https://www.loherb.com.tw/yilan-deals/image/20260517_%E7%A9%BA%E6%8B%8D_%E7%B4%85%E6%A9%8B%E6%B2%B3%E5%B2%B8%E5%9F%8E%E6%99%AF_%E5%8E%9F%E5%9C%96.jpg">
 <link rel="canonical" href="https://www.loherb.com.tw/yilan-deals/">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,7 +18,7 @@
 <link rel="preconnect" href="https://docs.google.com">
 <link rel="preconnect" href="https://images.unsplash.com">
 <link rel="preconnect" href="https://images.pexels.com">
-<link rel="preload" as="image" href="/party/images/lifestyle/hero-lake-walk.jpg">
+<link rel="preload" as="image" href="/yilan-deals/image/20260517_%E7%A9%BA%E6%8B%8D_%E7%B4%85%E6%A9%8B%E6%B2%B3%E5%B2%B8%E5%9F%8E%E6%99%AF_%E5%8E%9F%E5%9C%96.jpg">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
@@ -206,15 +206,15 @@ input, select { font: inherit; color: inherit; }
 }
 .hero-bg {
   position: absolute; inset: 0;
-  background: url('/party/images/lifestyle/hero-lake-walk.jpg') center/cover no-repeat;
-  filter: brightness(0.6) saturate(0.92);
+  background: url('/yilan-deals/image/20260517_%E7%A9%BA%E6%8B%8D_%E7%B4%85%E6%A9%8B%E6%B2%B3%E5%B2%B8%E5%9F%8E%E6%99%AF_%E5%8E%9F%E5%9C%96.jpg') center/cover no-repeat;
+  /* No filter — keep original color */
   will-change: transform;
 }
 .hero-overlay {
   position: absolute; inset: 0;
-  background:
-    radial-gradient(ellipse at center, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.45) 100%),
-    linear-gradient(180deg, rgba(26,26,26,0.4) 0%, rgba(26,26,26,0.1) 35%, rgba(26,26,26,0.6) 100%);
+  /* Very subtle bottom gradient only — for text legibility, preserves image color */
+  background: linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(0,0,0,0.35) 100%);
+  pointer-events: none;
 }
 .hero-inner {
   position: relative; z-index: 2;
@@ -247,17 +247,17 @@ input, select { font: inherit; color: inherit; }
   line-height: 1.4;
   color: var(--white);
   margin-bottom: 28px;
-  text-shadow: 0 4px 30px rgba(0,0,0,0.5);
+  text-shadow: 0 2px 8px rgba(0,0,0,0.6), 0 6px 32px rgba(0,0,0,0.55), 0 1px 3px rgba(0,0,0,0.7);
 }
 .hero h1 .gold { color: var(--gold); }
 .hero-sub {
   font-size: clamp(0.95rem, 1.4vw, 1.05rem);
   letter-spacing: 0.1em;
   line-height: 2;
-  color: rgba(255, 255, 255, 0.88);
+  color: rgba(255, 255, 255, 0.95);
   max-width: 640px;
   margin: 0 auto 36px;
-  text-shadow: 0 2px 18px rgba(0,0,0,0.6);
+  text-shadow: 0 1px 4px rgba(0,0,0,0.7), 0 4px 18px rgba(0,0,0,0.6);
 }
 .hero-search {
   max-width: 560px; margin: 0 auto;
@@ -485,11 +485,15 @@ input, select { font: inherit; color: inherit; }
 .region-map-reset.active { background: var(--gold); color: white; }
 
 .region-map {
-  background: var(--paper);
+  background:
+    radial-gradient(ellipse at 30% 20%, rgba(230, 164, 1, 0.04), transparent 60%),
+    radial-gradient(ellipse at 80% 80%, rgba(47, 74, 61, 0.04), transparent 60%),
+    var(--paper);
   border: 1px solid var(--line);
-  border-radius: 8px;
-  padding: 24px;
+  border-radius: 12px;
+  padding: 28px;
   position: relative;
+  box-shadow: 0 2px 8px rgba(80, 83, 80, 0.04), 0 12px 28px -10px rgba(80, 83, 80, 0.10);
 }
 .region-map svg {
   width: 100%;
@@ -498,6 +502,7 @@ input, select { font: inherit; color: inherit; }
   margin: 0 auto;
   display: block;
   user-select: none;
+  filter: drop-shadow(0 4px 12px rgba(80, 83, 80, 0.08));
 }
 .region {
   cursor: pointer;
@@ -505,24 +510,40 @@ input, select { font: inherit; color: inherit; }
   transform-origin: center;
   transform-box: fill-box;
 }
-.region polygon {
-  fill: var(--cream);
-  stroke: rgba(80, 83, 80, 0.45);
-  stroke-width: 1.4;
-  stroke-linejoin: round;
-  transition: all 0.25s var(--ease-out);
-}
-.region:hover polygon {
-  fill: rgba(230, 164, 1, 0.12);
-  stroke: var(--gold);
+/* Fill polygon (closes gaps via matched stroke/fill colour) */
+.region .region-fill {
+  fill: #F5EDE6;
+  stroke: #F5EDE6;
   stroke-width: 2;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  transition: fill 0.3s var(--ease-out), stroke 0.3s var(--ease-out);
 }
-.region.active polygon {
+/* Border polygon (visible township outline; rendered on top of fill, no pointer events) */
+.region .region-border {
+  fill: none;
+  stroke: rgba(80, 83, 80, 0.32);
+  stroke-width: 0.9;
+  stroke-linejoin: round;
+  pointer-events: none;
+  transition: stroke 0.3s var(--ease-out), stroke-width 0.3s var(--ease-out);
+}
+.region:hover .region-fill {
+  fill: rgba(230, 164, 1, 0.18);
+  stroke: var(--gold);
+}
+.region:hover .region-border {
+  stroke: var(--gold);
+  stroke-width: 1.4;
+}
+.region.active .region-fill {
   fill: var(--gold);
   stroke: var(--deep-gold);
-  stroke-width: 2;
 }
-/* No special empty state — all regions stay clickable */
+.region.active .region-border {
+  stroke: var(--deep-gold);
+  stroke-width: 1.4;
+}
 .region-label {
   font-family: var(--font-sans);
   font-size: 15px;
@@ -579,6 +600,18 @@ input, select { font: inherit; color: inherit; }
   border-color: var(--gold);
   color: white;
   font-weight: 500;
+}
+.t-circle.t-all {
+  border-color: var(--gold);
+  color: var(--gold);
+  font-weight: 600;
+}
+.t-circle.t-all:hover {
+  background: rgba(230, 164, 1, 0.10);
+}
+.t-circle.t-all.active {
+  background: var(--gold);
+  color: white;
 }
 @media (max-width: 540px) {
   .t-circle { width: 52px; height: 52px; font-size: 0.78rem; }
@@ -1607,7 +1640,6 @@ input, select { font: inherit; color: inherit; }
       <span class="region-map-eyebrow">— Choose A Region —</span>
       <h3>點選鄉鎮，篩選優惠</h3>
     </div>
-    <button class="region-map-reset active" id="regionReset">全宜蘭</button>
   </div>
   <div class="region-map">
     <svg viewBox="0 0 720 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="宜蘭縣鄉鎮分區圖">
@@ -1674,8 +1706,9 @@ input, select { font: inherit; color: inherit; }
       </g>
     </svg>
 
-    <!-- Township circle picker (12 circles with text inside; syncs with map) -->
+    <!-- Township circle picker (12 circles + 全部 select-all button; syncs with map) -->
     <div class="township-circles" id="townshipCircles">
+      <button class="t-circle t-all" id="tAll" data-t="__all__">全部</button>
       <button class="t-circle" data-t="頭城">頭城</button>
       <button class="t-circle" data-t="礁溪">礁溪</button>
       <button class="t-circle" data-t="宜蘭">宜蘭</button>
@@ -1708,9 +1741,8 @@ input, select { font: inherit; color: inherit; }
 <!-- ========== FEATURE: ACCOMMODATION (住宿) ========== -->
 <section class="feature-block">
   <div class="feature-block-image">
-    <img src="https://villa.loherb.com.tw/images/page-banners/room_overview2024_banner.jpg"
-         alt="日光綠築 Villa" loading="lazy"
-         onerror="this.src='/party/images/venues/aerial-villa.png'">
+    <img src="/yilan-deals/image/villa-pool-aerial.jpg"
+         alt="宜蘭渡假村 ── 冬山河畔泳池空拍" loading="lazy">
   </div>
   <div class="feature-block-content">
     <div class="feature-block-label reveal">— Stay In Yilan —</div>
@@ -1734,9 +1766,8 @@ input, select { font: inherit; color: inherit; }
 <!-- ========== FEATURE: DINING (用餐) ========== -->
 <section class="feature-block reverse">
   <div class="feature-block-image">
-    <img src="/wedding/images/cuisine-cocktail-snacks.jpg"
-         alt="日光私廚 Cuisine" loading="lazy"
-         onerror="this.src='https://images.unsplash.com/photo-1528127269322-539801943592?w=1200&q=80&auto=format&fit=crop'">
+    <img src="/yilan-deals/image/ChatGPT%20Image%202026%E5%B9%B45%E6%9C%8817%E6%97%A5%20%E4%B8%8B%E5%8D%8810_44_02.png"
+         alt="私廚 ── 季節限定料理" loading="lazy">
   </div>
   <div class="feature-block-content">
     <div class="feature-block-label reveal">— Private Dining —</div>
@@ -2356,6 +2387,8 @@ function toggleTownship(t) {
   else currentTownships.add(t);
 }
 
+const ALL_TOWNSHIPS = ['頭城','礁溪','宜蘭','員山','壯圍','三星','羅東','五結','冬山','蘇澳','大同','南澳'];
+
 function renderRegionMap() {
   document.querySelectorAll('.region').forEach(region => {
     const t = region.dataset.t;
@@ -2363,13 +2396,16 @@ function renderRegionMap() {
     const countEl = region.querySelector('.region-count');
     if (countEl) countEl.textContent = '';
   });
-  // Sync circle picker
-  document.querySelectorAll('.t-circle').forEach(btn => {
+  // Sync circle picker (skip the special "全部" button)
+  document.querySelectorAll('.t-circle:not(.t-all)').forEach(btn => {
     btn.classList.toggle('active', currentTownships.has(btn.dataset.t));
   });
-  // Sync "全宜蘭" button
-  const resetBtn = document.getElementById('regionReset');
-  if (resetBtn) resetBtn.classList.toggle('active', currentTownships.size === 0);
+  // "全部" pill: active when all 12 selected
+  const tAll = document.getElementById('tAll');
+  if (tAll) {
+    const allSelected = ALL_TOWNSHIPS.every(t => currentTownships.has(t));
+    tAll.classList.toggle('active', allSelected);
+  }
 }
 
 function renderSelectedSummary(filteredCount) {
@@ -2404,7 +2440,23 @@ function renderSelectedSummary(filteredCount) {
   });
 }
 
+function decorateRegionMap() {
+  // Add a second polygon (border layer) inside each .region so we can
+  // close visual gaps with matched fill+stroke AND keep visible township boundaries.
+  document.querySelectorAll('.region').forEach(region => {
+    const orig = region.querySelector('polygon');
+    if (!orig || orig.classList.contains('region-fill')) return;
+    orig.classList.add('region-fill');
+    const border = orig.cloneNode();
+    border.classList.remove('region-fill');
+    border.classList.add('region-border');
+    // Border goes AFTER fill so it renders on top
+    region.insertBefore(border, region.querySelector('text'));
+  });
+}
+
 function wireRegionMap() {
+  decorateRegionMap();
   // SVG region polygons
   document.querySelectorAll('.region').forEach(region => {
     region.addEventListener('click', () => {
@@ -2413,20 +2465,28 @@ function wireRegionMap() {
       render();
     });
   });
-  // Circle pills
-  document.querySelectorAll('.t-circle').forEach(btn => {
+  // Circle pills (excluding 全部 — handled separately)
+  document.querySelectorAll('.t-circle:not(.t-all)').forEach(btn => {
     btn.addEventListener('click', () => {
       toggleTownship(btn.dataset.t);
       renderRegionMap();
       render();
     });
   });
-  // 全宜蘭 reset
-  document.getElementById('regionReset').addEventListener('click', () => {
-    currentTownships.clear();
-    renderRegionMap();
-    render();
-  });
+  // 全部 — toggle select-all
+  const tAll = document.getElementById('tAll');
+  if (tAll) {
+    tAll.addEventListener('click', () => {
+      const allSelected = ALL_TOWNSHIPS.every(t => currentTownships.has(t));
+      if (allSelected) {
+        currentTownships.clear();
+      } else {
+        ALL_TOWNSHIPS.forEach(t => currentTownships.add(t));
+      }
+      renderRegionMap();
+      render();
+    });
+  }
 }
 
 /* ========================================
