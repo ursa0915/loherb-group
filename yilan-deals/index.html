@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>宜蘭優惠地圖｜40+ 在地商家獨家折扣 — 日光 LOHERB</title>
-<meta name="description" content="宜蘭吃喝玩樂優惠總整理 ── 40+ 在地商家獨家折扣，餐飲、景點、伴手禮、DIY 體驗一次到位。涵蓋冬山、礁溪、羅東、五結、三星、蘇澳等鄉鎮精選店家。">
-<meta name="keywords" content="宜蘭優惠,宜蘭折扣,宜蘭打折,宜蘭餐廳優惠,宜蘭景點門票,宜蘭伴手禮,冬山優惠,礁溪優惠,羅東優惠,宜蘭旅遊優惠,宜蘭在地優惠">
+<title>宜蘭吃喝玩樂 Coupon 優惠卷｜40+ 在地商家獨家折扣 — 日光 LOHERB</title>
+<meta name="description" content="宜蘭吃喝玩樂 Coupon 優惠卷總整理 ── 40+ 在地商家獨家折扣，餐飲、景點、伴手禮、DIY 體驗一次到位。涵蓋冬山、礁溪、羅東、五結、三星、蘇澳等鄉鎮精選店家。">
+<meta name="keywords" content="宜蘭優惠卷,宜蘭Coupon,宜蘭優惠,宜蘭折扣,宜蘭打折,宜蘭餐廳優惠,宜蘭景點門票,宜蘭伴手禮,冬山優惠,礁溪優惠,羅東優惠,宜蘭旅遊優惠,宜蘭在地優惠">
 <meta name="theme-color" content="#1a1a1a">
-<meta property="og:title" content="吃喝玩樂在宜蘭，整趟都優惠｜40+ 在地商家獨家折扣">
+<meta property="og:title" content="宜蘭吃喝玩樂 Coupon 優惠卷｜40+ 在地商家獨家折扣">
 <meta property="og:description" content="40+ 在地商家獨家折扣 ── 餐飲、景點、伴手禮、DIY 體驗一次到位。">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://www.loherb.com.tw/party/images/lifestyle/hero-lake-walk.jpg">
@@ -536,6 +536,119 @@ input, select { font: inherit; color: inherit; }
   text-anchor: middle;
 }
 .region.active .region-count { fill: var(--white); }
+
+/* ----- Township circle picker (syncs with map) ----- */
+.township-circles {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px dashed var(--line);
+}
+.t-circle {
+  width: 58px; height: 58px;
+  border-radius: 50%;
+  border: 1px solid var(--line-strong);
+  background: var(--paper);
+  color: var(--charcoal);
+  font-family: var(--font-zh);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  transition: all 0.25s var(--ease-out);
+  padding: 0;
+}
+.t-circle:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  transform: translateY(-2px);
+}
+.t-circle.active {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: white;
+  font-weight: 500;
+}
+@media (max-width: 540px) {
+  .t-circle { width: 52px; height: 52px; font-size: 0.78rem; }
+  .township-circles { gap: 8px; }
+}
+
+/* ----- Selected summary bar ----- */
+.selected-summary {
+  display: none;
+  margin-top: 20px;
+  padding: 14px 18px;
+  background: rgba(230, 164, 1, 0.08);
+  border: 1px solid rgba(230, 164, 1, 0.25);
+  border-radius: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px 14px;
+}
+.selected-summary.show { display: flex; }
+.sel-label {
+  font-family: var(--font-zh);
+  font-size: 0.82rem;
+  letter-spacing: 0.12em;
+  color: var(--deep-gold);
+  font-weight: 500;
+}
+.sel-chips {
+  display: flex; flex-wrap: wrap; gap: 6px;
+  flex: 1;
+}
+.sel-chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 4px 10px 4px 12px;
+  background: var(--gold);
+  color: white;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.sel-chip:hover { background: var(--deep-gold); }
+.sel-chip .x {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.25);
+  font-size: 0.75rem;
+  line-height: 1;
+}
+.sel-count {
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  color: var(--charcoal);
+  white-space: nowrap;
+}
+.sel-count strong {
+  color: var(--gold);
+  font-family: var(--font-en);
+  font-style: italic;
+  font-size: 1rem;
+  margin: 0 3px;
+}
+.sel-clear {
+  padding: 6px 12px;
+  border: 1px solid var(--deep-gold);
+  color: var(--deep-gold);
+  border-radius: 999px;
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  transition: all 0.25s var(--ease-out);
+  white-space: nowrap;
+}
+.sel-clear:hover {
+  background: var(--deep-gold);
+  color: white;
+}
 
 @media (max-width: 720px) {
   .region-map { padding: 16px; }
@@ -1442,7 +1555,7 @@ input, select { font: inherit; color: inherit; }
   <div class="hero-overlay"></div>
   <div class="hero-inner">
     <div class="hero-eyebrow reveal">YILAN DEALS · LOCAL DISCOUNTS</div>
-    <h1 class="reveal reveal-d1">吃喝玩樂在宜蘭<br><span class="gold">整趟都優惠</span></h1>
+    <h1 class="reveal reveal-d1">宜蘭吃喝玩樂<br><span class="gold">Coupon 優惠卷</span></h1>
     <p class="hero-sub reveal reveal-d2">
       在地 40+ 商家獨家折扣<br>餐飲・景點・伴手禮・DIY 體驗一次到位
     </p>
@@ -1467,17 +1580,6 @@ input, select { font: inherit; color: inherit; }
   <div class="controls-inner">
     <div class="controls-row">
       <div class="cat-filters" id="catFilters"></div>
-    </div>
-    <div class="results-meta">
-      <span id="resultsMeta">— 載入中 —</span>
-      <div class="sort-wrap">
-        <span class="controls-label" style="font-size:0.7rem;">排序</span>
-        <select class="sort-select" id="sortSelect">
-          <option value="default">推薦順序</option>
-          <option value="expiring">優惠期限（最近）</option>
-          <option value="name">店名（A-Z）</option>
-        </select>
-      </div>
     </div>
   </div>
 </section>
@@ -1555,6 +1657,25 @@ input, select { font: inherit; color: inherit; }
         <text class="region-count" x="521.0" y="406.0"></text>
       </g>
     </svg>
+
+    <!-- Township circle picker (12 circles with text inside; syncs with map) -->
+    <div class="township-circles" id="townshipCircles">
+      <button class="t-circle" data-t="頭城">頭城</button>
+      <button class="t-circle" data-t="礁溪">礁溪</button>
+      <button class="t-circle" data-t="宜蘭">宜蘭</button>
+      <button class="t-circle" data-t="員山">員山</button>
+      <button class="t-circle" data-t="壯圍">壯圍</button>
+      <button class="t-circle" data-t="三星">三星</button>
+      <button class="t-circle" data-t="羅東">羅東</button>
+      <button class="t-circle" data-t="五結">五結</button>
+      <button class="t-circle" data-t="冬山">冬山</button>
+      <button class="t-circle" data-t="蘇澳">蘇澳</button>
+      <button class="t-circle" data-t="大同">大同</button>
+      <button class="t-circle" data-t="南澳">南澳</button>
+    </div>
+
+    <!-- Selected-summary bar (only visible when at least one township selected) -->
+    <div class="selected-summary" id="selectedSummary"></div>
   </div>
 </section>
 
@@ -2029,7 +2150,7 @@ function parseExpiry(s) {
 const SHEET_URL = 'https://docs.google.com/spreadsheets/d/1J4-lWexX-vZJud1gSIw08eErDF5Sm4wi5LuyM6aXPyY/gviz/tq?tqx=out:csv&gid=115500043';
 let allDeals = [];
 let currentCats = new Set(['景點門票']);  // multi-select, default 景點門票
-let currentTownship = null;  // single-select via region map; null = 全宜蘭
+let currentTownships = new Set();  // multi-select via region map + circles
 let searchTerm = '';
 let currentSort = 'default';
 
@@ -2156,7 +2277,7 @@ function render() {
   const grid = document.getElementById('dealsGrid');
   let filtered = allDeals.filter(d => {
     if (currentCats.size > 0 && !currentCats.has(d.category)) return false;
-    if (currentTownship && d._township !== currentTownship) return false;
+    if (currentTownships.size > 0 && !currentTownships.has(d._township)) return false;
     if (searchTerm) {
       const q = searchTerm.toLowerCase();
       return d.name.toLowerCase().includes(q)
@@ -2166,15 +2287,8 @@ function render() {
     return true;
   });
 
-  // Sort
-  if (currentSort === 'expiring') {
-    filtered.sort((a, b) => a._expiry.sortDate - b._expiry.sortDate);
-  } else if (currentSort === 'name') {
-    filtered.sort((a, b) => a.name.localeCompare(b.name, 'zh-Hant'));
-  }
-
-  document.getElementById('resultsMeta').innerHTML =
-    `共 <strong>${filtered.length}</strong> 間商家提供優惠`;
+  // Update selected-townships summary (uses filtered count)
+  renderSelectedSummary(filtered.length);
 
   if (filtered.length === 0) {
     grid.innerHTML = `
@@ -2226,41 +2340,79 @@ function render() {
 /* ========================================
    REGION MAP (SVG) — click to filter by township
    ======================================== */
-function renderRegionMap() {
-  const counts = {};
-  allDeals.forEach(d => {
-    if (d._township) counts[d._township] = (counts[d._township] || 0) + 1;
-  });
+function toggleTownship(t) {
+  if (currentTownships.has(t)) currentTownships.delete(t);
+  else currentTownships.add(t);
+}
 
+function renderRegionMap() {
   document.querySelectorAll('.region').forEach(region => {
     const t = region.dataset.t;
-    region.classList.toggle('active', t === currentTownship);
-    // Count text intentionally not shown (per user request)
+    region.classList.toggle('active', currentTownships.has(t));
     const countEl = region.querySelector('.region-count');
     if (countEl) countEl.textContent = '';
   });
-
+  // Sync circle picker
+  document.querySelectorAll('.t-circle').forEach(btn => {
+    btn.classList.toggle('active', currentTownships.has(btn.dataset.t));
+  });
+  // Sync "全宜蘭" button
   const resetBtn = document.getElementById('regionReset');
-  if (resetBtn) resetBtn.classList.toggle('active', currentTownship === null);
+  if (resetBtn) resetBtn.classList.toggle('active', currentTownships.size === 0);
+}
+
+function renderSelectedSummary(filteredCount) {
+  const wrap = document.getElementById('selectedSummary');
+  if (!wrap) return;
+  if (currentTownships.size === 0) {
+    wrap.classList.remove('show');
+    wrap.innerHTML = '';
+    return;
+  }
+  const chips = Array.from(currentTownships).map(t =>
+    `<span class="sel-chip" data-t="${escapeAttr(t)}">${escapeHtml(t)} <span class="x">×</span></span>`
+  ).join('');
+  wrap.innerHTML = `
+    <span class="sel-label">已選地區</span>
+    <div class="sel-chips">${chips}</div>
+    <span class="sel-count">顯示 <strong>${filteredCount}</strong> 間商家</span>
+    <button class="sel-clear" id="selClear">清除全部</button>
+  `;
+  wrap.classList.add('show');
+  wrap.querySelectorAll('.sel-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      currentTownships.delete(chip.dataset.t);
+      renderRegionMap();
+      render();
+    });
+  });
+  document.getElementById('selClear').addEventListener('click', () => {
+    currentTownships.clear();
+    renderRegionMap();
+    render();
+  });
 }
 
 function wireRegionMap() {
+  // SVG region polygons
   document.querySelectorAll('.region').forEach(region => {
     region.addEventListener('click', () => {
-      const t = region.dataset.t;
-      currentTownship = (currentTownship === t) ? null : t;
+      toggleTownship(region.dataset.t);
       renderRegionMap();
       render();
-      // Smooth scroll to grid so user sees the filtered results
-      const target = document.getElementById('deals');
-      if (target) {
-        const y = target.getBoundingClientRect().top + window.pageYOffset - 200;
-        window.scrollTo({ top: y, behavior: 'smooth' });
-      }
     });
   });
+  // Circle pills
+  document.querySelectorAll('.t-circle').forEach(btn => {
+    btn.addEventListener('click', () => {
+      toggleTownship(btn.dataset.t);
+      renderRegionMap();
+      render();
+    });
+  });
+  // 全宜蘭 reset
   document.getElementById('regionReset').addEventListener('click', () => {
-    currentTownship = null;
+    currentTownships.clear();
     renderRegionMap();
     render();
   });
@@ -2374,10 +2526,7 @@ document.getElementById('searchInput').addEventListener('input', e => {
   }, 150);
 });
 
-document.getElementById('sortSelect').addEventListener('change', e => {
-  currentSort = e.target.value;
-  render();
-});
+// Sort select removed per user request
 
 // Hero quick category tags — apply as ONLY-this-category (replace current selection)
 document.querySelectorAll('.hero-quick-tags a').forEach(link => {
