@@ -436,7 +436,7 @@
        QUOTE BANNER
     ======================================== */
     .quote-banner {
-      background: var(--mint-white);
+      background: var(--forest-darker);
       text-align: center;
       padding: 7rem 2rem; min-height: 70vh;
       position: relative; overflow: hidden;
@@ -445,7 +445,7 @@
     .quote-banner-bg {
       position: absolute; inset: 0;
       background-size: cover; background-position: center;
-      opacity: 0.55;
+      opacity: 1;
     }
     .quote-text-wrap {
       position: relative;
@@ -833,12 +833,10 @@
     .cafe-strip-bg {
       position: absolute; inset: 0;
       background-size: cover; background-position: center;
-      opacity: 0.9;
-      filter: saturate(0.92);
+      opacity: 1;
     }
     .cafe-strip::after {
-      content: ''; position: absolute; inset: 0;
-      background: linear-gradient(180deg, rgba(5, 43, 36, 0.4) 0%, rgba(5, 43, 36, 0.18) 50%, rgba(5, 43, 36, 0.55) 100%);
+      content: none;
     }
     .cafe-text-wrap {
       position: relative; z-index: 2;
