@@ -337,25 +337,38 @@ input, select { font: inherit; color: inherit; }
   white-space: nowrap;
 }
 .cat-filters {
-  display: flex; flex-wrap: wrap; gap: 10px;
-  flex: 1;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+  width: 100%;
 }
 .cat-pill {
-  display: inline-flex;
-  align-items: center; gap: 8px;
-  padding: 10px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 14px 8px;
+  min-height: 92px;
   background: transparent;
   border: 1px solid var(--line-strong);
   border-radius: 8px;
-  font-size: 0.88rem;
+  font-size: 0.85rem;
   letter-spacing: 0.06em;
   color: var(--charcoal);
   transition: all 0.25s var(--ease-out);
   cursor: pointer;
+  text-align: center;
+}
+@media (max-width: 900px) {
+  .cat-filters { grid-template-columns: repeat(4, 1fr); }
+}
+@media (max-width: 540px) {
+  .cat-filters { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .cat-pill { min-height: 84px; padding: 10px 6px; font-size: 0.78rem; }
 }
 .cat-pill svg {
-  width: 18px; height: 18px;
+  width: 26px; height: 26px;
   stroke: currentColor;
   stroke-width: 1.4;
   fill: none;
@@ -377,10 +390,10 @@ input, select { font: inherit; color: inherit; }
   stroke-width: 1.8;
 }
 .cat-pill .count {
-  font-size: 0.72rem;
+  font-size: 0.78rem;
   opacity: 0.55;
-  margin-left: 2px;
   font-family: var(--font-en);
+  font-style: italic;
   font-weight: 400;
 }
 .cat-pill.active .count { opacity: 0.85; }
@@ -504,17 +517,7 @@ input, select { font: inherit; color: inherit; }
   stroke: var(--deep-gold);
   stroke-width: 2;
 }
-.region.empty { cursor: default; }
-.region.empty polygon {
-  fill: #F0EAE5;
-  stroke: rgba(80, 83, 80, 0.18);
-  stroke-dasharray: 4 3;
-}
-.region.empty:hover polygon {
-  fill: #F0EAE5;
-  stroke: rgba(80, 83, 80, 0.18);
-  stroke-width: 1.4;
-}
+/* No special empty state — all regions stay clickable */
 .region-label {
   font-family: var(--font-zh);
   font-size: 15px;
@@ -526,7 +529,6 @@ input, select { font: inherit; color: inherit; }
   letter-spacing: 0.04em;
 }
 .region.active .region-label { fill: var(--white); }
-.region.empty .region-label { fill: rgba(80, 83, 80, 0.35); }
 .region-count {
   font-family: var(--font-en);
   font-style: italic;
@@ -536,29 +538,6 @@ input, select { font: inherit; color: inherit; }
   text-anchor: middle;
 }
 .region.active .region-count { fill: var(--white); }
-.region.empty .region-count { fill: rgba(80, 83, 80, 0.2); }
-
-.region-map-legend {
-  display: flex; justify-content: center; flex-wrap: wrap;
-  gap: 18px;
-  margin-top: 16px;
-  font-size: 0.75rem;
-  letter-spacing: 0.08em;
-  color: var(--charcoal);
-  opacity: 0.7;
-}
-.region-map-legend-item {
-  display: inline-flex; align-items: center; gap: 6px;
-}
-.region-map-legend-item .swatch {
-  display: inline-block;
-  width: 12px; height: 12px;
-  border: 1.5px solid;
-  border-radius: 2px;
-}
-.region-map-legend-item.has .swatch { background: var(--cream); border-color: rgba(80,83,80,0.45); }
-.region-map-legend-item.empty .swatch { background: #F0EAE5; border-color: rgba(80,83,80,0.2); border-style: dashed; }
-.region-map-legend-item.active .swatch { background: var(--gold); border-color: var(--deep-gold); }
 
 @media (max-width: 720px) {
   .region-map { padding: 16px; }
@@ -1515,85 +1494,69 @@ input, select { font: inherit; color: inherit; }
     <button class="region-map-reset active" id="regionReset">全宜蘭</button>
   </div>
   <div class="region-map">
-    <svg viewBox="0 0 720 540" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="宜蘭縣鄉鎮分區圖">
-      <!-- 大同（西側山區大區） -->
+    <svg viewBox="0 0 720 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="宜蘭縣鄉鎮分區圖">
+      <!-- Township polygons derived from g0v twTown1982 GeoJSON, Douglas-Peucker simplified -->
       <g class="region" data-t="大同">
-        <polygon points="30,90 200,80 220,180 200,300 60,330 30,200"/>
-        <text class="region-label" x="115" y="195">大同</text>
-        <text class="region-count" x="115" y="218"></text>
+        <polygon points="266.8,271.8 319.2,241.4 351.7,267.6 303.3,306.8 388.8,309.4 422.2,325.3 429.5,346.9 448.2,355.4 453.3,359.8 453.0,361.0 340.9,376.7 237.3,446.7 207.0,519.1 158.9,531.3 118.5,466.1 180.2,398.9 216.2,289.1"/>
+        <text class="region-label" x="254.5" y="385.9">大同</text>
+        <text class="region-count" x="254.5" y="408.9"></text>
       </g>
-      <!-- 員山 -->
-      <g class="region" data-t="員山">
-        <polygon points="200,80 320,90 320,180 220,180"/>
-        <text class="region-label" x="260" y="130">員山</text>
-        <text class="region-count" x="260" y="153"></text>
-      </g>
-      <!-- 礁溪 -->
-      <g class="region" data-t="礁溪">
-        <polygon points="320,30 510,30 500,140 320,150"/>
-        <text class="region-label" x="412" y="85">礁溪</text>
-        <text class="region-count" x="412" y="108"></text>
-      </g>
-      <!-- 頭城 -->
-      <g class="region" data-t="頭城">
-        <polygon points="510,30 700,40 690,200 540,210 500,140"/>
-        <text class="region-label" x="600" y="115">頭城</text>
-        <text class="region-count" x="600" y="138"></text>
-      </g>
-      <!-- 宜蘭市 -->
-      <g class="region" data-t="宜蘭">
-        <polygon points="320,150 430,150 430,260 320,260"/>
-        <text class="region-label" x="375" y="200">宜蘭</text>
-        <text class="region-count" x="375" y="223"></text>
-      </g>
-      <!-- 壯圍 -->
-      <g class="region" data-t="壯圍">
-        <polygon points="430,150 540,210 530,310 430,300"/>
-        <text class="region-label" x="485" y="240">壯圍</text>
-        <text class="region-count" x="485" y="263"></text>
-      </g>
-      <!-- 三星 -->
-      <g class="region" data-t="三星">
-        <polygon points="60,330 200,300 210,400 70,420"/>
-        <text class="region-label" x="135" y="360">三星</text>
-        <text class="region-count" x="135" y="383"></text>
-      </g>
-      <!-- 羅東 -->
-      <g class="region" data-t="羅東">
-        <polygon points="200,300 320,260 330,380 210,400"/>
-        <text class="region-label" x="265" y="335">羅東</text>
-        <text class="region-count" x="265" y="358"></text>
-      </g>
-      <!-- 五結 -->
-      <g class="region" data-t="五結">
-        <polygon points="330,260 430,260 530,310 540,400 330,380"/>
-        <text class="region-label" x="440" y="335">五結</text>
-        <text class="region-count" x="440" y="358"></text>
-      </g>
-      <!-- 冬山 -->
-      <g class="region" data-t="冬山">
-        <polygon points="70,420 210,400 330,380 340,470 210,490 90,470"/>
-        <text class="region-label" x="210" y="437">冬山</text>
-        <text class="region-count" x="210" y="460"></text>
-      </g>
-      <!-- 蘇澳 -->
-      <g class="region" data-t="蘇澳">
-        <polygon points="340,400 540,400 600,510 360,510 340,470"/>
-        <text class="region-label" x="470" y="455">蘇澳</text>
-        <text class="region-count" x="470" y="478"></text>
-      </g>
-      <!-- 南澳 -->
       <g class="region" data-t="南澳">
-        <polygon points="90,470 210,490 340,470 360,510 600,510 600,530 30,530 30,440"/>
-        <text class="region-label" x="320" y="515">南澳</text>
-        <text class="region-count" x="320" y="535"></text>
+        <polygon points="439.1,334.7 447.3,324.6 476.8,339.9 492.8,378.7 516.2,391.6 489.7,446.4 466.5,446.6 478.6,479.1 458.4,576.6 385.1,556.7 352.2,529.6 353.5,559.2 325.8,561.7 333.3,580.0 210.3,526.9 240.6,443.5 289.5,425.9 340.9,376.7 407.6,356.0 439.8,368.9 453.3,359.9 422.2,325.3"/>
+        <text class="region-label" x="351.5" y="451.2">南澳</text>
+        <text class="region-count" x="351.5" y="474.2"></text>
+      </g>
+      <g class="region" data-t="三星">
+        <polygon points="434.2,250.2 450.2,249.4 444.2,263.0 422.3,270.3 420.7,282.4 429.2,283.1 421.7,297.5 400.0,292.5 408.5,299.2 404.9,306.3 350.9,308.0 347.8,319.8 335.1,310.3 327.6,314.4 302.4,305.8 376.1,254.7 414.5,258.3"/>
+        <text class="region-label" x="379.9" y="283.6">三星</text>
+        <text class="region-count" x="379.9" y="302.6"></text>
+      </g>
+      <g class="region" data-t="員山">
+        <polygon points="346.6,180.1 421.6,195.0 429.2,201.4 424.9,215.5 435.5,221.2 430.0,237.8 450.3,243.4 414.5,258.3 376.1,254.7 356.9,271.8 346.1,273.1 351.8,266.8 319.2,241.4 327.4,234.1 320.7,212.5 327.2,198.4 323.0,185.7"/>
+        <text class="region-label" x="378.3" y="226.4">員山</text>
+        <text class="region-count" x="378.3" y="245.4"></text>
+      </g>
+      <g class="region" data-t="礁溪">
+        <polygon points="439.4,131.2 461.5,129.1 476.5,152.4 494.2,151.5 486.1,177.1 472.7,180.4 458.7,199.9 449.6,189.5 436.4,194.2 426.7,188.3 429.2,201.4 416.3,192.2 346.6,180.1 348.3,168.2 395.1,162.2 401.3,146.9 426.8,129.8"/>
+        <text class="region-label" x="433.6" y="165.1">礁溪</text>
+        <text class="region-count" x="433.6" y="184.1"></text>
+      </g>
+      <g class="region" data-t="頭城">
+        <polygon points="494.3,169.5 489.5,160.5 492.9,149.1 479.7,154.0 461.5,129.1 447.3,133.7 439.6,130.3 467.7,114.4 465.1,101.6 472.8,93.1 502.7,89.0 519.1,72.2 508.1,56.1 514.1,43.2 545.2,40.9 565.0,27.5 600.9,20.6 545.7,62.5 542.6,78.2 517.4,101.0 503.4,123.2 506.1,119.8 509.4,121.5"/>
+        <text class="region-label" x="499.5" y="94.7">頭城</text>
+        <text class="region-count" x="499.5" y="113.7"></text>
+      </g>
+      <g class="region" data-t="宜蘭">
+        <polygon points="448.3,190.2 458.2,203.0 461.5,201.3 470.8,209.6 465.7,218.9 467.9,225.9 460.7,228.6 461.0,245.8 458.2,246.6 452.5,246.6 447.1,238.6 430.0,237.8 429.2,229.2 435.5,221.2 424.2,212.5 430.0,198.5 426.7,188.3 436.4,194.2"/>
+        <text class="region-label" x="447.6" y="217.6">宜蘭</text>
+        <text class="region-count" x="447.6" y="234.6"></text>
+      </g>
+      <g class="region" data-t="壯圍">
+        <polygon points="491.3,169.1 494.4,169.8 494.3,216.7 505.2,244.1 488.0,248.1 461.0,245.8 460.7,228.6 467.9,225.9 465.7,218.9 470.8,209.6 461.5,201.3 458.2,203.0 458.0,195.1 467.2,186.1 470.3,188.3 474.5,179.0 483.9,179.5 486.9,169.1"/>
+        <text class="region-label" x="481.5" y="208.4">壯圍</text>
+        <text class="region-count" x="481.5" y="227.4"></text>
+      </g>
+      <g class="region" data-t="羅東">
+        <polygon points="442.3,263.0 444.2,263.0 447.0,252.3 452.5,259.5 451.3,264.6 456.5,266.0 457.1,269.7 461.4,269.3 461.0,273.7 464.2,273.0 466.3,276.0 478.9,277.6 478.8,280.7 480.7,282.4 479.4,286.4 474.5,288.1 471.6,286.0 467.6,287.4 455.2,282.4 452.8,284.6 443.6,286.1 444.9,283.1 441.1,280.3 440.9,277.7 442.7,276.8 440.3,275.6"/>
+        <text class="region-label" x="451.0" y="270.2">羅東</text>
+        <text class="region-count" x="451.0" y="285.2"></text>
+      </g>
+      <g class="region" data-t="五結">
+        <polygon points="449.5,244.2 488.0,248.1 505.2,244.1 512.8,303.6 505.5,305.1 492.4,294.9 487.4,298.0 487.3,280.7 480.7,282.4 478.9,277.6 461.0,273.7 461.4,269.3 451.3,264.6 452.5,259.5 447.0,252.3 449.9,249.1 434.5,250.1 439.0,242.8"/>
+        <text class="region-label" x="485.7" y="273.9">五結</text>
+        <text class="region-count" x="485.7" y="292.9"></text>
+      </g>
+      <g class="region" data-t="冬山">
+        <polygon points="442.2,263.0 443.6,286.1 488.7,283.3 487.4,298.0 498.1,313.3 474.6,340.8 448.4,324.8 439.1,334.7 437.4,323.7 415.5,326.5 389.0,310.8 404.9,306.3 408.5,299.2 400.4,292.2 421.7,297.5 429.2,283.1 420.7,282.4 422.3,270.3"/>
+        <text class="region-label" x="449.6" y="302.2">冬山</text>
+        <text class="region-count" x="449.6" y="321.2"></text>
+      </g>
+      <g class="region" data-t="蘇澳">
+        <polygon points="489.4,297.9 512.8,303.6 543.6,340.8 522.9,338.4 530.2,359.0 532.7,356.2 531.2,352.8 531.0,350.4 531.8,348.3 539.6,346.0 534.2,394.4 507.9,413.3 525.2,439.0 478.6,479.1 466.8,445.6 489.7,446.4 516.2,391.6 492.8,378.7 475.8,339.3 498.1,313.3"/>
+        <text class="region-label" x="521.0" y="387.0">蘇澳</text>
+        <text class="region-count" x="521.0" y="406.0"></text>
       </g>
     </svg>
-    <div class="region-map-legend">
-      <span class="region-map-legend-item active"><span class="swatch"></span>已選</span>
-      <span class="region-map-legend-item has"><span class="swatch"></span>有優惠</span>
-      <span class="region-map-legend-item empty"><span class="swatch"></span>暫無優惠</span>
-    </div>
   </div>
 </section>
 
@@ -1615,10 +1578,10 @@ input, select { font: inherit; color: inherit; }
          onerror="this.src='/party/images/venues/aerial-villa.png'">
   </div>
   <div class="feature-block-content">
-    <div class="feature-block-label reveal">— Stay With Loherb —</div>
-    <h2 class="reveal reveal-d1">下榻<span class="gold">日光綠築</span><br>步入冬山河畔的私密綠洲</h2>
+    <div class="feature-block-label reveal">— Stay In Yilan —</div>
+    <h2 class="reveal reveal-d1">下榻<span class="gold">宜蘭渡假村</span><br>步入冬山河畔的私密綠洲</h2>
     <p class="feature-block-body reveal reveal-d2">
-      座落於宜蘭冬山河與梅花湖之間，日光綠築以極簡建築語彙融入山林田野。
+      座落於宜蘭冬山河與梅花湖之間，以極簡建築語彙融入山林田野。
       泳池、露台與大片落地窗，讓每一刻都成為宜蘭風景的延伸。
     </p>
     <div class="feature-highlights reveal reveal-d2">
@@ -1641,10 +1604,10 @@ input, select { font: inherit; color: inherit; }
          onerror="this.src='https://images.unsplash.com/photo-1528127269322-539801943592?w=1200&q=80&auto=format&fit=crop'">
   </div>
   <div class="feature-block-content">
-    <div class="feature-block-label reveal">— Dine At Loherb —</div>
-    <h2 class="reveal reveal-d1">在<span class="gold">日光私廚</span>用餐<br>季節限定的味覺旅程</h2>
+    <div class="feature-block-label reveal">— Private Dining —</div>
+    <h2 class="reveal reveal-d1">在<span class="gold">私廚</span>用餐<br>季節限定的味覺旅程</h2>
     <p class="feature-block-body reveal reveal-d2">
-      日光私廚精選宜蘭在地時令食材，由主廚客製為現代法式料理。
+      精選宜蘭在地時令食材，由主廚客製為現代法式料理。
       落地窗外是田野水光，餐桌上是來自冬山的鮮甜 ── 一場不必出門就完整的宜蘭體驗。
     </p>
     <div class="feature-highlights reveal reveal-d2">
@@ -1734,45 +1697,6 @@ input, select { font: inherit; color: inherit; }
         </div>
       </article>
     </div>
-  </div>
-</section>
-
-<!-- ========== HOWTO ========== -->
-<section class="howto">
-  <div class="howto-inner">
-    <div class="section-eyebrow reveal">— How to Redeem —</div>
-    <h2 class="section-title reveal reveal-d1">如何使用優惠</h2>
-    <div class="section-divider reveal reveal-d1"></div>
-    <div class="howto-grid">
-      <div class="howto-step reveal">
-        <div class="howto-num">01</div>
-        <h3>入住日光綠築</h3>
-        <p>於日光綠築 Villa 完成入住，保留住宿憑證或入住通知。</p>
-      </div>
-      <div class="howto-step reveal reveal-d1">
-        <div class="howto-num">02</div>
-        <h3>挑選喜愛商家</h3>
-        <p>點擊卡片查看完整優惠詳情，可一鍵撥電話或開啟 Google Maps。</p>
-      </div>
-      <div class="howto-step reveal reveal-d2">
-        <div class="howto-num">03</div>
-        <h3>出示憑證享優惠</h3>
-        <p>抵達店家時出示日光住宿憑證，即可享受獨家折扣。</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ========== CTA ========== -->
-<section class="cta">
-  <div class="cta-bg"></div>
-  <div class="cta-inner">
-    <div class="cta-eyebrow reveal">— Stay With Us —</div>
-    <h2 class="cta-title reveal reveal-d1">尚未入住日光綠築？</h2>
-    <p class="cta-sub reveal reveal-d2">入住即享所有合作商家優惠 ——<br>讓在地最美的事物，成為您假期的一部分。</p>
-    <a href="https://villa.loherb.com.tw" target="_blank" rel="noopener" class="cta-btn reveal reveal-d3">
-      Book A Stay <span class="arrow">→</span>
-    </a>
   </div>
 </section>
 
@@ -2080,7 +2004,7 @@ function parseExpiry(s) {
    ======================================== */
 const SHEET_URL = 'https://docs.google.com/spreadsheets/d/1J4-lWexX-vZJud1gSIw08eErDF5Sm4wi5LuyM6aXPyY/gviz/tq?tqx=out:csv&gid=115500043';
 let allDeals = [];
-let currentCats = new Set(['餐飲', '景點門票']);  // multi-select, default both
+let currentCats = new Set(['景點門票']);  // multi-select, default 景點門票
 let currentTownship = null;  // single-select via region map; null = 全宜蘭
 let searchTerm = '';
 let currentSort = 'default';
@@ -2190,7 +2114,7 @@ function renderFilters() {
   catBox.innerHTML = allCats.map(c => {
     const count = c === '全部' ? allDeals.length : catCounts[c];
     const icon = CAT_ICONS[c] || CAT_ICONS['其他'];
-    return `<button class="cat-pill ${isCatActive(c) ? 'active' : ''}" data-cat="${escapeAttr(c)}">${icon}<span>${escapeHtml(c)}</span><span class="count">${count}</span></button>`;
+    return `<button class="cat-pill ${isCatActive(c) ? 'active' : ''}" data-cat="${escapeAttr(c)}">${icon}<span class="label">${escapeHtml(c)}</span><span class="count">${count}</span></button>`;
   }).join('');
   catBox.querySelectorAll('.cat-pill').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -2285,14 +2209,12 @@ function renderRegionMap() {
     const t = region.dataset.t;
     const count = counts[t] || 0;
     region.classList.toggle('active', t === currentTownship);
-    region.classList.toggle('empty', count === 0);
 
     const labelEl = region.querySelector('.region-label');
     const countEl = region.querySelector('.region-count');
     if (countEl) {
       countEl.textContent = count > 0 ? count + '間' : '';
     }
-    // Adjust label vertical position when count is shown
     if (labelEl && countEl) {
       const baseY = parseFloat(labelEl.dataset.baseY || labelEl.getAttribute('y'));
       if (!labelEl.dataset.baseY) labelEl.dataset.baseY = baseY;
@@ -2307,7 +2229,6 @@ function renderRegionMap() {
 function wireRegionMap() {
   document.querySelectorAll('.region').forEach(region => {
     region.addEventListener('click', () => {
-      if (region.classList.contains('empty')) return;
       const t = region.dataset.t;
       currentTownship = (currentTownship === t) ? null : t;
       renderRegionMap();
