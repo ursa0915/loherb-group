@@ -55,6 +55,56 @@
     el.addEventListener('change', sync);
     sync();
   });
+
+  // Reviews carousel — manual (arrows/dots/swipe) + auto-advance
+  const carousel = document.querySelector('.lp2-reviews-grid--carousel');
+  if (carousel) {
+    const cards = carousel.querySelectorAll('.lp2-review');
+    const dots = document.querySelectorAll('.lp2-rev-dot');
+    const prevBtn = document.querySelector('.lp2-rev-prev');
+    const nextBtn = document.querySelector('.lp2-rev-next');
+    const AUTO_MS = 6000;
+    let current = 0;
+    let timer = null;
+
+    const show = (i) => {
+      current = (i + cards.length) % cards.length;
+      cards.forEach((c, idx) => c.classList.toggle('is-active', idx === current));
+      dots.forEach((d, idx) => d.classList.toggle('is-active', idx === current));
+    };
+    const next = () => show(current + 1);
+    const prev = () => show(current - 1);
+    const start = () => { stop(); timer = setInterval(next, AUTO_MS); };
+    const stop = () => { if (timer) { clearInterval(timer); timer = null; } };
+    const restart = () => { stop(); start(); };
+
+    prevBtn && prevBtn.addEventListener('click', () => { prev(); restart(); });
+    nextBtn && nextBtn.addEventListener('click', () => { next(); restart(); });
+    dots.forEach((d, idx) => d.addEventListener('click', () => { show(idx); restart(); }));
+
+    // Pause on hover
+    carousel.addEventListener('mouseenter', stop);
+    carousel.addEventListener('mouseleave', start);
+
+    // Swipe / drag support
+    let startX = null;
+    const onStart = (x) => { startX = x; stop(); };
+    const onEnd = (x) => {
+      if (startX === null) return;
+      const diff = x - startX;
+      if (Math.abs(diff) > 40) (diff > 0 ? prev : next)();
+      startX = null;
+      start();
+    };
+    carousel.addEventListener('touchstart', (e) => onStart(e.touches[0].clientX), { passive: true });
+    carousel.addEventListener('touchend', (e) => onEnd(e.changedTouches[0].clientX));
+    carousel.addEventListener('mousedown', (e) => onStart(e.clientX));
+    carousel.addEventListener('mouseup', (e) => onEnd(e.clientX));
+    carousel.addEventListener('mouseleave', () => { startX = null; });
+
+    show(0);
+    start();
+  }
 })();
 
 // Form submit handler — used by /book pages
