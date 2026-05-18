@@ -2000,23 +2000,50 @@ footer.site-footer a:hover { color: var(--gold); }
 }
 .brand-card:hover .brand-card-bg { transform: scale(1.06); }
 
-/* Frosted-glass info pill — only behind the text content, not full-width */
+/* Frosted-glass info — feathered edges blur seamlessly into the photo */
 .brand-card-body {
   position: relative;
   z-index: 2;
   display: inline-flex;
   flex-direction: column;
   align-items: center;
-  padding: 16px 24px 18px;
-  background: rgba(48, 76, 76, 0.32);
-  backdrop-filter: blur(18px) saturate(1.2);
-  -webkit-backdrop-filter: blur(18px) saturate(1.2);
-  border: 1px solid rgba(250, 241, 239, 0.18);
-  border-radius: 4px;
+  padding: 22px 36px 24px;
   text-shadow: 0 1px 8px rgba(0, 0, 0, 0.55);
+  isolation: isolate;
+}
+.brand-card-body::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: rgba(48, 76, 76, 0.28);
+  backdrop-filter: blur(14px) saturate(1.2);
+  -webkit-backdrop-filter: blur(14px) saturate(1.2);
+  -webkit-mask-image: radial-gradient(
+    ellipse 72% 95% at center,
+    rgba(0, 0, 0, 0.92) 0%,
+    rgba(0, 0, 0, 0.84) 18%,
+    rgba(0, 0, 0, 0.66) 38%,
+    rgba(0, 0, 0, 0.42) 56%,
+    rgba(0, 0, 0, 0.22) 72%,
+    rgba(0, 0, 0, 0.10) 84%,
+    rgba(0, 0, 0, 0.04) 92%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  mask-image: radial-gradient(
+    ellipse 72% 95% at center,
+    rgba(0, 0, 0, 0.92) 0%,
+    rgba(0, 0, 0, 0.84) 18%,
+    rgba(0, 0, 0, 0.66) 38%,
+    rgba(0, 0, 0, 0.42) 56%,
+    rgba(0, 0, 0, 0.22) 72%,
+    rgba(0, 0, 0, 0.10) 84%,
+    rgba(0, 0, 0, 0.04) 92%,
+    rgba(0, 0, 0, 0) 100%
+  );
   transition: background 0.4s;
 }
-.brand-card:hover .brand-card-body { background: rgba(48, 76, 76, 0.45); }
+.brand-card:hover .brand-card-body::before { background: rgba(48, 76, 76, 0.4); }
 .brand-card-en {
   font-family: "Cormorant Garamond", serif;
   font-style: italic;
