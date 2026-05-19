@@ -12,7 +12,9 @@ Disallow: /wedding/vendor/
 Disallow: /wedding/storage/
 Disallow: /wedding/bootstrap/
 
+# ================================
 # 主要搜尋引擎優先
+# ================================
 User-agent: Googlebot
 Allow: /
 Crawl-delay: 1
@@ -27,7 +29,111 @@ Allow: /
 User-agent: Googlebot-Video
 Allow: /
 
-# 排除惡意爬蟲
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+# ================================
+# AI / LLM 引擎明確允許（AIEO / GEO）
+# ================================
+
+# OpenAI ChatGPT — search & training
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+# Anthropic Claude
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+# Google AI Overview / Bard / Gemini
+User-agent: Google-Extended
+Allow: /
+
+# Perplexity AI
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+# Apple Intelligence
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# Common Crawl (data foundation for many LLMs)
+User-agent: CCBot
+Allow: /
+
+# Cohere
+User-agent: cohere-ai
+Allow: /
+User-agent: cohere-training-data-crawler
+Allow: /
+
+# Bytespider (Doubao / 抖音 AI)
+User-agent: Bytespider
+Allow: /
+
+# Meta AI / Facebook Llama
+User-agent: FacebookBot
+Allow: /
+
+User-agent: meta-externalagent
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+# Mistral AI
+User-agent: MistralAI-User
+Allow: /
+
+# Diffbot (knowledge graph)
+User-agent: Diffbot
+Allow: /
+
+# Amazonbot (Alexa / Q)
+User-agent: Amazonbot
+Allow: /
+
+# You.com
+User-agent: YouBot
+Allow: /
+
+# Phind
+User-agent: PhindBot
+Allow: /
+
+# Kagi Assistant
+User-agent: Kagibot
+Allow: /
+
+# ================================
+# 排除惡意 / SEO spam 爬蟲
+# ================================
 User-agent: AhrefsBot
 Disallow: /
 
@@ -40,8 +146,19 @@ Disallow: /
 User-agent: DotBot
 Disallow: /
 
-# Sitemap
+User-agent: PetalBot
+Disallow: /
+
+User-agent: BLEXBot
+Disallow: /
+
+# ================================
+# Sitemap & LLM hints
+# ================================
 Sitemap: https://loherb-test.web.app/sitemap.xml
+
+# LLM context files (emerging /llms.txt standard)
+# AI engines: see https://loherb-test.web.app/llms.txt and llms-full.txt
 
 # Host hint
 Host: loherb-test.web.app
