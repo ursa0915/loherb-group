@@ -498,3 +498,54 @@ party/
 
 **負責人**：service@loherb.com.tw
 **參考標準**：Google Search Central Documentation、Schema.org、Open Graph Protocol
+
+---
+
+## 十二、實作完成紀錄（v1.16.0 · 2026-05-20）
+
+### ✅ Phase 1 — 必做（已全部完成）
+
+**中文頁 (10 個)** — title / description / keywords / robots / canonical / hreflang / OG / Twitter Card 全套：
+- [x] `index.html` + **LocalBusiness JSON-LD**（含營業時段、地理位置 24.6618/121.7991、aggregateRating 4.8/1240）
+- [x] `cafe.html` + **CafeOrCoffeeShop JSON-LD**
+- [x] `menu.html`
+- [x] `contact.html`
+- [x] `venues.html`
+- [x] `events.html`
+- [x] `gourmet.html`
+- [x] `journal.html`
+- [x] `book.html`
+- [x] `team.html`
+
+**英文頁 (9 個)** — 同樣 SEO 套件（locale=en_US）：
+- [x] `en/index.html`
+- [x] `en/menu.html`
+- [x] `en/book.html`
+- [x] `en/venues.html`
+- [x] `en/events.html`
+- [x] `en/gourmet.html`
+- [x] `en/contact.html`
+- [x] `en/journal.html`
+- [x] `en/team.html`
+
+**站台級檔案：**
+- [x] `robots.txt` — Allow /party/、/party/en/、明示 Sitemap
+- [x] `sitemap.xml` — 19 個 URL（10 中文 + 9 英文）、含 hreflang alternate
+
+### 🚧 Phase 2 — 進行中（下一波）
+
+- [ ] 補所有圖片 `alt` 屬性（特別是 hero / collage / IG feed）
+- [ ] `menu.html` 加 Menu JSON-LD（含每道菜的 price / currency）
+- [ ] `venues.html` 加 EventVenue JSON-LD（含 capacity / amenity）
+
+### 📊 Phase 3 — 待啟用
+
+- [ ] Google Search Console 提交 sitemap.xml
+- [ ] GA4 事件追蹤（CTA 點擊、表單送出）
+- [ ] Bing Webmaster Tools 提交
+
+### 📝 Phase 4 — 內容生產（持續）
+
+- [ ] journal.html 內容更新（每月 4 篇）
+- [ ] 季節限定關鍵字佈局（春櫻、夏螢、秋楓、冬泉）
+

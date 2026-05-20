@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- 首頁：日光時刻 -->
+  <url>
+    <loc>https://loherb-test.web.app/party/</loc>
+    <lastmod>2026-05-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://loherb-test.web.app/party/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://loherb-test.web.app/party/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://loherb-test.web.app/party/"/>
+  </url>
+
+  <!-- 咖啡館廣告 LP -->
+  <url>
+    <loc>https://loherb-test.web.app/party/cafe.html</loc>
+    <lastmod>2026-05-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <!-- 菜單 -->
+  <url>
+    <loc>https://loherb-test.web.app/party/menu.html</loc>
+    <lastmod>2026-05-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://loherb-test.web.app/party/menu.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://loherb-test.web.app/party/en/menu.html"/>
+  </url>
+
+  <!-- 預約 -->
+  <url>
+    <loc>https://loherb-test.web.app/party/book.html</loc>
+    <lastmod>2026-05-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://loherb-test.web.app/party/book.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://loherb-test.web.app/party/en/book.html"/>
+  </url>
+
+  <!-- 場地 -->
+  <url>
+    <loc>https://loherb-test.web.app/party/venues.html</loc>
+    <lastmod>2026-05-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://loherb-test.web.app/party/venues.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://loherb-test.web.app/party/en/venues.html"/>
+  </url>
+
+  <!-- 活動 -->
+  <url>
+    <loc>https://loherb-test.web.app/party/events.html</loc>
+    <lastmod>2026-05-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://loherb-test.web.app/party/events.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://loherb-test.web.app/party/en/events.html"/>
+  </url>
+
+  <!-- 餐飲服務 -->
+  <url>
+    <loc>https://loherb-test.web.app/party/gourmet.html</loc>
+    <lastmod>2026-05-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://loherb-test.web.app/party/gourmet.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://loherb-test.web.app/party/en/gourmet.html"/>
+  </url>
+
+  <!-- 聯繫 -->
+  <url>
+    <loc>https://loherb-test.web.app/party/contact.html</loc>
+    <lastmod>2026-05-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://loherb-test.web.app/party/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://loherb-test.web.app/party/en/contact.html"/>
+  </url>
+
+  <!-- 手札 -->
+  <url>
+    <loc>https://loherb-test.web.app/party/journal.html</loc>
+    <lastmod>2026-05-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://loherb-test.web.app/party/journal.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://loherb-test.web.app/party/en/journal.html"/>
+  </url>
+
+  <!-- 團隊 -->
+  <url>
+    <loc>https://loherb-test.web.app/party/team.html</loc>
+    <lastmod>2026-05-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://loherb-test.web.app/party/team.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://loherb-test.web.app/party/en/team.html"/>
+  </url>
+
+  <!-- ===== English ===== -->
+  <url>
+    <loc>https://loherb-test.web.app/party/en/</loc>
+    <lastmod>2026-05-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://loherb-test.web.app/party/en/menu.html</loc>
+    <lastmod>2026-05-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://loherb-test.web.app/party/en/book.html</loc>
+    <lastmod>2026-05-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://loherb-test.web.app/party/en/venues.html</loc>
+    <lastmod>2026-05-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://loherb-test.web.app/party/en/events.html</loc>
+    <lastmod>2026-05-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://loherb-test.web.app/party/en/gourmet.html</loc>
+    <lastmod>2026-05-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://loherb-test.web.app/party/en/contact.html</loc>
+    <lastmod>2026-05-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://loherb-test.web.app/party/en/journal.html</loc>
+    <lastmod>2026-05-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://loherb-test.web.app/party/en/team.html</loc>
+    <lastmod>2026-05-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.55</priority>
+  </url>
+
+</urlset>

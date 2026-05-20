@@ -1,0 +1,16 @@
+# LOHERB Moments — robots.txt
+# https://loherb-test.web.app/party/
+
+User-agent: *
+Allow: /party/
+Allow: /party/en/
+Allow: /party/assets/
+Allow: /party/images/
+
+# 不索引測試／預覽路徑
+Disallow: /party/draft/
+Disallow: /party/preview/
+Disallow: /party/*.json$
+
+# 主要 Sitemap
+Sitemap: https://loherb-test.web.app/party/sitemap.xml
