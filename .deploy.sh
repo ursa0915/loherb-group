@@ -65,10 +65,20 @@ rsync -a --delete \
 echo ""
 echo "🔥 [3/3] 部署到 Firebase Hosting..."
 cd /Users/ursa/Documents/loherb-firebase
-firebase deploy --only hosting:loherb-test --project loherb-shared-journal
+
+# 自動偵測：若 loherb-travel site 已建立，同時部署兩個 site；否則只部署主站
+TARGETS="hosting:loherb-test"
+if firebase hosting:sites:list --project loherb-shared-journal 2>/dev/null | grep -q "loherb-travel"; then
+  TARGETS="hosting:loherb-test,hosting:loherb-travel"
+  echo "   ↳ 偵測到 loherb-travel site，將同時部署兩個 site"
+fi
+firebase deploy --only "$TARGETS" --project loherb-shared-journal
 
 echo ""
 echo "✅ 完成！"
 echo "   📌 版本：$NEW_TAG"
-echo "   🌐 Firebase：https://loherb-test.web.app"
+echo "   🌐 主站：https://loherb-test.web.app"
+if [[ "$TARGETS" == *"loherb-travel"* ]]; then
+  echo "   🌴 旅遊優惠站：https://loherb-travel.web.app (→ travel.loherb.com.tw)"
+fi
 echo "   📦 GitHub：https://github.com/ursa0915/loherb-group/releases/tag/$NEW_TAG"
