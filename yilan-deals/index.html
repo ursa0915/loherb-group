@@ -10,8 +10,32 @@
 <meta property="og:title" content="宜蘭吃喝玩樂 Coupon 優惠卷｜40+ 在地商家獨家折扣">
 <meta property="og:description" content="40+ 在地商家獨家折扣 ── 餐飲、景點、伴手禮、DIY 體驗一次到位。">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://www.loherb.com.tw/yilan-deals/image/20260517_%E7%A9%BA%E6%8B%8D_%E7%B4%85%E6%A9%8B%E6%B2%B3%E5%B2%B8%E5%9F%8E%E6%99%AF_%E5%8E%9F%E5%9C%96.jpg">
-<link rel="canonical" href="https://www.loherb.com.tw/yilan-deals/">
+<meta property="og:url" content="https://travel.loherb.com.tw/">
+<meta property="og:image" content="https://travel.loherb.com.tw/yilan-deals/image/20260517_%E7%A9%BA%E6%8B%8D_%E7%B4%85%E6%A9%8B%E6%B2%B3%E5%B2%B8%E5%9F%8E%E6%99%AF_%E5%8E%9F%E5%9C%96.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="宜蘭吃喝玩樂 Coupon 優惠卷｜40+ 在地商家獨家折扣">
+<meta name="twitter:description" content="40+ 在地商家獨家折扣 ── 餐飲、景點、伴手禮、DIY 體驗一次到位。">
+<meta name="twitter:image" content="https://travel.loherb.com.tw/yilan-deals/image/20260517_%E7%A9%BA%E6%8B%8D_%E7%B4%85%E6%A9%8B%E6%B2%B3%E5%B2%B8%E5%9F%8E%E6%99%AF_%E5%8E%9F%E5%9C%96.jpg">
+<link rel="canonical" href="https://travel.loherb.com.tw/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "宜蘭吃喝玩樂 Coupon 優惠卷",
+  "url": "https://travel.loherb.com.tw/",
+  "description": "宜蘭吃喝玩樂優惠總整理 ── 40+ 在地商家獨家折扣",
+  "publisher": {
+    "@type": "Organization",
+    "name": "日光 LOHERB",
+    "url": "https://www.loherb.com.tw/"
+  },
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://travel.loherb.com.tw/?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -435,43 +459,6 @@ input, select { font: inherit; color: inherit; }
   .cat-pill-label { font-size: 0.8rem; }
 }
 
-.controls-divider {
-  width: 1px; height: 16px;
-  background: var(--line);
-  margin: 0 4px;
-}
-
-.results-meta {
-  display: flex; justify-content: space-between; align-items: center;
-  font-size: 0.8rem;
-  letter-spacing: 0.12em;
-  color: var(--charcoal);
-  opacity: 0.7;
-  padding-top: 4px;
-}
-.results-meta strong {
-  color: var(--gold); font-weight: 500;
-  font-family: var(--font-en); font-size: 1.05rem;
-  margin: 0 4px;
-}
-.sort-wrap {
-  display: flex; align-items: center; gap: 8px;
-}
-.sort-select {
-  padding: 6px 30px 6px 12px;
-  background: var(--paper);
-  border: 1px solid var(--line);
-  border-radius: 4px;
-  font-size: 0.82rem;
-  color: var(--charcoal);
-  appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='none' stroke='%23E6A401' stroke-width='1.5' d='M1 1l4 4 4-4'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 10px center;
-  cursor: pointer;
-}
-.sort-select:focus { outline: none; border-color: var(--gold); }
-
 /* ========================================
    REGION MAP — SVG illustrative Yilan townships
    ======================================== */
@@ -502,21 +489,6 @@ input, select { font: inherit; color: inherit; }
   color: var(--gold);
   margin-bottom: 6px;
 }
-.region-map-reset {
-  font-family: var(--font-sans);
-  font-size: 0.82rem;
-  font-weight: 500;
-  letter-spacing: 0.05em;
-  color: var(--gold);
-  padding: 8px 18px;
-  border: 1px solid var(--gold);
-  border-radius: 999px;
-  transition: all 0.3s var(--ease-out);
-  background: transparent;
-}
-.region-map-reset:hover { background: var(--gold); color: white; }
-.region-map-reset.active { background: var(--gold); color: white; }
-
 .region-map {
   background:
     radial-gradient(ellipse at 30% 20%, rgba(230, 164, 1, 0.04), transparent 60%),
@@ -1341,67 +1313,6 @@ input, select { font: inherit; color: inherit; }
 }
 
 /* ========================================
-   CTA
-   ======================================== */
-.cta {
-  position: relative;
-  min-height: 380px;
-  display: flex; align-items: center; justify-content: center;
-  text-align: center;
-  padding: clamp(70px, 10vh, 120px) 24px;
-  overflow: hidden;
-  background: var(--black);
-}
-.cta-bg {
-  position: absolute; inset: 0;
-  background: url('/party/images/lifestyle/deck-autumn.jpg') center/cover no-repeat;
-  filter: brightness(0.5);
-}
-.cta::before {
-  content: '';
-  position: absolute; inset: 0;
-  background: linear-gradient(180deg, rgba(26,26,26,0.5), rgba(26,26,26,0.7));
-}
-.cta-inner {
-  position: relative; z-index: 2;
-  max-width: 720px;
-  color: var(--white);
-}
-.cta-eyebrow {
-  font-family: var(--font-en); font-style: italic;
-  font-size: 0.85rem; letter-spacing: 0.4em;
-  color: var(--gold); margin-bottom: 18px;
-}
-.cta-title {
-  font-family: var(--font-zh);
-  font-size: clamp(1.7rem, 3.4vw, 2.4rem);
-  font-weight: 400;
-  letter-spacing: 0.18em;
-  line-height: 1.5;
-  margin-bottom: 22px;
-}
-.cta-sub {
-  font-size: 0.95rem;
-  letter-spacing: 0.08em;
-  line-height: 2;
-  color: rgba(255,255,255,0.8);
-  margin-bottom: 32px;
-}
-.cta-btn {
-  display: inline-flex; align-items: center; gap: 14px;
-  padding: 16px 36px;
-  border: 1px solid var(--gold);
-  color: var(--gold);
-  font-family: var(--font-en);
-  font-size: 0.85rem; letter-spacing: 0.3em;
-  text-transform: uppercase;
-  transition: all 0.4s var(--ease-out);
-}
-.cta-btn:hover { background: var(--gold); color: var(--black); }
-.cta-btn .arrow { transition: transform 0.4s var(--ease-out); }
-.cta-btn:hover .arrow { transform: translateX(4px); }
-
-/* ========================================
    FOOTER (matches main site)
    ======================================== */
 .footer {
@@ -2150,7 +2061,6 @@ let allDeals = [];
 let currentCats = new Set(['景點門票']);  // multi-select, default 景點門票
 let currentTownships = new Set();  // multi-select via region map + circles
 let searchTerm = '';
-let currentSort = 'default';
 
 /* ========================================
    CATEGORY ICONS (line style)
