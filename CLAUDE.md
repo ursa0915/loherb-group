@@ -8,7 +8,7 @@ Claude Code 工作須知 — 詳細說明請見 [README.md](./README.md)。
 
 - **集團主站**：`main/`、`careers/`
 - **六大品牌**：`villa/`（旅宿）、`cuisine/`（高餐）、`estate/`（物業）、`party/`（活動／咖啡館）、`wedding/`（婚禮）、Design 子品牌在外部 `dearbb.design`
-- **特殊子站**：`villa-redesign/`（旅宿改版實驗）、`yilan-deals/`（旅遊優惠子站 `travel.loherb.com.tw`）
+- **實驗 / 內部**：`villa-redesign/`（旅宿改版實驗）、`yilan-deals/`（旅遊優惠，**不列入主導覽**）
 - 每個子站皆有 `xxx/index.html`（中文）+ `xxx/en/` 或 `xxx/en.html`（英文）
 
 ## 部署

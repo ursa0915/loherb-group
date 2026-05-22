@@ -33,9 +33,10 @@
 | **Design** | 日光文創 | （外部）| [dearbb.design](https://dearbb.design) |
 | **集團主站** | LOHERB Group | `main/` | [loherb.com.tw](https://loherb.com.tw) |
 | **企業徵才** | Careers | `careers/` | `/careers` |
-| **旅遊優惠** | LOHERB Travel | `yilan-deals/` | [travel.loherb.com.tw](https://travel.loherb.com.tw) |
 
 每個子站均提供 **中文 + 英文** 兩種版本（多數為 `xxx/index.html` + `xxx/en/index.html`）。
+
+> 注意：repo 內另有 `yilan-deals/`（旅遊優惠子站，獨立網域）作為內部專案保留，**不列入主導覽**。
 
 ---
 
@@ -82,7 +83,7 @@ loherb-group/
 │   ├── images/
 │   └── （Laravel app/ config/ database/ vendor/ … 已排除）
 │
-├── yilan-deals/            # 旅遊優惠子站（travel.loherb.com.tw）
+├── yilan-deals/            # 旅遊優惠子站（內部專案，不列入主導覽）
 │   ├── index.html, image/, sitemap.xml
 │   └── WEBSITE-REPORT-v2.md
 │
@@ -458,10 +459,9 @@ Firebase Hosting 可保留為 CDN／靜態 fallback，rewrite 動態請求到 Cl
    - 集團首頁文案 CMS 化
    - Careers 串 104 API（拉職缺即時）
 
-5. **Phase 5 — Yilan Deals 整合**
-   - 旅遊優惠子站可獨立、可整進去（看商業策略）
-
 每個 Phase 之間，**靜態站不下線**：Firebase rewrites 控制哪些路由走 Cloud Run、哪些還是靜態 HTML。
+
+> `yilan-deals/`（旅遊優惠）作為內部專案保留，不納入主導覽，也不在遷移路線圖內。若未來商業策略改變再單獨評估。
 
 ### Phase 1 詳細工時估算
 
